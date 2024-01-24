@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+defaults:
+  numbered: true
+parts: 
+- caption: Bloque 1
+  chapters:
+  - file: bloque1
+  - file: bloque1_Introduccion
+- caption: Counting and Probability 
+  chapters:
+  - file: Topic1 
+  - file: Topic2
+- caption: Bloque kk
+  chapters:
+  - file: markdown
+  - file: notebooks
+  - file: markdown-notebooks
