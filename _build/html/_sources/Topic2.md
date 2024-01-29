@@ -1618,9 +1618,17 @@ We have two cases:
 
 - If $p>q$, then $\rho^m\ll m$ and $m$ is amplified wrt $n$, increasing the hitting time. 
 
-<span style="color:#347fc9">**Exercise**. Solve questions Q1 and Q2 for the **path** graph $P_n$, where it has $n$ nodes from $1$ to $n$ but it does not have asorbing states? 
+[//]: https://discrete.openmathbooks.org/dmoi3/sec_recurrence.html
+
+[//]: https://www.youtube.com/watch?v=vEsUsaK1HBk
+
+[//]: https://web.williams.edu/Mathematics/sjmiller/public_html/331Sp17/handouts/ProbLifesaver_Recurrences.pdf
+
+
+<span style="color:#347fc9">**Exercise**. Solve questions Q1 and Q2 for the **path** graph $P_{m+1}$, where it has $m+1$ nodes from $0$ to $m=5$ but without asorbing states? 
 </span>
 
+The graph is in 
 
 
 
