@@ -706,6 +706,124 @@ print(~(A > 1))
  [False False False]
  [False False False]]
 ```
+### Localizing elements
+
+Numpy also allows us to localize the elements of an array that meet a certain condition. For example, to localize the elements of the array `A` that we created in the previous example that are greater than 5, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array
+A = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+print(np.where(A > 5))
+```
+
+```
+(array([2, 2, 2]), array([0, 1, 2]))
+```
+The `where()` function returns a tuple of arrays, one for each dimension of the input array, containing the indices where the given condition is true. In this case, the first array contains the indices of the rows and the second array contains the indices of the columns. This is very useful when we want to filter the elements of an array.
+
+Another way to localize the elements of an array that meet a certain condition is to use the `nonzero()` function. For example, to localize the elements of the array `A` that we created in the previous example that are greater than 5, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array
+A = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+print(A.nonzero())
+```
+
+```
+(array([0, 0, 1, 1, 1, 2, 2, 2]), array([1, 2, 0, 1, 2, 0, 1, 2]))
+```
+The `nonzero()` function returns a tuple of arrays, one for each dimension of the input array, containing the indices where the given condition is true. In this case, the first array contains the indices of the rows and the second array contains the indices of the columns. This is very useful when we want to filter the elements of an array.
+
+We can also combine the `where()` and `nonzero()` functions to localize the elements of an array that meet a certain condition. For example, to localize the elements of the array `A` that we created in the previous example that are greater than 5, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array
+A = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+print(np.nonzero(np.where(A > 5)))
+```
+
+```
+(array([0, 0, 0, 1, 1]), array([0, 1, 2, 1, 2]))
+```
+Also we can sum the elements of an array that meet a certain condition. For example, to sum the elements of the array `A` that we created in the previous example that are greater than 5, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array
+A = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+print(np.sum(A[np.where(A > 5)]))
+```
+
+```
+21
+```
+Indeed, we can also sum the elements of an array that meet a certain condition using the `nonzero()` function. For example, to sum the elements of the array `A` that we created in the previous example that are greater than 5, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array
+A = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+print(np.sum(A[np.nonzero(np.where(A > 5))]))
+```
+
+```
+21
+```
+### Triu and tril
+
+Numpy also allows us to obtain the upper triangular part of a matrix. For example, to obtain the upper triangular part of the array `A` that we created in the previous example, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array de 2 dimensiones
+a = np.array([[3, 2, 1], [6, 5, 4], [9, 8, 7]])
+print(np.triu(a))
+```
+
+```
+[[3 2 1]
+ [0 5 4]
+ [0 0 7]]
+```
+Numpy also allows us to obtain the lower triangular part of a matrix. For example, to obtain the lower triangular part of the array `A` that we created in the previous example, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array de 2 dimensiones
+a = np.array([[3, 2, 1], [6, 5, 4], [9, 8, 7]])
+print(np.tril(a))
+```
+
+```
+[[3 0 0]
+ [6 5 0]
+ [9 8 7]]
+```
+
 ### Shape manipulation
 
 Numpy also allows us to perform operations to change the shape of an array. For example, to flatten the array `A` that we created in the previous example, we can do the following:
@@ -790,4 +908,40 @@ print(eigenvectors)
 [[-0.23197069 -0.78583024  0.40824829]
  [-0.52532209 -0.08675134 -0.81649658]
  [-0.81867349  0.61232756  0.40824829]]
+```
+
+## Exercises
+```{note}
+You have to submit your answers via UAcloud using the corresponding assignment. The file must be a surname_name.zip file containing two .ipynb file with your answers. The name of the file must be `numpy_exercises_1.ipynb` and `numpy_exercises_2.ipynb`. Finally, in each notebook you have to include your name and surname.
+```
+### Exercise 1
+After reading the previous section, you should be able to create your first Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook. 
+### Exercise 2
+You have to create a calculator using numpy. The calculator must be able to perform the following operations:
+- Addition
+- Subtraction
+- Multiplication
+- Concatenation
+- Transpose
+But don't worry, we will help you by giving you a number calculator for scalar values. You only have to modify the code to make it work with numpy arrays.
+```{code-block} python
+---
+linenos: true
+---
+def add(a, b):
+    return a + b
+def subtract(a, b):
+    return a - b
+# We ask the user to enter two numbers
+a = int(input("Enter a number: "))
+b = int(input("Enter another number: "))
+# Also, we ask the user to enter the operation
+operation = input("Choose an operation (+, -, *): ")
+# We perform the operation
+if operation == "+":
+    print("The result is: ", add(a, b))
+elif operation == "-":
+    print("The result is: ", subtract(a, b))
+else:
+    print("I don't understand")
 ```
