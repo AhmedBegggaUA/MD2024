@@ -744,6 +744,8 @@ $$
 p(a\le X\le b) =  \frac{1}{\sqrt{2\pi\cdot \sigma}}\int_{a}^{b}\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)dx = \phi\left(\frac{b-\mu}{\sigma}\right)- \phi\left(\frac{a-\mu}{\sigma}\right)\;.
 $$
 
+If you want to query the lower tail values, please visit the [Standard Normal Cumulative Probability Table](https://www.math.arizona.edu/~jwatkins/normal-table.pdf)
+
 **Link with fundamental bounds**. Once that we have discovered the exponential nature of the Gaussian, and once we realized that the Gaussian is the limit of the Binomial, we close the loop of understanding the exponential decays of both the **Hoeffding's and Chernoff bounds**. 
 
 ## Statistical dependence
@@ -766,7 +768,7 @@ $$
 p(A|B) = p(A)
 $$
 
-In addition, condititional probability is computed as follows: 
+In addition, condititional probability is computed by the **Bayes theorem**: 
 
 $$
 p(A|B) = \frac{p(A\cap B)}{P(A)}\;.
@@ -1083,9 +1085,9 @@ with $p=1/2$, in {numref}`PascalMartin` we show, with colors, the probability di
 ```{figure} ./images/Topic2/PascalMartin.png
 ---
 name: PascalMartin
-width: 850px
+width: 950px
 align: center
-height: 800px
+height: 700px
 ---
 Distribution for a martingale. 
 ```
@@ -1094,19 +1096,531 @@ Note that:
 - Extremal events (all failures/all success) tend to have a zero probability as $n$ grows. 
 - The bulk of the distribution is close to $E(X_1)=\frac{a}{A}$ but as $n$ increases the pmf (point-mass function) is flattened. 
 - Flattening with $n$ is due to the denominator $P(A,n)$ of $p(R_n = k)$. 
+- Of course we may adapt the fundamental equalities defined for i.i.d. variables to conditional ones, but it is quite clear than rare envents will be less probable in conditional trees such as that in {numref}`PascalMartin` unless we change the ratio between $a$ and $A$. 
+
+
+[//]: https://mpaldridge.github.io/math2750/S01-stochastic-processes.html
+
+## Random walks on graphs
+
+### Markov chains 
+
+So far, we have studied both **independent random processes** and **conditional random processes**. In this regard, when we have independence, our random process is a *simple random walk* (see {numref}`RWrand`). However, when the variables in the random process are fully conditioned, the corresponding random process is more difficult to study unless we have a martingale. Fortunately, <span style="color:#469ff8">there is something in between the simplicity of independent random processes and the full conditioning of the martingale: we refer to **Markov chains**</span>.   
+
+**Markov chain**. A *sequence* of random variables $X_0,X_1,\ldots$ is a Markov chain if for all possible *states* (values of the random variables) $x_{t+1},x_{t},\ldots,x_1$ we have: 
+
+$$
+\begin{align}
+p(X_{t+1}=j|& X_t=i,\ldots,X_1=x_1,X_0=x_0) = p(X_{t+1}=j|X_t=i)=p_{ij}\\
+&\text{with}\;\; p_{ij}\ge 0\;\forall i,j\;\;\text{and}\;\;\sum_{j}p_{ij}=1\;\forall i\;,
+\end{align}
+$$
+
+i.e. the probability of a future event only depends on that of a present one. This is called the **Markov property** or the **memoryless property**.
+
+A couple of interesting properties:
+- **Irreducibility**. We say that a state $j$ in the Markov chain (MC) is **accesible** from another state $i$ if exists $t\ge 0$ so that 
+
+$$
+p(X_t=j|X_0=i) = p_{ij}(t)> 0\;\text{in}\;t\;\text{steps}\;,
+$$
+
+that is, we can get from a state $i$ to state $j$ in $t$ steps with probability $p_{ij}(t)$. Then, <span style="color:#469ff8">a MC is **irreducible** if each pair $(i,j)$ of states is mutually accessible.</span> 
+
+[//]: https://galton.uchicago.edu/~lalley/Courses/312/MarkovChains.pdf
+
+[//]: https://mpaldridge.github.io/math2750/S05-markov-chains.html
+
+[//]: https://www.stat.berkeley.edu/users/aldous/RWG/book.pdf
+
+[//]: https://web.pdx.edu/~gjay/teaching/mth271_2020/html/13_GamblersRuin.html
+
+- **Periodicity**. A state $i$ has **period** $d_i$ if
+
+$$
+d_i = \text{gcd}(t\in\{1,2,\ldots\}: p_{ii}(t)>0)
+$$
+
+where $\text{gcd}$ denotes the greatest common divisor. Then, if $d_i>1$ the state $i$ is **periodic**; it $d_i=1$ it is **aperiodic**. Then <span style="color:#469ff8">a MC is **aperiodic** if all states have period $d_i=1$</span>. 
+
+**Graphs**. A graph $G=(V,E)$ consists of a set of **nodes** or vertices $V={1,2,\ldots,n}$ where $|V|=n$, and a set of **edges** $E\subseteq V\times V$. 
+- An edge $e=(i,j)$ is denoted by a pair of nodes $i$ and $j$, where $i$ is the origin and $j$ the target or destination. 
+- If the graph is **undirected** both $(i,j)$ and $(j,i)$ do exist for all $e\in E$. Otherwise, the graph is **directed**. 
+- If $e=(i,i)$ we have a **self-loop**. 
+
+Graphs are very flexible mathematical tools. We commence by using them for describing a random process. The nodes $V$ provide the **states** and the edges $E$ provide the **transitions between states**. Actually we label the edges with the probability of a Markovian transition $p(j|i) = p_{ij}$. 
+
+The following example is motivated by the essay [Random Walks and Electric Networks](https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf) by Doyle and Snell. 
+
+We want to build a graph for the **drunkard's walk**. A man walks along a $5-$blocks stretch in Madison Avenue. He starts at corner $x$ and, with probability $1/2$ walks one block to the right and, also with probability $1/2$ walks one block to the left. At the next corner, he again choses his direction randomly. He continues until he reaches corner $5$, which is home, or corner $0$, which is a bar. In both latter cases he stays there. 
+
+Our graph for this walk has $n=6$ vertices or **states** $V=\{0,1,2,3,4,5\}$, where $5$ is $\text{Home}$ and $0$ is the $\text{Bar}$. See {numref}`Drunk` where the edges or **transitions** are in blue (bidirectional if we no depict the arrowheads) and the possible decision for node $x=3$ are depicted in black. 
+ 
+```{figure} ./images/Topic2/Drunk.png
+---
+name: Drunk
+width: 750px
+align: center
+height: 100px
+---
+A graph for the drunkard's walk. 
+```
+
+Actually, the edges of the above graph are $E=\{(0,0),(1,0),(1,2),(2,1)\ldots,(4,5),(5,5)\}$
+
+<span style="color:#469ff8">Why our graph mimics the **drunkard's walk**, and why it is a **MC**?</span>
+
+- We have two states, $0$ and $1$, with **self-loops** and no edges for returning to any other node. These states are called **absorbing states** in the MC terminology, since once the Markov-chain-random walk (MCRW) reaches them, it is trapped there. As a result the MC is **reducible**. 
+- The graph is almost **bipartite**, i.e. we can parition $V$ in to subsets $V_1=\{0,2,4\}$ and $V_2=\{1,3,5\}$ so that nodes in $V_1$ can only go nodes of $V_2$ (except the absorbing nodes) and viceversa. As a result, the MC is almost **aperiodic**. Non-absorbing nodes have period $2$ and the absorbing ones have period $1$.  
+- If we start our MCRW at a non-absorbing state, say $x\in\{2,3,4\}$ we walk left with probability $1/2$ and right also with probability $1/2$. 
+- The **degree** $\text{deg}(i)$ of a node $i$ in the graph is the number of neighbors ${\cal N}_i$, i.e. the number of **outgoing edges** from $i$. In our graphs we have that all non-absorbing nodes have degree $2$ whereas the absorbing states have degree $1$ (actually their neighbors are themselves). 
+- The degree $\text{deg}(i)$ of each node $i$ reveals that the (Markovian) probability of making a transition to a neighbor is
+
+$$
+p(j|i) = p_{ij} = \frac{a_{ij}}{\text{deg}(i)}\;\; \text{where}\;\; 
+a_{ij}= 
+\begin{cases}
+     1\;\text{if}\; i\in {\cal N}_i  \\[2ex]
+     0\; \text{otherwise}\;.
+\end{cases}
+$$
+
+and $a_{ij}=1$ means that nodes $i$ and $j$ are **adjacent**. For absorbing states, we have $a_{ij}=0\;\forall j\neq i$. As a result, for these states $p_{ii}=1$ and $p_{ij}=0$ for $j\neq i$.
+
+**Patterns of the drunkard's walk**. In order to have a rough idea of the behavior of this Markov process, we have generated $40,000$ random walks ($10,000$ starting at each non-absorbing states $x=1,2,3,4$). Each random walk has length $l=10$. Why? We will discover that shorly. What is important now is to note that some of the walks end up in one of the absorbing states ($x=0$), whereas many others end in the other one ($x=5$). The  probability of reaching each absorbing state is $1/2$.
+
+We plot these walks in {numref}`Drunkard`. The darkest the blue line, the *slower* the walk reaches $x=5$. This means that if the walks reaches $x=5$ at the maximum length of the path $l=10$ it becomes the darkest one. 
+
+ Some iteresting patterns: 
+- As we start uniformly the same number of paths at each non-absorbing state, there is no clear difference between the paths ending in $x=0$ and those ending in $x=5$. 
+- In addition, some paths tending to $x=0$ turn suddenly towards $x=5$ and vice versa.
+
+Apparently, all the non-absorbing states reach $x=5$ *equally slowly*. **However this is misleading**. Actually, most of the paths reach $x=5$ very early. This suggests that the probability of reaching $x=5$ from any non-absorbing state *is not uniform*. This leads us to the answer the first question to solve about a random walk: what is the probability of ending $\text{Home}$.
+
+Before addressing the **two fundamental questions** for a MCRW: (a) where does it converge to, and (b) how long does it take, it is important to note that the remainder of this section requires some practice with algebraic solvers of recurrent relations, namely **linear difference equations**. They are very practical tools that are explained in the excellent [Github of Mathew Aldridge](https://mpaldridge.github.io/math2750/) and even in the [Wikipedia](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). The examples below have been adapted from the first source and solve some of the exercises in [Random Walks and Electric Networks](https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf) by Doyle and Snell.
+
+
+```{figure} ./images/Topic2/Drunkard.png
+---
+name: Drunkard
+width: 800px
+align: center
+height: 400px
+---
+Patterns of generated drunkard's walks. 
+```
+<span style="color:#469ff8">**Q1.** What is the probability of ending at $\text{Home}$ if we start from the non-absorbing state $x$?</span>
+
+In other words, what is the probability of **hitting** $x=5$ from $x$ before hitting $x=0$? 
+
+1) We commence by **formulating the Markovianity** of the drunkward's path in a more generic way: 
+
+$$
+x_{n+1}= 
+\begin{cases}
+     x_{n} + 1 \;\text{with probability}\; p\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} - 1 \;\text{with probability}\; q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     0\; \text{if}\; n=0\\[2ex]
+     m\; \text{if}\; n=m\;,
+\end{cases}
+$$
+
+where: $x_{n}$ is the position of the walk at step $n$, $p = 1 - q = 1/2$ is the probability of a transition from a non-absorbing state and $m=5$ is the target node. 
+
+2) We pose the above formula in probabilistic terms using the **condition on the first step**: 
+
+$$
+\begin{align}
+p(\text{Home}) &= p(\text{1st step right})p(\text{Home}|\text{1st step right})\\ 
+&+ p(\text{1st step left})p(\text{Home}|\text{1st step left})\\
+& = p\cdot p(\text{Home}|\text{1st step right}) + q\cdot p(\text{Home}|\text{1st step left})\;.
+\end{align}
+$$
+
+Herein, we use the **theorem of total probability** for the following events:
+
+$$
+\begin{align}
+E &= \{\text{Home}\}\\
+A &= \{\text{1st step right}\}\\ 
+\bar{A} &= \{\text{1st step left}\} 
+\end{align}
+$$
+
+Then, total probability means that the probability of an event given two (or more) exclusive events is
+
+$$
+p(E) = p(E\cap A) + p(E\cap \bar{A}) = p(A)p(E|A) + p(\bar{A})p(E|\bar{A})\;. 
+$$
+
+In our case: 
+
+$$
+P(E) = p\cdot p(E|A) + q\cdot p(E|\bar{A})\;,
+$$
+
+and we want to calculate both $p(E|A)$ and $p(E|\bar{A})$ to calculate $P(E)$. 
+
+3) Formulate and solve a **recurrence relation**: 
+
+Then, we have to solve the following recurence relation: 
+
+$$
+r_n = p\cdot r_{n+1} + q\cdot r_{n-1}\;\text{subject to}\; r_0=0, r_m = 1\;.
+$$
+
+where $r_0 = 0$ and $r_m=1$ are the **boundary conditions** that specify success if we reach $m$ ($\text{Home}$) and failure if we reach $0$ ($\text{Bar}$). 
+
+We formulate the recurrence relation as a **linear difference equation**. In this case it is **homogeneous** (like an homogeneous linear system $\mathbf{A}\mathbf{x}=\mathbf{0}$) since: 
+
+$$
+p\cdot r_{n+1} + q\cdot r_{n-1} - r_n = 0\;.
+$$
+
+First of all, we apply the following change of variable: 
+
+$$
+r_n = \lambda^n\;,
+$$
+
+which leads to 
+
+$$
+p\lambda^{n+1} + q\lambda^{n-1} - \lambda^n = 0\;,
+$$
+
+and taking $\lambda^{n-1}$ as common factor yields
+
+$$
+\lambda^{n-1}(p\lambda^{2} + q - \lambda) = 0
+$$
+
+where $p\lambda^{2} + q - \lambda = 0$ is the **characteristic equation** of the recurrence. Then, reorganzing the coefficients we have  $p\lambda^{2} - \lambda + q = 0$. To solve this quadratic equation is convenient to use the remainder theorem (Ruffini). The dividers of the independent term ($q$) are $\pm 1$ and $\pm q$. If we try first $+1$, and apply $q = 1-p$, this leads to the equation $\lambda p - q = 0$ with yields $\lambda =\frac{q}{p}$ tha we call $\rho$. Then, the factorization we are looking for is 
+
+$$
+(p\lambda - q)(\lambda - 1)\; \text{and roots}\; \lambda_1=1, \lambda_2=\rho\;.
+$$
+
+Now, we have two cases:
+- If $\rho \neq 1$, then we have two distinct roots. In this case, the general solution of an homogeneous equation has the shape: 
+
+$$
+r_n = A\lambda_1^n + B\lambda_2^n = A1^n + B\rho^n = A + B\rho^n\;.
+$$
+
+In order to determine $A$ and $B$ we exploit the two **boundary conditions** $r_0=0, r_m=1$: 
+
+$$
+\begin{align}
+r_0 &=  A + B\rho^0 = A + B = 0\\
+r_m &=  A + B\rho^m = 1\\
+\end{align}
+$$
+
+From $A + B = 0$ we get $A = -B$ which leads to 
+
+$$
+\begin{align}
+- B + B\rho^m &= 1 \Rightarrow (\rho^m - 1) B = 1 \Rightarrow B = \frac{1}{\rho^m - 1}\\
+A = -B & = -\frac{1}{\rho^m - 1}\;.
+\end{align}
+$$
+
+and, as a result 
+
+$$
+\begin{align}
+r_n &= A\lambda_1^n + B\lambda_2^n\\
+    &= -\frac{1}{\rho^m - 1} + \frac{\rho^n}{\rho^m - 1}\\
+    &= \frac{\rho^n-1}{\rho^m - 1}
+\end{align}
+$$
+
+- If $\rho=1$ we have $p=q$ and this means that we have two repeated solutions $\lambda_1=\lambda_2 = 1$. In this case, the general solution has the following shape: 
+
+$$
+r_n = (A + nB)\lambda_1^n\;,
+$$
+ 
+which leads to 
+
+$$
+\begin{align}
+r_0 &=  (A + 0B)1^0 = A = 0\\
+r_m &=  (A + mB)1^m = A + mB = 1\\
+\end{align}
+$$
+
+whose solutions are $A = 0$ and $B = \frac{1}{m}$.
+
+Finally
+
+$$
+\begin{align}
+r_n &= (A + nB)\lambda_1^n\;\\
+    &= (0 + n\frac{1}{m})\\
+    &= \frac{n}{m}
+\end{align}
+$$
+
+The generic result is: 
+
+$$
+r_n = 
+\begin{cases}
+  \frac{\rho^n-1}{\rho^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+r_n = 
+\begin{cases}
+  \frac{\left(\frac{q}{p}\right)^n-1}{\left(\frac{q}{p}\right)^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p=q\\[2ex]
+\end{cases}
+$$
+
+**Result for the ubiased walk**. If $p=q=1/2$ we have a random process according to the graph in {numref}`Drunk`. The probability of getting $\text{Home}$, i.e. of hitting $x=m=5$ before hitting $x=0$ is $p(x)=\frac{x}{m} = \frac{x}{5}$. The closer we are to $\text{Home}$ the more probable is that we get there. Note that if we invert the boundary conditions priming going to the $\text{Bar}$, the probability of getting there before arriving home is $p(x)=1-\frac{x}{5}$. 
+
+However, as $m\rightarrow\infty$ the probability of getting $\text{Home}$ tends to zero, i.e. $p(x)\rightarrow 0$. 
+
+The result for the unbiased (fair) walk is consistent with our observations in {numref}`Drunkard` and shows that the probability of reaching $\text{Home}$ is not **uniform**. This result also explain why most of the $40,000$ random walks lauched uniformly from any of the non-absorbing states reach $\text{Home}$ very soon. 
+
+**Result for the biased walk**. Biased walks, however, are modeled in a different way. We label the edges with their probabilities. Then, instead of getting the transition probabilities from the degree, we simply set $p_{ij}=a_{ij}p$ or $p_{ij} = a_{ij}q$ as in {numref}`Drunkpq`
+
+```{figure} ./images/Topic2/Drunkpq.png
+---
+name: Drunkpq
+width: 800px
+align: center
+height: 100px
+---
+Graph for biased drunkard's walks. 
+```
+
+If $q\ll p$, then $p(x)\rightarrow 1$ since we are drifted to the right. Symmetrically, if $q\gg p$, then $p(x)\rightarrow 0$ since $m>n$. 
+
+As $m\rightarrow\infty$, we have that $p(x)\rightarrow 0$, independently of the relationship between $p$ and $q$ since
+
+$$
+\lim_{m\rightarrow\infty} \frac{\rho^n-1}{\rho^m - 1} = \lim_{m\rightarrow\infty} \frac{\rho^n/\rho^m-1/\rho^m}{1 - 1/\rho^m} = \lim_{m\rightarrow\infty} \frac{0-0}{1 - 0} = 0\;.
+$$
+
+In {numref}`Drunkardpq` where $p=0.25, q=0.75$ we can see that few walks reach $x=5$, actually the proportion of "successful" paths is $p$. 
+
+
+```{figure} ./images/Topic2/Drunkardpq.png
+---
+name: Drunkardpq
+width: 800px
+align: center
+height: 400px
+---
+Patterns of generated biased drunkard's walks with $p=0.25$. 
+```
+
+<span style="color:#469ff8">**Q2.** What is the expected time or **hitting time** for arriving $\text{Home}$ if we start from the non-absorbing state $x$?</span>
+
+We are interested in estimating the expected **hitting time** of $x=5$. 
+
+As before, we rely on linear difference equations. 
+
+1) We pose the above formula in probabilistic terms using the **condition on the first step**: 
+
+$$
+\begin{align}
+E(\text{Duration}) &= p(\text{1st step right})p(\text{Duration}|\text{1st step right})\\ 
+&+ p(\text{1st step left})p(\text{Duration}|\text{1st step left})\\
+& = p\cdot p(\text{Duration}|\text{1st step right}) + q\cdot p(\text{Duration}|\text{1st step left})\;.
+\end{align}
+$$
+
+Herein, we use the **conditional expectations** for the following random variables:
+
+$$
+\begin{align}
+X &= \{\text{Duration}\}\\
+Y &= \{\text{1st step}\}\\ 
+\end{align}
+$$
+
+where $Y$ has values $y=\text{left}$ and $y=\text{right}$. 
+
+Then, 
+
+$$
+E(X|Y=y) = \sum_{x}xP(X=x|Y=y)\;.
+$$
+
+However, we are interested in $E(X)$, which is defined by the **tower property** of conditional expectation: 
+
+$$
+E(X) = E(E(X|Y))=\sum_{y}p(Y=y)H(X|Y=y)\;.
+$$
+
+where $Y$ is the outcome of the first step. 
+
+In this regard,
+
+$$
+\begin{align}
+E(X|Y=\text{left})  &= 1 + d_{n-1}\\ 
+E(X|Y=\text{right}) &= 1 + d_{n+1}\;. 
+\end{align}
+$$
+
+Always count $1$ because we had made a step. 
+
+This leads us to the following **inhomogeneous recurrence relation**: 
+
+$$
+d_n = p(1 + d_{n+1}) + q(1 + d_{n-1}) = 1 + pd_{n+1} + qd_{n-1}\;.
+$$
+
+and we have 
+
+$$
+pd_{n+1} -d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+$$
+
+Whose left-hand-size lhs leads to the same homogeneous recurrence equation that we have studied before.  
+
+- If $\rho\neq 1$ the general solution ($\lambda_1=1, \lambda_2=\rho$ are solutions of the homogeneous version) has the shape
+
+$$
+d_{n} = A + B\rho^n\;.
+$$
+
+Since we need a particular solution for the full equation and the lhs is a constant, we start trying to set $d_{n}=C$: 
+
+$$
+pC - C + qC = (p+q)C - C = C - C\neq -1\;
+$$
+
+Next, we try with $d_{n}=Cn$: 
+
+$$
+\begin{align}
+pC(n+1) - Cn + qC(n-1) &= pCn + pC - Cn + qCn -qC\\ 
+                       &= Cn - Cn + (p-q)C\\ 
+                       &= (p-q)C = -1
+\end{align}
+$$
+
+i.e. $C = \frac{-1}{p-q}$ and the particular solution becomes
+
+$$
+d_n = A + B\rho^n + Cn = A + B\rho^n - \frac{n}{p-q}\;.
+$$
+
+Then we apply the **boundary conditions** $d_0=0, d_m=0$ to find $A$ and $B$: 
+
+$$
+\begin{align}
+d_0 &= A + B\rho^0 - \frac{0}{p-q} = A + B = 0\\
+d_m &= A + B\rho^m - \frac{m}{p-q} = A + B\rho^m - \frac{m}{p-q}= 0\;,
+\end{align}
+$$
+
+$A = - B$ and $-B + B\rho^m = \frac{m}{p-q}\Rightarrow (\rho^m -1)B = \frac{m}{p-q}\Rightarrow B = \frac{1}{\rho^m-1}\cdot\frac{m}{p-q}\;.$
+
+Then
+
+$$
+\begin{align}
+d_n &= A + B\rho^n - \frac{m}{p-q}\\
+    &= -\frac{1}{\rho^m-1}\cdot\frac{m}{p-q} + \frac{\rho^n}{\rho^m-1}\cdot\frac{m}{p-q} - \frac{m}{p-q}\\
+    &= \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right)\; 
+\end{align}
+$$
+
+- If $\rho = 1$, i.e $p=q=1/2$, the general solution ($\lambda_1=1, \lambda_2=1$ are solutions of the homogeneous version) has the shape
+
+$$
+d_{n} = A + nB\;.
+$$
+
+For getting a particular solution we find that both the eductated guesses (**antsazs**) $d_i=C$ and $d_i= nC$ do not work. We try $d_i=n^2C$: 
+
+$$
+\begin{align}
+-1 &= pC(n^2 + 1 + 2n) - Cn^2 + qC(n-1)^2\\ 
+   &= pCn^2 + pC + 2pCn) -Cn^2 + qC(n-1)^2\\ 
+   &= p(Cn^2 + C + 2Cn) -Cn^2 + q(Cn^2 + C - 2Cn)\\
+   &= p(Cn^2 + C + 2Cn) -Cn^2 + p(Cn^2 + C - 2Cn)\\
+   &= \frac{1}{2}(Cn^2 + C + 2Cn) -Cn^2 +\frac{1}{2}(Cn^2 + C - 2Cn)\\
+   &= C\;.
+\end{align}
+$$
+
+and the resulting general solution is: 
+
+$$
+d_{n} = A + nB + Cn^2 = A + nB - n^2\;.
+$$
+
+Then, we exploit again the the **boundary conditions** $d_0=0, d_m=0$ to find $A$ and $B$:
+
+$$
+\begin{align}
+d_0 &= A + 0B - n^2 = A = 0\\
+d_m &= A + mB - n^2 = mB - m^2= 0\Rightarrow B = m\;,
+\end{align}
+$$
+
+And for $A=0, B=m$ the general solution is 
+
+$$
+d_{n} = A + nB - n^2 = mn - n^2 = n(m - n)\;,
+$$
+
+which clearly tells us that the hitting time of $n$ is $O(n^2)$ por $p=q=1/2$ since we have equal probability of go back and forth. 
+
+Summarizing 
+
+$$
+d_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+r_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\left(\frac{q}{p}\right)^n-0}{\left(\frac{q}{p}\right)^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p=q\\[2ex]
+\end{cases}
+$$
+
+**Result for the ubiased walk**. If $p=q=1/2$ the hitting time of $x=m$ from $n$ is $O(n^2)$ since we have equal probability of go back and forth. 
+
+The behavior for $m\rightarrow\infty$ is obvious: 
+
+$$
+\lim_{m\rightarrow\infty}n(m - n) = \infty\;, 
+$$
+
+since $m$ becomes impossible to be reached from $n$. 
+
+**Result for the biased walk**. If $p\neq q$ and $p\ll q$, the walk is drifted to the left and this means that $\rho\gg 1$, $m$ is amplified and the hitting time from $n$ increases notably. However, if $p\gg q$, $m$ is attenuated and this reduces the hitting time from $n$. 
+
+Actually, the behavior for $m\rightarrow\infty$ is: 
+
+$$
+\begin{align}
+\lim_{m\rightarrow\infty} \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) &= \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{\frac{\rho^m}{\rho^m} -\frac{1}{\rho^m}}-n\right)\\
+&=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{1 -\frac{1}{\rho^m}}-n\right)\\
+&=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)\\ 
+\end{align}
+$$
+
+We have two cases: 
+- If $q>p$, then $\rho^m\gg m$ and $\lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)$ = $\frac{1}{p-q}(-n)= \frac{1}{q-p}(n)$. Then, the hitting time is a fraction of $n$. 
+
+- If $p>q$, then $\rho^m\ll m$ and $m$ is amplified wrt $n$, increasing the hitting time. 
+
+<span style="color:#347fc9">**Exercise**. Solve questions Q1 and Q2 for the **path** graph $P_n$, where it has $n$ nodes from $1$ to $n$ but it does not have asorbing states? 
+</span>
 
 
 
-
-
-
-
-
-$\clubsuit
-\diamondsuit
-\spadesuit
-\heartsuit$
-
-### Dependence is not causality 
-In medicine, for instance, a treatment or action $A$ produces (usually) a result $Y$. For simplicity, assume that $A\in \{0,1\}$ and also $Y\in \{0,1\}$, meaning respectively that *whe do not apply/apply the treatment* and *the patient dies/survives*.  
 
