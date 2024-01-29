@@ -274,6 +274,45 @@ print(a[[0, 1, 2], [0, 1, 2]])
 ```
 [0 4 8]
 ```
+### Sorting
+In numpy we can also sort the elements of an array. For example, to sort the elements of the array `A` that we created in the previous example, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array de 2 dimensiones
+a = np.array([[3, 2, 1], [6, 5, 4], [9, 8, 7]])
+print(np.sort(a))
+```
+
+```
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+```
+We can also sort the elements of an array in descending order. For example, to sort the elements of the array `A` that we created in the previous example in descending order, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array de 2 dimensiones
+a = np.array([[3, 2, 1], [6, 5, 4], [9, 8, 7]])
+print(-np.sort(-a))
+```
+
+```
+[[9 8 7]
+ [6 5 4]
+ [3 2 1]]
+```
+```{note}
+If we want to get the arguments that would sort an array, we can use the function `np.argsort()`. For example, to get the arguments that would sort the elements of the array `A` that we created in the previous example.
+```
+
 ## Operations
 In this section we will learn how to perform operations on arrays, whether they are operations on the same or together with other arrays.
 
@@ -728,4 +767,27 @@ print(A.reshape((3, 2)))
 [[0 1]
  [2 3]
  [4 5]]
+```
+
+### Eigenvalues and eigenvectors
+
+In numpy we can also calculate the eigenvalues and eigenvectors of a matrix. For example, to calculate the eigenvalues and eigenvectors of the array `A` that we created in the previous example, we can do the following:
+
+```{code-block} python
+---
+linenos: true
+---
+import numpy as np
+# Crear un array de 2 dimensiones
+a = np.array([[3, 2, 1], [6, 5, 4], [9, 8, 7]])
+eigenvalues, eigenvectors = np.linalg.eig(a)
+print(eigenvalues)
+print(eigenvectors)
+```
+
+```
+[ 1.61168440e+01 -1.11684397e+00 -1.30367773e-15]
+[[-0.23197069 -0.78583024  0.40824829]
+ [-0.52532209 -0.08675134 -0.81649658]
+ [-0.81867349  0.61232756  0.40824829]]
 ```

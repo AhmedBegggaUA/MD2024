@@ -380,6 +380,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">5.4.4. Comparison operators</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">5.4.5. Logical operators</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-manipulation">5.4.6. Shape manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">5.4.7. Eigenvalues and eigenvectors</a></li>
 </ul>
 </li>
 </ul>
@@ -589,6 +590,35 @@ A = \begin{bmatrix}
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span> <span class="mi">4</span> <span class="mi">8</span><span class="p">]</span>
 </pre></div>
+</div>
+<p>### Sorting
+In numpy we can also sort the elements of an array. For example, to sort the elements of the array <code class="docutils literal notranslate"><span class="pre">A</span></code> that we created in the previous example, we can do the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="c1"># Crear un array de 2 dimensiones</span>
+<span class="linenos">3</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>We can also sort the elements of an array in descending order. For example, to sort the elements of the array <code class="docutils literal notranslate"><span class="pre">A</span></code> that we created in the previous example in descending order, we can do the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="c1"># Crear un array de 2 dimensiones</span>
+<span class="linenos">3</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">9</span> <span class="mi">8</span> <span class="mi">7</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we want to get the arguments that would sort an array, we can use the function <code class="docutils literal notranslate"><span class="pre">np.argsort()</span></code>. For example, to get the arguments that would sort the elements of the array <code class="docutils literal notranslate"><span class="pre">A</span></code> that we created in the previous example.</p>
 </div>
 </section>
 <section id="operations">
@@ -948,6 +978,24 @@ y = \begin{bmatrix}
 </pre></div>
 </div>
 </section>
+<section id="eigenvalues-and-eigenvectors">
+<h3><span class="section-number">5.4.7. </span>Eigenvalues and eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this heading">#</a></h3>
+<p>In numpy we can also calculate the eigenvalues and eigenvectors of a matrix. For example, to calculate the eigenvalues and eigenvectors of the array <code class="docutils literal notranslate"><span class="pre">A</span></code> that we created in the previous example, we can do the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="c1"># Crear un array de 2 dimensiones</span>
+<span class="linenos">3</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+<span class="linenos">4</span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">1.61168440e+01</span> <span class="o">-</span><span class="mf">1.11684397e+00</span> <span class="o">-</span><span class="mf">1.30367773e-15</span><span class="p">]</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.23197069</span> <span class="o">-</span><span class="mf">0.78583024</span>  <span class="mf">0.40824829</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.52532209</span> <span class="o">-</span><span class="mf">0.08675134</span> <span class="o">-</span><span class="mf">0.81649658</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.81867349</span>  <span class="mf">0.61232756</span>  <span class="mf">0.40824829</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1016,6 +1064,7 @@ y = \begin{bmatrix}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">5.4.4. Comparison operators</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">5.4.5. Logical operators</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-manipulation">5.4.6. Shape manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">5.4.7. Eigenvalues and eigenvectors</a></li>
 </ul>
 </li>
 </ul>
