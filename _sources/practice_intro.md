@@ -69,3 +69,222 @@ To install Anaconda, you can follow the instructions in the following link: [htt
 ## IDEs for Python
 
 You can use any IDE you want to write your code. However, we recommend you to use Jupyter Notebook, a web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. The notebooks can be used to perform data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, etc. To install Jupyter Notebook, you can follow the instructions in the following link: [https://jupyter.org/install](https://jupyter.org/install).
+```{note}
+In this course, we will use Jupyter Notebook to write our practical reports. You can use any other IDE you want, but we recommend you to use Jupyter Notebook.
+```
+### Jupyter Notebook
+
+Jupyter Notebook is an user-friendly IDE that allows you to write code in Python and Markdown. It is very useful for writing reports, as you can write code and text in the same document. Here we are going to give you few commands to learn how to use markdown in Jupyter Notebook. For more information, you can check the following link: [jupyter tutorial](https://www.datacamp.com/tutorial/markdown-in-jupyter-notebook).
+
+#### Headers
+To create a header, you can use the following syntax:
+```md
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+###### Header 6
+```
+#### Emphasis
+To create emphasis, you can use the following syntax:
+```md
+*italic*
+**bold**
+***bold and italic***
+~~strikethrough~~
+```
+#### Lists
+To create lists, you can use the following syntax:
+```md
+- Item 1
+- Item 2
+- Item 3
+```
+Giving as a result:
+- Item 1
+- Item 2
+- Item 3
+
+You can also create ordered lists:
+```md
+1. Item 1
+2. Item 2
+3. Item 3
+```
+Giving as a result:
+1. Item 1
+2. Item 2
+3. Item 3
+
+#### Math
+To create math expressions, you can use the following syntax:
+```md
+$y = x^2$
+```
+Giving as a result:
+$y = x^2$
+##### Math blocks
+To create math blocks, you can use the following syntax:
+```md
+$$
+y = x^2
+$$
+```
+Giving as a result:
+$$
+y = x^2
+$$
+##### Math symbols
+To create math symbols, you can use the following syntax:
+```md
+$\alpha$
+$\beta$
+$\gamma$
+$\delta$
+$\epsilon$
+$\zeta$
+$\eta$
+$\theta$
+$\iota$
+$\kappa$
+$\lambda$
+$\mu$
+$\nu$
+$\xi$
+$\pi$
+$\rho$
+$\sigma$
+$\tau$
+$\phi$
+```
+Giving as a result:
+$\alpha, \beta,\gamma ,\delta ,\epsilon ,\zeta ,\eta ,\theta ,\iota ,\kappa ,\lambda ,\mu ,\nu ,\xi ,\pi ,\rho ,\sigma ,\tau ,\phi$
+##### Matrices
+To create matrices, you can use the following syntax:
+```md
+$
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix}
+$
+```
+Giving as a result:
+$
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix}
+$
+##### Derivatives
+To create derivatives, you can use the following syntax:
+```md
+$
+\frac{dy}{dx}
+$
+```
+Giving as a result:
+$
+\frac{dy}{dx}
+$
+##### Integrals
+To create integrals, you can use the following syntax:
+```md
+$
+\int_{a}^{b} x^2 dx
+$
+```
+Giving as a result:
+$
+\int_{a}^{b} x^2 dx
+$
+##### Limits
+To create limits, you can use the following syntax:
+```md
+$
+\lim_{x \to \infty} x^2
+$
+```
+Giving as a result:
+$
+\lim_{x \to \infty} x^2
+$
+##### Sums
+To create sums, you can use the following syntax:
+```md
+$
+\sum_{i=1}^{n} x_i
+$
+```
+Giving as a result:
+
+$
+\sum_{i=1}^{n} x_i
+$
+
+##### Products
+To create products, you can use the following syntax:
+```md
+$
+\prod_{i=1}^{n} x_i
+$
+```
+Giving as a result:
+$
+\prod_{i=1}^{n} x_i
+$
+##### Roots
+To create roots, you can use the following syntax:
+```md
+$
+\sqrt{x}
+$
+```
+Giving as a result:
+$
+\sqrt{x}
+$
+##### Fractions
+To create fractions, you can use the following syntax:
+```md
+$
+\frac{1}{2}
+$
+```
+Giving as a result:
+$
+\frac{1}{2}
+$
+#### Tables
+To create tables, you can use the following syntax:
+```md
+| Header 1 | Header 2 |
+| -------- | -------- |
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+```
+Giving as a result:
+| Header 1 | Header 2 |
+| -------- | -------- |
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+
+#### Images
+To add an image, you can use the following syntax:
+```md
+![alt text](image_path)
+```
+#### Links
+To add a link, you can use the following syntax:
+```md
+[link text](url)
+```
+#### Citations
+We have agreed to add them by hand with bullets like this:
+```md
+- [1] Author, Title, Year
+- [2] Author, Title, Year
+```
