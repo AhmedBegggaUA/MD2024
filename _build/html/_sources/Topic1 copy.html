@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>2. Combinatorics as counting &#8212; Matemáticas Discreta IA</title>
+    <title>Combinatorics as counting &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -19,88 +19,86 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/documentation_options.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/design-tabs.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/copybutton_funcs.js"></script>
-    <script src="_static/jquery-3.6.0.js"></script>
-    <script src="_static/sphinx-thebe.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore-1.13.1.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
-    <script src="_static/scripts/bootstrap.js"></script>
-    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
-    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
-    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/documentation_options.js"></script>
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/copybutton_funcs.js"></script>
+    <script src="../_static/jquery-3.6.0.js"></script>
+    <script src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore-1.13.1.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/scripts/bootstrap.js"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Topic1';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Probability" href="Topic2.html" />
-    <link rel="prev" title="1. Materiales de Matemáticas Discretas" href="bloque1.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_sources/Topic1 copy';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -137,7 +135,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -184,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="../intro.html">
   
   
   
@@ -195,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
-    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+    <img src="../_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="../_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
   
   
 </a></div>
@@ -205,24 +203,24 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+                <a class="reference internal" href="../intro.html">
                     MD2024
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="bloque1.html">1. Materiales de Matemáticas Discretas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bloque1.html">1. Materiales de Matemáticas Discretas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Combinatorics as counting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topic2.html">3. Probability</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2024</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice_intro.html">4. Introduction to the practical part of MD2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_practice.html">5. Numpy</a></li>
 </ul>
 
     </div>
@@ -277,7 +275,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/Topic1.md" target="_blank"
+      <li><a href="../_sources/_sources/Topic1 copy.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,25 +369,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-tree">2.1. Using a tree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-combinations">2.2. Permutations and Combinations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-permutations-and-combinations">2.2.1. Linking Permutations and Combinations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-repetitions">2.2.2. Allowing repetitions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indistinguisable-elements">2.2.3. Indistinguisable elements</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-with-repetition">2.2.3.1. Permutations with repetition</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multisets">2.2.3.2. Multisets</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinations-with-repetition">2.2.3.3. Combinations with repetition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-tree">Using a tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-combinations">Permutations and Combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-permutations-and-combinations">Linking Permutations and Combinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-repetitions">Allowing repetitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indistinguisable-elements">Indistinguisable elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-with-repetition">Permutations with repetition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multisets">Multisets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinations-with-repetition">Combinations with repetition</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-exclusion-inclusion">2.3. The Principle of Exclusion-Inclusion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discounting-over-counts">2.3.1. Discounting over-counts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-exclusion-inclusion">2.3.2. Principle of Exclusion-Inclusion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-in-grids">2.3.3. Counting paths in grids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-exclusion-inclusion">The Principle of Exclusion-Inclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discounting-over-counts">Discounting over-counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-exclusion-inclusion">Principle of Exclusion-Inclusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-in-grids">Counting paths in grids</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stirling-s-formula">2.4. The Stirling’s formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stirling-s-formula">The Stirling’s formula</a></li>
 </ul>
             </nav>
         </div>
@@ -402,7 +400,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="combinatorics-as-counting">
-<h1><span class="section-number">2. </span>Combinatorics as counting<a class="headerlink" href="#combinatorics-as-counting" title="Permalink to this heading">#</a></h1>
+<h1>Combinatorics as counting<a class="headerlink" href="#combinatorics-as-counting" title="Permalink to this heading">#</a></h1>
 <p>Our Discrete Brain must be able of <strong>counting objects</strong>, i.e. it must be answer questions such as:</p>
 <ul class="simple">
 <li><p>How many subsets are in a set of size <span class="math notranslate nohighlight">\(n\)</span>?</p></li>
@@ -418,18 +416,18 @@ insofar they can be decomposed into simpler tasks. Consider for instance the las
 </ul>
 <p>For instance, in <code class="xref std std-numref docutils literal notranslate"><span class="pre">setfunction</span></code> we have <span class="math notranslate nohighlight">\(X=\{a,b,c\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{1,2,3,4\}\)</span>, i.e <span class="math notranslate nohighlight">\(m=3\)</span> and <span class="math notranslate nohighlight">\(n=4\)</span>. The mapping, say <span class="math notranslate nohighlight">\(f\)</span>, is injective since: (a) every element in <span class="math notranslate nohighlight">\(X\)</span> has an <strong>image</strong> and only one image in <span class="math notranslate nohighlight">\(Y\)</span>, (b) no elements in <span class="math notranslate nohighlight">\(Y\)</span> is the image of more than one element in <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <figure class="align-center" id="setfunction">
-<a class="reference internal image-reference" href="_images/setfun.png"><img alt="_images/setfun.png" src="_images/setfun.png" style="width: 300px; height: 200px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/setfun.png"><img alt="_sources/images/Topic1/setfun.png" src="_sources/images/Topic1/setfun.png" style="width: 300px; height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">One-to-one function between two sets.</span><a class="headerlink" href="#setfunction" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">One-to-one function between two sets.</span><a class="headerlink" href="#setfunction" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="using-a-tree">
-<h2><span class="section-number">2.1. </span>Using a tree<a class="headerlink" href="#using-a-tree" title="Permalink to this heading">#</a></h2>
+<h2>Using a tree<a class="headerlink" href="#using-a-tree" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#469ff8">Any counting task can be represented by a <strong>tree</strong></span>. Trees are key structures in our Discrete Brain, because they encode a hierarchy. In particular, the <strong>rooted tree</strong> (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">rtree</span></code>) can be seen as <em>the recursive top-down expansion of a root through several levels until the leaves are reached</em>:</p>
 <figure class="align-center" id="rtree">
-<a class="reference internal image-reference" href="_images/rootedtree.png"><img alt="_images/rootedtree.png" src="_images/rootedtree.png" style="width: 600px; height: 400px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/rootedtree.png"><img alt="_sources/images/Topic1/rootedtree.png" src="_sources/images/Topic1/rootedtree.png" style="width: 600px; height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Rooted tree where the leaves are the solutions to a counting problem.</span><a class="headerlink" href="#rtree" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Rooted tree where the leaves are the solutions to a counting problem.</span><a class="headerlink" href="#rtree" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In particular, we have:</p>
@@ -458,9 +456,9 @@ Then the <strong>traversals</strong> are:</p>
 </ul>
 </section>
 <section id="permutations-and-combinations">
-<h2><span class="section-number">2.2. </span>Permutations and Combinations<a class="headerlink" href="#permutations-and-combinations" title="Permalink to this heading">#</a></h2>
+<h2>Permutations and Combinations<a class="headerlink" href="#permutations-and-combinations" title="Permalink to this heading">#</a></h2>
 <section id="linking-permutations-and-combinations">
-<h3><span class="section-number">2.2.1. </span>Linking Permutations and Combinations<a class="headerlink" href="#linking-permutations-and-combinations" title="Permalink to this heading">#</a></h3>
+<h3>Linking Permutations and Combinations<a class="headerlink" href="#linking-permutations-and-combinations" title="Permalink to this heading">#</a></h3>
 <p>The aforementioned paths have no repeated nodes values, and thus are solutions to the counting problem. For instance the
 path <span class="math notranslate nohighlight">\(\pi=\mathbf{124}\)</span> means a function <span class="math notranslate nohighlight">\(f_{\pi}\)</span> where <span class="math notranslate nohighlight">\(a=1,b=2,c=4\)</span> and we left <span class="math notranslate nohighlight">\(d\)</span> unassigned. Therefore, the counting task is decomposed in <span class="math notranslate nohighlight">\(m=3\)</span> counting tasks (one per level): in the first level we can choose <span class="math notranslate nohighlight">\(n\)</span> values for <span class="math notranslate nohighlight">\(a\)</span>; given that values, we can only choose <span class="math notranslate nohighlight">\(n-1\)</span> values for <span class="math notranslate nohighlight">\(b\)</span> and consequently <span class="math notranslate nohighlight">\(n-2\)</span> values for <span class="math notranslate nohighlight">\(c\)</span>. As a result, the total number of one-to-one functions between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is given by the <strong>the product rule</strong> <span class="math notranslate nohighlight">\(n(n-1)(n-2)\)</span> and this number is given by the <span class="math notranslate nohighlight">\(P(n,r)\)</span> <strong>r-permutation</strong>:</p>
 <div class="math notranslate nohighlight">
@@ -481,7 +479,7 @@ path <span class="math notranslate nohighlight">\(\pi=\mathbf{124}\)</span> mean
 \[C(n,r)=\frac{P(n,r)}{P(r)}=\frac{\frac{n!}{(n-r)!}}{r!}=\frac{n!}{r!(n-r)!}\;.\]</div>
 </section>
 <section id="allowing-repetitions">
-<h3><span class="section-number">2.2.2. </span>Allowing repetitions<a class="headerlink" href="#allowing-repetitions" title="Permalink to this heading">#</a></h3>
+<h3>Allowing repetitions<a class="headerlink" href="#allowing-repetitions" title="Permalink to this heading">#</a></h3>
 <p>In the our motivating example (finding injections <span class="math notranslate nohighlight">\(f:X\rightarrow Y\)</span>), each element of the <span class="math notranslate nohighlight">\(Y\)</span> set can be selected <em>once</em> in each different one-to-one function.  Let us consider allowing repetition of any or some of the elements. This leads to more realistic counting problems (e.g. repeating letters to form codes, objects of the same variety, etc).</p>
 <p>Suppose, for instance, that instead of enumerating the injective (one-to-one) functions between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, we ask <span style="color:#469ff8">how many functions <span class="math notranslate nohighlight">\(f:X\rightarrow Y\)</span> (one-to-one or not) do exist.</span> The answer is simple once we realize that any element in <span class="math notranslate nohighlight">\(X\)</span> can be mapped (only once, given the definition of a <em>function</em>) to <span class="math notranslate nohighlight">\(any\)</span> of the elements of <span class="math notranslate nohighlight">\(Y\)</span>. This consideration allows us to decompose the counting task as follows:</p>
 <ul class="simple">
@@ -511,11 +509,11 @@ path <span class="math notranslate nohighlight">\(\pi=\mathbf{124}\)</span> mean
 <p>The above result can be generalized to any other base such as <span class="math notranslate nohighlight">\(a\)</span>: <span class="math notranslate nohighlight">\(a^n\)</span>. For instance the number of <a class="reference external" href="https://navilens.com">Navilens</a> codes is <span class="math notranslate nohighlight">\(4^n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of cells, since these codes have four colors: cyan, magenta, yellow and black (the white border facilitates only the automatic localization of the enclosing frame). Actually, <span class="math notranslate nohighlight">\(4^n=(2\cdot 2)^n\gg 2^n\)</span> and this is why Navilens codes are much denser than QR codes (even after discounting the checksum bits), i.e. we can represent much more codes with less bits.</p>
 </section>
 <section id="indistinguisable-elements">
-<h3><span class="section-number">2.2.3. </span>Indistinguisable elements<a class="headerlink" href="#indistinguisable-elements" title="Permalink to this heading">#</a></h3>
+<h3>Indistinguisable elements<a class="headerlink" href="#indistinguisable-elements" title="Permalink to this heading">#</a></h3>
 <p>So far, the elements in the counting problem can be repeated. However, some counting problems rely on considering <strong>types of elements</strong>, instead of elements themselves. In other words, <span style="color:#469ff8">in some counting problems it does not matter the number of elements satisfying this or that property</span>, it is more important to consider <span class="math notranslate nohighlight">\(p\)</span> elements of type <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(q\)</span> elements of type <span class="math notranslate nohighlight">\(b\)</span> etc, and then accounting for the total number of ways. This is like impossing <span class="math notranslate nohighlight">\(p\)</span> zeros and <span class="math notranslate nohighlight">\(q\)</span> ones in in a string with <span class="math notranslate nohighlight">\(n\)</span> bytes, where <span class="math notranslate nohighlight">\(p + q = n\)</span>.</p>
 <p><strong>Source problems</strong>. Consider the case where we have <span class="math notranslate nohighlight">\(n\)</span> sources (types), and we have <span class="math notranslate nohighlight">\(r\le n\)</span> ways of selecing them, where repeats are allowed. For instance, given <span class="math notranslate nohighlight">\(n\)</span> (elementwise unlimited) colors, we only have <span class="math notranslate nohighlight">\(r\)</span> ways of selecting them (maybe because our pallete of colors is blind to more than <span class="math notranslate nohighlight">\(r\)</span> colors).</p>
 <section id="permutations-with-repetition">
-<h4><span class="section-number">2.2.3.1. </span>Permutations with repetition<a class="headerlink" href="#permutations-with-repetition" title="Permalink to this heading">#</a></h4>
+<h4>Permutations with repetition<a class="headerlink" href="#permutations-with-repetition" title="Permalink to this heading">#</a></h4>
 <p>If order matters, we have to clarify now many ways are allowable for each type. For instance, consider than there are <span class="math notranslate nohighlight">\(n\)</span> types of indistinguishable elements <span class="math notranslate nohighlight">\(n_1 + n_2 +\ldots +  n_p = n\)</span>.</p>
 <p>Consider the following simple example. We are asked to find the ways of reordering the letters in the word “Tomorrow”. The length of the word is <span class="math notranslate nohighlight">\(n=8\)</span>, but computing a permutation <span class="math notranslate nohighlight">\(P(n)= n!\)</span> is incorrect, since in permutations or r-permutations we assume that all the elements are different <span style="color:#469ff8">(to avoid over-counting)</span>. In other words, <span class="math notranslate nohighlight">\(n!\)</span> counts the word “Tomorrow” several times: <span class="math notranslate nohighlight">\({n\choose 3}\)</span> for the “o”s and <span class="math notranslate nohighlight">\({n\choose 2}\)</span> for the “r”s, since we have <span class="math notranslate nohighlight">\(n_2=3\)</span> “r”s and <span class="math notranslate nohighlight">\(n_4=2\)</span> “o”s (the rest of the letters “T”, “m” and “w”) appears only one: <span class="math notranslate nohighlight">\(n_1 = n_3 = n_5 = 1\)</span>.</p>
 <p>Summarizing, we have <span class="math notranslate nohighlight">\(5\)</span> types of letters in the word “Tomorrow” and <span class="math notranslate nohighlight">\(n_1 + n_2 + n_3 + n_4 + n_5 = n\)</span>, i.e. <span class="math notranslate nohighlight">\(1 + 3 + 1 + 2 + 1 = 8 = n\)</span>. Then, if we apply the product rule and decompose our problem in <span class="math notranslate nohighlight">\(5\)</span> counting tasks (as many as different types of letters), each of these tasks is a <span class="math notranslate nohighlight">\(r-\)</span>combination as follows:</p>
@@ -550,7 +548,7 @@ P_{\sigma}(n) = \frac{P(n,n_1)}{P(n_1)}\cdot \frac{P(n-n_1,n_2)}{P(n_2)}\cdots \
 \]</div>
 </section>
 <section id="multisets">
-<h4><span class="section-number">2.2.3.2. </span>Multisets<a class="headerlink" href="#multisets" title="Permalink to this heading">#</a></h4>
+<h4>Multisets<a class="headerlink" href="#multisets" title="Permalink to this heading">#</a></h4>
 <p>Counting problems with repetitions, whatever there are indistinguishable elements or not, can be viewed from the angle of <strong>multisets</strong>. Why? Because <span style="color:#469ff8"> a multiset is a generalization of a set where the elements are allowed to be repeated (we may even have infinite, i.e. <span class="math notranslate nohighlight">\(\infty\)</span>, copies)</span>.</p>
 <p>For instance, the letters in the word “Tomorrow” are encoded by the following multiset:</p>
 <div class="math notranslate nohighlight">
@@ -567,12 +565,10 @@ P_{\sigma}(n) = {n \choose n_1}\cdot {n - n_1 \choose n_2}\cdot {n - n_1 - n_2 \
 <p>since we take first <span class="math notranslate nohighlight">\(n_1\)</span> positions with the first element of the multiset, then we take <span class="math notranslate nohighlight">\(n_2\)</span> of the remaining <span class="math notranslate nohighlight">\(n - n_1\)</span> positions with the second element of the multiset, etc.</p>
 <p>In particular, when no repetitions are allowed all the elements in the (multi)set have just <em>one</em> copy: <span class="math notranslate nohighlight">\(n_1 = n_2 =\ldots n_p = 1\)</span>. Then we have the definition of  <strong>r-permutations</strong>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-P(n,r) &amp;= n\cdot(n - n_1)\cdot(n - n_1 - n_2)\cdots \cdot(n - n_1 - n_2 -\ldots - n_{r})\\ 
-&amp;= n\cdot(n - 1)\cdot(n - 2)\cdots \cdot(n - r)\;.
-\end{align}
-\end{split}\]</div>
+\[
+P(n,r) = n\cdot(n - n_1)\cdot(n - n_1 - n_2)\cdots \cdot(n - n_1 - n_2 -\ldots - n_{r}) = 
+n\cdot(n - 1)\cdot(n - 2)\cdots \cdot(n - r)\;
+\]</div>
 <p>Then, using now</p>
 <div class="math notranslate nohighlight">
 \[
@@ -603,7 +599,7 @@ P_\sigma(n,r) = \underbrace{n\cdot n\cdot n\cdots n}_{r\;\text{times}} = n^r\;.
 <p>Summarizing so far, <span style="color:#469ff8">the permutations with repetition of a set are the permutations of a properly defined multiset!</span></p>
 </section>
 <section id="combinations-with-repetition">
-<h4><span class="section-number">2.2.3.3. </span>Combinations with repetition<a class="headerlink" href="#combinations-with-repetition" title="Permalink to this heading">#</a></h4>
+<h4>Combinations with repetition<a class="headerlink" href="#combinations-with-repetition" title="Permalink to this heading">#</a></h4>
 <p>Multisets are specially useful for defining <strong>combinations with repetition</strong> as <strong>combinations in a multiset</strong>.</p>
 <p>First of all, remember than the meaning of the combinatorial number <span style="color:#469ff8"><span class="math notranslate nohighlight">\({n\choose r}\)</span> is the number of subsets of <span class="math notranslate nohighlight">\(r-\)</span>elements of <em>any</em> set of <span class="math notranslate nohighlight">\(n\)</span> (different) elements</span>.</p>
 <p>Consider, for instance the set <span class="math notranslate nohighlight">\([n] = \{1,2,\ldots n\}\)</span> (a very useful notation to use from now on). Then, <span class="math notranslate nohighlight">\({n\choose 2}\)</span> is the number of <span class="math notranslate nohighlight">\(S_2\subseteq [n]\)</span> with <span class="math notranslate nohighlight">\(|S_2| = 2\)</span>, namely <span class="math notranslate nohighlight">\(S_2=\{(1,2),(1,3),\ldots (1,n)\}\)</span>. In general, for <span class="math notranslate nohighlight">\(S_r\subseteq [n]\)</span>, <span class="math notranslate nohighlight">\(|S_r| = {n\choose r}\)</span>. Actually, we know that <span class="math notranslate nohighlight">\(|S_0| + |S_1| + \ldots + |S_n| = 2^n\)</span> due to the bijection between the power set and <span class="math notranslate nohighlight">\(\{0,1\}^n\)</span>.</p>
@@ -869,19 +865,19 @@ i.e., the condition <span class="math notranslate nohighlight">\(x_1 + x_2 + x_3
 </section>
 </section>
 <section id="the-principle-of-exclusion-inclusion">
-<h2><span class="section-number">2.3. </span>The Principle of Exclusion-Inclusion<a class="headerlink" href="#the-principle-of-exclusion-inclusion" title="Permalink to this heading">#</a></h2>
+<h2>The Principle of Exclusion-Inclusion<a class="headerlink" href="#the-principle-of-exclusion-inclusion" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Exclusion-Inclusion Principle (PEI)</strong> is a powerful tool in counting problems with constraints, i.e. when we have to over-count (include) and then remove (exclude) counts. The PIE is very useful for our Discrete Brain (see the aforementioned problem of counting combinations with repetitions under constraints). It is often considered a “naive” way of solving counting problems with constraints because its complexity is <span class="math notranslate nohighlight">\(O(2^n)\)</span> but it is very useful to understand the combinatorial nature of a problem such as <span style="color:#469ff8">counting paths in a grid with forbidden positions</span> as we will discover at the end of this section.</p>
 <figure class="align-center" id="pei1">
-<a class="reference internal image-reference" href="_images/PEI1.png"><img alt="_images/PEI1.png" src="_images/PEI1.png" style="width: 300px; height: 300px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/PEI1.png"><img alt="_sources/images/Topic1/PEI1.png" src="_sources/images/Topic1/PEI1.png" style="width: 300px; height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Binary encoding of all subsets.</span><a class="headerlink" href="#pei1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Binary encoding of all subsets.</span><a class="headerlink" href="#pei1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Consider the general setting in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEI1</span></code>, where we have <span class="math notranslate nohighlight">\(m=3\)</span> intersecting sets : <span class="math notranslate nohighlight">\(A_1 = A\)</span>, <span class="math notranslate nohighlight">\(A_2 = B\)</span>, <span class="math notranslate nohighlight">\(A_3 = C\)</span>. We commence by choosing a
 <em>useful coding</em> for each of the distinct subsets. For instance, <span class="math notranslate nohighlight">\(100\)</span> means the subset <span class="math notranslate nohighlight">\(A_1\cap\bar{A}_2\cap\bar{A}_3\)</span> (elements that only belong to <span class="math notranslate nohighlight">\(A_1\)</span>), where <span class="math notranslate nohighlight">\(101\)</span> means <span class="math notranslate nohighlight">\(A_1\cap\bar{A}_2\cap A_3\)</span>.</p>
 <p>Interestingly the aforementioned binary coding tells us how many times the elements in a given subset are <strong>over-counted</strong> (just take the numbers of ones in the code). This will be very useful from now on.</p>
 <section id="discounting-over-counts">
-<h3><span class="section-number">2.3.1. </span>Discounting over-counts<a class="headerlink" href="#discounting-over-counts" title="Permalink to this heading">#</a></h3>
+<h3>Discounting over-counts<a class="headerlink" href="#discounting-over-counts" title="Permalink to this heading">#</a></h3>
 <p>Now let us start by counting the elements of the union <span class="math notranslate nohighlight">\(\bigcup_{i=1}^m A_i\)</span> of <span class="math notranslate nohighlight">\(m\)</span> sets <span class="math notranslate nohighlight">\(A_1,A_2,\ldots,A_m\)</span>
 by simply summing the elements of the individual sets:</p>
 <div class="math notranslate nohighlight">
@@ -905,9 +901,9 @@ A_1\cup A_2\cup A_3 = \{100, 010, 001, 2\cdot 110, 2\cdot 101, 2\cdot 011, 3\cdo
 </ul>
 <p>To remove the elements that are counted twice, we remove the elements in all pairwise intersections: <span class="math notranslate nohighlight">\(A\cap B =\{110, 111\}\)</span>, <span class="math notranslate nohighlight">\(A\cap C = \{101, 111\}\)</span> and <span class="math notranslate nohighlight">\(B\cap C = \{011, 111\}\)</span> as indicated in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEIPairwise</span></code>. Note that the subset <span class="math notranslate nohighlight">\(111\)</span> is removed three times.</p>
 <figure class="align-center" id="peipairwise">
-<a class="reference internal image-reference" href="_images/PEIUnions.png"><img alt="_images/PEIUnions.png" src="_images/PEIUnions.png" style="width: 900px; height: 300px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/PEIUnions.png"><img alt="_sources/images/Topic1/PEIUnions.png" src="_sources/images/Topic1/PEIUnions.png" style="width: 900px; height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Pairwise excluding intersections.</span><a class="headerlink" href="#peipairwise" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Pairwise excluding intersections.</span><a class="headerlink" href="#peipairwise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>More generally, we do</p>
@@ -947,7 +943,7 @@ i.e. the three copies of <span class="math notranslate nohighlight">\(111\)</spa
 <p>Consequently, since we have to visit all the subsets of <span class="math notranslate nohighlight">\([m]\)</span>, this <em>naive</em> way of computing the size of the union can be done in <span class="math notranslate nohighlight">\(O(2^m)\)</span>.</p>
 </section>
 <section id="principle-of-exclusion-inclusion">
-<h3><span class="section-number">2.3.2. </span>Principle of Exclusion-Inclusion<a class="headerlink" href="#principle-of-exclusion-inclusion" title="Permalink to this heading">#</a></h3>
+<h3>Principle of Exclusion-Inclusion<a class="headerlink" href="#principle-of-exclusion-inclusion" title="Permalink to this heading">#</a></h3>
 <p>Once we have counted the size of the union of <span class="math notranslate nohighlight">\(m\)</span> sets, the <strong>PEI</strong> comes naturally: the number of elements which DO NOT BELONG to any of the sets <span class="math notranslate nohighlight">\(A_1,A_2,\ldots, A_m\)</span> (i.e. they belong to <span class="math notranslate nohighlight">\(\bar{A}_1\cap \bar{A}_2\cap\ldots\cap \bar{A}_m\)</span>) is given by:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -956,12 +952,12 @@ i.e. the three copies of <span class="math notranslate nohighlight">\(111\)</spa
 <p>where <span class="math notranslate nohighlight">\(S\)</span> is a set including all the <span class="math notranslate nohighlight">\(A_i\)</span> (the <strong>universal set</strong>). In our above example of <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEI1</span></code>, if <span class="math notranslate nohighlight">\(S = \bigcup_{i=1}^m A_i\)</span>, then the intersection of complements <span class="math notranslate nohighlight">\(\bar{A}_1\cap \bar{A}_2\cap\ldots\cap \bar{A}_m\)</span> can be encoded by <span class="math notranslate nohighlight">\(000\)</span> and this means that it has no elements inside any Venn diagram!</p>
 </section>
 <section id="counting-paths-in-grids">
-<h3><span class="section-number">2.3.3. </span>Counting paths in grids<a class="headerlink" href="#counting-paths-in-grids" title="Permalink to this heading">#</a></h3>
+<h3>Counting paths in grids<a class="headerlink" href="#counting-paths-in-grids" title="Permalink to this heading">#</a></h3>
 <p>One of the most interesting applications of the PEI in AI is <strong>path counting</strong>. Given a <strong>grid</strong> (later on we will define it more formally) we are interested in counting (and also in actually finding) the paths between two <strong>nodes</strong> of this grid, say <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((m,n)\)</span>.</p>
 <figure class="align-center" id="grid1">
-<a class="reference internal image-reference" href="_images/grid1.png"><img alt="_images/grid1.png" src="_images/grid1.png" style="width: 600px; height: 500px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid1.png"><img alt="_sources/images/Topic1/grid1.png" src="_sources/images/Topic1/grid1.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span>.</span><a class="headerlink" href="#grid1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span>.</span><a class="headerlink" href="#grid1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> we show a grid where <span class="math notranslate nohighlight">\(m=n=4\)</span>. A given <strong>node</strong> <span class="math notranslate nohighlight">\((i,j)\)</span> may be conected at most with <span class="math notranslate nohighlight">\(4\)</span> nodes: <span class="math notranslate nohighlight">\((i+1,j)\)</span> <span class="math notranslate nohighlight">\((i,j+1)\)</span>, <span class="math notranslate nohighlight">\((i-1,j)\)</span> and <span class="math notranslate nohighlight">\((i,j-1)\)</span>. This is why it is called a <strong>4-grid</strong> because each node can have at most <span class="math notranslate nohighlight">\(4\)</span> <strong>neighbors</strong>.</p>
@@ -987,9 +983,9 @@ P_{\sigma}(m+n) = \frac{(m+n)!}{m!n!} = {m+n\choose n} = {m+n\choose m}\;,
 <p>However, <strong>how is it applicable the PEI here?</strong></p>
 <p>Well, let use remove a node from the above grid, for instance the node <span class="math notranslate nohighlight">\((2,2)\)</span>. As a result of removing <span class="math notranslate nohighlight">\((2,2)\)</span>, the paper showed in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> cannot be built. Actually, the <strong>topology</strong> of the grid (the way its elements are connected independently of their <strong>layout</strong>, i.e. way we draw them) changes.</p>
 <figure class="align-center" id="grid2">
-<a class="reference internal image-reference" href="_images/grid2.png"><img alt="_images/grid2.png" src="_images/grid2.png" style="width: 600px; height: 500px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid2.png"><img alt="_sources/images/Topic1/grid2.png" src="_sources/images/Topic1/grid2.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing node <span class="math notranslate nohighlight">\((2,2)\)</span>.</span><a class="headerlink" href="#grid2" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing node <span class="math notranslate nohighlight">\((2,2)\)</span>.</span><a class="headerlink" href="#grid2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For instance, when represeting the grid after removing the node <span class="math notranslate nohighlight">\((2,2)\)</span> we have to circumvent this node, through one of its neighbors as we show in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code>.</p>
@@ -1019,9 +1015,9 @@ N_{22}\cdot N_{22} = {4\choose 2}\cdot {4\choose 2} = \left(\frac{4!}{2!2!}\righ
 <p>This is a naive application of the PEI, where <span class="math notranslate nohighlight">\(|S| = N_{44}\)</span>.</p>
 <p>However, let us remove a second node, say <span class="math notranslate nohighlight">\((0,3)\)</span>. The new grid is in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code>:</p>
 <figure class="align-center" id="grid3">
-<a class="reference internal image-reference" href="_images/grid3.png"><img alt="_images/grid3.png" src="_images/grid3.png" style="width: 600px; height: 500px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid3.png"><img alt="_sources/images/Topic1/grid3.png" src="_sources/images/Topic1/grid3.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>.</span><a class="headerlink" href="#grid3" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>.</span><a class="headerlink" href="#grid3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As we can see, the highlighted path passing through <span class="math notranslate nohighlight">\((2,3)\)</span> has been redirected and from <span class="math notranslate nohighlight">\((1,3)\)</span> we jump to <span class="math notranslate nohighlight">\((1,4)\)</span>.</p>
@@ -1064,9 +1060,9 @@ N_{22}\cdot N_{22} = {4\choose 2}\cdot {4\choose 2} = \left(\frac{4!}{2!2!}\righ
 \end{split}\]</div>
 <p>Deleting nodes can be interpreted in terms of marking them as <em>forbidden</em> nodes (or <em>obstacles</em> when planning robot motion) as in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1withobs</span></code></p>
 <figure class="align-center" id="grid1withobs">
-<a class="reference internal image-reference" href="_images/grid1withobs.png"><img alt="_images/grid1withobs.png" src="_images/grid1withobs.png" style="width: 600px; height: 500px;" /></a>
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid1withobs.png"><img alt="_sources/images/Topic1/grid1withobs.png" src="_sources/images/Topic1/grid1withobs.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after marking nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> as forbidden or <em>obstacles</em>.</span><a class="headerlink" href="#grid1withobs" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after marking nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> as forbidden or <em>obstacles</em>.</span><a class="headerlink" href="#grid1withobs" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In general, as we remove more and more nodes, <span class="math notranslate nohighlight">\(m\)</span> increases and computing the intersections may become more complex. Later on, we will describe simpler ways of actually counting these paths and extracting them.</p>
@@ -1094,7 +1090,7 @@ Therefore, we have
 </section>
 </section>
 <section id="the-stirling-s-formula">
-<h2><span class="section-number">2.4. </span>The Stirling’s formula<a class="headerlink" href="#the-stirling-s-formula" title="Permalink to this heading">#</a></h2>
+<h2>The Stirling’s formula<a class="headerlink" href="#the-stirling-s-formula" title="Permalink to this heading">#</a></h2>
 <p>Computing <span class="math notranslate nohighlight">\(n!\)</span> can be impossible to do in a computer as <span class="math notranslate nohighlight">\(n\)</span> increases. There are memory constrains because we need to store a product of <span class="math notranslate nohighlight">\(n\)</span> numbers and this may lead to stack overflow.  There are also temporal constrains: even in the case of having infinite memory, computing two numbers of arbitrary length is not <span class="math notranslate nohighlight">\(O(1)\)</span>. If <span class="math notranslate nohighlight">\(n\)</span> has length <span class="math notranslate nohighlight">\(x\)</span>, it takes <span class="math notranslate nohighlight">\(O(x^{\log_2 3})\)</span> i.e. <span class="math notranslate nohighlight">\(O(x^{1.58})\)</span> using the Karatsuba divide-and-conquer algorithm (see Wikipedia article <a class="reference external" href="https://en.wikipedia.org/wiki/Karatsuba_algorithm">Karatsuba_algorithm</a>). Interestingly, <span class="math notranslate nohighlight">\(x=len(n)\)</span> grows with <span class="math notranslate nohighlight">\(O(\log_B n)\)</span>, where <span class="math notranslate nohighlight">\(B\)</span> is the base of <span class="math notranslate nohighlight">\(x\)</span>. As a result, computing the factorial <span class="math notranslate nohighlight">\(n!\)</span> takes <span class="math notranslate nohighlight">\(O(n\log n^{1.58})\)</span>.</p>
 <p>Stirling’s proved that <span class="math notranslate nohighlight">\(\text{as}\; n\rightarrow \infty, n!\approx  \left(\frac{n}{e}\right)^n\sqrt{2\pi n}\;.\)</span></p>
 <p>One may think that the above formula does not reduce the time complexity of the factorial since it involves a <span class="math notranslate nohighlight">\(n^n\)</span> product and obviouly <span class="math notranslate nohighlight">\(n!&lt;n^n\)</span>. However, for computing <span class="math notranslate nohighlight">\(n^n\)</span> (or in general <span class="math notranslate nohighlight">\(a^n\)</span>, i.e. an power with a natural exponent) we exploit the fact that all the factors are equal (the base) and we may play with the exponents. Actually, <span style="color:#469ff8">we only need to perform <span class="math notranslate nohighlight">\(O(\log_2 n)\)</span>, instead of <span class="math notranslate nohighlight">\(n\)</span>, products to calculate <span class="math notranslate nohighlight">\(n^n\)</span></span>.</p>
@@ -1243,7 +1239,7 @@ a &amp;= b + c \label{eq2}\tag{2}
         },
         kernelOptions: {
             name: "python3",
-            path: "./."
+            path: "./_sources"
         },
         predefinedOutput: true
     }
@@ -1260,24 +1256,6 @@ a &amp;= b + c \label{eq2}\tag{2}
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="bloque1.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Materiales de Matemáticas Discretas</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Topic2.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Probability</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1294,25 +1272,25 @@ a &amp;= b + c \label{eq2}\tag{2}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-tree">2.1. Using a tree</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-combinations">2.2. Permutations and Combinations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-permutations-and-combinations">2.2.1. Linking Permutations and Combinations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-repetitions">2.2.2. Allowing repetitions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indistinguisable-elements">2.2.3. Indistinguisable elements</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-with-repetition">2.2.3.1. Permutations with repetition</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multisets">2.2.3.2. Multisets</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinations-with-repetition">2.2.3.3. Combinations with repetition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-tree">Using a tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-combinations">Permutations and Combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-permutations-and-combinations">Linking Permutations and Combinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-repetitions">Allowing repetitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indistinguisable-elements">Indistinguisable elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-with-repetition">Permutations with repetition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multisets">Multisets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinations-with-repetition">Combinations with repetition</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-exclusion-inclusion">2.3. The Principle of Exclusion-Inclusion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discounting-over-counts">2.3.1. Discounting over-counts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-exclusion-inclusion">2.3.2. Principle of Exclusion-Inclusion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-in-grids">2.3.3. Counting paths in grids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-exclusion-inclusion">The Principle of Exclusion-Inclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discounting-over-counts">Discounting over-counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-exclusion-inclusion">Principle of Exclusion-Inclusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-in-grids">Counting paths in grids</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stirling-s-formula">2.4. The Stirling’s formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stirling-s-formula">The Stirling’s formula</a></li>
 </ul>
   </nav></div>
 
@@ -1361,8 +1339,8 @@ By Universidad de Alicante
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>
