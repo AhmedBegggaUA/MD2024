@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -78,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -121,20 +121,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -359,7 +351,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectations">3.2.2. Conditional expectations</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#martingales">3.2.3. Martingales</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links-with-pascal-s-triangle">3.2.4. Links with Pascal’s Triangle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependence-is-not-causality">3.2.5. Dependence is not causality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">3.3. Random walks on graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">3.3.1. Markov chains</a></li>
 </ul>
 </li>
 </ul>
@@ -371,7 +366,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probability">
 <h1><span class="section-number">3. </span>Probability<a class="headerlink" href="#probability" title="Permalink to this heading">#</a></h1>
@@ -1005,6 +1000,7 @@ p(Z\ge a) = 1-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^a e^{-\frac{1}{2}z^2} = 1 - \p
 \[
 p(a\le X\le b) =  \frac{1}{\sqrt{2\pi\cdot \sigma}}\int_{a}^{b}\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)dx = \phi\left(\frac{b-\mu}{\sigma}\right)- \phi\left(\frac{a-\mu}{\sigma}\right)\;.
 \]</div>
+<p>If you want to query the lower tail values, please visit the <a class="reference external" href="https://www.math.arizona.edu/~jwatkins/normal-table.pdf">Standard Normal Cumulative Probability Table</a></p>
 <p><strong>Link with fundamental bounds</strong>. Once that we have discovered the exponential nature of the Gaussian, and once we realized that the Gaussian is the limit of the Binomial, we close the loop of understanding the exponential decays of both the <strong>Hoeffding’s and Chernoff bounds</strong>.</p>
 </section>
 </section>
@@ -1029,7 +1025,7 @@ p(a\le X\le b) =  \frac{1}{\sqrt{2\pi\cdot \sigma}}\int_{a}^{b}\exp\left(-\frac{
 \[
 p(A|B) = p(A)
 \]</div>
-<p>In addition, condititional probability is computed as follows:</p>
+<p>In addition, condititional probability is computed by the <strong>Bayes theorem</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
 p(A|B) = \frac{p(A\cap B)}{P(A)}\;.
@@ -1298,7 +1294,7 @@ p(R_n = k) = {n\choose k}p^k(1-p)^{n-k}
 <p>with <span class="math notranslate nohighlight">\(p=1/2\)</span>, in <a class="reference internal" href="#pascalmartin"><span class="std std-numref">Fig. 3.10</span></a> we show, with colors, the probability distribution for the conditional case, i.e. for the martingale, where we kept <span class="math notranslate nohighlight">\(\frac{a}
 {A} = p\)</span> for being comparable to the independent case.</p>
 <figure class="align-center" id="pascalmartin">
-<a class="reference internal image-reference" href="_images/PascalMartin.png"><img alt="_images/PascalMartin.png" src="_images/PascalMartin.png" style="width: 850px; height: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/PascalMartin.png"><img alt="_images/PascalMartin.png" src="_images/PascalMartin.png" style="width: 950px; height: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 3.10 </span><span class="caption-text">Distribution for a martingale.</span><a class="headerlink" href="#pascalmartin" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1308,15 +1304,443 @@ p(R_n = k) = {n\choose k}p^k(1-p)^{n-k}
 <li><p>Extremal events (all failures/all success) tend to have a zero probability as <span class="math notranslate nohighlight">\(n\)</span> grows.</p></li>
 <li><p>The bulk of the distribution is close to <span class="math notranslate nohighlight">\(E(X_1)=\frac{a}{A}\)</span> but as <span class="math notranslate nohighlight">\(n\)</span> increases the pmf (point-mass function) is flattened.</p></li>
 <li><p>Flattening with <span class="math notranslate nohighlight">\(n\)</span> is due to the denominator <span class="math notranslate nohighlight">\(P(A,n)\)</span> of <span class="math notranslate nohighlight">\(p(R_n = k)\)</span>.</p></li>
+<li><p>Of course we may adapt the fundamental equalities defined for i.i.d. variables to conditional ones, but it is quite clear than rare envents will be less probable in conditional trees such as that in <a class="reference internal" href="#pascalmartin"><span class="std std-numref">Fig. 3.10</span></a> unless we change the ratio between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(\clubsuit
-\diamondsuit
-\spadesuit
-\heartsuit\)</span></p>
 </section>
-<section id="dependence-is-not-causality">
-<h3><span class="section-number">3.2.5. </span>Dependence is not causality<a class="headerlink" href="#dependence-is-not-causality" title="Permalink to this heading">#</a></h3>
-<p>In medicine, for instance, a treatment or action <span class="math notranslate nohighlight">\(A\)</span> produces (usually) a result <span class="math notranslate nohighlight">\(Y\)</span>. For simplicity, assume that <span class="math notranslate nohighlight">\(A\in \{0,1\}\)</span> and also <span class="math notranslate nohighlight">\(Y\in \{0,1\}\)</span>, meaning respectively that <em>whe do not apply/apply the treatment</em> and <em>the patient dies/survives</em>.</p>
+</section>
+<section id="random-walks-on-graphs">
+<h2><span class="section-number">3.3. </span>Random walks on graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h2>
+<section id="markov-chains">
+<h3><span class="section-number">3.3.1. </span>Markov chains<a class="headerlink" href="#markov-chains" title="Permalink to this heading">#</a></h3>
+<p>So far, we have studied both <strong>independent random processes</strong> and <strong>conditional random processes</strong>. In this regard, when we have independence, our random process is a <em>simple random walk</em> (see <a class="reference internal" href="#rwrand"><span class="std std-numref">Fig. 3.5</span></a>). However, when the variables in the random process are fully conditioned, the corresponding random process is more difficult to study unless we have a martingale. Fortunately, <span style="color:#469ff8">there is something in between the simplicity of independent random processes and the full conditioning of the martingale: we refer to <strong>Markov chains</strong></span>.</p>
+<p><strong>Markov chain</strong>. A <em>sequence</em> of random variables <span class="math notranslate nohighlight">\(X_0,X_1,\ldots\)</span> is a Markov chain if for all possible <em>states</em> (values of the random variables) <span class="math notranslate nohighlight">\(x_{t+1},x_{t},\ldots,x_1\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X_{t+1}=j|&amp; X_t=i,\ldots,X_1=x_1,X_0=x_0) = p(X_{t+1}=j|X_t=i)=p_{ij}\\
+&amp;\text{with}\;\; p_{ij}\ge 0\;\forall i,j\;\;\text{and}\;\;\sum_{j}p_{ij}=1\;\forall i\;,
+\end{align}
+\end{split}\]</div>
+<p>i.e. the probability of a future event only depends on that of a present one. This is called the <strong>Markov property</strong> or the <strong>memoryless property</strong>.</p>
+<p>A couple of interesting properties:</p>
+<ul class="simple">
+<li><p><strong>Irreducibility</strong>. We say that a state <span class="math notranslate nohighlight">\(j\)</span> in the Markov chain (MC) is <strong>accesible</strong> from another state <span class="math notranslate nohighlight">\(i\)</span> if exists <span class="math notranslate nohighlight">\(t\ge 0\)</span> so that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(X_t=j|X_0=i) = p_{ij}(t)&gt; 0\;\text{in}\;t\;\text{steps}\;,
+\]</div>
+<p>that is, we can get from a state <span class="math notranslate nohighlight">\(i\)</span> to state <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(t\)</span> steps with probability <span class="math notranslate nohighlight">\(p_{ij}(t)\)</span>. Then, <span style="color:#469ff8">a MC is <strong>irreducible</strong> if each pair <span class="math notranslate nohighlight">\((i,j)\)</span> of states is mutually accessible.</span></p>
+<ul class="simple">
+<li><p><strong>Periodicity</strong>. A state <span class="math notranslate nohighlight">\(i\)</span> has <strong>period</strong> <span class="math notranslate nohighlight">\(d_i\)</span> if</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d_i = \text{gcd}(t\in\{1,2,\ldots\}: p_{ii}(t)&gt;0)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{gcd}\)</span> denotes the greatest common divisor. Then, if <span class="math notranslate nohighlight">\(d_i&gt;1\)</span> the state <span class="math notranslate nohighlight">\(i\)</span> is <strong>periodic</strong>; it <span class="math notranslate nohighlight">\(d_i=1\)</span> it is <strong>aperiodic</strong>. Then <span style="color:#469ff8">a MC is <strong>aperiodic</strong> if all states have period <span class="math notranslate nohighlight">\(d_i=1\)</span></span>.</p>
+<p><strong>Graphs</strong>. A graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> consists of a set of <strong>nodes</strong> or vertices <span class="math notranslate nohighlight">\(V={1,2,\ldots,n}\)</span> where <span class="math notranslate nohighlight">\(|V|=n\)</span>, and a set of <strong>edges</strong> <span class="math notranslate nohighlight">\(E\subseteq V\times V\)</span>.</p>
+<ul class="simple">
+<li><p>An edge <span class="math notranslate nohighlight">\(e=(i,j)\)</span> is denoted by a pair of nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is the origin and <span class="math notranslate nohighlight">\(j\)</span> the target or destination.</p></li>
+<li><p>If the graph is <strong>undirected</strong> both <span class="math notranslate nohighlight">\((i,j)\)</span> and <span class="math notranslate nohighlight">\((j,i)\)</span> do exist for all <span class="math notranslate nohighlight">\(e\in E\)</span>. Otherwise, the graph is <strong>directed</strong>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(e=(i,i)\)</span> we have a <strong>self-loop</strong>.</p></li>
+</ul>
+<p>Graphs are very flexible mathematical tools. We commence by using them for describing a random process. The nodes <span class="math notranslate nohighlight">\(V\)</span> provide the <strong>states</strong> and the edges <span class="math notranslate nohighlight">\(E\)</span> provide the <strong>transitions between states</strong>. Actually we label the edges with the probability of a Markovian transition <span class="math notranslate nohighlight">\(p(j|i) = p_{ij}\)</span>.</p>
+<p>The following example is motivated by the essay <a class="reference external" href="https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf">Random Walks and Electric Networks</a> by Doyle and Snell.</p>
+<p>We want to build a graph for the <strong>drunkard’s walk</strong>. A man walks along a <span class="math notranslate nohighlight">\(5-\)</span>blocks stretch in Madison Avenue. He starts at corner <span class="math notranslate nohighlight">\(x\)</span> and, with probability <span class="math notranslate nohighlight">\(1/2\)</span> walks one block to the right and, also with probability <span class="math notranslate nohighlight">\(1/2\)</span> walks one block to the left. At the next corner, he again choses his direction randomly. He continues until he reaches corner <span class="math notranslate nohighlight">\(5\)</span>, which is home, or corner <span class="math notranslate nohighlight">\(0\)</span>, which is a bar. In both latter cases he stays there.</p>
+<p>Our graph for this walk has <span class="math notranslate nohighlight">\(n=6\)</span> vertices or <strong>states</strong> <span class="math notranslate nohighlight">\(V=\{0,1,2,3,4,5\}\)</span>, where <span class="math notranslate nohighlight">\(5\)</span> is <span class="math notranslate nohighlight">\(\text{Home}\)</span> and <span class="math notranslate nohighlight">\(0\)</span> is the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>. See <a class="reference internal" href="#drunk"><span class="std std-numref">Fig. 3.11</span></a> where the edges or <strong>transitions</strong> are in blue (bidirectional if we no depict the arrowheads) and the possible decision for node <span class="math notranslate nohighlight">\(x=3\)</span> are depicted in black.</p>
+<figure class="align-center" id="drunk">
+<a class="reference internal image-reference" href="_images/Drunk.png"><img alt="_images/Drunk.png" src="_images/Drunk.png" style="width: 750px; height: 100px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.11 </span><span class="caption-text">A graph for the drunkard’s walk.</span><a class="headerlink" href="#drunk" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Actually, the edges of the above graph are <span class="math notranslate nohighlight">\(E=\{(0,0),(1,0),(1,2),(2,1)\ldots,(4,5),(5,5)\}\)</span></p>
+<p><span style="color:#469ff8">Why our graph mimics the <strong>drunkard’s walk</strong>, and why it is a <strong>MC</strong>?</span></p>
+<ul class="simple">
+<li><p>We have two states, <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, with <strong>self-loops</strong> and no edges for returning to any other node. These states are called <strong>absorbing states</strong> in the MC terminology, since once the Markov-chain-random walk (MCRW) reaches them, it is trapped there. As a result the MC is <strong>reducible</strong>.</p></li>
+<li><p>The graph is almost <strong>bipartite</strong>, i.e. we can parition <span class="math notranslate nohighlight">\(V\)</span> in to subsets <span class="math notranslate nohighlight">\(V_1=\{0,2,4\}\)</span> and <span class="math notranslate nohighlight">\(V_2=\{1,3,5\}\)</span> so that nodes in <span class="math notranslate nohighlight">\(V_1\)</span> can only go nodes of <span class="math notranslate nohighlight">\(V_2\)</span> (except the absorbing nodes) and viceversa. As a result, the MC is almost <strong>aperiodic</strong>. Non-absorbing nodes have period <span class="math notranslate nohighlight">\(2\)</span> and the absorbing ones have period <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p>If we start our MCRW at a non-absorbing state, say <span class="math notranslate nohighlight">\(x\in\{2,3,4\}\)</span> we walk left with probability <span class="math notranslate nohighlight">\(1/2\)</span> and right also with probability <span class="math notranslate nohighlight">\(1/2\)</span>.</p></li>
+<li><p>The <strong>degree</strong> <span class="math notranslate nohighlight">\(\text{deg}(i)\)</span> of a node <span class="math notranslate nohighlight">\(i\)</span> in the graph is the number of neighbors <span class="math notranslate nohighlight">\({\cal N}_i\)</span>, i.e. the number of <strong>outgoing edges</strong> from <span class="math notranslate nohighlight">\(i\)</span>. In our graphs we have that all non-absorbing nodes have degree <span class="math notranslate nohighlight">\(2\)</span> whereas the absorbing states have degree <span class="math notranslate nohighlight">\(1\)</span> (actually their neighbors are themselves).</p></li>
+<li><p>The degree <span class="math notranslate nohighlight">\(\text{deg}(i)\)</span> of each node <span class="math notranslate nohighlight">\(i\)</span> reveals that the (Markovian) probability of making a transition to a neighbor is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+p(j|i) = p_{ij} = \frac{a_{ij}}{\text{deg}(i)}\;\; \text{where}\;\; 
+a_{ij}= 
+\begin{cases}
+     1\;\text{if}\; i\in {\cal N}_i  \\[2ex]
+     0\; \text{otherwise}\;.
+\end{cases}
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(a_{ij}=1\)</span> means that nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are <strong>adjacent</strong>. For absorbing states, we have <span class="math notranslate nohighlight">\(a_{ij}=0\;\forall j\neq i\)</span>. As a result, for these states <span class="math notranslate nohighlight">\(p_{ii}=1\)</span> and <span class="math notranslate nohighlight">\(p_{ij}=0\)</span> for <span class="math notranslate nohighlight">\(j\neq i\)</span>.</p>
+<p><strong>Patterns of the drunkard’s walk</strong>. In order to have a rough idea of the behavior of this Markov process, we have generated <span class="math notranslate nohighlight">\(40,000\)</span> random walks (<span class="math notranslate nohighlight">\(10,000\)</span> starting at each non-absorbing states <span class="math notranslate nohighlight">\(x=1,2,3,4\)</span>). Each random walk has length <span class="math notranslate nohighlight">\(l=10\)</span>. Why? We will discover that shorly. What is important now is to note that some of the walks end up in one of the absorbing states (<span class="math notranslate nohighlight">\(x=0\)</span>), whereas many others end in the other one (<span class="math notranslate nohighlight">\(x=5\)</span>). The  probability of reaching each absorbing state is <span class="math notranslate nohighlight">\(1/2\)</span>.</p>
+<p>We plot these walks in <a class="reference internal" href="#drunkard"><span class="std std-numref">Fig. 3.12</span></a>. The darkest the blue line, the <em>slower</em> the walk reaches <span class="math notranslate nohighlight">\(x=5\)</span>. This means that if the walks reaches <span class="math notranslate nohighlight">\(x=5\)</span> at the maximum length of the path <span class="math notranslate nohighlight">\(l=10\)</span> it becomes the darkest one.</p>
+<p>Some iteresting patterns:</p>
+<ul class="simple">
+<li><p>As we start uniformly the same number of paths at each non-absorbing state, there is no clear difference between the paths ending in <span class="math notranslate nohighlight">\(x=0\)</span> and those ending in <span class="math notranslate nohighlight">\(x=5\)</span>.</p></li>
+<li><p>In addition, some paths tending to <span class="math notranslate nohighlight">\(x=0\)</span> turn suddenly towards <span class="math notranslate nohighlight">\(x=5\)</span> and vice versa.</p></li>
+</ul>
+<p>Apparently, all the non-absorbing states reach <span class="math notranslate nohighlight">\(x=5\)</span> <em>equally slowly</em>. <strong>However this is misleading</strong>. Actually, most of the paths reach <span class="math notranslate nohighlight">\(x=5\)</span> very early. This suggests that the probability of reaching <span class="math notranslate nohighlight">\(x=5\)</span> from any non-absorbing state <em>is not uniform</em>. This leads us to the answer the first question to solve about a random walk: what is the probability of ending <span class="math notranslate nohighlight">\(\text{Home}\)</span>.</p>
+<p>Before addressing the <strong>two fundamental questions</strong> for a MCRW: (a) where does it converge to, and (b) how long does it take, it is important to note that the remainder of this section requires some practice with algebraic solvers of recurrent relations, namely <strong>linear difference equations</strong>. They are very practical tools that are explained in the excellent <a class="reference external" href="https://mpaldridge.github.io/math2750/">Github of Mathew Aldridge</a> and even in the <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients">Wikipedia</a>. The examples below have been adapted from the first source and solve some of the exercises in <a class="reference external" href="https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf">Random Walks and Electric Networks</a> by Doyle and Snell.</p>
+<figure class="align-center" id="drunkard">
+<a class="reference internal image-reference" href="_images/Drunkard.png"><img alt="_images/Drunkard.png" src="_images/Drunkard.png" style="width: 800px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.12 </span><span class="caption-text">Patterns of generated drunkard’s walks.</span><a class="headerlink" href="#drunkard" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"><strong>Q1.</strong> What is the probability of ending at <span class="math notranslate nohighlight">\(\text{Home}\)</span> if we start from the non-absorbing state <span class="math notranslate nohighlight">\(x\)</span>?</span></p>
+<p>In other words, what is the probability of <strong>hitting</strong> <span class="math notranslate nohighlight">\(x=5\)</span> from <span class="math notranslate nohighlight">\(x\)</span> before hitting <span class="math notranslate nohighlight">\(x=0\)</span>?</p>
+<ol class="arabic simple">
+<li><p>We commence by <strong>formulating the Markovianity</strong> of the drunkward’s path in a more generic way:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x_{n+1}= 
+\begin{cases}
+     x_{n} + 1 \;\text{with probability}\; p\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} - 1 \;\text{with probability}\; q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     0\; \text{if}\; n=0\\[2ex]
+     m\; \text{if}\; n=m\;,
+\end{cases}
+\end{split}\]</div>
+<p>where: <span class="math notranslate nohighlight">\(x_{n}\)</span> is the position of the walk at step <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(p = 1 - q = 1/2\)</span> is the probability of a transition from a non-absorbing state and <span class="math notranslate nohighlight">\(m=5\)</span> is the target node.</p>
+<ol class="arabic simple" start="2">
+<li><p>We pose the above formula in probabilistic terms using the <strong>condition on the first step</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(\text{Home}) &amp;= p(\text{1st step right})p(\text{Home}|\text{1st step right})\\ 
+&amp;+ p(\text{1st step left})p(\text{Home}|\text{1st step left})\\
+&amp; = p\cdot p(\text{Home}|\text{1st step right}) + q\cdot p(\text{Home}|\text{1st step left})\;.
+\end{align}
+\end{split}\]</div>
+<p>Herein, we use the <strong>theorem of total probability</strong> for the following events:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E &amp;= \{\text{Home}\}\\
+A &amp;= \{\text{1st step right}\}\\ 
+\bar{A} &amp;= \{\text{1st step left}\} 
+\end{align}
+\end{split}\]</div>
+<p>Then, total probability means that the probability of an event given two (or more) exclusive events is</p>
+<div class="math notranslate nohighlight">
+\[
+p(E) = p(E\cap A) + p(E\cap \bar{A}) = p(A)p(E|A) + p(\bar{A})p(E|\bar{A})\;. 
+\]</div>
+<p>In our case:</p>
+<div class="math notranslate nohighlight">
+\[
+P(E) = p\cdot p(E|A) + q\cdot p(E|\bar{A})\;,
+\]</div>
+<p>and we want to calculate both <span class="math notranslate nohighlight">\(p(E|A)\)</span> and <span class="math notranslate nohighlight">\(p(E|\bar{A})\)</span> to calculate <span class="math notranslate nohighlight">\(P(E)\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Formulate and solve a <strong>recurrence relation</strong>:</p></li>
+</ol>
+<p>Then, we have to solve the following recurence relation:</p>
+<div class="math notranslate nohighlight">
+\[
+r_n = p\cdot r_{n+1} + q\cdot r_{n-1}\;\text{subject to}\; r_0=0, r_m = 1\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_0 = 0\)</span> and <span class="math notranslate nohighlight">\(r_m=1\)</span> are the <strong>boundary conditions</strong> that specify success if we reach <span class="math notranslate nohighlight">\(m\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and failure if we reach <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>).</p>
+<p>We formulate the recurrence relation as a <strong>linear difference equation</strong>. In this case it is <strong>homogeneous</strong> (like an homogeneous linear system <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span>) since:</p>
+<div class="math notranslate nohighlight">
+\[
+p\cdot r_{n+1} + q\cdot r_{n-1} - r_n = 0\;.
+\]</div>
+<p>First of all, we apply the following change of variable:</p>
+<div class="math notranslate nohighlight">
+\[
+r_n = \lambda^n\;,
+\]</div>
+<p>which leads to</p>
+<div class="math notranslate nohighlight">
+\[
+p\lambda^{n+1} + q\lambda^{n-1} - \lambda^n = 0\;,
+\]</div>
+<p>and taking <span class="math notranslate nohighlight">\(\lambda^{n-1}\)</span> as common factor yields</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda^{n-1}(p\lambda^{2} + q - \lambda) = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\lambda^{2} + q - \lambda = 0\)</span> is the <strong>characteristic equation</strong> of the recurrence. Then, reorganzing the coefficients we have  <span class="math notranslate nohighlight">\(p\lambda^{2} - \lambda + q = 0\)</span>. To solve this quadratic equation is convenient to use the remainder theorem (Ruffini). The dividers of the independent term (<span class="math notranslate nohighlight">\(q\)</span>) are <span class="math notranslate nohighlight">\(\pm 1\)</span> and <span class="math notranslate nohighlight">\(\pm q\)</span>. If we try first <span class="math notranslate nohighlight">\(+1\)</span>, and apply <span class="math notranslate nohighlight">\(q = 1-p\)</span>, this leads to the equation <span class="math notranslate nohighlight">\(\lambda p - q = 0\)</span> with yields <span class="math notranslate nohighlight">\(\lambda =\frac{q}{p}\)</span> tha we call <span class="math notranslate nohighlight">\(\rho\)</span>. Then, the factorization we are looking for is</p>
+<div class="math notranslate nohighlight">
+\[
+(p\lambda - q)(\lambda - 1)\; \text{and roots}\; \lambda_1=1, \lambda_2=\rho\;.
+\]</div>
+<p>Now, we have two cases:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho \neq 1\)</span>, then we have two distinct roots. In this case, the general solution of an homogeneous equation has the shape:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r_n = A\lambda_1^n + B\lambda_2^n = A1^n + B\rho^n = A + B\rho^n\;.
+\]</div>
+<p>In order to determine <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we exploit the two <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(r_0=0, r_m=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_0 &amp;=  A + B\rho^0 = A + B = 0\\
+r_m &amp;=  A + B\rho^m = 1\\
+\end{align}
+\end{split}\]</div>
+<p>From <span class="math notranslate nohighlight">\(A + B = 0\)</span> we get <span class="math notranslate nohighlight">\(A = -B\)</span> which leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+- B + B\rho^m &amp;= 1 \Rightarrow (\rho^m - 1) B = 1 \Rightarrow B = \frac{1}{\rho^m - 1}\\
+A = -B &amp; = -\frac{1}{\rho^m - 1}\;.
+\end{align}
+\end{split}\]</div>
+<p>and, as a result</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_n &amp;= A\lambda_1^n + B\lambda_2^n\\
+    &amp;= -\frac{1}{\rho^m - 1} + \frac{\rho^n}{\rho^m - 1}\\
+    &amp;= \frac{\rho^n-1}{\rho^m - 1}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho=1\)</span> we have <span class="math notranslate nohighlight">\(p=q\)</span> and this means that we have two repeated solutions <span class="math notranslate nohighlight">\(\lambda_1=\lambda_2 = 1\)</span>. In this case, the general solution has the following shape:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r_n = (A + nB)\lambda_1^n\;,
+\]</div>
+<p>which leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_0 &amp;=  (A + 0B)1^0 = A = 0\\
+r_m &amp;=  (A + mB)1^m = A + mB = 1\\
+\end{align}
+\end{split}\]</div>
+<p>whose solutions are <span class="math notranslate nohighlight">\(A = 0\)</span> and <span class="math notranslate nohighlight">\(B = \frac{1}{m}\)</span>.</p>
+<p>Finally</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_n &amp;= (A + nB)\lambda_1^n\;\\
+    &amp;= (0 + n\frac{1}{m})\\
+    &amp;= \frac{n}{m}
+\end{align}
+\end{split}\]</div>
+<p>The generic result is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+r_n = 
+\begin{cases}
+  \frac{\rho^n-1}{\rho^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+r_n = 
+\begin{cases}
+  \frac{\left(\frac{q}{p}\right)^n-1}{\left(\frac{q}{p}\right)^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p=q\\[2ex]
+\end{cases}
+\end{split}\]</div>
+<p><strong>Result for the ubiased walk</strong>. If <span class="math notranslate nohighlight">\(p=q=1/2\)</span> we have a random process according to the graph in <a class="reference internal" href="#drunk"><span class="std std-numref">Fig. 3.11</span></a>. The probability of getting <span class="math notranslate nohighlight">\(\text{Home}\)</span>, i.e. of hitting <span class="math notranslate nohighlight">\(x=m=5\)</span> before hitting <span class="math notranslate nohighlight">\(x=0\)</span> is <span class="math notranslate nohighlight">\(p(x)=\frac{x}{m} = \frac{x}{5}\)</span>. The closer we are to <span class="math notranslate nohighlight">\(\text{Home}\)</span> the more probable is that we get there. Note that if we invert the boundary conditions priming going to the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>, the probability of getting there before arriving home is <span class="math notranslate nohighlight">\(p(x)=1-\frac{x}{5}\)</span>.</p>
+<p>However, as <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> the probability of getting <span class="math notranslate nohighlight">\(\text{Home}\)</span> tends to zero, i.e. <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span>.</p>
+<p>The result for the unbiased (fair) walk is consistent with our observations in <a class="reference internal" href="#drunkard"><span class="std std-numref">Fig. 3.12</span></a> and shows that the probability of reaching <span class="math notranslate nohighlight">\(\text{Home}\)</span> is not <strong>uniform</strong>. This result also explain why most of the <span class="math notranslate nohighlight">\(40,000\)</span> random walks lauched uniformly from any of the non-absorbing states reach <span class="math notranslate nohighlight">\(\text{Home}\)</span> very soon.</p>
+<p><strong>Result for the biased walk</strong>. Biased walks, however, are modeled in a different way. We label the edges with their probabilities. Then, instead of getting the transition probabilities from the degree, we simply set <span class="math notranslate nohighlight">\(p_{ij}=a_{ij}p\)</span> or <span class="math notranslate nohighlight">\(p_{ij} = a_{ij}q\)</span> as in <a class="reference internal" href="#drunkpq"><span class="std std-numref">Fig. 3.13</span></a></p>
+<figure class="align-center" id="drunkpq">
+<a class="reference internal image-reference" href="_images/Drunkpq.png"><img alt="_images/Drunkpq.png" src="_images/Drunkpq.png" style="width: 800px; height: 100px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Graph for biased drunkard’s walks.</span><a class="headerlink" href="#drunkpq" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If <span class="math notranslate nohighlight">\(q\ll p\)</span>, then <span class="math notranslate nohighlight">\(p(x)\rightarrow 1\)</span> since we are drifted to the right. Symmetrically, if <span class="math notranslate nohighlight">\(q\gg p\)</span>, then <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span> since <span class="math notranslate nohighlight">\(m&gt;n\)</span>.</p>
+<p>As <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span>, we have that <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span>, independently of the relationship between <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m\rightarrow\infty} \frac{\rho^n-1}{\rho^m - 1} = \lim_{m\rightarrow\infty} \frac{\rho^n/\rho^m-1/\rho^m}{1 - 1/\rho^m} = \lim_{m\rightarrow\infty} \frac{0-0}{1 - 0} = 0\;.
+\]</div>
+<p>In <a class="reference internal" href="#drunkardpq"><span class="std std-numref">Fig. 3.14</span></a> where <span class="math notranslate nohighlight">\(p=0.25, q=0.75\)</span> we can see that few walks reach <span class="math notranslate nohighlight">\(x=5\)</span>, actually the proportion of “successful” paths is <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<figure class="align-center" id="drunkardpq">
+<a class="reference internal image-reference" href="_images/Drunkardpq.png"><img alt="_images/Drunkardpq.png" src="_images/Drunkardpq.png" style="width: 800px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.14 </span><span class="caption-text">Patterns of generated biased drunkard’s walks with <span class="math notranslate nohighlight">\(p=0.25\)</span>.</span><a class="headerlink" href="#drunkardpq" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"><strong>Q2.</strong> What is the expected time or <strong>hitting time</strong> for arriving <span class="math notranslate nohighlight">\(\text{Home}\)</span> if we start from the non-absorbing state <span class="math notranslate nohighlight">\(x\)</span>?</span></p>
+<p>We are interested in estimating the expected <strong>hitting time</strong> of <span class="math notranslate nohighlight">\(x=5\)</span>.</p>
+<p>As before, we rely on linear difference equations.</p>
+<ol class="arabic simple">
+<li><p>We pose the above formula in probabilistic terms using the <strong>condition on the first step</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(\text{Duration}) &amp;= p(\text{1st step right})p(\text{Duration}|\text{1st step right})\\ 
+&amp;+ p(\text{1st step left})p(\text{Duration}|\text{1st step left})\\
+&amp; = p\cdot p(\text{Duration}|\text{1st step right}) + q\cdot p(\text{Duration}|\text{1st step left})\;.
+\end{align}
+\end{split}\]</div>
+<p>Herein, we use the <strong>conditional expectations</strong> for the following random variables:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+X &amp;= \{\text{Duration}\}\\
+Y &amp;= \{\text{1st step}\}\\ 
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> has values <span class="math notranslate nohighlight">\(y=\text{left}\)</span> and <span class="math notranslate nohighlight">\(y=\text{right}\)</span>.</p>
+<p>Then,</p>
+<div class="math notranslate nohighlight">
+\[
+E(X|Y=y) = \sum_{x}xP(X=x|Y=y)\;.
+\]</div>
+<p>However, we are interested in <span class="math notranslate nohighlight">\(E(X)\)</span>, which is defined by the <strong>tower property</strong> of conditional expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+E(X) = E(E(X|Y))=\sum_{y}p(Y=y)H(X|Y=y)\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> is the outcome of the first step.</p>
+<p>In this regard,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(X|Y=\text{left})  &amp;= 1 + d_{n-1}\\ 
+E(X|Y=\text{right}) &amp;= 1 + d_{n+1}\;. 
+\end{align}
+\end{split}\]</div>
+<p>Always count <span class="math notranslate nohighlight">\(1\)</span> because we had made a step.</p>
+<p>This leads us to the following <strong>inhomogeneous recurrence relation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+d_n = p(1 + d_{n+1}) + q(1 + d_{n-1}) = 1 + pd_{n+1} + qd_{n-1}\;.
+\]</div>
+<p>and we have</p>
+<div class="math notranslate nohighlight">
+\[
+pd_{n+1} -d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+\]</div>
+<p>Whose left-hand-size lhs leads to the same homogeneous recurrence equation that we have studied before.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho\neq 1\)</span> the general solution (<span class="math notranslate nohighlight">\(\lambda_1=1, \lambda_2=\rho\)</span> are solutions of the homogeneous version) has the shape</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + B\rho^n\;.
+\]</div>
+<p>Since we need a particular solution for the full equation and the lhs is a constant, we start trying to set <span class="math notranslate nohighlight">\(d_{n}=C\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+pC - C + qC = (p+q)C - C = C - C\neq -1\;
+\]</div>
+<p>Next, we try with <span class="math notranslate nohighlight">\(d_{n}=Cn\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+pC(n+1) - Cn + qC(n-1) &amp;= pCn + pC - Cn + qCn -qC\\ 
+                       &amp;= Cn - Cn + (p-q)C\\ 
+                       &amp;= (p-q)C = -1
+\end{align}
+\end{split}\]</div>
+<p>i.e. <span class="math notranslate nohighlight">\(C = \frac{-1}{p-q}\)</span> and the particular solution becomes</p>
+<div class="math notranslate nohighlight">
+\[
+d_n = A + B\rho^n + Cn = A + B\rho^n - \frac{n}{p-q}\;.
+\]</div>
+<p>Then we apply the <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(d_0=0, d_m=0\)</span> to find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+d_0 &amp;= A + B\rho^0 - \frac{0}{p-q} = A + B = 0\\
+d_m &amp;= A + B\rho^m - \frac{m}{p-q} = A + B\rho^m - \frac{m}{p-q}= 0\;,
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(A = - B\)</span> and <span class="math notranslate nohighlight">\(-B + B\rho^m = \frac{m}{p-q}\Rightarrow (\rho^m -1)B = \frac{m}{p-q}\Rightarrow B = \frac{1}{\rho^m-1}\cdot\frac{m}{p-q}\;.\)</span></p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+d_n &amp;= A + B\rho^n - \frac{m}{p-q}\\
+    &amp;= -\frac{1}{\rho^m-1}\cdot\frac{m}{p-q} + \frac{\rho^n}{\rho^m-1}\cdot\frac{m}{p-q} - \frac{m}{p-q}\\
+    &amp;= \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right)\; 
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho = 1\)</span>, i.e <span class="math notranslate nohighlight">\(p=q=1/2\)</span>, the general solution (<span class="math notranslate nohighlight">\(\lambda_1=1, \lambda_2=1\)</span> are solutions of the homogeneous version) has the shape</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + nB\;.
+\]</div>
+<p>For getting a particular solution we find that both the eductated guesses (<strong>antsazs</strong>) <span class="math notranslate nohighlight">\(d_i=C\)</span> and <span class="math notranslate nohighlight">\(d_i= nC\)</span> do not work. We try <span class="math notranslate nohighlight">\(d_i=n^2C\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+-1 &amp;= pC(n^2 + 1 + 2n) - Cn^2 + qC(n-1)^2\\ 
+   &amp;= pCn^2 + pC + 2pCn) -Cn^2 + qC(n-1)^2\\ 
+   &amp;= p(Cn^2 + C + 2Cn) -Cn^2 + q(Cn^2 + C - 2Cn)\\
+   &amp;= p(Cn^2 + C + 2Cn) -Cn^2 + p(Cn^2 + C - 2Cn)\\
+   &amp;= \frac{1}{2}(Cn^2 + C + 2Cn) -Cn^2 +\frac{1}{2}(Cn^2 + C - 2Cn)\\
+   &amp;= C\;.
+\end{align}
+\end{split}\]</div>
+<p>and the resulting general solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + nB + Cn^2 = A + nB - n^2\;.
+\]</div>
+<p>Then, we exploit again the the <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(d_0=0, d_m=0\)</span> to find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+d_0 &amp;= A + 0B - n^2 = A = 0\\
+d_m &amp;= A + mB - n^2 = mB - m^2= 0\Rightarrow B = m\;,
+\end{align}
+\end{split}\]</div>
+<p>And for <span class="math notranslate nohighlight">\(A=0, B=m\)</span> the general solution is</p>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + nB - n^2 = mn - n^2 = n(m - n)\;,
+\]</div>
+<p>which clearly tells us that the hitting time of <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(O(n^2)\)</span> por <span class="math notranslate nohighlight">\(p=q=1/2\)</span> since we have equal probability of go back and forth.</p>
+<p>Summarizing</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+d_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+r_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\left(\frac{q}{p}\right)^n-0}{\left(\frac{q}{p}\right)^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p=q\\[2ex]
+\end{cases}
+\end{split}\]</div>
+<p><strong>Result for the ubiased walk</strong>. If <span class="math notranslate nohighlight">\(p=q=1/2\)</span> the hitting time of <span class="math notranslate nohighlight">\(x=m\)</span> from <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(O(n^2)\)</span> since we have equal probability of go back and forth.</p>
+<p>The behavior for <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> is obvious:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m\rightarrow\infty}n(m - n) = \infty\;, 
+\]</div>
+<p>since <span class="math notranslate nohighlight">\(m\)</span> becomes impossible to be reached from <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p><strong>Result for the biased walk</strong>. If <span class="math notranslate nohighlight">\(p\neq q\)</span> and <span class="math notranslate nohighlight">\(p\ll q\)</span>, the walk is drifted to the left and this means that <span class="math notranslate nohighlight">\(\rho\gg 1\)</span>, <span class="math notranslate nohighlight">\(m\)</span> is amplified and the hitting time from <span class="math notranslate nohighlight">\(n\)</span> increases notably. However, if <span class="math notranslate nohighlight">\(p\gg q\)</span>, <span class="math notranslate nohighlight">\(m\)</span> is attenuated and this reduces the hitting time from <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Actually, the behavior for <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\lim_{m\rightarrow\infty} \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) &amp;= \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{\frac{\rho^m}{\rho^m} -\frac{1}{\rho^m}}-n\right)\\
+&amp;=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{1 -\frac{1}{\rho^m}}-n\right)\\
+&amp;=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)\\ 
+\end{align}
+\end{split}\]</div>
+<p>We have two cases:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(q&gt;p\)</span>, then <span class="math notranslate nohighlight">\(\rho^m\gg m\)</span> and <span class="math notranslate nohighlight">\(\lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)\)</span> = <span class="math notranslate nohighlight">\(\frac{1}{p-q}(-n)= \frac{1}{q-p}(n)\)</span>. Then, the hitting time is a fraction of <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(p&gt;q\)</span>, then <span class="math notranslate nohighlight">\(\rho^m\ll m\)</span> and <span class="math notranslate nohighlight">\(m\)</span> is amplified wrt <span class="math notranslate nohighlight">\(n\)</span>, increasing the hitting time.</p></li>
+</ul>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. Solve questions Q1 and Q2 for the <strong>path</strong> graph <span class="math notranslate nohighlight">\(P_n\)</span>, where it has <span class="math notranslate nohighlight">\(n\)</span> nodes from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(n\)</span> but it does not have asorbing states?
+</span></p>
 </section>
 </section>
 </section>
@@ -1378,7 +1802,6 @@ p(R_n = k) = {n\choose k}p^k(1-p)^{n-k}
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1404,7 +1827,10 @@ p(R_n = k) = {n\choose k}p^k(1-p)^{n-k}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectations">3.2.2. Conditional expectations</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#martingales">3.2.3. Martingales</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links-with-pascal-s-triangle">3.2.4. Links with Pascal’s Triangle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependence-is-not-causality">3.2.5. Dependence is not causality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">3.3. Random walks on graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">3.3.1. Markov chains</a></li>
 </ul>
 </li>
 </ul>
@@ -1455,8 +1881,8 @@ By Universidad de Alicante
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
