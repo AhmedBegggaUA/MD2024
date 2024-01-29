@@ -14,3 +14,7 @@ parts:
   chapters:
   - file: Topic1 
   - file: Topic2
+- caption: Practices
+  chapters:
+  - file: practice_intro
+  - file: numpy_practice
