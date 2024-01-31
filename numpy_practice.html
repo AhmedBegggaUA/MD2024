@@ -209,9 +209,9 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="bloque1.html">1. Materiales de Matemáticas Discretas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. Project</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
 <ul class="nav bd-sidenav">
@@ -388,6 +388,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.5. Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">5.5.1. Exercise 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">5.5.2. Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">5.5.3. Exercise 3</a></li>
 </ul>
 </li>
 </ul>
@@ -1090,7 +1091,7 @@ y = \begin{bmatrix}
 <h2><span class="section-number">5.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You have to submit your answers via UAcloud using the corresponding assignment. The file must be a surname_name.zip file containing two .ipynb file with your answers. The name of the file must be <code class="docutils literal notranslate"><span class="pre">numpy_exercises_1.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy_exercises_2.ipynb</span></code>. Finally, in each notebook you have to include your name and surname.</p>
+<p>You have to submit your answers via UAcloud using the corresponding assignment. The file must be a surname_name.zip file containing three .ipynb file with your answers. The name of the file must be <code class="docutils literal notranslate"><span class="pre">numpy_exercises_1.ipynb</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy_exercises_2.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy_exercises_3.ipynb</span></code>. Finally, in each notebook you have to include your name and surname.</p>
 </div>
 <section id="exercise-1">
 <h3><span class="section-number">5.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
@@ -1125,6 +1126,27 @@ But don’t worry, we will help you by giving you a number calculator for scalar
 <span class="linenos">16</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I don&#39;t understand&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember that you have to implement the calculator using numpy arrays, so you have to modify the code in order to make it work with numpy arrays of <strong>any dimension</strong>.</p>
+</div>
+</section>
+<section id="exercise-3">
+<h3><span class="section-number">5.5.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
+<p>You have to solve the following problems using numpy:</p>
+<p>a) Create a 10x10 matrix with <strong>your own seed</strong>. Make sure that the values are 0 or 1. Also make sure that the diagonal is 0, so you don’t have loops in your graph.</p>
+<p>b) Calculate the degree matrix of the graph.
+<strong>Formula:</strong> <span class="math notranslate nohighlight">\(D_{ii} = \sum_{j=1}^{n} A_{ij}\)</span></p>
+<p>c) Calculate the Laplacian matrix of the graph.
+<strong>Formula:</strong> <span class="math notranslate nohighlight">\(L = D - A\)</span></p>
+<p>d) Calculate the normalized Laplacian matrix of the graph.
+<strong>Formula:</strong> <span class="math notranslate nohighlight">\(L_{norm} = D^{-1/2} L D^{-1/2}\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that the values are correct and do not contain any infinity or NaN values due to the square root of a negative number.</p>
+</div>
+<p>e) Create a function that returns the number of nodes that you have to visit in order to arrive to the node destiny. The function must receive as input the adjacency matrix, the node origin and the node destiny. The function must return a numpy array with the number of nodes that you have to visit in order to arrive to the node destiny from the node origin. If you can’t arrive to the node destiny from the node origin, the function must return a numpy array with the value -1.</p>
+<p>f) Create a function that given an adjacency matrix and value, returns the number of nodes that have same or more degree than the value. The function must receive as input the adjacency matrix and the value. The function must return a numpy array with the number of nodes that have same or more degree than the value.</p>
 </section>
 </section>
 </section>
@@ -1202,6 +1224,7 @@ But don’t worry, we will help you by giving you a number calculator for scalar
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.5. Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">5.5.1. Exercise 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">5.5.2. Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">5.5.3. Exercise 3</a></li>
 </ul>
 </li>
 </ul>
