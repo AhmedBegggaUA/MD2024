@@ -10,7 +10,7 @@ Our Discrete Brain must be able of **counting objects**, i.e. it must be answer 
 - We are considering injective (one-to-one) functions $f:X\rightarrow Y$, i.e. the reference is $X$ (we reason from left to right). 
 - In each function $f$, each element $x_i\in X$ must mapped either *to one and only only one element $y_j\in Y$* or *to none of them*.  
 
-For instance, in {numref}`setfunction` we have $X=\{a,b,c\}$ and $Y=\{1,2,3,4\}$, i.e $m=3$ and $n=4$. The mapping, say $f$, is injective since: (a) every element in $X$ has an **image** and only one image in $Y$, (b) no elements in $Y$ is the image of more than one element in $X$. 
+For instance, in {numref} `setfunction` we have $X=\{a,b,c\}$ and $Y=\{1,2,3,4\}$, i.e $m=3$ and $n=4$. The mapping, say $f$, is injective since: (a) every element in $X$ has an **image** and only one image in $Y$, (b) no elements in $Y$ is the image of more than one element in $X$. 
 
 ```{figure} ./images/Topic1/setfun.png
 ---
