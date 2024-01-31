@@ -6,10 +6,9 @@ root: intro
 defaults:
   numbered: true
 parts: 
-- caption: Introduction
+- caption: Discrete Brain
   chapters:
-  - file: bloque1
-#  - file: bloque1_Introduccion
+  - file: bloque1_Introducción
 - caption: Counting and Probability 
   chapters:
   - file: Topic1 

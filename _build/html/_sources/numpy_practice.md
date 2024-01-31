@@ -912,7 +912,7 @@ print(eigenvectors)
 
 ## Exercises
 ```{note}
-You have to submit your answers via UAcloud using the corresponding assignment. The file must be a surname_name.zip file containing two .ipynb file with your answers. The name of the file must be `numpy_exercises_1.ipynb` and `numpy_exercises_2.ipynb`. Finally, in each notebook you have to include your name and surname.
+You have to submit your answers via UAcloud using the corresponding assignment. The file must be a surname_name.zip file containing three .ipynb file with your answers. The name of the file must be `numpy_exercises_1.ipynb`, `numpy_exercises_2.ipynb` and `numpy_exercises_3.ipynb`. Finally, in each notebook you have to include your name and surname.
 ```
 ### Exercise 1
 After reading the previous section, you should be able to create your first Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook. 
@@ -945,3 +945,48 @@ elif operation == "-":
 else:
     print("I don't understand")
 ```
+```{note}
+Remember that you have to implement the calculator using numpy arrays, so you have to modify the code in order to make it work with numpy arrays of **any dimension**.
+```
+### Exercise 3
+You have to solve the following problems using numpy:
+
+
+a) Create a 10x10 matrix with **your own seed**. Make sure that the values are 0 or 1. Also make sure that the diagonal is 0, so you don't have loops in your graph.
+
+
+b) Calculate the degree matrix of the graph.
+**Formula:** $D_{ii} = \sum_{j=1}^{n} A_{ij}$
+
+
+c) Calculate the Laplacian matrix of the graph.
+**Formula:** $L = D - A$
+
+
+d) Calculate the normalized Laplacian matrix of the graph.
+**Formula:** $L_{norm} = D^{-1/2} L D^{-1/2}$
+``` {note}
+Make sure that the values are correct and do not contain any infinity or NaN values due to the square root of a negative number.
+```
+
+
+e) Create a function that returns the number of nodes that you have to visit in order to arrive to the node destiny. The function must receive as input the adjacency matrix, the node origin and the node destiny. The function must return a numpy array with the number of nodes that you have to visit in order to arrive to the node destiny from the node origin. If you can't arrive to the node destiny from the node origin, the function must return a numpy array with the value -1.
+```{python}
+def number_of_nodes_to_visit(adjacency_matrix, origin, destiny):
+    # Your code here
+    return number_of_nodes
+print(number_of_nodes_to_visit(adjacency_matrix, origin, destiny))
+# if you can't arrive to the node destiny from the node origin, the function must return a numpy array with the value -1
+# else the function must return a numpy array with the number of nodes that you have to visit in order to arrive to the node destiny from the node origin, including the node origin and the node destiny
+```
+
+
+f) Create a function that given an adjacency matrix and value, returns the number of nodes that have same or more degree than the value. The function must receive as input the adjacency matrix and the value. The function must return a numpy array with the number of nodes that have same or more degree than the value.
+```{python}
+def nodes_degree(adjacency_matrix, value):
+    # Your code here
+    return number_of_nodes
+print(nodes_degree(adjacency_matrix, value))
+# If the are nodes that have same or more degree than the value, the function must return a numpy array with the nodes that have same or more degree than the value
+# else the function must return a numpy array with the value -1
+``` 
