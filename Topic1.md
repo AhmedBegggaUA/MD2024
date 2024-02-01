@@ -13,12 +13,12 @@ Our Discrete Brain must be able of **counting objects**, i.e. it must be answer 
 For instance, in {numref}`setfunction` we have $X=\{a,b,c\}$ and $Y=\{1,2,3,4\}$, i.e $m=3$ and $n=4$. The mapping, say $f$, is injective since: (a) every element in $X$ has an **image** and only one image in $Y$, (b) no elements in $Y$ is the image of more than one element in $X$. 
 
 ```{figure} ./images/Topic1/setfun.png
-
+---
 name: setfunction
 width: 300px
 align: center
 height: 200px
-
+---
 One-to-one function between two sets. 
 ```
 
@@ -27,7 +27,7 @@ One-to-one function between two sets.
 
 ```{figure} ./images/Topic1/rootedtree.png
 ---
-:name: rtree
+name: rtree
 width: 600px
 align: center
 height: 400px

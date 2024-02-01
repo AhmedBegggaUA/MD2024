@@ -417,21 +417,21 @@ insofar they can be decomposed into simpler tasks. Consider for instance the las
 <li><p>In each function <span class="math notranslate nohighlight">\(f\)</span>, each element <span class="math notranslate nohighlight">\(x_i\in X\)</span> must mapped either <em>to one and only only one element <span class="math notranslate nohighlight">\(y_j\in Y\)</span></em> or <em>to none of them</em>.</p></li>
 </ul>
 <p>For instance, in <code class="xref std std-numref docutils literal notranslate"><span class="pre">setfunction</span></code> we have <span class="math notranslate nohighlight">\(X=\{a,b,c\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{1,2,3,4\}\)</span>, i.e <span class="math notranslate nohighlight">\(m=3\)</span> and <span class="math notranslate nohighlight">\(n=4\)</span>. The mapping, say <span class="math notranslate nohighlight">\(f\)</span>, is injective since: (a) every element in <span class="math notranslate nohighlight">\(X\)</span> has an <strong>image</strong> and only one image in <span class="math notranslate nohighlight">\(Y\)</span>, (b) no elements in <span class="math notranslate nohighlight">\(Y\)</span> is the image of more than one element in <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<figure class="align-default" id="id1">
-<img alt="_images/setfun.png" src="_images/setfun.png" />
+<figure class="align-center" id="setfunction">
+<a class="reference internal image-reference" href="_images/setfun.png"><img alt="_images/setfun.png" src="_images/setfun.png" style="width: 300px; height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">name: setfunction
-width: 300px
-align: center
-height: 200px</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-<div class="legend">
-<p>One-to-one function between two sets.</p>
-</div>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">One-to-one function between two sets.</span><a class="headerlink" href="#setfunction" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="using-a-tree">
 <h2><span class="section-number">2.1. </span>Using a tree<a class="headerlink" href="#using-a-tree" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#469ff8">Any counting task can be represented by a <strong>tree</strong></span>. Trees are key structures in our Discrete Brain, because they encode a hierarchy. In particular, the <strong>rooted tree</strong> (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">rtree</span></code>) can be seen as <em>the recursive top-down expansion of a root through several levels until the leaves are reached</em>:</p>
+<figure class="align-center" id="rtree">
+<a class="reference internal image-reference" href="_images/rootedtree.png"><img alt="_images/rootedtree.png" src="_images/rootedtree.png" style="width: 600px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Rooted tree where the leaves are the solutions to a counting problem.</span><a class="headerlink" href="#rtree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>In particular, we have:</p>
 <ul class="simple">
 <li><p>The <strong>root</strong> is the top parent <strong>node</strong> of the tree and it spans several <strong>children</strong>, thus forming the first level of <strong>siblings</strong>.</p></li>
@@ -874,7 +874,7 @@ i.e., the condition <span class="math notranslate nohighlight">\(x_1 + x_2 + x_3
 <figure class="align-center" id="pei1">
 <a class="reference internal image-reference" href="_images/PEI1.png"><img alt="_images/PEI1.png" src="_images/PEI1.png" style="width: 300px; height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Binary encoding of all subsets.</span><a class="headerlink" href="#pei1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Binary encoding of all subsets.</span><a class="headerlink" href="#pei1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Consider the general setting in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEI1</span></code>, where we have <span class="math notranslate nohighlight">\(m=3\)</span> intersecting sets : <span class="math notranslate nohighlight">\(A_1 = A\)</span>, <span class="math notranslate nohighlight">\(A_2 = B\)</span>, <span class="math notranslate nohighlight">\(A_3 = C\)</span>. We commence by choosing a
@@ -907,7 +907,7 @@ A_1\cup A_2\cup A_3 = \{100, 010, 001, 2\cdot 110, 2\cdot 101, 2\cdot 011, 3\cdo
 <figure class="align-center" id="peipairwise">
 <a class="reference internal image-reference" href="_images/PEIUnions.png"><img alt="_images/PEIUnions.png" src="_images/PEIUnions.png" style="width: 900px; height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Pairwise excluding intersections.</span><a class="headerlink" href="#peipairwise" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Pairwise excluding intersections.</span><a class="headerlink" href="#peipairwise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>More generally, we do</p>
@@ -961,7 +961,7 @@ i.e. the three copies of <span class="math notranslate nohighlight">\(111\)</spa
 <figure class="align-center" id="grid1">
 <a class="reference internal image-reference" href="_images/grid1.png"><img alt="_images/grid1.png" src="_images/grid1.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span>.</span><a class="headerlink" href="#grid1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span>.</span><a class="headerlink" href="#grid1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> we show a grid where <span class="math notranslate nohighlight">\(m=n=4\)</span>. A given <strong>node</strong> <span class="math notranslate nohighlight">\((i,j)\)</span> may be conected at most with <span class="math notranslate nohighlight">\(4\)</span> nodes: <span class="math notranslate nohighlight">\((i+1,j)\)</span> <span class="math notranslate nohighlight">\((i,j+1)\)</span>, <span class="math notranslate nohighlight">\((i-1,j)\)</span> and <span class="math notranslate nohighlight">\((i,j-1)\)</span>. This is why it is called a <strong>4-grid</strong> because each node can have at most <span class="math notranslate nohighlight">\(4\)</span> <strong>neighbors</strong>.</p>
@@ -989,7 +989,7 @@ P_{\sigma}(m+n) = \frac{(m+n)!}{m!n!} = {m+n\choose n} = {m+n\choose m}\;,
 <figure class="align-center" id="grid2">
 <a class="reference internal image-reference" href="_images/grid2.png"><img alt="_images/grid2.png" src="_images/grid2.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing node <span class="math notranslate nohighlight">\((2,2)\)</span>.</span><a class="headerlink" href="#grid2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing node <span class="math notranslate nohighlight">\((2,2)\)</span>.</span><a class="headerlink" href="#grid2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For instance, when represeting the grid after removing the node <span class="math notranslate nohighlight">\((2,2)\)</span> we have to circumvent this node, through one of its neighbors as we show in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code>.</p>
@@ -1021,7 +1021,7 @@ N_{22}\cdot N_{22} = {4\choose 2}\cdot {4\choose 2} = \left(\frac{4!}{2!2!}\righ
 <figure class="align-center" id="grid3">
 <a class="reference internal image-reference" href="_images/grid3.png"><img alt="_images/grid3.png" src="_images/grid3.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>.</span><a class="headerlink" href="#grid3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>.</span><a class="headerlink" href="#grid3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As we can see, the highlighted path passing through <span class="math notranslate nohighlight">\((2,3)\)</span> has been redirected and from <span class="math notranslate nohighlight">\((1,3)\)</span> we jump to <span class="math notranslate nohighlight">\((1,4)\)</span>.</p>
@@ -1066,7 +1066,7 @@ N_{22}\cdot N_{22} = {4\choose 2}\cdot {4\choose 2} = \left(\frac{4!}{2!2!}\righ
 <figure class="align-center" id="grid1withobs">
 <a class="reference internal image-reference" href="_images/grid1withobs.png"><img alt="_images/grid1withobs.png" src="_images/grid1withobs.png" style="width: 600px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after marking nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> as forbidden or <em>obstacles</em>.</span><a class="headerlink" href="#grid1withobs" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after marking nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> as forbidden or <em>obstacles</em>.</span><a class="headerlink" href="#grid1withobs" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In general, as we remove more and more nodes, <span class="math notranslate nohighlight">\(m\)</span> increases and computing the intersections may become more complex. Later on, we will describe simpler ways of actually counting these paths and extracting them.</p>
