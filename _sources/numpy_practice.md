@@ -923,6 +923,43 @@ You have to create a calculator using numpy. The calculator must be able to perf
 - Multiplication
 - Concatenation
 - Transpose
+
+``` {note}
+You only need to implement the calculator for bidimensional arrays. For example, if the user enters the following arrays:
+```{code-block} python
+---
+linenos: true
+---
+a = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+b = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+operattion = "+"
+```
+The calculator must return the following result:
+```{code-block} python
+---
+linenos: true
+---
+[[ 0  2  4]
+ [ 6  8 10]
+ [12 14 16]]
+```
+Also make sure you control the input of the user. For example, if the user enters a string instead of a number or an operation that is not permisible, the calculator must return an error message. For example, if the user enters the following arrays:
+```{code-block} python
+---
+linenos: true
+---
+a = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+b = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+operattion = "&"
+```
+The calculator must return the following result:
+```{code-block} python
+---
+linenos: true
+---
+I don't understand the operation '&'
+```
+```{note}
 But don't worry, we will help you by giving you a number calculator for scalar values. You only have to modify the code to make it work with numpy arrays.
 ```{code-block} python
 ---
@@ -946,7 +983,7 @@ else:
     print("I don't understand")
 ```
 ```{note}
-Remember that you have to implement the calculator using numpy arrays, so you have to modify the code in order to make it work with numpy arrays of **any dimension**.
+Remember that you have to implement the calculator using numpy arrays, so you have to modify the code in order to make it work with numpy arrays.
 ```
 ### Exercise 3
 You have to solve the following problems using numpy:
@@ -964,6 +1001,8 @@ c) Calculate the Laplacian matrix of the graph.
 
 
 d) Calculate the normalized Laplacian matrix of the graph.
+
+
 **Formula:** $L_{norm} = D^{-1/2} L D^{-1/2}$
 ``` {note}
 Make sure that the values are correct and do not contain any infinity or NaN values due to the square root of a negative number.

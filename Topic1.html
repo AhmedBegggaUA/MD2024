@@ -591,8 +591,8 @@ S = \{\infty\cdot\text{T},\; \infty\cdot\text{o},\; \infty\cdot\text{m},\; \inft
 \]</div>
 <p>Since we have infinite copies of “T”, “o”, “m”, “r” and “w”, we have</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(n\)</span> choices to fill the first of the <span class="math notranslate nohighlight">\(n\)</span> positions.</p></li>
-<li><p>Again, we have <span class="math notranslate nohighlight">\(n\)</span> choices to fill the second of the <span class="math notranslate nohighlight">\(n\)</span> positions, etc.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> choices to fill the first of the <span class="math notranslate nohighlight">\(r\)</span> positions.</p></li>
+<li><p>Again, we have <span class="math notranslate nohighlight">\(n\)</span> choices to fill the second of the <span class="math notranslate nohighlight">\(r\)</span> positions, etc.</p></li>
 </ul>
 <p>Then we have</p>
 <div class="math notranslate nohighlight">
@@ -642,7 +642,7 @@ T = \{\infty\cdot x_1,\infty\cdot x_2,\ldots, \infty\cdot x_{m}\}\;,
 \[
 x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,
 \]</div>
-<p>since we can solve this equation by taking <span class="math notranslate nohighlight">\(x_i\ge 0\)</span> of any of the <span class="math notranslate nohighlight">\(m\)</span> types, with the constraint that the sum of elements of all types in <em>exactly</em> <span class="math notranslate nohighlight">\(m\)</span>. We quantify this as follows:</p>
+<p>since we can solve this equation by taking <span class="math notranslate nohighlight">\(x_i\ge 0\)</span> of any of the <span class="math notranslate nohighlight">\(m\)</span> types, with the constraint that the sum of elements of all types is <em>exactly</em> <span class="math notranslate nohighlight">\(k\)</span>. We quantify this as follows:</p>
 <ul class="simple">
 <li><p>Therefore, in practice we only need <span class="math notranslate nohighlight">\(x_i\le k\)</span> (despite the number of copies in formally <span class="math notranslate nohighlight">\(\infty\)</span>). Indeed, finding a sub-multiset consist of mixing elements of some types <span class="math notranslate nohighlight">\(x_i\)</span> provided that the sum of all choices is <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
 <li><p>In order to better visualize each sub-multiset, we consider <span class="math notranslate nohighlight">\(x_i\)</span> as a <strong>box of infinite capacity</strong> (in practice its maximum capacity is <span class="math notranslate nohighlight">\(k\)</span>). All the boxes are different and separated by a “<span class="math notranslate nohighlight">\(+\)</span>” which marks the change from box <span class="math notranslate nohighlight">\(x_{i-1}\)</span> to box <span class="math notranslate nohighlight">\(x_{i}\)</span> for <span class="math notranslate nohighlight">\(i=2,\ldots,m\)</span>, i.e. we have <span class="math notranslate nohighlight">\(m - 1\)</span> <strong>separators</strong>.</p></li>
@@ -669,7 +669,7 @@ C_{\sigma}(m,k) = {k + m - 1\choose k}\;,
 <p>from the point of view of placing <span class="math notranslate nohighlight">\(k\)</span> elements of the multiset (with repetition), and</p>
 <div class="math notranslate nohighlight">
 \[
-C_{\sigma}(m,k) = {k + m - 1\choose m - 1}\;,
+C_{\sigma}(m,m-1) = {k + m - 1\choose m - 1}\;,
 \]</div>
 <p>from the point of view of placing the <span class="math notranslate nohighlight">\(m - 1\)</span> markers (also with repetition but constrained to separate elements of different types).</p>
 <p><strong>Minimal Capacities</strong>. So far, the <span class="math notranslate nohighlight">\(m\)</span> elements of the multiset have infinite capacity but these capacities <strong>are not lower-bounded</strong>. However, what happens if all the elements of the multiset must satisfy <span class="math notranslate nohighlight">\(x_i\ge a_i\)</span>?</p>
@@ -688,7 +688,7 @@ x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,\text{subject to}\; x_i\ge a_i\ge 0\; \fo
 \[
 y_1 + y_2 + y_3 + \ldots + y_{m} = k - A\; 
 \]</div>
-<p><span style="color:#347fc9"><strong>Exercise</strong>. Find the number of ways of giving <span class="math notranslate nohighlight">\(6\)</span> oranges to <span class="math notranslate nohighlight">\(3\)</span> kids so that no kid has more than one orange.</span></p>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. Find the number of ways of giving <span class="math notranslate nohighlight">\(6\)</span> oranges to <span class="math notranslate nohighlight">\(3\)</span> kids so that <strong>all kids has at least one</strong> orange.</span></p>
 <ul class="simple">
 <li><p><span style="color:#347fc9">We commence by <em>identifying</em> what are the boxes and what the elements. In this case, the <span class="math notranslate nohighlight">\(3\)</span> kids are the boxes and the <span class="math notranslate nohighlight">\(6\)</span> oranges are the elements to fill the boxes (one box per kid).</span></p></li>
 <li><p><span style="color:#347fc9">Then, the (basic) problem to solve is to find the non-negative integer solutions of</span>
@@ -699,10 +699,35 @@ x_1 + x_2 + x_3 = 6\;.
 </span>
 <span style="color:#347fc9">The solution is <span class="math notranslate nohighlight">\(C_{\sigma}(m=3,k=6) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} = {6 + 3 - 1\choose 6} = {8\choose 6}= 8!/(6!\cdot 2!) = 28 \;.\)</span></p></li>
 </ul>
-<p><span style="color:#347fc9">The second part of the exercise consist of <em>discarding</em> from the <span class="math notranslate nohighlight">\(\left(\!\!{m\choose k}\!\!\right)=28\)</span> solutions those where no kid has more than <span class="math notranslate nohighlight">\(1\)</span> orange.</span></p>
-<p><span style="color:#347fc9">Then, let us count these solutions where <span class="math notranslate nohighlight">\(x_i\ge 2\)</span>. This implies defining <span class="math notranslate nohighlight">\(y_i = x_i - 3\)</span> and solving <span class="math notranslate nohighlight">\(y_1 + y_2 + y_3 = 6 - 2\cdot 3 = 0\)</span>, wich means that all <span class="math notranslate nohighlight">\(y_i = 0\)</span> (one solution), i.e. <span class="math notranslate nohighlight">\(x_i = 2\)</span>.</span></p>
-<p><span style="color:#347fc9">The <strong>solution</strong> is <span class="math notranslate nohighlight">\(28 - 1 = 27\)</span> ways of giving <span class="math notranslate nohighlight">\(6\)</span> oranges to <span class="math notranslate nohighlight">\(3\)</span> kids where none of them has one orange.</span></p>
-<p>Note that the second part of the above exercise could not be solved if no kid can have more than <span class="math notranslate nohighlight">\(2\)</span> oranges. For this case, we need another strategy.</p>
+<p><span style="color:#347fc9">However, <strong>this is not</strong> the solution to the problem. Since <strong>all</strong> kids must have at least one orange, we are interested in the solutions where <span class="math notranslate nohighlight">\(x_i\ge 1\;\forall i\)</span>.</span></p>
+<p><span style="color:#347fc9"> Then, we <strong>give</strong> <span class="math notranslate nohighlight">\(1\)</span> orange to each kid (we can do that because <span class="math notranslate nohighlight">\(6\ge 3\)</span>) and solve the following problem: <span class="math notranslate nohighlight">\(y_1 + y_2 + y_3 = 6 - 1\cdot 3 = 3\)</span>, where <span class="math notranslate nohighlight">\(y_i = x_i - 1\)</span>.</span></p>
+<p><span style="color:#347fc9">The <strong>solution</strong> is <span class="math notranslate nohighlight">\(C_{\sigma}(m=3,k=3) = \left(\!\!{3\choose 3}\!\!\right) = {3 + 3 - 1\choose 3} = {3 + 3 - 1\choose 3} = {5\choose 3}= 5!/(3!\cdot 2!) = 10\;\)</span>. These solution (wrt the <span class="math notranslate nohighlight">\(y_i\)</span>s and mapped to <span class="math notranslate nohighlight">\(x_i\)</span> after undoing the change of variable) are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp; (1\;1\;1)\rightarrow (2\;2\;2)\\
+&amp; (2\;0\;1)\rightarrow (3\;1\;2)\\
+&amp; (2\;1\;0)\rightarrow (3\;2\;1)\\
+&amp; (1\;0\;2)\rightarrow (2\;1\;3)\\
+&amp; (1\;2\;0)\rightarrow (2\;3\;1)\\
+&amp; (0\;1\;2)\rightarrow (1\;2\;3)\\
+&amp; (0\;2\;1)\rightarrow (1\;3\;2)\\
+&amp; (3\;0\;0)\rightarrow (4\;1\;1)\\
+&amp; (0\;3\;0)\rightarrow (1\;4\;1)\\
+&amp; (0\;0\;3)\rightarrow (1\;1\;4)\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+We can conclude that <span class="math notranslate nohighlight">\(28 - 10 = 18\)</span> solutions <strong>do not satisfy</strong> the requirement that each kid has at least one orange. These incorrect solutions are all where at least a kid has <span class="math notranslate nohighlight">\(0\)</span> oranges.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Note that the second part of the above exercise would have a <strong>different solution</strong> if no kid can have more than <span class="math notranslate nohighlight">\(a\)</span> oranges. This requires another strategy.
+</span></p>
 <p><strong>Maximal Capacities</strong>.  If all boxes satify <span class="math notranslate nohighlight">\(0\le x_i\le a_i\)</span> (their capacity is <strong>upper bounded</strong>) we have multisets such as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -713,7 +738,7 @@ T = \{a_1\cdot x_1,a_2\cdot x_2,\ldots, a_m\cdot x_{m}\}\;,
 \[
 x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,\text{s.t.}\; 0\le x_i\le a_i\;\forall i.
 \]</div>
-<p>Instead of counting first the combinations with infinite capacities and then subtract the <em>undeseriable combinations</em>, we focus on these latter ones as follows.</p>
+<p>Count first the combinations with infinite capacities and then subtract the <em>undeseriable combinations</em>.</p>
 <p>The undesirable combinations where <span class="math notranslate nohighlight">\(x_i\)</span> is involved satisfy <span class="math notranslate nohighlight">\(x_i&gt; a_i\)</span>, that is <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span>.</p>
 <ul class="simple">
 <li><p>Let us define <span class="math notranslate nohighlight">\(A_i\)</span> corresponding to <span class="math notranslate nohighlight">\(x_i\)</span> as:</p></li>
@@ -723,7 +748,7 @@ x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,\text{s.t.}\; 0\le x_i\le a_i\;\forall i.
 A_i = \text{Sub-multiset of size}\; k\; \text{with}\; x_i\ge a_i + 1\; 
 \]</div>
 <ul class="simple">
-<li><p>We have <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_m\)</span> multisets, each one corresponding to a <em>constraint</em> <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span> and <span style="color:#469ff8">we want to count the number of combinations that  DO NOT SATISFY any of the constraints</span>. In other words, this is equivalent to find the size of the set:</p></li>
+<li><p>We have <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_m\)</span> multisets, each one corresponding to an <em>inverse constraint</em> <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span> and <span style="color:#469ff8">we want to count the number of combinations that DO NOT SATISFY ANY of the inverse constraints</span>. In other words, this is equivalent to find the size of the set:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -748,12 +773,6 @@ A_i = \text{Sub-multiset of size}\; k\; \text{with}\; x_i\ge a_i + 1\;
 <li><p>Then, the progression continues by adding odd terms and subtracting even ones.</p></li>
 </ul>
 <p>As a result, let <span class="math notranslate nohighlight">\(S\)</span> a given set (in our case, the set of all the combinations of the multiset with infinite capacity) and <span class="math notranslate nohighlight">\(A_i\subseteq S\)</span>. Then, inclusion-exclusion principle is formulated as follows:</p>
-<div class="math notranslate nohighlight">
-\[
-|S| = |A_1\cup A_2\cup\ldots \cup A_m| - 
-|\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m|\;
-\]</div>
-<p>In other words, the number of combinations which DO NOT SATISFY any restriction <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 |\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m| = |S| - |A_1\cup A_2\cup\ldots \cup A_m|\;.
@@ -828,7 +847,7 @@ However, finding the sizes of the binary intersections <span class="math notrans
 </span>
 <br></br>
 <span style="color:#347fc9">
-However, for <span class="math notranslate nohighlight">\(A_1\cap A_3\)</span> we have that the constraints are <span class="math notranslate nohighlight">\(x_1\ge 5\)</span> and <span class="math notranslate nohighlight">\(x_3\ge 3\)</span> and the sum of the upper bounds <span class="math notranslate nohighlight">\(5 + 3 = 8\)</span> is equal to the budget. Therefore, *giving <span class="math notranslate nohighlight">\(5 + 3\)</span> balls to <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span> forces <span class="math notranslate nohighlight">\(x_2 = 0\)</span> and we have a unique combination <span class="math notranslate nohighlight">\((x_1=5, x_2 = 0, x_3=3)\)</span>. Therefore <span class="math notranslate nohighlight">\(|A_1\cap A_3|=1\)</span>
+However, for <span class="math notranslate nohighlight">\(A_1\cap A_3\)</span> we have that the constraints are <span class="math notranslate nohighlight">\(x_1\ge 5\)</span> and <span class="math notranslate nohighlight">\(x_3\ge 3\)</span> and the sum of the upper bounds <span class="math notranslate nohighlight">\(5 + 3 = 8\)</span> is equal to the budget. Therefore, <em>giving</em> <span class="math notranslate nohighlight">\(5 + 3\)</span> balls to <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span> forces <span class="math notranslate nohighlight">\(x_2 = 0\)</span> and we have a unique combination <span class="math notranslate nohighlight">\((x_1=5, x_2 = 0, x_3=3)\)</span>. Therefore <span class="math notranslate nohighlight">\(|A_1\cap A_3|=1\)</span>
 </span>
 <br></br>
 <span style="color:#347fc9">
@@ -1211,20 +1230,11 @@ n\log n - n &lt; \log(n!) &lt; n\log n\;,
 <p>Finally, since the log is a monotonic function of its argument, let us now consider the ratio of the logarithms</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\log(n!)}{log(e^n)} = \frac{n\log n}{n} = \log(n)\;,
+\frac{\log(n!)}{\log(e^n)} = \frac{n\log n}{n} = \log(n)\;,
 \]</div>
 <p>which is positive for <span class="math notranslate nohighlight">\(n&gt;1\)</span>. Therefore, <span class="math notranslate nohighlight">\(O(n!) &gt; O(e^n)\)</span>. <span class="math notranslate nohighlight">\(\square\)</span></p>
 <ul class="simple">
 <li><p><em>Information bounds</em>. It is well known that <span style="color:#469ff8">the minimal number of comparions to sort <span class="math notranslate nohighlight">\(n\)</span> numbers using a comparison sort alorithm is <span class="math notranslate nohighlight">\(\lceil \log(n!) \rceil\)</span>.</span> The intuition is given by the mergesort algorithm: take recursively <span class="math notranslate nohighlight">\(2\)</span> sublists of <span class="math notranslate nohighlight">\(n_i/2\)</span> elements and when the lists have a single element return the merging of adjacent lists. The number of comparisons to merge two lists are no more than <span class="math notranslate nohighlight">\(n_i\)</span>, and we have <span class="math notranslate nohighlight">\(\log_2 n\)</span> levels. Consequently, we perform at least <span class="math notranslate nohighlight">\(n\log_2 n\)</span> comparisons, i.e. we have <span class="math notranslate nohighlight">\(\Omega(n\log_2 n)\approx \Omega(\log(n!))\)</span>.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-g &amp;= \int_a^b f(x)dx \label{eq1}\tag{1} \\
-a &amp;= b + c \label{eq2}\tag{2}
-\end{align}
-\end{split}\]</div>
-<ul class="simple">
 <li><p><em>Information theory</em>, in particular the combinatorial definition of entropy.</p></li>
 </ul>
 </section>
