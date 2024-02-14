@@ -1105,9 +1105,36 @@ y = \begin{bmatrix}
 <li><p>Subtraction</p></li>
 <li><p>Multiplication</p></li>
 <li><p>Concatenation</p></li>
-<li><p>Transpose
-But don’t worry, we will help you by giving you a number calculator for scalar values. You only have to modify the code to make it work with numpy arrays.</p></li>
+<li><p>Transpose</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You only need to implement the calculator for bidimensional arrays. For example, if the user enters the following arrays:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="linenos">2</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="linenos">3</span><span class="n">operattion</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The calculator must return the following result:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[[</span> <span class="mi">0</span>  <span class="mi">2</span>  <span class="mi">4</span><span class="p">]</span>
+<span class="linenos">2</span> <span class="p">[</span> <span class="mi">6</span>  <span class="mi">8</span> <span class="mi">10</span><span class="p">]</span>
+<span class="linenos">3</span> <span class="p">[</span><span class="mi">12</span> <span class="mi">14</span> <span class="mi">16</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Also make sure you control the input of the user. For example, if the user enters a string instead of a number or an operation that is not permisible, the calculator must return an error message. For example, if the user enters the following arrays:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="linenos">2</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="linenos">3</span><span class="n">operattion</span> <span class="o">=</span> <span class="s2">&quot;&amp;&quot;</span>
+</pre></div>
+</div>
+<p>The calculator must return the following result:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">I</span> <span class="n">don</span><span class="s1">&#39;t understand the operation &#39;</span><span class="o">&amp;</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>But don’t worry, we will help you by giving you a number calculator for scalar values. You only have to modify the code to make it work with numpy arrays.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="linenos"> 2</span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 <span class="linenos"> 3</span><span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -1126,9 +1153,10 @@ But don’t worry, we will help you by giving you a number calculator for scalar
 <span class="linenos">16</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I don&#39;t understand&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Remember that you have to implement the calculator using numpy arrays, so you have to modify the code in order to make it work with numpy arrays of <strong>any dimension</strong>.</p>
+<p>Remember that you have to implement the calculator using numpy arrays, so you have to modify the code in order to make it work with numpy arrays.</p>
 </div>
 </section>
 <section id="exercise-3">
@@ -1139,8 +1167,8 @@ But don’t worry, we will help you by giving you a number calculator for scalar
 <strong>Formula:</strong> <span class="math notranslate nohighlight">\(D_{ii} = \sum_{j=1}^{n} A_{ij}\)</span></p>
 <p>c) Calculate the Laplacian matrix of the graph.
 <strong>Formula:</strong> <span class="math notranslate nohighlight">\(L = D - A\)</span></p>
-<p>d) Calculate the normalized Laplacian matrix of the graph.
-<strong>Formula:</strong> <span class="math notranslate nohighlight">\(L_{norm} = D^{-1/2} L D^{-1/2}\)</span></p>
+<p>d) Calculate the normalized Laplacian matrix of the graph.</p>
+<p><strong>Formula:</strong> <span class="math notranslate nohighlight">\(L_{norm} = D^{-1/2} L D^{-1/2}\)</span></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Make sure that the values are correct and do not contain any infinity or NaN values due to the square root of a negative number.</p>

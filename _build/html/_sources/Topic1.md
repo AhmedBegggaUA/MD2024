@@ -67,6 +67,7 @@ $$P(n) = n! = n(n-1)(n-2)\cdots 1!\;$$
 
 where $!$ is the factorial and $0!=1$. <span style="color:#469ff8">In combinatorics, permutations encode all the possible orders of $n$ distinct elements</span>. Actually, it is straightforward to prove that 
 
+
 $$P(n,r) =\frac{n!}{(n-r)!}\;.$$
 
 In other words, <span style="color:#469ff8">r-permutations remove $(n-r)$ products (levels in the tree) from the full $n!$ permutations</span>. For instance, in the example in {numref}`setfunction` we only need to add $1$ element ($n-m =1$) to $X$ to make $m=n$. This will result in $1$ more level in the tree in {numref}`rtree`. 
@@ -216,8 +217,8 @@ $$
 $$
 
 Since we have infinite copies of "T", "o", "m", "r" and "w", we have 
-- $n$ choices to fill the first of the $n$ positions. 
-- Again, we have $n$ choices to fill the second of the $n$ positions, etc. 
+- $n$ choices to fill the first of the $r$ positions. 
+- Again, we have $n$ choices to fill the second of the $r$ positions, etc. 
 
 Then we have 
 
@@ -292,7 +293,7 @@ $$
 x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,
 $$ 
 
-since we can solve this equation by taking $x_i\ge 0$ of any of the $m$ types, with the constraint that the sum of elements of all types in *exactly* $m$. We quantify this as follows: 
+since we can solve this equation by taking $x_i\ge 0$ of any of the $m$ types, with the constraint that the sum of elements of all types is *exactly* $k$. We quantify this as follows: 
 
 - Therefore, in practice we only need $x_i\le k$ (despite the number of copies in formally $\infty$). Indeed, finding a sub-multiset consist of mixing elements of some types $x_i$ provided that the sum of all choices is $k$. 
 
@@ -326,7 +327,7 @@ $$
 from the point of view of placing $k$ elements of the multiset (with repetition), and
 
 $$
-C_{\sigma}(m,k) = {k + m - 1\choose m - 1}\;,
+C_{\sigma}(m,m-1) = {k + m - 1\choose m - 1}\;,
 $$
 
 from the point of view of placing the $m - 1$ markers (also with repetition but constrained to separate elements of different types). 
@@ -353,7 +354,7 @@ $$
 y_1 + y_2 + y_3 + \ldots + y_{m} = k - A\; 
 $$
 
-<span style="color:#347fc9">**Exercise**. Find the number of ways of giving $6$ oranges to $3$ kids so that no kid has more than one orange.</span> 
+<span style="color:#347fc9">**Exercise**. Find the number of ways of giving $6$ oranges to $3$ kids so that **all kids has at least one** orange.</span> 
 
  - <span style="color:#347fc9">We commence by *identifying* what are the boxes and what the elements. In this case, the $3$ kids are the boxes and the $6$ oranges are the elements to fill the boxes (one box per kid).</span> 
  - <span style="color:#347fc9">Then, the (basic) problem to solve is to find the non-negative integer solutions of</span>
@@ -364,13 +365,38 @@ $$
 </span>
 <span style="color:#347fc9">The solution is $C_{\sigma}(m=3,k=6) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} = {6 + 3 - 1\choose 6} = {8\choose 6}= 8!/(6!\cdot 2!) = 28 \;.$
 
-<span style="color:#347fc9">The second part of the exercise consist of *discarding* from the $\left(\!\!{m\choose k}\!\!\right)=28$ solutions those where no kid has more than $1$ orange.</span> 
+<span style="color:#347fc9">However, **this is not** the solution to the problem. Since **all** kids must have at least one orange, we are interested in the solutions where $x_i\ge 1\;\forall i$.</span> 
 
-<span style="color:#347fc9">Then, let us count these solutions where $x_i\ge 2$. This implies defining $y_i = x_i - 3$ and solving $y_1 + y_2 + y_3 = 6 - 2\cdot 3 = 0$, wich means that all $y_i = 0$ (one solution), i.e. $x_i = 2$.</span> 
 
-<span style="color:#347fc9">The **solution** is $28 - 1 = 27$ ways of giving $6$ oranges to $3$ kids where none of them has one orange.</span>
+<span style="color:#347fc9"> Then, we **give** $1$ orange to each kid (we can do that because $6\ge 3$) and solve the following problem: $y_1 + y_2 + y_3 = 6 - 1\cdot 3 = 3$, where $y_i = x_i - 1$.</span> 
 
-Note that the second part of the above exercise could not be solved if no kid can have more than $2$ oranges. For this case, we need another strategy. 
+<span style="color:#347fc9">The **solution** is $C_{\sigma}(m=3,k=3) = \left(\!\!{3\choose 3}\!\!\right) = {3 + 3 - 1\choose 3} = {3 + 3 - 1\choose 3} = {5\choose 3}= 5!/(3!\cdot 2!) = 10\;$. These solution (wrt the $y_i$s and mapped to $x_i$ after undoing the change of variable) are: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+& (1\;1\;1)\rightarrow (2\;2\;2)\\
+& (2\;0\;1)\rightarrow (3\;1\;2)\\
+& (2\;1\;0)\rightarrow (3\;2\;1)\\
+& (1\;0\;2)\rightarrow (2\;1\;3)\\
+& (1\;2\;0)\rightarrow (2\;3\;1)\\
+& (0\;1\;2)\rightarrow (1\;2\;3)\\
+& (0\;2\;1)\rightarrow (1\;3\;2)\\
+& (3\;0\;0)\rightarrow (4\;1\;1)\\
+& (0\;3\;0)\rightarrow (1\;4\;1)\\
+& (0\;0\;3)\rightarrow (1\;1\;4)\\
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+We can conclude that $28 - 10 = 18$ solutions **do not satisfy** the requirement that each kid has at least one orange. These incorrect solutions are all where at least a kid has $0$ oranges.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Note that the second part of the above exercise would have a **different solution** if no kid can have more than $a$ oranges. This requires another strategy. 
+</span>
 
 
 [//]: https://medium.com/@m.pierini/graphically-understanding-the-inclusion-exclusion-principle-de7e54ebb8bb
@@ -387,7 +413,7 @@ $$
 x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,\text{s.t.}\; 0\le x_i\le a_i\;\forall i.
 $$
 
-Instead of counting first the combinations with infinite capacities and then subtract the *undeseriable combinations*, we focus on these latter ones as follows.  
+Count first the combinations with infinite capacities and then subtract the *undeseriable combinations*.  
 
 The undesirable combinations where $x_i$ is involved satisfy $x_i> a_i$, that is $x_i\ge a_i + 1$. 
 
@@ -397,7 +423,7 @@ $$
 A_i = \text{Sub-multiset of size}\; k\; \text{with}\; x_i\ge a_i + 1\; 
 $$
 
-- We have $A_1, A_2, \ldots, A_m$ multisets, each one corresponding to a *constraint* $x_i\ge a_i + 1$ and <span style="color:#469ff8">we want to count the number of combinations that  DO NOT SATISFY any of the constraints</span>. In other words, this is equivalent to find the size of the set: 
+- We have $A_1, A_2, \ldots, A_m$ multisets, each one corresponding to an *inverse constraint* $x_i\ge a_i + 1$ and <span style="color:#469ff8">we want to count the number of combinations that DO NOT SATISFY ANY of the inverse constraints</span>. In other words, this is equivalent to find the size of the set: 
 
 $$
 \bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m  = \overline{A_1\cup A_2\cup\ldots \cup A_m}\;.
@@ -420,13 +446,6 @@ $|A_i\cap A_j|>0$, this means that discounting that intersection must be compens
 - Then, the progression continues by adding odd terms and subtracting even ones. 
 
 As a result, let $S$ a given set (in our case, the set of all the combinations of the multiset with infinite capacity) and $A_i\subseteq S$. Then, inclusion-exclusion principle is formulated as follows: 
-
-$$
-|S| = |A_1\cup A_2\cup\ldots \cup A_m| - 
-|\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m|\;
-$$
-
-In other words, the number of combinations which DO NOT SATISFY any restriction $x_i\ge a_i + 1$ is 
 
 $$
 |\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m| = |S| - |A_1\cup A_2\cup\ldots \cup A_m|\;.
@@ -503,7 +522,7 @@ However, finding the sizes of the binary intersections $|A_i\cap A_j|$ this may 
 </span>
 <br></br>
 <span style="color:#347fc9">
-However, for $A_1\cap A_3$ we have that the constraints are $x_1\ge 5$ and $x_3\ge 3$ and the sum of the upper bounds $5 + 3 = 8$ is equal to the budget. Therefore, *giving $5 + 3$ balls to $x_1$ and $x_3$ forces $x_2 = 0$ and we have a unique combination $(x_1=5, x_2 = 0, x_3=3)$. Therefore $|A_1\cap A_3|=1$
+However, for $A_1\cap A_3$ we have that the constraints are $x_1\ge 5$ and $x_3\ge 3$ and the sum of the upper bounds $5 + 3 = 8$ is equal to the budget. Therefore, *giving* $5 + 3$ balls to $x_1$ and $x_3$ forces $x_2 = 0$ and we have a unique combination $(x_1=5, x_2 = 0, x_3=3)$. Therefore $|A_1\cap A_3|=1$
 </span>
 <br></br>
 <span style="color:#347fc9">
@@ -974,20 +993,12 @@ $$
 Finally, since the log is a monotonic function of its argument, let us now consider the ratio of the logarithms 
 
 $$
-\frac{\log(n!)}{log(e^n)} = \frac{n\log n}{n} = \log(n)\;,
+\frac{\log(n!)}{\log(e^n)} = \frac{n\log n}{n} = \log(n)\;,
 $$
 which is positive for $n>1$. Therefore, $O(n!) > O(e^n)$. $\square$
 
 [//]: https://cs.stackexchange.com/questions/47818/minimal-number-of-comparisons-sorting-6-elements
 
 - *Information bounds*. It is well known that <span style="color:#469ff8">the minimal number of comparions to sort $n$ numbers using a comparison sort alorithm is $\lceil \log(n!) \rceil$.</span> The intuition is given by the mergesort algorithm: take recursively $2$ sublists of $n_i/2$ elements and when the lists have a single element return the merging of adjacent lists. The number of comparisons to merge two lists are no more than $n_i$, and we have $\log_2 n$ levels. Consequently, we perform at least $n\log_2 n$ comparisons, i.e. we have $\Omega(n\log_2 n)\approx \Omega(\log(n!))$.
-
-
- $$
-\begin{align}
-g &= \int_a^b f(x)dx \label{eq1}\tag{1} \\
-a &= b + c \label{eq2}\tag{2}
-\end{align}
-$$
 
 - *Information theory*, in particular the combinatorial definition of entropy. 
