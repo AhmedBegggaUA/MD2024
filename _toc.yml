@@ -17,3 +17,4 @@ parts:
   chapters:
   - file: practice_intro
   - file: numpy_practice
+  - file: pandas
