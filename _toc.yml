@@ -18,3 +18,4 @@ parts:
   - file: practice_intro
   - file: numpy_practice
   - file: pandas
+  - file: plot

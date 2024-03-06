@@ -14,17 +14,17 @@ En la medida de lo posible, nos ajustaremos a la siguiente temporización.
 | 2 | 08/02/2024 | Combinatoria | Práctica 1: Numpy|
 | 3 | 15/02/2024 | Combinatoria, Probabilidad | Práctica 1: Numpy |
 | 4 | 22/02/2024 | Probabilidad | Práctica 2: Tools |
-| 5 | 29/02/2024 | Probabilidad | Práctica 2: Tools |
-| 6 | 07/03/2024 | Test\#1 y Grafos\#1 | Práctica 2: Tools |
-| 7 | 14/03/2024 | Grafos\#1: Caminos y flujo óptimo | Práctica 3: Generación y exploración |
-| 8 | 21/03/2024 | Grafos\#1: Euler y Hamilton | Práctica 3: Generación y exploración |
-| 9 | 04/04/2024 | Grafos\#2: Coloreado | Práctica 3: Generación y exploración |
-| 10 | 18/04/2024 | Grafos\#2: Isomorfismos y Matching | Práctica 3: Generación y exploración  |
-| 11 | 21/04/2024 | Grafos\#2: Hashing por conteo | Práctica 4: Casos reales |
-| 12 | 02/05/2024 |Test\#2, Teoría Espectral  | Práctica 4: Casos reales |
+| 5 | 29/02/2024 | Probabilidad | Práctica 2: Tools | 
+| 6 | 07/03/2024 | Probabilidad | Práctica 2: Tools |
+| 7 | 14/03/2024 | Test\#1 y Grafos | Práctica 2: Tools |
+| 8 | 21/03/2024 | Grafos: Random Walks | Práctica 3: Generación y exploración |
+| 9 | 04/04/2024 | Grafos: Caminos y flujo óptimo | Práctica 3: Generación y exploración |
+| 10| 18/04/2024| Grafos: Euler y Hamilton | Práctica 3: Generación y exploración |
+| 11| 21/04/2024 | Grafos: Coloreado y Matching | Práctica 3: Generación y exploración  |
+| 12 | 02/05/2024 | Test\#2, Teoría Espectral  | Práctica 4: Casos reales |
 | 13 | 09/05/2024 | Teoría Espectral: Clustering | Práctica 4: Casos reales |
 | 14 | 16/05/2024 | Teoría Espectral: Distancias | Práctica 4: Casos reales |
-| 15 | 23/05/2024 | Test\#3, Repaso | Repaso |
+| 15 | 23/05/2024 | Test\#3, Repaso | Práctica 4: Casos reales |
 
 
 ## Calificación
