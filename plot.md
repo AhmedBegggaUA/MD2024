@@ -31,7 +31,9 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 ```
 
+
 ## Creating a Plot
+
 
 In this section we will see how to create a simple plot using Matplotlib. We will create a simple line plot using the `plot` function. The `plot` function takes two arguments, the x-axis and the y-axis. The x-axis is the independent variable and the y-axis is the dependent variable. The `plot` function will plot the y-axis against the x-axis.
 
@@ -167,12 +169,16 @@ Output of the histogram
 This kind of plot is useful to visualize the distribution of the data.
 
 
-##  Customizing the Plot
+
+##   Customizing the Plot
+
 
 
 In this section we will see how to customize the plot using Matplotlib. We will see how to add a title, labels, and a legend to the plot. Also, we will see how to change the color, the line style, and the marker style of the plot.
 
-### Adding a Title
+
+###   Adding a Title
+
 
 To add a title to the plot, you can use the `title` function. The `title` function takes one argument, the title of the plot.
 
@@ -199,7 +205,9 @@ height: 500px
 Output of the title
 ```
 
-### Adding Labels
+
+###  Adding Labels
+
 
 To add labels to the x-axis and y-axis, you can use the `xlabel` and `ylabel` functions. The `xlabel` and `ylabel` functions take one argument, the label of the x-axis and y-axis, respectively.
 
@@ -227,7 +235,9 @@ height: 500px
 Output of the labels
 ```
 
-### Adding a Legend
+
+###  Adding a Legend
+
 
 To add a legend to the plot, you can use the `legend` function. The `legend` function takes one argument, the label of the plot.
 
@@ -254,7 +264,9 @@ height: 500px
 Output of the legend
 ```
 
-### Changing the Color, Line Style, and Marker Style
+
+###  Changing the Color, Line Style, and Marker Style
+
 
 To change the color, the line style, and the marker style of the plot, you can use the `color`, `linestyle`, and `marker` arguments of the `plot` function, respectively.
 
@@ -282,7 +294,9 @@ Output of the custom
 ```
 
 ## Multiple Plots
+
 ### Raw version
+
 In matplotlib, you can create multiple plots in the same figure using the `subplot` function. The `subplot` function takes three arguments, the number of rows, the number of columns, and the index of the plot.
 
 ```python
