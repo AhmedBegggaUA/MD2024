@@ -140,7 +140,7 @@ In practice, use permutations with repetitions instead of combinations when the 
 <br></br>
 <span style="color:#347fc9">
 $
-p(\text{All_diff.}) = n!\frac{1}{6^n} = \frac{n!}{1!1!1!1!1!1!} = \frac{6!}{6^6} =\frac{6}{6}\cdot\frac{5}{6}\cdot\frac{4}{6}\cdot\frac{3}{6}\cdot\frac{2}{6}\cdot\frac{1}{6} = 0.015\;.
+p(\text{All_diff.}) = n!\frac{1}{6^n} = \frac{n!}{1!1!1!1!1!1!}\cdot\frac{1}{6^n}= \frac{6!}{6^6} =\frac{6}{6}\cdot\frac{5}{6}\cdot\frac{4}{6}\cdot\frac{3}{6}\cdot\frac{2}{6}\cdot\frac{1}{6} = 0.015\;.
 $
 </span>
 <span style="color:#347fc9"> However, there are $n=6$ configurations where all the dices give the same result:
@@ -194,7 +194,7 @@ $$
 
 
 #### Pascal's Triangle
-The [Pascal's Triangle](https://en.wikipedia.org/wiki/Pascal%27s_triangle) has had many names along the history of mathematics (e.g. Tartaglia Triangle). This construction gives the ${n\choose k}$ for all $n$. For instance, {numref}`HT`, each column denotes a value of $n$ and the coefficients in this column are the $n+1$ so called **binomial coefficients** for such $n$: ${n\choose 0},{n\choose 1},\ldots, {n\choose n}$.  
+The [Pascal's Triangle](https://en.wikipedia.org/wiki/Pascal%27s_triangle) has had many names along the history of mathematics (e.g. Tartaglia Triangle). This construction gives the ${n\choose k}$ for all $n$. For instance, in {numref}`HT`, each column denotes a value of $n$ and the coefficients in this column are the $n+1$ so called **binomial coefficients** for such $n$: ${n\choose 0},{n\choose 1},\ldots, {n\choose n}$.  
 
 
  ```{figure} ./images/Topic2/HT.png
@@ -338,7 +338,7 @@ One interesting (and simple) way to compute $Var(X)$ for Binomial variables $X$ 
 In particular, if $Y\sim Bern(p)$ we have: 
 
 $$
-E(Y) = \sum_{y}y\cdot p(Y=y) = 1\cdot P(Y=1) + 0\cdot P(Y=0) = p\;.
+E(Y) = \sum_{y}y\cdot p(Y=y) = 1\cdot p(Y=1) + 0\cdot p(Y=0) = p\;.
 $$
 
 Since $X$ is the sum of $n$ $Y_i$s: $E(X) = E(Y_1)+ E(Y_2)+ \ldots + E(Y_n)$. As <span style="color:#469ff8">the expectation of a sum is the sum of expectations (indepedently of whether the variables are independent or not)</span>, we have: 
@@ -365,7 +365,135 @@ $$
 Var(X) = Var(Y_1 + Y_2 + \ldots + Y_n) = \sum_{i=1}^nVar(Y_i) = npq; 
 $$
 
-It is obvious that $Var(X)$ increases linearly with $n$. This simply means that the shape of the distribution (see {numref}`PD`) becomes wider and wider as $n$ increases. 
+It is obvious that $Var(X)$ increases linearly with $n$. This simply means that the shape of the distribution (see {numref}`PD`) becomes wider and wider as $n$ increases? Not really, it is the variance what increases. Later, we will see that for $n\rightarrow\infty$ we have a Gaussian distribution.
+
+<span style="color:#347fc9">**Exercise**. It is important to realize that binomial variables are actually sums of **Bernouilli trials**. But, what can be really considered as a Bernouilli trial? In principle a Bernouilli trial concerns any experiment whose outcome can be grouped into two **mutually-exclusive groups**: "red vs black", "red vs (black or green), "even vs odd", "$x\le k$ vs $x>k$", etc. 
+</span>
+<br></br>
+<span style="color:#347fc9">
+Consider for instance the following Bernouilli trial: **Throw $2$ dices simultaneously** and register the outcomes as $(x,y)$. Then infer $p + q = 1$ in the following cases: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+\;\;\text{a)}\;\; p &= \{\text{Prob. of}\;\; x+y \;\;\text{is even}\}\\
+\;\;\text{b)}\;\; p &= \{\text{Prob. of}\;\; x\times y \;\;\text{is even}\}\\
+\;\;\text{c)}\;\; p &= \{\text{Prob. of}\;\; x+y>7 \;\;\text{is even}\}\\
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+and give also the **expectations and variances** of the Bernouilli variables associated with these experiments. 
+</span>
+<br></br>
+<span style="color:#347fc9">
+Firstly, the sample space $\Omega$ is given by the cartesian product $\Omega = \{1,\ldots,6\}\times \{1,\ldots,6\}$. Thus, we have
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\Omega = \begin{matrix}
+(1,1) & (1,2) & (1,3) & (1,4) & (1,5) & (1,6) \\
+(2,1) & (2,2) & (2,3) & (2,4) & (2,5) & (2,6) \\
+(3,1) & (3,2) & (3,3) & (3,4) & (3,5) & (3,6) \\
+(4,1) & (4,2) & (4,3) & (4,4) & (4,5) & (4,6) \\
+(5,1) & (5,2) & (5,3) & (5,4) & (5,5) & (5,6) \\
+(6,1) & (6,2) & (6,3) & (6,4) & (6,5) & (6,6) \\
+\end{matrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\Omega_{+} = \begin{matrix}
+2 & 3 & 4 & 5 & 6 & 7\\
+3 & 4 & 5 & 6 & 7 & 8\\
+4 & 5 & 6 & 7 & 8 & 9\\ 
+5 & 6 & 7 & 8 & 9 & 10\\
+6 & 7 & 8 & 9 & 10 & 11\\
+7 & 8 & 9 & 10 & 11 & 12\\
+\end{matrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\Omega_{\times} = \begin{matrix}
+1 & 2 & 3 & 4 & 5 & 6\\
+2 & 4 & 6 & 8 & 10 & 12\\
+3 & 6 & 9 & 12 & 15 & 18\\
+4 & 8 & 12 & 16 & 20 & 24\\
+5 & 10 & 15 & 20 & 25 & 30\\
+6 & 12 & 18 & 24 & 30 & 36\\
+\end{matrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+where $\Omega_{+}$ and $\Omega_{\times}$ are the sample spaces for the random variables $X=\{x+y: (x,y)\}$ and $Y=\{x\times y: (x,y)\}$.
+</span>
+<br></br>
+<span style="color:#347fc9">
+**a)**  For each row in $\Omega_{+}$ we have $3$ even and $3$ odds. As a result, $p=q=1/2$. Then
+</span>
+<span style="color:#347fc9">
+$
+\begin{align}
+&\;E(X_{even}) = 1\cdot p + 0\cdot q = p = \frac{1}{2}\\
+& Var(X_{even}) = E(X_{even}^2) - E(X_{even})^2 = p - p^2 = p(1-p) = pq = \frac{1}{2}\cdot\frac{1}{2} = \frac{1}{4}
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+**b)**  The odd rows of $\Omega_{\times}$ have $3$ even and $3$ odd. However, the even rows have $6$ (all) even and $0$ (none) odd. As a result, we have $3\times 3 + 3\times 0 = 9$ odd outcomes and $3\times 3 + 3\times 6 = 27$ of $36$ outcomes. Then, we have $p = 27/36 = 3/4$ and $q = 9/36 = 1/4$. Then
+</span>
+<span style="color:#347fc9">
+$
+\begin{align}
+&\;E(Y_{even}) = 1\cdot p + 0\cdot q = p = \frac{3}{4}\\
+& Var(Y_{even}) = E(Y_{even}^2) - E(Y_{even})^2 = p - p^2 = p(1-p) = pq = \frac{3}{4}\cdot\frac{1}{4} = \frac{3}{16} = 0.1875
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+**c)** For this part we need to compute the domain of $X=\{x+y: (x,y)\}$, which is $X=\{2,3,\ldots,12\}$. We also need to know the **frequencies** of each value. The **frequencies** of the sums are given by the symmetries of this operator:  
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+X(2) &=X(1,1)=1\\
+X(3) &=X(1,2)=X(2,1)=2\\
+X(4) &=X(1,3)=X(3,1)=X(2,2)=3\\
+X(5) &=X(1,4)=X(4,1)=X(2,3)=X(3,2)=4\\
+X(6) &=X(1,5)=X(5,1)=X(2,4)=X(4,2)=X(3,3)=5\\
+X(7) &=X(1,6)=X(6,1)=X(2,5)=X(5,2)=X(3,4)=X(4,3)=6\\
+X(8) &=X(2,6)=X(6,2)=X(3,5)=X(5,3)=X(4,4)=5\\
+X(9) &=X(5,4)=X(4,5)=X(6,3)=X(3,6)=4\\
+X(10) &= X(6,4)=X(4,6)=X(5,5)=3\\ 
+X(11) &=X(6,5)=X(5,6)=2\\
+X(12) &=X(6,6)=1\\
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, $Z_{x+y>7}$ has $5+4+3+2+1 = n(n+1)/2 = 5\cdot (5+1)/2 = 15$ favorable outcomes out of $36$ possibilities. As a result, we have $p = 15/36=5/12$ and $q = 21/36 = 7/12$. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+&\;E(Z_{x+y>7}) = 1\cdot p + 0\cdot q = p = \frac{5}{12}=0.42\\
+& Var(Z_{x+y>7}) = E(Z_{x+y>7}^2) - E(Z_{x+y>7})^2 = p - p^2 = p(1-p) = pq = \frac{15}{36}\cdot\frac{21}{36} = 0.24
+\end{align}
+$
+</span>
+
 
 #### Fundamental inequalities
 Extremal events have small probabilities. In $X\sim B(n,p)$ the probability decays from its maximum value (for $k=\lfloor np\rfloor$) until close-to-zero at the extremal events. Such a decay is somewhat described by $Var(X)$. However, we have to go deeper in order to characterize the **probability of rare events**. 
@@ -400,7 +528,7 @@ Interestingly, the exponential decay is attenuated by $n$: the larger $n$ the sl
 The usual way to answer this question is to calculate $p(X\le k)$: 
 
 $$
-p(X\le k) = \sum_{x\le k}p(X=k)\;.
+p(X\le k) = \sum_{x\le k}p(X=x)\;.
 $$
 
 We can use the **Hoeffding's bound** to give an idea of this probability, since 
@@ -479,7 +607,7 @@ One-dimensional (fair) Random Walk over Pascal's Triangle.
 **Regardless of direction**. We have seen that $E(Z) = 0$ (going forward and backwards is equally likely). However, what happens if we reformulate the original question as follows: "How far the traveler gets on average, **regardless of direction**?". Answering this question implies computing 
 
 $$
-E(Z^2)=E[(\sum_{i=1}^nY_i]^2)\;.
+E(Z^2)=E[(\sum_{i=1}^nY_i^2)]\;.
 $$ 
 
 Using the identity (for any $Z$ given by the sum of **independent identically distributed** or i.i.d. variables):
@@ -1101,7 +1229,7 @@ Note that:
 
 [//]: https://mpaldridge.github.io/math2750/S01-stochastic-processes.html
 
-## Random walks on graphs
+<!-- ## Random walks on graphs
 
 ### Markov chains 
 
@@ -2480,5 +2608,10 @@ height: 600px
 Solution to Small Escape Room with positive and negative rewards. 
 ```
 
+# The Cutoff Phenomenon 
+## Markov chains and equilibrium
+When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their **long-time behaviors**</span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance {numref}`SolDirichlet`, where the numerical solution to this system ensures that the state of an interior node converge to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory. 
 
-
+## Shuffling cards
+For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>.  
+ -->
