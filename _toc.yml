@@ -13,6 +13,7 @@ parts:
   chapters:
   - file: Topic1 
   - file: Topic2
+  - file: Topic2_3
 - caption: Practices
   chapters:
   - file: practice_intro
