@@ -223,6 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas.html">6. Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot.html">7. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">8. NetworkX</a></li>
 </ul>
 
     </div>
@@ -428,7 +429,7 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x1062826a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x103bf21c0&gt;
 </pre></div>
 </div>
 </div>
@@ -590,6 +591,307 @@ with your book. For more information about this, see <a class="reference externa
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/f792d990f2a4b5cf66ba411814a4e2f416113dc5d785ba890d68f7d1fbaeaad1.png" src="_images/f792d990f2a4b5cf66ba411814a4e2f416113dc5d785ba890d68f7d1fbaeaad1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.1.3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create a NumPy array</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span> <span class="p">,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;Houston&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;Emily&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;Phoenix&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame from the NumPy array</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;Connection&#39;</span><span class="p">])</span>
+
+<span class="c1"># Display the DataFrame</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+      <th>Connection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Alice</td>
+      <td>25</td>
+      <td>New York</td>
+      <td>[1, 2, 3]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Bob</td>
+      <td>30</td>
+      <td>Los Angeles</td>
+      <td>[4, 5]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Charlie</td>
+      <td>35</td>
+      <td>Chicago</td>
+      <td>[1, 5]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>David</td>
+      <td>40</td>
+      <td>Houston</td>
+      <td>[2, 3]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Emily</td>
+      <td>45</td>
+      <td>Phoenix</td>
+      <td>[4, 1]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from the dataframe, we are going to create a graph based on the connection column</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Create a NumPy array</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span> <span class="p">,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;Houston&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;Emily&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;Phoenix&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame from the NumPy array</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;Connection&#39;</span><span class="p">])</span>
+
+<span class="c1"># Create a graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">],</span> <span class="n">Name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">Age</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">City</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+
+<span class="c1"># Add edges</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Connection&#39;</span><span class="p">]:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">],</span> <span class="n">connection</span><span class="p">)</span>
+
+<span class="c1"># Draw the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;./images/practices/graph.png&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7cd1497c77dc3bb6a7e360cc9688e6ba5bade794c6e6d6185f88519b8a01d5f6.png" src="_images/7cd1497c77dc3bb6a7e360cc9688e6ba5bade794c6e6d6185f88519b8a01d5f6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we are going to performe a random walk on the graph</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Creating the graph&quot;</span><span class="p">)</span>
+<span class="c1"># Create a NumPy array</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span> <span class="p">,[</span><span class="mi">3</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;Houston&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;Emily&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;Phoenix&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">]],</span>
+    <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;Frank&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Philadelphia&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">]]</span>
+<span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame from the NumPy array</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;Connection&#39;</span><span class="p">])</span>
+
+<span class="c1"># Create a graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">],</span> <span class="n">Name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">Age</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">City</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+
+<span class="c1"># Add edges</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Connection&#39;</span><span class="p">]:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">],</span> <span class="n">connection</span><span class="p">)</span>
+
+<span class="c1"># Draw the graph, creating multiple subplots 1x2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Performing the random walk&quot;</span><span class="p">)</span>
+<span class="c1"># Perform a random walk</span>
+<span class="n">current_node</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting at node&quot;</span><span class="p">,</span> <span class="n">current_node</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">current_node</span><span class="p">))</span>
+    <span class="n">current_node</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moving to node&quot;</span><span class="p">,</span> <span class="n">current_node</span><span class="p">)</span>
+
+<span class="c1"># Now we are going to performe a random walk on the graph from a given node to another</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="k">def</span> <span class="nf">random_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start_node</span><span class="p">,</span><span class="n">destination_node</span><span class="p">):</span>
+    <span class="n">current_node</span> <span class="o">=</span> <span class="n">start_node</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_node</span><span class="p">]</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">current_node</span> <span class="o">!=</span> <span class="n">destination_node</span><span class="p">:</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">current_node</span><span class="p">))</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The random walk took&quot;</span><span class="p">,</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+<span class="c1"># Perform a random walk</span>
+<span class="n">start_node</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">destination_node</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The random walk from node&quot;</span><span class="p">,</span> <span class="n">start_node</span><span class="p">,</span> <span class="s2">&quot;to node&quot;</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">,</span> <span class="s2">&quot;is:&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="c1"># finalmente, pintamos las aristas que se han recorrido</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edgelist</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+
+
+
+<span class="c1"># Now we perform the random walk for all pairs of nodes</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="k">def</span> <span class="nf">random_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start_node</span><span class="p">,</span><span class="n">destination_node</span><span class="p">):</span>
+    <span class="n">current_node</span> <span class="o">=</span> <span class="n">start_node</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_node</span><span class="p">]</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">current_node</span> <span class="o">!=</span> <span class="n">destination_node</span><span class="p">:</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">current_node</span><span class="p">))</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">path</span><span class="p">,</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+<span class="c1"># Perform a random walk for all pairs of nodes and we store the paths used</span>
+<span class="n">paths_global</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">start_node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">destination_node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">start_node</span> <span class="o">!=</span> <span class="n">destination_node</span><span class="p">:</span>
+            <span class="n">path</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)</span>
+            <span class="n">paths_global</span><span class="p">[(</span><span class="n">start_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)]</span> <span class="o">=</span> <span class="n">path</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">paths_global</span><span class="p">)</span>
+<span class="n">edge_widths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths_global</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="c1"># Now we count the number of times each edge is used</span>
+<span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="n">edge_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">edge</span><span class="p">))</span>
+<span class="c1"># We normalize the edge widths between 0 and 1</span>
+<span class="c1">#edge_widths = np.array(edge_widths) / max(edge_widths)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">edge_widths</span><span class="p">)</span>
+<span class="c1"># Creamos un diccionario con los pesos</span>
+<span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()):</span>
+    <span class="n">edge_labels</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">edge_widths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">)</span>
+<span class="c1"># Now we are going to plot the graph with the paths used</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span><span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/practices/random_walk.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating the graph
+Performing the random walk
+Starting at node 1
+Moving to node 3
+Moving to node 4
+Moving to node 3
+Moving to node 2
+Moving to node 3
+Moving to node 1
+Moving to node 3
+Moving to node 4
+Moving to node 5
+Moving to node 4
+The random walk took 1.811981201171875e-05 seconds
+The random walk from node 1 to node 4 is: [1, 3, 4]
+{(1, 2): [1, 3, 1, 3, 2], (1, 3): [1, 3], (1, 4): [1, 3, 2, 3, 2, 3, 1, 3, 4], (1, 5): [1, 3, 1, 3, 4, 5], (1, 6): [1, 3, 1, 3, 1, 3, 2, 3, 4, 5, 4, 5, 4, 6], (2, 1): [2, 3, 1], (2, 3): [2, 3], (2, 4): [2, 3, 2, 3, 1, 3, 2, 3, 1, 3, 1, 3, 2, 3, 2, 3, 1, 3, 2, 3, 4], (2, 5): [2, 3, 4, 6, 4, 3, 1, 3, 4, 6, 4, 5], (2, 6): [2, 3, 2, 3, 2, 3, 4, 6], (3, 1): [3, 2, 3, 1], (3, 2): [3, 2], (3, 4): [3, 4], (3, 5): [3, 1, 3, 4, 6, 4, 6, 4, 5], (3, 6): [3, 2, 3, 4, 6], (4, 1): [4, 6, 4, 3, 2, 3, 2, 3, 1], (4, 2): [4, 5, 4, 6, 4, 5, 4, 6, 4, 5, 4, 3, 1, 3, 1, 3, 1, 3, 1, 3, 2], (4, 3): [4, 3], (4, 5): [4, 5], (4, 6): [4, 6], (5, 1): [5, 4, 6, 4, 3, 2, 3, 4, 3, 1], (5, 2): [5, 4, 5, 4, 6, 4, 6, 4, 3, 1, 3, 2], (5, 3): [5, 4, 5, 4, 6, 4, 6, 4, 3], (5, 4): [5, 4], (5, 6): [5, 4, 3, 4, 5, 4, 6], (6, 1): [6, 4, 3, 2, 3, 4, 3, 4, 3, 1], (6, 2): [6, 4, 5, 4, 5, 4, 3, 4, 6, 4, 5, 4, 5, 4, 5, 4, 5, 4, 6, 4, 5, 4, 5, 4, 3, 2], (6, 3): [6, 4, 5, 4, 3], (6, 4): [6, 4], (6, 5): [6, 4, 6, 4, 6, 4, 6, 4, 5]}
+[21, 21, 15, 22, 22]
+{(1, 3): &#39;21&#39;, (2, 3): &#39;21&#39;, (3, 4): &#39;15&#39;, (4, 5): &#39;22&#39;, (4, 6): &#39;22&#39;}
+</pre></div>
+</div>
+<img alt="_images/7cde45f50ce72e25d4c37b07308309ab5ca8dd248ffac91e15b8529dbd083269.png" src="_images/7cde45f50ce72e25d4c37b07308309ab5ca8dd248ffac91e15b8529dbd083269.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -852,6 +1154,398 @@ with your book. For more information about this, see <a class="reference externa
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/a4ab6daadf491978c55a41e4a6e9d1143ada0761939660db1e72269a8c9447c3.png" src="_images/a4ab6daadf491978c55a41e4a6e9d1143ada0761939660db1e72269a8c9447c3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph with 0 nodes and 0 edges
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># This adds a node with the label 1</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 2, 3, 4, and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span> <span class="c1"># This gives as a output: [1, 2, 3, 4, 5]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">}</span> <span class="c1"># We create a dictionary with the colors of the nodes</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">)</span> <span class="c1"># We set the colors of the nodes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;color&#39;: &#39;red&#39;}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;color&#39;: &#39;green&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># This adds an edge between the nodes 1 and 2</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span> <span class="c1"># This gives as a output: [(1, 2), (2, 3), (3, 4), (4, 5)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 2), (2, 3), (3, 4), (4, 5)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="mi">4</span><span class="p">}</span> <span class="c1"># We create a dictionary with the weights of the edges</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span> <span class="c1"># We set the weights of the edges</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">])</span> <span class="c1"># This gives as a output: 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;weight&#39;: 1}
+1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="s1">&#39;yellow&#39;</span><span class="p">}</span> <span class="c1"># We create a dictionary with the colors of the edges</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">)</span> <span class="c1"># We set the colors of the edges</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;color&#39;</span><span class="p">])</span> <span class="c1"># This gives as a output: red</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="mi">4</span><span class="p">}</span> <span class="c1"># We create a dictionary with the sizes of the edges</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">)</span> <span class="c1"># We set the sizes of the edges</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;size&#39;</span><span class="p">])</span> <span class="c1"># This gives as a output: 1</span>
+<span class="n">name</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span> <span class="c1"># We create a dictionary with the names of the edges</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="c1"># We set the names of the edges</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="c1"># This gives as a output: A</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]}</span> <span class="c1"># We create a dictionary with the features of the edges</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="s1">&#39;features&#39;</span><span class="p">)</span> <span class="c1"># We set the features of the edges</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;, &#39;features&#39;: [1, 2, 3]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">][</span><span class="s1">&#39;features&#39;</span><span class="p">])</span> <span class="c1"># This gives as a output: [1, 2, 3]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;}
+red
+{&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1}
+1
+{&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;}
+A
+{&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;, &#39;features&#39;: [1, 2, 3]}
+[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="c1"># This gives as a output: [0, 1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span> <span class="c1"># This gives as a output: [(0, 2), (1, 2), (2, 3), (3, 4), (3, 5)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># This gives as a output: {}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5]
+[(0, 2), (1, 2), (2, 3), (3, 4), (3, 5)]
+{}
+{}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span> <span class="c1"># This gives as a output: [0, 1, 3]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span> <span class="c1"># This gives as a output: [[0 0 1 0 0 0]</span>
+                                            <span class="c1">#                         [0 0 1 0 0 0]</span>
+                                            <span class="c1">#                         [1 1 0 1 0 0]</span>
+                                            <span class="c1">#                         [0 0 1 0 1 1]</span>
+                                            <span class="c1">#                         [0 0 0 1 0 0]</span>
+                                            <span class="c1">#                         [0 0 0 1 0 0]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 1 0 0 0]
+ [0 0 1 0 0 0]
+ [1 1 0 1 0 0]
+ [0 0 1 0 1 1]
+ [0 0 0 1 0 0]
+ [0 0 0 1 0 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span> <span class="c1"># This gives as a output: [[ 1 -1  0  0  0  0]</span>
+                                         <span class="c1">#                         [-1  1  0  0  0  0]</span>
+                                         <span class="c1">#                         [ 0  0  3 -1 -1 -1]</span>
+                                         <span class="c1">#                         [ 0  0 -1  2 -1 -1]</span>
+                                         <span class="c1">#                         [ 0  0 -1 -1  1  0]</span>
+                                         <span class="c1">#                         [ 0  0 -1 -1  0  1]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1  0 -1  0  0  0]
+ [ 0  1 -1  0  0  0]
+ [-1 -1  3 -1  0  0]
+ [ 0  0 -1  3 -1 -1]
+ [ 0  0  0 -1  1  0]
+ [ 0  0  0 -1  0  1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> <span class="c1"># This creates a numpy matrix</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># This creates a graph from the numpy matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="c1"># This gives as a output: [0, 1, 2, 3, 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span> <span class="c1"># This gives as a output: [(0, 1), (1, 2), (2, 3), (3, 4)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span> <span class="c1"># This gives as a output: [[0 1 0 0 0]</span>
+                                         <span class="c1">#                         [1 0 1 0 0]</span>
+                                         <span class="c1">#                         [0 1 0 1 0]</span>
+                                         <span class="c1">#                         [0 0 1 0 1]</span>
+                                         <span class="c1">#                         [0 0 0 1 0]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
+[(0, 1), (1, 2), (2, 3), (3, 4)]
+[[0 1 0 0 0]
+ [1 0 1 0 0]
+ [0 1 0 1 0]
+ [0 0 1 0 1]
+ [0 0 0 1 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]})</span> <span class="c1"># This creates a pandas dataframe</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">)</span> <span class="c1"># This creates a graph from the pandas dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="c1"># This gives as a output: [0, 1, 2, 3, 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span> <span class="c1"># This gives as a output: [(0, 1), (1, 2), (2, 3), (3, 4), (0, 4)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
+[(0, 1), (0, 4), (1, 2), (2, 3), (3, 4)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="c1"># This adds an edge between the nodes 1 and 2 and the attribute color with the value red</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> <span class="c1"># This adds edges between the nodes 2 and 3, 3 and 4, and 4 and 5 and the attribute color with the value blue</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;}</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># This adds an edge between the nodes 1 and 2 and the attribute size with the value 1</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># This adds edges between the nodes 2 and 3, 3 and 4, and 4 and 5 and the attribute size with the value 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1}</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="c1"># This adds an edge between the nodes 1 and 2 and the attribute name with the value A</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="c1"># This adds edges between the nodes 2 and 3, 3 and 4, and 4 and 5 and the attribute name with the value B</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;}</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># This adds an edge between the nodes 1 and 2 and the attribute features with the value [1, 2, 3]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span> <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span> <span class="c1"># This adds edges between the nodes 2 and 3, 3 and 4, and 4 and 5 and the attribute features with the value [4, 5, 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># This gives as a output: {&#39;weight&#39;: 1, &#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;, &#39;features&#39;: [1, 2, 3]}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;color&#39;: &#39;red&#39;}
+{&#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1}
+{&#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;}
+{&#39;color&#39;: &#39;red&#39;, &#39;size&#39;: 1, &#39;name&#39;: &#39;A&#39;, &#39;features&#39;: [1, 2, 3]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span> <span class="c1"># Create a figure with a size of 10x5, width x height</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/219b058bfb8ff95e9ec9c1522bbb448fbd7cd26b1111fd9e56a5af163d77caa1.png" src="_images/219b058bfb8ff95e9ec9c1522bbb448fbd7cd26b1111fd9e56a5af163d77caa1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1"># This sets the size of the figure</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This creates an empty graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># This calculates the positions of the nodes with a seed</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span> <span class="c1"># This draws the graph with the calculated positions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/practices/graph.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># This shows the graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a53e6cd5b655055bbc86fdd503a8ac38bb3897a1b0dcbcfb6eba37b3a8e32bcd.png" src="_images/a53e6cd5b655055bbc86fdd503a8ac38bb3897a1b0dcbcfb6eba37b3a8e32bcd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1"># This sets the size of the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Graph&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">)</span> <span class="c1"># This sets the title of the graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This creates an empty graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># This calculates the positions of the nodes with a seed</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">node_shape</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+        <span class="n">font_family</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># This draws the graph with the calculated positions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/practices/graph2.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># This shows the graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/090e5d2722b6d450fb8c9023f1f6739e9de1515c6bbe8f751703536281b25d79.png" src="_images/090e5d2722b6d450fb8c9023f1f6739e9de1515c6bbe8f751703536281b25d79.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1"># This sets the size of the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Graph&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span> <span class="c1"># This sets the title of the graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This creates an empty graph</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="c1"># This adds nodes with the labels 1, 2, 3, 4, and 5</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 1 and 2, 2 and 3, 3 and 4, and 4 and 5</span>
+<span class="n">labels_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">}</span> <span class="c1"># We create a dictionary with the labels of the nodes</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">labels_dict</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="c1"># We set the labels of the nodes</span>
+<span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="s1">&#39;friend&#39;</span><span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge_labels</span><span class="p">,</span> <span class="s1">&#39;relation&#39;</span><span class="p">)</span> <span class="c1"># We set the labels of the edges</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># This calculates the positions of the nodes with a seed</span>
+<span class="c1"># This is the non-fancy way to create the colors</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="c1"># This is the fancy way to create the colors, by using mapcolors that offers matplotlib</span>
+<span class="c1"># We map each label of the nodes to a color</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># We create the sizes of the nodes</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+     <span class="c1"># Based on the degree of the node, we assign a size</span>
+     <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">*</span><span class="mi">300</span><span class="p">)</span>
+<span class="c1"># We create the styles of the edges</span>
+<span class="n">edge_styles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">edge</span><span class="p">][</span><span class="s1">&#39;relation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;friend&#39;</span><span class="p">:</span>
+        <span class="n">edge_styles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">edge_styles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tab10</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span>
+                    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span> <span class="c1"># This draws the nodes with the calculated positions</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">edge_styles</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                        <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+                        <span class="n">font_family</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span><span class="p">)</span> <span class="c1"># This draws the labels with the calculated positions</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                            <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+                            <span class="n">font_family</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span><span class="p">)</span> <span class="c1"># This draws the edge labels with the calculated positions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span> <span class="c1"># This turns off the axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/practices/graph3.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># This shows the graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/70fc91b2aad8135fc1a168875be85feb7ef6ce60eb4bdcce6e3207ac06654758.png" src="_images/70fc91b2aad8135fc1a168875be85feb7ef6ce60eb4bdcce6e3207ac06654758.png" />
 </div>
 </div>
 </section>
