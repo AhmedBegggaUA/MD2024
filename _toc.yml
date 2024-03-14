@@ -19,3 +19,4 @@ parts:
   - file: numpy_practice
   - file: pandas
   - file: plot
+  - file: networkx
