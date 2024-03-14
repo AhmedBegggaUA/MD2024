@@ -450,3 +450,27 @@ for i in range(len(path) - 1):
 print(edges) # This gives as a output: [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9)]
 ```
 
+```{hint}
+This is temporally
+```python
+# Now we are going to performe a random walk on the graph
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import networkx as nx
+
+print("Creating the graph")
+# Create a NumPy array
+data = np.array([
+    [1,'Alice', 25, 'New York', [3]],
+    [2,'Bob', 30, 'Los Angeles' ,[3]],
+    [3,'Charlie', 35, 'Chicago', [1,2,4]],
+    [4,'David', 40, 'Houston', [3,5,6]],
+    [5,'Emily', 45, 'Phoenix', [4]],
+    [6,'Frank', 50, 'Philadelphia', [4]]
+],dtype=object)
+
+# Create a DataFrame from the NumPy array
+df = pd.DataFrame(data, columns=['ID','Name', 'Age', 'City','Connection'])
+```
+
