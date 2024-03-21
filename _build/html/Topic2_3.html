@@ -388,6 +388,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">4.4. The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">4.4.1. Markov chains and equilibrium</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">4.4.2. Shuffling cards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-total-variation">4.4.3. Probability and Total Variation</a></li>
 </ul>
 </li>
 </ul>
@@ -1186,7 +1187,7 @@ Then, we have:</p>
 \end{bmatrix}
 \end{split}\]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbf{R}_{n_I}\)</span> is a <strong>square matrix</strong> with the probabilities only between interior nodes (<span class="math notranslate nohighlight">\(x_1,\ldots,x_5\)</span>) if any.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{Q}_{n_I}\)</span> is a <strong>square matrix</strong> with the probabilities only between interior nodes (<span class="math notranslate nohighlight">\(x_1,\ldots,x_5\)</span>) if any.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1199,14 +1200,14 @@ Then, we have:</p>
 0           &amp; \frac{1}{4} &amp; 0           &amp; \frac{1}{4} &amp; 0 \\    
 \end{bmatrix}
 \end{split}\]</div>
-<p>An interesting <strong>property</strong> of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is that <em>all rows must sum <span class="math notranslate nohighlight">\(1\)</span></em> (<em>simple stochastic</em>). Then, note that the sum of probababilities of the same row in <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> is actually <span class="math notranslate nohighlight">\(1\)</span> for each row.</p>
+<p>An interesting <strong>property</strong> of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is that <em>all rows must sum <span class="math notranslate nohighlight">\(1\)</span></em> (<em>simple stochastic</em>). Then, note that the sum of probabilities of the same row in <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> is actually <span class="math notranslate nohighlight">\(1\)</span> for each row.</p>
 <span style="color:#469ff8">
 What is relation between the two above matrices? 
 </span>
 <br></br>
 <p>The simple stochasticity of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> gives a precise idea of how to link <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> through a linear system.</p>
 <ul class="simple">
-<li><p>From one side, we have that <span class="math notranslate nohighlight">\(\mathbf{I}_{n_I}-\mathbf{Q}\)</span> (identity matrix of size <span class="math notranslate nohighlight">\(n_i\)</span> minus <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>) encodes, by  adding each row, the probabilities of “escaping towards any absortion node”.</p></li>
+<li><p>From one side, we have that <span class="math notranslate nohighlight">\(\mathbf{I}_{n_I}-\mathbf{Q}\)</span> (identity matrix of size <span class="math notranslate nohighlight">\(n_I\)</span> minus <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>) encodes, by  adding each row, the probabilities of “escaping towards any absortion node”. For instance, the probability of “escaping” from <span class="math notranslate nohighlight">\(x_2\)</span> towards any of the absortion nodes is <span class="math notranslate nohighlight">\(-\frac{1}{4} + 1 - \frac{1}{4} = \frac{2}{4} = \frac{1}{2}\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1220,7 +1221,7 @@ What is relation between the two above matrices?
 \end{bmatrix}
 \end{split}\]</div>
 <ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(f = [f_B\; f_D]^T\)</span> be the conditional probabilities <span class="math notranslate nohighlight">\(f(i) = p(\text{Exit}|i)\)</span> where some of them are known (<span class="math notranslate nohighlight">\(f_B=[1\;1\;1\;1\;1\;1\;0\;0\;0]\)</span>) and some others must be estimated (<span class="math notranslate nohighlight">\(f_B\)</span>). With a little abuse of notation, let us denote <span class="math notranslate nohighlight">\(f(x_i)\)</span> as <span class="math notranslate nohighlight">\(x_i\)</span>. Then, we have <span class="math notranslate nohighlight">\(f_B = [x_1\;x_2\;x_3\;x_4\;x_5]\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(f = [f_B\; f_D]^T\)</span> be the conditional probabilities <span class="math notranslate nohighlight">\(f(i) = p(\text{Exit}|i)\)</span> where some of them are known (<span class="math notranslate nohighlight">\(f_B=[1\;1\;1\;1\;1\;1\;0\;0\;0]\)</span>) and some others must be estimated (<span class="math notranslate nohighlight">\(f_D\)</span>). With a little abuse of notation, let us denote <span class="math notranslate nohighlight">\(f(x_i)\)</span> as <span class="math notranslate nohighlight">\(x_i\)</span>. Then, we have <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3\;x_4\;x_5]\)</span>.</p></li>
 <li><p>Then, from the other side, the matrix product <span class="math notranslate nohighlight">\(\mathbf{R}f_B\)</span> encodes the probabilities of going from each interior node to any border one:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -1263,7 +1264,7 @@ What is relation between the two above matrices?
 <p>As a result, we have the linear system:</p>
 <div class="math notranslate nohighlight">
 \[
-\underbrace{(\mathbf{I}_{n_I}-\mathbf{R})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\underbrace{(\mathbf{I}_{n_I}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
 \]</div>
 <p>The corresponding system in the example is:</p>
 <div class="math notranslate nohighlight">
@@ -1479,12 +1480,12 @@ Let us formulate the matrices <span class="math notranslate nohighlight">\(\math
 </span>
 <br></br>
 <span style="color:#347fc9">
-Then, from <span class="math notranslate nohighlight">\(f_B = [-1\;-1\;-1\;-1\;-1\;+1\;+1]^T\)</span> and <span class="math notranslate nohighlight">\(f_B = [x_1\;x_2\;x_3]^T\)</span> we set the system
+Then, from <span class="math notranslate nohighlight">\(f_B = [-1\;-1\;-1\;-1\;-1\;+1\;+1]^T\)</span> and <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3]^T\)</span> we set the system
 </span>
 <br></br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
-\underbrace{(\mathbf{I}_{3}-\mathbf{œ})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\underbrace{(\mathbf{I}_{3}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
 \)</span>
 </span>
 <span style="color:#347fc9">
@@ -1628,7 +1629,7 @@ which is a good approximation of the <strong>exact solution</strong>:
 </span>
 <br></br>
 <span style="color:#347fc9">
-As we can see in <a class="reference internal" href="#soldirichlet"><span class="std std-numref">Fig. 4.8</span></a>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
+As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet</span></code>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
 </span></p>
 <figure class="align-center" id="soldirichlet">
 <a class="reference internal image-reference" href="_images/SolDirichlet.png"><img alt="_images/SolDirichlet.png" src="_images/SolDirichlet.png" style="width: 800px; height: 600px;" /></a>
@@ -1636,16 +1637,287 @@ As we can see in <a class="reference internal" href="#soldirichlet"><span class=
 <p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldirichlet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Let us solve the drunkard’s walk from this perspective. In <a class="reference internal" href="#drunkdirichlet"><span class="std std-numref">Fig. 4.9</span></a> we have <strong>two absorbing states</strong> <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>) and <span class="math notranslate nohighlight">\(1\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and four interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> and <span class="math notranslate nohighlight">\(x_4\)</span>. We know that <span class="math notranslate nohighlight">\(p(\text{Home}|x_i)=\frac{x_i}{m}\)</span> with <span class="math notranslate nohighlight">\(m=5\)</span> in this case. How to prove that using the 2D aproach?
+</span></p>
+<figure class="align-center" id="drunkdirichlet">
+<a class="reference internal image-reference" href="images/Topic2/DrunkDirichlet.png"><img alt="images/Topic2/DrunkDirichlet.png" src="images/Topic2/DrunkDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Formulation of the drunkard’s walk with two absorbing states: Bar (0) and Home (5).</span><a class="headerlink" href="#drunkdirichlet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+We apply the logic of the Markovian process as follows.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us formulate the matrices <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> (probabilities between interior nodes) and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> (probabilities between interior and absorbing nodes). From <span class="math notranslate nohighlight">\(n_B = 2\)</span> and <span class="math notranslate nohighlight">\(n_I = 4\)</span>, we have<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{Q}_{4} = 
+\begin{bmatrix}
+0 &amp; \frac{1}{2} &amp;  0  &amp;  0 \\
+\frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0  \\
+0 &amp; \frac{1}{2} &amp;  0 &amp;  \frac{1}{2} \\
+0 &amp; 0 &amp;  \frac{1}{2} &amp;  0 \\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{R}_{4\times 2} = 
+\begin{bmatrix}
+\frac{1}{2} &amp;  0 \\
+0           &amp;  0 \\
+0           &amp;  0 \\
+0           &amp; \frac{1}{2}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, from <span class="math notranslate nohighlight">\(f_B = [0\;1]^T\)</span> and <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3\;x_4]^T\)</span> we set the system
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\underbrace{(\mathbf{I}_{4}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\)</span>
+</span>
+<span style="color:#347fc9">
+as follows
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; -\frac{1}{2} &amp;  0  &amp;  0\\
+-\frac{1}{2} &amp; 1 &amp; -\frac{1}{2} &amp; 0\\
+0 &amp; -\frac{1}{2} &amp;  1 &amp;  -\frac{1}{2}\\
+0 &amp; 0 &amp;  -\frac{1}{2} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{1}{2} &amp;  0 \\
+0           &amp;  0 \\
+0           &amp;  0 \\
+0           &amp; \frac{1}{2}\\
+\end{bmatrix}
+\begin{bmatrix}
+0\\
+1\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; -\frac{1}{2} &amp;  0  &amp;  0\\
+-\frac{1}{2} &amp; 1 &amp; -\frac{1}{2} &amp; 0\\
+0 &amp; -\frac{1}{2} &amp;  1 &amp;  -\frac{1}{2}\\
+0 &amp; 0 &amp;  -\frac{1}{2} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0\\
+0\\
+0\\
+\frac{1}{2}
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us now set and solve the <strong>iterative</strong> system via <strong>Jacobi</strong> for these problems:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+\mathbf{x}_1^{t+1}\\
+\mathbf{x}_2^{t+1}\\
+\mathbf{x}_3^{t+1}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+-\frac{3}{4}\\
+-\frac{2}{4}\\
++\frac{1}{4}\\
+\end{bmatrix}-
+\begin{bmatrix}
+0           &amp;  -\frac{1}{4} &amp;  0\\
+-\frac{1}{4} &amp;  0           &amp;  -\frac{1}{4}\\
+0           &amp;  -\frac{1}{4} &amp;  0\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x}_1^{t}\\
+\mathbf{x}_2^{t}\\
+\mathbf{x}_3^{t}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1]^T\)</span> we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_1 = 
+\begin{bmatrix}
+-.5\\
+0\\
+.5\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+-.75\\
+-.5\\
+.25\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+-.875\\
+-.625\\
+.125\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+-.90625\\
+-.6875\\
+.09375\\
+\end{bmatrix}\;,
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+which is a good approximation of the <strong>exact solution</strong>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x} = 
+\begin{bmatrix}
+-.92857\\
+-.71428\\
+.071428\\
+\end{bmatrix}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet</span></code>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
+</span></p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/SolDirichlet.png"><img alt="_images/SolDirichlet.png" src="_images/SolDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="the-cutoff-phenomenon">
 <h2><span class="section-number">4.4. </span>The Cutoff Phenomenon<a class="headerlink" href="#the-cutoff-phenomenon" title="Permalink to this heading">#</a></h2>
 <section id="markov-chains-and-equilibrium">
 <h3><span class="section-number">4.4.1. </span>Markov chains and equilibrium<a class="headerlink" href="#markov-chains-and-equilibrium" title="Permalink to this heading">#</a></h3>
-<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <a class="reference internal" href="#soldirichlet"><span class="std std-numref">Fig. 4.8</span></a>, where the numerical solution to this system ensures that the state of an interior node converge to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory.</p>
+<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet</span></code>, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory.</p>
 </section>
 <section id="shuffling-cards">
 <h3><span class="section-number">4.4.2. </span>Shuffling cards<a class="headerlink" href="#shuffling-cards" title="Permalink to this heading">#</a></h3>
-<p>For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>.</p>
+<p>For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>. Consider for instance a mini-deck of cards consisting only of the <span class="math notranslate nohighlight">\(n=13\)</span> cards of the <span class="math notranslate nohighlight">\(\heartsuit\)</span> suit. Initially, this deck is ordered according to their increasing face values, i.e. we have</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 2_{\heartsuit}\; 3_{\heartsuit}\; 
+4_{\heartsuit}\; 5_{\heartsuit}\; 6_{\heartsuit}\; 7_{\heartsuit}\;8_{\heartsuit}\;
+9_{\heartsuit}\; 10_{\heartsuit}\; J_{\heartsuit}\; Q_{\heartsuit}\; K_{\heartsuit}
+\]</div>
+<p>A <strong>riffle suffling</strong> consists of:</p>
+<p>1- <span style="color:#469ff8">Select a <em>cut point</em></span> <span class="math notranslate nohighlight">\(k\)</span> (approximately at <span class="math notranslate nohighlight">\(1/2\)</span> of the mini-deck) so that we divide the deck into <span class="math notranslate nohighlight">\(2\)</span> packets of similar size: <span class="math notranslate nohighlight">\(1,2,\ldots,k\)</span> and <span class="math notranslate nohighlight">\(k+1,k+2,\ldots,n\)</span>. For <span class="math notranslate nohighlight">\(k=6\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 2_{\heartsuit}\; 3_{\heartsuit}\; 
+4_{\heartsuit}\; 5_{\heartsuit}\;6_{\heartsuit}
+\;\;\;\; 7_{\heartsuit}\;8_{\heartsuit}\;
+9_{\heartsuit}\; 10_{\heartsuit}\; J_{\heartsuit}\; Q_{\heartsuit}\; K_{\heartsuit}
+\]</div>
+<p>2- <span style="color:#469ff8"><em>Interleave</em> the two subdecks</span> so that the relative positions within each subdeck is preserved and then form a new mini-deck:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 7_{\heartsuit}\; 2_{\heartsuit}\; 
+8_{\heartsuit}\; 9_{\heartsuit}\; 3_{\heartsuit}\; 
+10_{\heartsuit}\; 4_{\heartsuit}\; 5_{\heartsuit}\; 
+J_{\heartsuit}\; 6_{\heartsuit}\; Q_{\heartsuit}\; 
+K_{\heartsuit}\;
+\]</div>
+<p>A <strong>rising sequence</strong> is a maximal subset of cards where their successive values are displayed in increasing order. For instance, in the previous interleaving we have two rising sequences: <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(6\)</span> and <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span>, <span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span>. Actually, these rising sequences come from the first cut, so the rising sequences can be used to reconstruct the original order of the deck.</p>
+<p>What happens if we perform <strong>another riffle shuffle</strong>? Now we select <span class="math notranslate nohighlight">\(k=7\)</span> for cutting and we have:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 7_{\heartsuit}\; 2_{\heartsuit}\; 
+8_{\heartsuit}\; 9_{\heartsuit}\; 3_{\heartsuit}\; 
+10_{\heartsuit}\;\;\;\; 
+4_{\heartsuit}\; 5_{\heartsuit}\; 
+J_{\heartsuit}\; 6_{\heartsuit}\; Q_{\heartsuit}\; 
+K_{\heartsuit}\;
+\]</div>
+<p>Before interleaving the cards, we have that each pack has <span class="math notranslate nohighlight">\(2\)</span> <strong>rising sequences</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span> for the left pack.</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(6\)</span> and <span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span> for the right pack.</p></li>
+</ul>
+<p>This means that before mixing the cards we <strong>have doubled</strong> the number of rising sequences.</p>
+<p>Let us interleave the two packs above:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\;4_{\heartsuit}\;7_{\heartsuit}\;
+5_{\heartsuit}\;2_{\heartsuit}\;J_{\heartsuit}\;
+8_{\heartsuit}\;6_{\heartsuit}\;9_{\heartsuit}\;
+Q_{\heartsuit}\;3_{\heartsuit}\;K_{\heartsuit}\;
+10_{\heartsuit}
+\]</div>
+<p>with rising sequences:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
+</ul>
+<p>Effectively, each new <strong>riffle shuffle</strong> tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since <span class="math notranslate nohighlight">\(2^{3}&lt;13&lt;2^{4}\)</span>, after <span class="math notranslate nohighlight">\(4\)</span> shuffles we will have the mini-deck <strong>completely mixed</strong>. But how do the scientifically <strong>measure</strong> this?</p>
+</section>
+<section id="probability-and-total-variation">
+<h3><span class="section-number">4.4.3. </span>Probability and Total Variation<a class="headerlink" href="#probability-and-total-variation" title="Permalink to this heading">#</a></h3>
+<p>Given a deck of <span class="math notranslate nohighlight">\(n\)</span> cards, numbered as <span class="math notranslate nohighlight">\(1,2,\ldots,n\)</span>, a permutation <span class="math notranslate nohighlight">\(\pi:\{1,2,\ldots,n\}\rightarrow \{1,2,\ldots,n\}\)</span> maps one input sequence to another just changing the order inside the sequence, but the identity permutation <span class="math notranslate nohighlight">\(id\)</span> which lefts a permutation invariant.</p>
+<p>Since we have <span class="math notranslate nohighlight">\(n!\)</span> permutations, <span style="color:#469ff8">what is the <strong>probability of a given permutation</strong> <span class="math notranslate nohighlight">\(\pi\)</span>?</span></p>
+<ul class="simple">
+<li><p>A riffle shuffle actually performs a permutation <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
+<li><p>A riffle shuffle actually divides a deck into <span class="math notranslate nohighlight">\(2\)</span> packets.</p></li>
+<li><p>Performing <span class="math notranslate nohighlight">\(m\)</span> riffle shuffle is equivalent to dividing the deck into <span class="math notranslate nohighlight">\(a=2^m\)</span> packets, considered them the leaves of a <strong>binary tree</strong> and mixing them using the inverse order of tree up to its root. For instance, first mix  <span class="math notranslate nohighlight">\(1^{st}\)</span> and <span class="math notranslate nohighlight">\(2^{nd}\)</span>, <span class="math notranslate nohighlight">\(3^{rd}\)</span> and <span class="math notranslate nohighlight">\(4^{th}\)</span> etc until <span class="math notranslate nohighlight">\(2^{m-1}\)</span> and <span class="math notranslate nohighlight">\(2^m\)</span>. Then <span class="math notranslate nohighlight">\(1-2\)</span> is mixed with <span class="math notranslate nohighlight">\(3-4\)</span>, <span class="math notranslate nohighlight">\(5-6\)</span> with <span class="math notranslate nohighlight">\(7-8\)</span> etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!</p></li>
+<li><p>C</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -1720,6 +1992,7 @@ As we can see in <a class="reference internal" href="#soldirichlet"><span class=
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">4.4. The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">4.4.1. Markov chains and equilibrium</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">4.4.2. Shuffling cards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-total-variation">4.4.3. Probability and Total Variation</a></li>
 </ul>
 </li>
 </ul>
