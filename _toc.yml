@@ -14,10 +14,15 @@ parts:
   - file: Topic1 
   - file: Topic2
   - file: Topic2_3
-- caption: Practices
+- caption: Practice 1
   chapters:
   - file: practice_intro
   - file: numpy_practice
+- caption: Practice 2
+  chapters:
   - file: pandas
   - file: plot
   - file: networkx
+- caption: Practice 3
+  chapters:
+  - file: graph_generation
