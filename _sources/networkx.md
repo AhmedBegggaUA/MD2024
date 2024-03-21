@@ -474,3 +474,20 @@ data = np.array([
 df = pd.DataFrame(data, columns=['ID','Name', 'Age', 'City','Connection'])
 ```
 
+## Submission
+
+For the delivery of the practice 2, what you will be asked to do is to make a zip (name_name.zip) containing 3 notebooks: a first notebook containing the pandas section, a second notebook containing how you have done the visualizations and a third notebook representing the networkx part. Also it is important to add to the zip the pandas dataset you have created and the 4 figures
+
+At the end the zip should be like this when you unzip it:
+```bash
+name_name.zip
+├── pandas.ipynb
+├── visualizations.ipynb
+└── networkx.ipynb
+└── dataset.csv
+└── visualization1.png
+└── visualization2.png
+└── visualization3.png
+└── visualization4.png
+
+```
