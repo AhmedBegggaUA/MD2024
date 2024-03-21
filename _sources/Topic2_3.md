@@ -889,7 +889,7 @@ $$
 \end{bmatrix}
 $$
 
-- $\mathbf{R}_{n_I}$ is a **square matrix** with the probabilities only between interior nodes ($x_1,\ldots,x_5$) if any. 
+- $\mathbf{Q}_{n_I}$ is a **square matrix** with the probabilities only between interior nodes ($x_1,\ldots,x_5$) if any. 
 
 $$
 \mathbf{Q} = 
@@ -902,7 +902,7 @@ $$
 \end{bmatrix}
 $$
 
-An interesting **property** of $\mathbf{P}$ is that *all rows must sum $1$* (*simple stochastic*). Then, note that the sum of probababilities of the same row in $\mathbf{R}$ and $\mathbf{Q}$ is actually $1$ for each row. 
+An interesting **property** of $\mathbf{P}$ is that *all rows must sum $1$* (*simple stochastic*). Then, note that the sum of probabilities of the same row in $\mathbf{R}$ and $\mathbf{Q}$ is actually $1$ for each row. 
 
 <span style="color:#469ff8">
 What is relation between the two above matrices? 
@@ -911,7 +911,7 @@ What is relation between the two above matrices?
 
 The simple stochasticity of $\mathbf{P}$ gives a precise idea of how to link $\mathbf{R}$ and $\mathbf{Q}$ through a linear system. 
 
-- From one side, we have that $\mathbf{I}_{n_I}-\mathbf{Q}$ (identity matrix of size $n_i$ minus $\mathbf{R}$) encodes, by  adding each row, the probabilities of "escaping towards any absortion node". 
+- From one side, we have that $\mathbf{I}_{n_I}-\mathbf{Q}$ (identity matrix of size $n_I$ minus $\mathbf{R}$) encodes, by  adding each row, the probabilities of "escaping towards any absortion node". For instance, the probability of "escaping" from $x_2$ towards any of the absortion nodes is $-\frac{1}{4} + 1 - \frac{1}{4} = \frac{2}{4} = \frac{1}{2}$:  
 
 $$
 \mathbf{I}_{n_I}-\mathbf{Q} = 
@@ -924,7 +924,8 @@ $$
 \end{bmatrix}
 $$
 
-- Let $f = [f_B\; f_D]^T$ be the conditional probabilities $f(i) = p(\text{Exit}|i)$ where some of them are known ($f_B=[1\;1\;1\;1\;1\;1\;0\;0\;0]$) and some others must be estimated ($f_B$). With a little abuse of notation, let us denote $f(x_i)$ as $x_i$. Then, we have $f_B = [x_1\;x_2\;x_3\;x_4\;x_5]$.
+
+- Let $f = [f_B\; f_D]^T$ be the conditional probabilities $f(i) = p(\text{Exit}|i)$ where some of them are known ($f_B=[1\;1\;1\;1\;1\;1\;0\;0\;0]$) and some others must be estimated ($f_D$). With a little abuse of notation, let us denote $f(x_i)$ as $x_i$. Then, we have $f_D = [x_1\;x_2\;x_3\;x_4\;x_5]$.
 
 - Then, from the other side, the matrix product $\mathbf{R}f_B$ encodes the probabilities of going from each interior node to any border one: 
 
@@ -968,7 +969,7 @@ $$
 As a result, we have the linear system:
 
 $$
-\underbrace{(\mathbf{I}_{n_I}-\mathbf{R})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\underbrace{(\mathbf{I}_{n_I}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
 $$
 
 The corresponding system in the example is: 
@@ -1215,12 +1216,12 @@ $
 </span>
 <br></br>
 <span style="color:#347fc9">
-Then, from $f_B = [-1\;-1\;-1\;-1\;-1\;+1\;+1]^T$ and $f_B = [x_1\;x_2\;x_3]^T$ we set the system
+Then, from $f_B = [-1\;-1\;-1\;-1\;-1\;+1\;+1]^T$ and $f_D = [x_1\;x_2\;x_3]^T$ we set the system
 </span>
 <br></br>
 <span style="color:#347fc9">
 $
-\underbrace{(\mathbf{I}_{3}-\mathbf{œ})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\underbrace{(\mathbf{I}_{3}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
 $
 </span>
 <span style="color:#347fc9">
@@ -1376,11 +1377,298 @@ height: 600px
 ---
 Solution to Small Escape Room with positive and negative rewards. 
 ```
+<br></br>
+<span style="color:#347fc9">
+**Exercise**. Let us solve the drunkard's walk from this perspective. In {numref}`DrunkDirichlet` we have **two absorbing states** $0$ ($\text{Bar}$) and $1$ ($\text{Home}$) and four interior states $x_1$, $x_2$, $x_3$ and $x_4$. We know that $p(\text{Home}|x_i)=\frac{x_i}{m}$ with $m=5$ in this case. How to prove that using the 2D aproach?
+</span>
+
+```{figure} ./images/Topic2/DrunkDirichlet.png
+---
+name: DrunkDirichlet
+width: 800px
+align: center
+height: 600px
+---
+Formulation of the drunkard's walk with two absorbing states: Bar (0) and Home (5). 
+```
+<br></br>
+<span style="color:#347fc9">
+We apply the logic of the Markovian process as follows. 
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us formulate the matrices $\mathbf{Q}$ (probabilities between interior nodes) and $\mathbf{R}$ (probabilities between interior and absorbing nodes). From $n_B = 2$ and $n_I = 4$, we have  
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{Q}_{4} = 
+\begin{bmatrix}
+0 & \frac{1}{2} &  0  &  0 \\
+\frac{1}{2} & 0 & \frac{1}{2} & 0  \\
+0 & \frac{1}{2} &  0 &  \frac{1}{2} \\
+0 & 0 &  \frac{1}{2} &  0 \\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{R}_{4\times 2} = 
+\begin{bmatrix}
+\frac{1}{2} &  0 \\
+0           &  0 \\
+0           &  0 \\
+0           & \frac{1}{2}\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, from $f_B = [0\;1]^T$ and $f_D = [x_1\;x_2\;x_3\;x_4]^T$ we set the system
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\underbrace{(\mathbf{I}_{4}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+$
+</span>
+<span style="color:#347fc9">
+as follows
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{bmatrix}
+1 & -\frac{1}{2} &  0  &  0\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} &  1 &  -\frac{1}{2}\\
+0 & 0 &  -\frac{1}{2} &  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{1}{2} &  0 \\
+0           &  0 \\
+0           &  0 \\
+0           & \frac{1}{2}\\
+\end{bmatrix}
+\begin{bmatrix}
+0\\
+1\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e.
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{bmatrix}
+1 & -\frac{1}{2} &  0  &  0\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} &  1 &  -\frac{1}{2}\\
+0 & 0 &  -\frac{1}{2} &  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0\\
+0\\
+0\\
+\frac{1}{2}
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us now set and solve the **iterative** system via **Jacobi** for these problems:
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{bmatrix}
+\mathbf{x}_1^{t+1}\\
+\mathbf{x}_2^{t+1}\\
+\mathbf{x}_3^{t+1}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+-\frac{3}{4}\\
+-\frac{2}{4}\\
++\frac{1}{4}\\
+\end{bmatrix}-
+\begin{bmatrix}
+0           &  -\frac{1}{4} &  0\\
+-\frac{1}{4} &  0           &  -\frac{1}{4}\\
+0           &  -\frac{1}{4} &  0\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x}_1^{t}\\
+\mathbf{x}_2^{t}\\
+\mathbf{x}_3^{t}\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Thus, setting $\mathbf{x}_0 = [1\;1\;1]^T$ we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{x}_1 = 
+\begin{bmatrix}
+-.5\\
+0\\
+.5\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+-.75\\
+-.5\\
+.25\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+-.875\\
+-.625\\
+.125\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+-.90625\\
+-.6875\\
+.09375\\
+\end{bmatrix}\;,
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+which is a good approximation of the **exact solution**:
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{x} = 
+\begin{bmatrix}
+-.92857\\
+-.71428\\
+.071428\\
+\end{bmatrix}\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+As we can see in {numref}`SolDirichlet`, negative states are closer to negative absorbing states, where $x_3$ is closer to the positive ones. Remind that $1-x_i$ gives the probabilities wrt positive absorbing states!
+</span>
+
+```{figure} ./images/Topic2/SolDirichlet.png
+---
+name: SolDirichlet
+width: 800px
+align: center
+height: 600px
+---
+Solution to Small Escape Room with positive and negative rewards. 
+```
 
 ### The Cutoff Phenomenon 
 #### Markov chains and equilibrium
-When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their **long-time behaviors**</span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance {numref}`SolDirichlet`, where the numerical solution to this system ensures that the state of an interior node converge to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory. 
+When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their **long-time behaviors**</span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance {numref}`SolDirichlet`, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory. 
 
 #### Shuffling cards
-For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>.  
+For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>. Consider for instance a mini-deck of cards consisting only of the $n=13$ cards of the $\heartsuit$ suit. Initially, this deck is ordered according to their increasing face values, i.e. we have
+
+$$
+A_{\heartsuit}\; 2_{\heartsuit}\; 3_{\heartsuit}\; 
+4_{\heartsuit}\; 5_{\heartsuit}\; 6_{\heartsuit}\; 7_{\heartsuit}\;8_{\heartsuit}\;
+9_{\heartsuit}\; 10_{\heartsuit}\; J_{\heartsuit}\; Q_{\heartsuit}\; K_{\heartsuit}
+$$ 
+
+A **riffle suffling** consists of: 
+
+1- <span style="color:#469ff8">Select a *cut point*</span> $k$ (approximately at $1/2$ of the mini-deck) so that we divide the deck into $2$ packets of similar size: $1,2,\ldots,k$ and $k+1,k+2,\ldots,n$. For $k=6$ we have: 
+
+$$
+A_{\heartsuit}\; 2_{\heartsuit}\; 3_{\heartsuit}\; 
+4_{\heartsuit}\; 5_{\heartsuit}\;6_{\heartsuit}
+\;\;\;\; 7_{\heartsuit}\;8_{\heartsuit}\;
+9_{\heartsuit}\; 10_{\heartsuit}\; J_{\heartsuit}\; Q_{\heartsuit}\; K_{\heartsuit}
+$$
+
+2- <span style="color:#469ff8">*Interleave* the two subdecks</span> so that the relative positions within each subdeck is preserved and then form a new mini-deck: 
+
+$$
+A_{\heartsuit}\; 7_{\heartsuit}\; 2_{\heartsuit}\; 
+8_{\heartsuit}\; 9_{\heartsuit}\; 3_{\heartsuit}\; 
+10_{\heartsuit}\; 4_{\heartsuit}\; 5_{\heartsuit}\; 
+J_{\heartsuit}\; 6_{\heartsuit}\; Q_{\heartsuit}\; 
+K_{\heartsuit}\;
+$$
+
+A **rising sequence** is a maximal subset of cards where their successive values are displayed in increasing order. For instance, in the previous interleaving we have two rising sequences: $A$, $2$, $3$, $4$, $5$, $6$ and $7$, $8$, $9$, $10$, $J$, $Q$, $K$. Actually, these rising sequences come from the first cut, so the rising sequences can be used to reconstruct the original order of the deck. 
+
+What happens if we perform **another riffle shuffle**? Now we select $k=7$ for cutting and we have: 
+
+$$
+A_{\heartsuit}\; 7_{\heartsuit}\; 2_{\heartsuit}\; 
+8_{\heartsuit}\; 9_{\heartsuit}\; 3_{\heartsuit}\; 
+10_{\heartsuit}\;\;\;\; 
+4_{\heartsuit}\; 5_{\heartsuit}\; 
+J_{\heartsuit}\; 6_{\heartsuit}\; Q_{\heartsuit}\; 
+K_{\heartsuit}\;
+$$
+
+Before interleaving the cards, we have that each pack has $2$ **rising sequences**: 
+- $A$, $2$, $3$ and $7$, $8$, $9$, $10$ for the left pack. 
+- $4$, $5$, $6$ and $J$, $Q$, $K$ for the right pack. 
+
+This means that before mixing the cards we **have doubled** the number of rising sequences. 
+
+Let us interleave the two packs above: 
+
+$$
+A_{\heartsuit}\;4_{\heartsuit}\;7_{\heartsuit}\;
+5_{\heartsuit}\;2_{\heartsuit}\;J_{\heartsuit}\;
+8_{\heartsuit}\;6_{\heartsuit}\;9_{\heartsuit}\;
+Q_{\heartsuit}\;3_{\heartsuit}\;K_{\heartsuit}\;
+10_{\heartsuit}
+$$
+
+with rising sequences: 
+- $A$, $2$, $3$.
+- $4$, $5$, $6$.
+- $7$, $8$, $9$, $10$.
+- $J$, $Q$, $K$.
+
+Effectively, each new **riffle shuffle** tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since $2^{3}<13<2^{4}$, after $4$ shuffles we will have the mini-deck **completely mixed**. But how do the scientifically **measure** this?
+
+#### Probability and Total Variation 
+
+Given a deck of $n$ cards, numbered as $1,2,\ldots,n$, a permutation $\pi:\{1,2,\ldots,n\}\rightarrow \{1,2,\ldots,n\}$ maps one input sequence to another just changing the order inside the sequence, but the identity permutation $id$ which lefts a permutation invariant.  
+
+Since we have $n!$ permutations, <span style="color:#469ff8">what is the **probability of a given permutation** $\pi$?</span>
+
+- A riffle shuffle actually performs a permutation $\pi$. 
+- A riffle shuffle actually divides a deck into $2$ packets. 
+- Performing $m$ riffle shuffle is equivalent to dividing the deck into $a=2^m$ packets, considered them the leaves of a **binary tree** and mixing them using the inverse order of tree up to its root. For instance, first mix  $1^{st}$ and $2^{nd}$, $3^{rd}$ and $4^{th}$ etc until $2^{m-1}$ and $2^m$. Then $1-2$ is mixed with $3-4$, $5-6$ with $7-8$ etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!
+- C
+
+
 
