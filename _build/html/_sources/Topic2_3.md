@@ -1188,6 +1188,7 @@ height: 600px
 ---
 Small Escape Room with positive and negative rewards. 
 ```
+
 <br></br>
 <span style="color:#347fc9">
 Let us formulate the matrices $\mathbf{Q}$ and $\mathbf{R}$. From $n_B = 5 + 2 = 7$ and $n_I = 3$, we have  
@@ -1364,19 +1365,20 @@ $
 $
 </span>
 <br></br>
-<span style="color:#347fc9">
-As we can see in {numref}`SolDirichlet`, negative states are closer to negative absorbing states, where $x_3$ is closer to the positive ones. Remind that $1-x_i$ gives the probabilities wrt positive absorbing states!
-</span>
 
 ```{figure} ./images/Topic2/SolDirichlet.png
 ---
-name: SolDirichlet
+name: SolDirichlet2
 width: 800px
 align: center
 height: 600px
 ---
 Solution to Small Escape Room with positive and negative rewards. 
 ```
+<br></br>
+<span style="color:#347fc9">
+As we can see in {numref}`SolDirichlet2`, negative states are closer to negative absorbing states, where $x_3$ is closer to the positive ones. Remind that $1-x_i$ gives the probabilities wrt positive absorbing states!
+</span>
 <br></br>
 <span style="color:#347fc9">
 **Exercise**. Let us solve the drunkard's walk from this perspective. In {numref}`DrunkDirichlet` we have **two absorbing states** $0$ ($\text{Bar}$) and $1$ ($\text{Home}$) and four interior states $x_1$, $x_2$, $x_3$ and $x_4$. We know that $p(\text{Home}|x_i)=\frac{x_i}{m}$ with $m=5$ in this case. How to prove that using the 2D aproach?
@@ -1391,6 +1393,7 @@ height: 600px
 ---
 Formulation of the drunkard's walk with two absorbing states: Bar (0) and Home (5). 
 ```
+
 <br></br>
 <span style="color:#347fc9">
 We apply the logic of the Markovian process as follows. 
@@ -1492,7 +1495,7 @@ $
 </span>
 <br></br>
 <span style="color:#347fc9">
-Let us now set and solve the **iterative** system via **Jacobi** for these problems:
+Let us now set and solve the **iterative** system via **Jacobi** for this problem:
 </span>
 <br></br>
 <span style="color:#347fc9">
@@ -1507,80 +1510,89 @@ $
 \mathbf{x}_1^{t+1}\\
 \mathbf{x}_2^{t+1}\\
 \mathbf{x}_3^{t+1}\\
+\mathbf{x}_4^{t+1}\\
 \end{bmatrix} = 
 \begin{bmatrix}
--\frac{3}{4}\\
--\frac{2}{4}\\
-+\frac{1}{4}\\
+0\\
+0\\
+0\\
+\frac{1}{2}\\
 \end{bmatrix}-
 \begin{bmatrix}
-0           &  -\frac{1}{4} &  0\\
--\frac{1}{4} &  0           &  -\frac{1}{4}\\
-0           &  -\frac{1}{4} &  0\\
+1 & -\frac{1}{2} &  0  &  0\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} &  1 &  -\frac{1}{2}\\
+0 & 0 &  -\frac{1}{2} &  1\\
 \end{bmatrix}
 \begin{bmatrix}
 \mathbf{x}_1^{t}\\
 \mathbf{x}_2^{t}\\
 \mathbf{x}_3^{t}\\
+\mathbf{x}_4^{t}\\
 \end{bmatrix}
 $
 </span>
 <br></br>
 <span style="color:#347fc9">
-Thus, setting $\mathbf{x}_0 = [1\;1\;1]^T$ we have:
+Thus, setting $\mathbf{x}_0 = [1\;1\;1\;1]^T$ we have:
 </span>
 <br></br>
 <span style="color:#347fc9">
 $
 \mathbf{x}_1 = 
 \begin{bmatrix}
--.5\\
-0\\
 .5\\
+1\\
+1\\
+1\\
 \end{bmatrix}\Rightarrow\;
 \mathbf{x}_2 = 
 \begin{bmatrix}
--.75\\
--.5\\
-.25\\
+.5\\
+.75\\
+1\\
+1\\
 \end{bmatrix}\Rightarrow\;
 \mathbf{x}_3 = 
 \begin{bmatrix}
--.875\\
--.625\\
-.125\\
+.375\\
+.75\\
+.875\\
+1\\
 \end{bmatrix}\Rightarrow\;
 \mathbf{x}_4 = 
 \begin{bmatrix}
--.90625\\
--.6875\\
-.09375\\
+.375\\
+.625\\
+.875\\
+.9375\\
 \end{bmatrix}\;,
 $
 </span>
 <br></br>
 <span style="color:#347fc9">
-which is a good approximation of the **exact solution**:
+which is a reasonable approximation of the **exact solution**:
 </span>
 <br></br>
 <span style="color:#347fc9">
 $
 \mathbf{x} = 
 \begin{bmatrix}
--.92857\\
--.71428\\
-.071428\\
+.2\\
+.4\\
+.6\\
+.8\\
 \end{bmatrix}\;.
 $
 </span>
 <br></br>
 <span style="color:#347fc9">
-As we can see in {numref}`SolDirichlet`, negative states are closer to negative absorbing states, where $x_3$ is closer to the positive ones. Remind that $1-x_i$ gives the probabilities wrt positive absorbing states!
+See {numref}`SolDrunkDirichlet`, darker states are closer to $\text{Home}$. Remind that $1-x_i$ gives the probabilities wrt the $\text{Bar}$!
 </span>
 
-```{figure} ./images/Topic2/SolDirichlet.png
+```{figure} ./images/Topic2/SolDrunkDirichlet.png
 ---
-name: SolDirichlet
+name: SolDrunkDirichlet
 width: 800px
 align: center
 height: 600px
@@ -1590,7 +1602,7 @@ Solution to Small Escape Room with positive and negative rewards.
 
 ### The Cutoff Phenomenon 
 #### Markov chains and equilibrium
-When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their **long-time behaviors**</span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance {numref}`SolDirichlet`, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory. 
+When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their **long-time behaviors**</span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance {numref}`SolDirichlet2`, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of Spectral Graph Theory. 
 
 #### Shuffling cards
 For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>. Consider for instance a mini-deck of cards consisting only of the $n=13$ cards of the $\heartsuit$ suit. Initially, this deck is ordered according to their increasing face values, i.e. we have
@@ -1657,7 +1669,30 @@ with rising sequences:
 - $7$, $8$, $9$, $10$.
 - $J$, $Q$, $K$.
 
-Effectively, each new **riffle shuffle** tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since $2^{3}<13<2^{4}$, after $4$ shuffles we will have the mini-deck **completely mixed**. But how do the scientifically **measure** this?
+Effectively, each new **riffle shuffle** tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since $2^{3}<13<2^{4}$, after $4$ shuffles we will have the mini-deck **completely mixed**. Why? Because for $a=4$ riffle shuffles we have $13$ rising sequences, i.e. the mini-deck in descending order: 
+
+$$
+K_{\heartsuit}\;
+Q_{\heartsuit}\;
+J_{\heartsuit}\; 
+10_{\heartsuit}\;
+9_{\heartsuit}\;
+8_{\heartsuit}\;
+7_{\heartsuit}\; 
+6_{\heartsuit}\;
+5_{\heartsuit}\;
+4_{\heartsuit}\;
+3_{\heartsuit}\;
+2_{\heartsuit}\;
+1_{\heartsuit}\;           
+$$
+
+If we have $n$ cards, the maximum number of **rising sequences** is $n$, i.e. every card $c_i$ has a face value higher than $c_{i+1}$ for $i=1,2,\ldots,n-1$. Thus for $n=52$ cards we need $2^{a}\approx 52$ riffle shuffles, i.e. $a=6$. [Aldous and Diaconis](https://www.stat.berkeley.edu/~aldous/Papers/shuffling.pdf) proved that we need $a=7$ riffle shuffles to ensure complete disorder. In any case we have that $a$ is $O(log_2 n)$.
+
+<span style="color:#469ff8">The **cutoff phenomenon** refers to the fact that when measuring how close we are from complete randomness, most of the time we are very far away</span>. However, at a certain point, we drastically become very close to randomness. Not all Markov chains have this property, but when they have it, that point is called the **cutoff** point. 
+
+<!--
+But how do the scientifically **measure** this?
 
 #### Probability and Total Variation 
 
@@ -1665,10 +1700,12 @@ Given a deck of $n$ cards, numbered as $1,2,\ldots,n$, a permutation $\pi:\{1,2,
 
 Since we have $n!$ permutations, <span style="color:#469ff8">what is the **probability of a given permutation** $\pi$?</span>
 
-- A riffle shuffle actually performs a permutation $\pi$. 
-- A riffle shuffle actually divides a deck into $2$ packets. 
-- Performing $m$ riffle shuffle is equivalent to dividing the deck into $a=2^m$ packets, considered them the leaves of a **binary tree** and mixing them using the inverse order of tree up to its root. For instance, first mix  $1^{st}$ and $2^{nd}$, $3^{rd}$ and $4^{th}$ etc until $2^{m-1}$ and $2^m$. Then $1-2$ is mixed with $3-4$, $5-6$ with $7-8$ etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!
-- C
+For answering this question, we have to be aware that <span style="color:#469ff8">**not all permutations are equally valid**</span>. Only the permutations derived from a correct interleave, i.e. <span style="color:#469ff8">these preserving the relative order</span> inside each packed, are allowed. 
 
+- A riffle shuffle actually performs a permutation $\pi$. 
+- A riffle shuffle actually divides a deck into $2$ packets.  
+- Performing $m$ riffle shuffle is equivalent to dividing the deck into $a=2^m$ packets, considered them the leaves of a **binary tree** and mixing them using the inverse order of tree up to its root. For instance, first mix  $1^{st}$ and $2^{nd}$, $3^{rd}$ and $4^{th}$ etc until $2^{m-1}$ and $2^m$. Then $1-2$ is mixed with $3-4$, $5-6$ with $7-8$ etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!
+- The relaving order after each mixing/interleaving is preserved.
+ -->
 
 
