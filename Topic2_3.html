@@ -388,7 +388,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">4.4. The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">4.4.1. Markov chains and equilibrium</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">4.4.2. Shuffling cards</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-total-variation">4.4.3. Probability and Total Variation</a></li>
 </ul>
 </li>
 </ul>
@@ -1627,17 +1626,18 @@ which is a good approximation of the <strong>exact solution</strong>:
 \end{bmatrix}\;.
 \)</span>
 </span>
-<br></br>
-<span style="color:#347fc9">
-As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet</span></code>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
-</span></p>
-<figure class="align-center" id="soldirichlet">
+<br></br></p>
+<figure class="align-center" id="soldirichlet2">
 <a class="reference internal image-reference" href="_images/SolDirichlet.png"><img alt="_images/SolDirichlet.png" src="_images/SolDirichlet.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldirichlet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldirichlet2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br></br>
+<span style="color:#347fc9">
+As we can see in <a class="reference internal" href="#soldirichlet2"><span class="std std-numref">Fig. 4.8</span></a>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
+</span>
+<br></br>
 <span style="color:#347fc9">
 <strong>Exercise</strong>. Let us solve the drunkard’s walk from this perspective. In <a class="reference internal" href="#drunkdirichlet"><span class="std std-numref">Fig. 4.9</span></a> we have <strong>two absorbing states</strong> <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>) and <span class="math notranslate nohighlight">\(1\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and four interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> and <span class="math notranslate nohighlight">\(x_4\)</span>. We know that <span class="math notranslate nohighlight">\(p(\text{Home}|x_i)=\frac{x_i}{m}\)</span> with <span class="math notranslate nohighlight">\(m=5\)</span> in this case. How to prove that using the 2D aproach?
 </span></p>
@@ -1748,7 +1748,7 @@ x_4\\
 </span>
 <br></br>
 <span style="color:#347fc9">
-Let us now set and solve the <strong>iterative</strong> system via <strong>Jacobi</strong> for these problems:
+Let us now set and solve the <strong>iterative</strong> system via <strong>Jacobi</strong> for this problem:
 </span>
 <br></br>
 <span style="color:#347fc9">
@@ -1763,80 +1763,89 @@ Let us now set and solve the <strong>iterative</strong> system via <strong>Jacob
 \mathbf{x}_1^{t+1}\\
 \mathbf{x}_2^{t+1}\\
 \mathbf{x}_3^{t+1}\\
+\mathbf{x}_4^{t+1}\\
 \end{bmatrix} = 
 \begin{bmatrix}
--\frac{3}{4}\\
--\frac{2}{4}\\
-+\frac{1}{4}\\
+0\\
+0\\
+0\\
+\frac{1}{2}\\
 \end{bmatrix}-
 \begin{bmatrix}
-0           &amp;  -\frac{1}{4} &amp;  0\\
--\frac{1}{4} &amp;  0           &amp;  -\frac{1}{4}\\
-0           &amp;  -\frac{1}{4} &amp;  0\\
+1 &amp; -\frac{1}{2} &amp;  0  &amp;  0\\
+-\frac{1}{2} &amp; 1 &amp; -\frac{1}{2} &amp; 0\\
+0 &amp; -\frac{1}{2} &amp;  1 &amp;  -\frac{1}{2}\\
+0 &amp; 0 &amp;  -\frac{1}{2} &amp;  1\\
 \end{bmatrix}
 \begin{bmatrix}
 \mathbf{x}_1^{t}\\
 \mathbf{x}_2^{t}\\
 \mathbf{x}_3^{t}\\
+\mathbf{x}_4^{t}\\
 \end{bmatrix}
 \)</span>
 </span>
 <br></br>
 <span style="color:#347fc9">
-Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1]^T\)</span> we have:
+Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1\;1]^T\)</span> we have:
 </span>
 <br></br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
 \mathbf{x}_1 = 
 \begin{bmatrix}
--.5\\
-0\\
 .5\\
+1\\
+1\\
+1\\
 \end{bmatrix}\Rightarrow\;
 \mathbf{x}_2 = 
 \begin{bmatrix}
--.75\\
--.5\\
-.25\\
+.5\\
+.75\\
+1\\
+1\\
 \end{bmatrix}\Rightarrow\;
 \mathbf{x}_3 = 
 \begin{bmatrix}
--.875\\
--.625\\
-.125\\
+.375\\
+.75\\
+.875\\
+1\\
 \end{bmatrix}\Rightarrow\;
 \mathbf{x}_4 = 
 \begin{bmatrix}
--.90625\\
--.6875\\
-.09375\\
+.375\\
+.625\\
+.875\\
+.9375\\
 \end{bmatrix}\;,
 \)</span>
 </span>
 <br></br>
 <span style="color:#347fc9">
-which is a good approximation of the <strong>exact solution</strong>:
+which is a reasonable approximation of the <strong>exact solution</strong>:
 </span>
 <br></br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
 \mathbf{x} = 
 \begin{bmatrix}
--.92857\\
--.71428\\
-.071428\\
+.2\\
+.4\\
+.6\\
+.8\\
 \end{bmatrix}\;.
 \)</span>
 </span>
 <br></br>
 <span style="color:#347fc9">
-As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet</span></code>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
+See <a class="reference internal" href="#soldrunkdirichlet"><span class="std std-numref">Fig. 4.10</span></a>, darker states are closer to <span class="math notranslate nohighlight">\(\text{Home}\)</span>. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>!
 </span></p>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="_images/SolDirichlet.png"><img alt="_images/SolDirichlet.png" src="_images/SolDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figure class="align-center" id="soldrunkdirichlet">
+<a class="reference internal image-reference" href="images/Topic2/SolDrunkDirichlet.png"><img alt="images/Topic2/SolDrunkDirichlet.png" src="images/Topic2/SolDrunkDirichlet.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldrunkdirichlet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1844,7 +1853,7 @@ As we can see in <code class="xref std std-numref docutils literal notranslate">
 <h2><span class="section-number">4.4. </span>The Cutoff Phenomenon<a class="headerlink" href="#the-cutoff-phenomenon" title="Permalink to this heading">#</a></h2>
 <section id="markov-chains-and-equilibrium">
 <h3><span class="section-number">4.4.1. </span>Markov chains and equilibrium<a class="headerlink" href="#markov-chains-and-equilibrium" title="Permalink to this heading">#</a></h3>
-<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet</span></code>, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory.</p>
+<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <a class="reference internal" href="#soldirichlet2"><span class="std std-numref">Fig. 4.8</span></a>, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of Spectral Graph Theory.</p>
 </section>
 <section id="shuffling-cards">
 <h3><span class="section-number">4.4.2. </span>Shuffling cards<a class="headerlink" href="#shuffling-cards" title="Permalink to this heading">#</a></h3>
@@ -1906,18 +1915,41 @@ Q_{\heartsuit}\;3_{\heartsuit}\;K_{\heartsuit}\;
 <li><p><span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
 </ul>
-<p>Effectively, each new <strong>riffle shuffle</strong> tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since <span class="math notranslate nohighlight">\(2^{3}&lt;13&lt;2^{4}\)</span>, after <span class="math notranslate nohighlight">\(4\)</span> shuffles we will have the mini-deck <strong>completely mixed</strong>. But how do the scientifically <strong>measure</strong> this?</p>
-</section>
-<section id="probability-and-total-variation">
-<h3><span class="section-number">4.4.3. </span>Probability and Total Variation<a class="headerlink" href="#probability-and-total-variation" title="Permalink to this heading">#</a></h3>
-<p>Given a deck of <span class="math notranslate nohighlight">\(n\)</span> cards, numbered as <span class="math notranslate nohighlight">\(1,2,\ldots,n\)</span>, a permutation <span class="math notranslate nohighlight">\(\pi:\{1,2,\ldots,n\}\rightarrow \{1,2,\ldots,n\}\)</span> maps one input sequence to another just changing the order inside the sequence, but the identity permutation <span class="math notranslate nohighlight">\(id\)</span> which lefts a permutation invariant.</p>
-<p>Since we have <span class="math notranslate nohighlight">\(n!\)</span> permutations, <span style="color:#469ff8">what is the <strong>probability of a given permutation</strong> <span class="math notranslate nohighlight">\(\pi\)</span>?</span></p>
-<ul class="simple">
-<li><p>A riffle shuffle actually performs a permutation <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
-<li><p>A riffle shuffle actually divides a deck into <span class="math notranslate nohighlight">\(2\)</span> packets.</p></li>
-<li><p>Performing <span class="math notranslate nohighlight">\(m\)</span> riffle shuffle is equivalent to dividing the deck into <span class="math notranslate nohighlight">\(a=2^m\)</span> packets, considered them the leaves of a <strong>binary tree</strong> and mixing them using the inverse order of tree up to its root. For instance, first mix  <span class="math notranslate nohighlight">\(1^{st}\)</span> and <span class="math notranslate nohighlight">\(2^{nd}\)</span>, <span class="math notranslate nohighlight">\(3^{rd}\)</span> and <span class="math notranslate nohighlight">\(4^{th}\)</span> etc until <span class="math notranslate nohighlight">\(2^{m-1}\)</span> and <span class="math notranslate nohighlight">\(2^m\)</span>. Then <span class="math notranslate nohighlight">\(1-2\)</span> is mixed with <span class="math notranslate nohighlight">\(3-4\)</span>, <span class="math notranslate nohighlight">\(5-6\)</span> with <span class="math notranslate nohighlight">\(7-8\)</span> etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!</p></li>
-<li><p>C</p></li>
-</ul>
+<p>Effectively, each new <strong>riffle shuffle</strong> tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since <span class="math notranslate nohighlight">\(2^{3}&lt;13&lt;2^{4}\)</span>, after <span class="math notranslate nohighlight">\(4\)</span> shuffles we will have the mini-deck <strong>completely mixed</strong>. Why? Because for <span class="math notranslate nohighlight">\(a=4\)</span> riffle shuffles we have <span class="math notranslate nohighlight">\(13\)</span> rising sequences, i.e. the mini-deck in descending order:</p>
+<div class="math notranslate nohighlight">
+\[
+K_{\heartsuit}\;
+Q_{\heartsuit}\;
+J_{\heartsuit}\; 
+10_{\heartsuit}\;
+9_{\heartsuit}\;
+8_{\heartsuit}\;
+7_{\heartsuit}\; 
+6_{\heartsuit}\;
+5_{\heartsuit}\;
+4_{\heartsuit}\;
+3_{\heartsuit}\;
+2_{\heartsuit}\;
+1_{\heartsuit}\;           
+\]</div>
+<p>If we have <span class="math notranslate nohighlight">\(n\)</span> cards, the maximum number of <strong>rising sequences</strong> is <span class="math notranslate nohighlight">\(n\)</span>, i.e. every card <span class="math notranslate nohighlight">\(c_i\)</span> has a face value higher than <span class="math notranslate nohighlight">\(c_{i+1}\)</span> for <span class="math notranslate nohighlight">\(i=1,2,\ldots,n-1\)</span>. Thus for <span class="math notranslate nohighlight">\(n=52\)</span> cards we need <span class="math notranslate nohighlight">\(2^{a}\approx 52\)</span> riffle shuffles, i.e. <span class="math notranslate nohighlight">\(a=6\)</span>. <a class="reference external" href="https://www.stat.berkeley.edu/~aldous/Papers/shuffling.pdf">Aldous and Diaconis</a> proved that we need <span class="math notranslate nohighlight">\(a=7\)</span> riffle shuffles to ensure complete disorder. In any case we have that <span class="math notranslate nohighlight">\(a\)</span> is <span class="math notranslate nohighlight">\(O(log_2 n)\)</span>.</p>
+<p><span style="color:#469ff8">The <strong>cutoff phenomenon</strong> refers to the fact that when measuring how close we are from complete randomness, most of the time we are very far away</span>. However, at a certain point, we drastically become very close to randomness. Not all Markov chains have this property, but when they have it, that point is called the <strong>cutoff</strong> point.</p>
+<!--
+But how do the scientifically **measure** this?
+
+#### Probability and Total Variation 
+
+Given a deck of $n$ cards, numbered as $1,2,\ldots,n$, a permutation $\pi:\{1,2,\ldots,n\}\rightarrow \{1,2,\ldots,n\}$ maps one input sequence to another just changing the order inside the sequence, but the identity permutation $id$ which lefts a permutation invariant.  
+
+Since we have $n!$ permutations, <span style="color:#469ff8">what is the **probability of a given permutation** $\pi$?</span>
+
+For answering this question, we have to be aware that <span style="color:#469ff8">**not all permutations are equally valid**</span>. Only the permutations derived from a correct interleave, i.e. <span style="color:#469ff8">these preserving the relative order</span> inside each packed, are allowed. 
+
+- A riffle shuffle actually performs a permutation $\pi$. 
+- A riffle shuffle actually divides a deck into $2$ packets.  
+- Performing $m$ riffle shuffle is equivalent to dividing the deck into $a=2^m$ packets, considered them the leaves of a **binary tree** and mixing them using the inverse order of tree up to its root. For instance, first mix  $1^{st}$ and $2^{nd}$, $3^{rd}$ and $4^{th}$ etc until $2^{m-1}$ and $2^m$. Then $1-2$ is mixed with $3-4$, $5-6$ with $7-8$ etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!
+- The relaving order after each mixing/interleaving is preserved.
+ -->
 </section>
 </section>
 </section>
@@ -1992,7 +2024,6 @@ Q_{\heartsuit}\;3_{\heartsuit}\;K_{\heartsuit}\;
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">4.4. The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">4.4.1. Markov chains and equilibrium</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">4.4.2. Shuffling cards</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-total-variation">4.4.3. Probability and Total Variation</a></li>
 </ul>
 </li>
 </ul>
