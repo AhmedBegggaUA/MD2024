@@ -14,6 +14,7 @@ parts:
   - file: Topic1 
   - file: Topic2
   - file: Topic2_3
+  - file: Topic3
 - caption: Practice 1
   chapters:
   - file: practice_intro
