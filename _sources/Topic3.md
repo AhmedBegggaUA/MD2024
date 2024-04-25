@@ -43,6 +43,8 @@ The Algorithm, described in pseudocode in
 
 [//]: https://sphinx-proof.readthedocs.io/en/latest/syntax.html
 
+[//]: https://pypi.org/project/sphinxcontrib-pseudocode/
+
 ```{prf:algorithm} Dijkstra
 :label: Dijkstra
 
@@ -659,8 +661,8 @@ f(s,2)&= 0 + 1 = 1\;\text{with residual capacity}\; c_f(s,2)=100-1 = 99\\
 f(2,s)&= 0 - 1 = -1\;\text{with residual capacity}\; c_f(2,s)=0-(-1) = 1\\
 \mathbf{f(2,1)}&= -1 + 1 = 0\;\text{with residual capacity}\; \mathbf{c_f(2,1)=0- 0 = 0}\\
 f(1,2)&= 1 - 1 = 0\;\text{with residual capacity}\; c_f(1,2)=1- 0 = 1\\
-f(2,t)&= 1 + 1 = 2\;\text{with residual capacity}\; c_f(1,2)=100-2 = 98\\
-f(t,2)&= -1 - 1 = -2\;\text{with residual capacity}\; c_f(t,2)=0-(-2) = 2\\
+f(1,t)&= 0 + 1 = 1\;\text{with residual capacity}\; c_f(1,t)=100-1 = 99\\
+f(t,1)&= 0 - 1 = -1\;\text{with residual capacity}\; c_f(t,1)=0-(-1) = 1\\
 \end{align}
 $
 </span>
@@ -676,8 +678,8 @@ f(s,1)&= 1 + 1 = 2\;\text{with residual capacity}\; c_f(s,1)=100-2 = 98\\
 f(1,s)&= - 1 - 1 = -2\;\text{with residual capacity}\; c_f(1,s)=0-(-2) = 2\\
 \mathbf{f(1,2)}&= 0 + 1 = 1\;\text{with residual capacity}\; \mathbf{c_f(1,2)=1-1 = 0}\\
 f(2,1)&= 0 - 1 = -1\;\text{with residual capacity}\; c_f(2,1)=0-(-1) = 1\\
-f(2,t)&= 2 + 1 = 3\;\text{with residual capacity}\; c_f(1,2)=100-3 = 97\\
-f(t,2)&= -2 - 1 = -3\;\text{with residual capacity}\; c_f(t,2)=0-(-3) = 3\\
+f(2,t)&= 1 + 1 = 2\;\text{with residual capacity}\; c_f(2,t)=100-2 = 98\\
+f(t,2)&= -1 - 1 = -2\;\text{with residual capacity}\; c_f(t,2)=0-(-2) = 2\\
 \end{align}
 $
 </span>
@@ -768,7 +770,7 @@ augmenting paths, no source-to-sink path remains in the residual graph.
 
 <br></br>
 <span style="color:#347fc9">
-**Exercise**. In {numref}`BigExercise` we show a digraph $G$ with $s=0$ and $t=10$, illustrating the general case for the E-K method. Assume that you are given the augmenting paths discovered by the BFS algorithm. In this case we have used the **bidirectional BFS** exploited by Networkx, that will be detailed at the end of this chapter. We have, then, the paths:</span>
+**Exercise**. In {numref}`BigExercise` we show a digraph $G$ with $s=0$ and $t=10$, illustrating the general case for the E-K method. Assume that you are given the augmenting paths discovered by the BFS algorithm. In this case we have used the **bidirectional BFS** exploited by Networkx. We have, ayway, the paths:</span>
 <br></br>
 <span style="color:#347fc9">
 $
@@ -863,3 +865,136 @@ $
 <span style="color:#347fc9">
 **Total flow**. Since we have $f_1 = 5$, $f_2 = 10$, and $f_3 = 5$, the total flow is $f_1 + f_2 + f_3 = 20$. 
 </span>
+
+## Cycles: Hamiltonian and Eulerian
+Cycles (circuits) in graphs are very interesting for AIers since they are linked with intriguing combinatorial problems, some of them being NP-Hard. In this regard, it seems convenient to explore one of these problems, namely <span style="color:#469ff8">**The Travelling Salesman Problem** (TSP)</span> where the study of two main types of cycles  <span style="color:#469ff8">**Hamiltonian Cycles**</span> and <span style="color:#469ff8">**Eulerian Cycles**</span> play a key role.  
+
+### The Travelling Salesman Problem
+A travelling salesman optimizes its visits as follows: He/She has to visit $n$ cities $c_1, c_2,\ldots, c_n$ **once** in such a way that after visiting the last city the traveller comes back to the departing one (i.e. we have a cycle). This type of cycle is called a **Hamiltonial cycle**. 
+
+In the <span style="color:#469ff8">**metric version**</span> of the problem, each city has associated a location on the plane $(x_i, y_i)$, meaning that we may exploit the Euclidean distances between cities to decide the optimal strategy. Actually the algorithm must find the <span style="color:#469ff8">**minimum cost cycle**</span>. A bit more formally, we must find a permutation $\pi(1,\ldots,n)$ of the cities so that 
+
+$$
+\pi = \arg\min d(\pi(1),\pi(2)) + d(\pi(2),\pi(3)) + \ldots + d(\pi(n-1),\pi(n)) + d(\pi(n),\pi(1))\;.
+$$
+
+where $d(\pi(i),\pi(j))=\sqrt{(x_{\pi(i)} - x_{\pi(j)})^2 + (y_{\pi(i)} - y_{\pi(j)})^2}$. Since we have $n!$ permutations of $n$ cities, the fact of looking for a specific  permutation, the one leading to the minimum cost, makes the problem NP-Hard. All we can do is to propose **reasonable polynomial approximations**. 
+
+In the following, we are going to specify the steps of the Christophides algorithm (see {prf:algorithm}`Christophides`), which is the approximation used in Networkx.
+
+```{prf:algorithm} Christophides
+:label: Christophides
+
+**Inputs** Given a **complete** graph $G=(V,E,w)$ with edge weights (distances) $w:E\rightarrow\mathbb{R}$,i.e. $w(i,j)=d(i,j)$.
+
+**Output** Return a Hamiltonian cycle $\Gamma$. 
+
+1. Find a **Minimum Spanning Tree** $T$. 
+2. Let $O$ be the set of nodes with odd degree in $T$. Find a **minimum-cost perfect matching** $M$. 
+3. Add the set of edges of $M$ to $T$.
+4. Find an **Eulerian Tour** $\Gamma^0$.
+5. **Shortcut** $\Gamma^0$ to make a Hamiltonian Cycle $\Gamma$. 
+
+6. **return** $\Gamma$. 
+```
+This algorithm is the one used for approximating the TSP in {numref}`TSP1`, where the route of the traveller is: 
+
+$$
+\Gamma = 0\rightarrow 6\rightarrow 1\rightarrow 4\rightarrow 8\rightarrow 3\rightarrow 5\rightarrow 7\rightarrow 2\rightarrow 9\rightarrow 0\;. 
+$$
+
+For the sake of simplicity, we only show in the figure the closest edges to each of the $|V|=10$ nodes in $G$. 
+
+```{figure} ./images/Topic3/TSP1.png
+---
+name: TSP1
+width: 600px
+align: center
+height: 450px
+---
+Complete graph and a TSP solution (in bold). 
+```
+
+#### Minimum Spaning Trees
+The first step for the above TSP algorithm consists in computing a **Minimum Spanning Tree** (MST). 
+
+First of all, a **tree** is nothing but *a graph without cycles*. Given the nodes $V$ of $G=(V,E,w)$, we must find a **subgraph** $T=(V,E',w)$, with $E'\subseteq E$,  satisfying: 
+- $T$ is a connected graph, i.e. it **links all the nodes** in $V$. 
+- $T$ **is a tree** i.e. it does not have cycles/circuits. 
+- The sum of weights $\sum_{e'\in E'}w(e')$ is **minimal**.
+
+Finding an MST (a tree *spanning* all nodes with minimal total cost) can be done in $O(|E|\log|E|)$, or in $O(|E|\log|V|)$ if $G$ does not have isolated vertices) as follows (**Kruskal's Algorithm**): 
+1) **Sort** all the edges in ascending order according to $w(e), e\in E$. Put them in a list $L$.
+2) Set $T=\emptyset$.
+3) While $T$ is not connected: 
+  - Select the following edge $e$ of $L$. 
+  - If $e$ does not form a loop, include it in $T$. 
+
+ 
+```{figure} ./images/Topic3/TSP2.png
+---
+name: TSP2
+width: 600px
+align: center
+height: 450px
+---
+TSP Phase 1: Compute a MST. 
+```
+
+<span style="color:#469ff8">Concerning the TSP problem, the purpose of finding an MST is actually to find an initial way of connecting all the nodes in $G$ with minimal cost</span>. Of course, this is not a cycle as we can see in {numref}`TSP2`, since th TSP is acyclic, but the Christophides algorithm *extends the TSP to find a Hamiltonian cycle* in the steps to follow.
+
+#### Min-weight Perfect Matchings
+Given an undirected graph $G=(V,E)$, a **matching** $M$ is a set of **non-adjacent** edges $E'\subseteq E$ which do not form loops. As a result: 
+1) The edges in $M$ **do not share common nodes**. 
+2) The matching $M$ is called **maximal** if it is not included in any other matching. 
+3) The matching $M$ is called **perfect** if it links all the nodes in $G$. 
+4) The **Min-weight perfect matchings** is the perfect matching with minimum total weight $\sum_{e'\in M}w(e')$. This problem can be solved by the dual of the **Edmond's Blossom Algorithm** with complexity $O(|V|^3)$ by first replacing the weights as follows $w'(e)=(\max\{w(e):e\in E\}+1)-w(e)$ and then finding the **Max-weight perfect matching** with the Blossom's algorithm. 
+
+
+Concerning the MST problem, we exploit the following properties of perfect matchings: 
+
+1) <span style="color:#469ff8">A graph can only contain a perfect matching when the graph has an **even** number of nodes</span>.
+
+2) <span style="color:#469ff8">Perfect matchings are always possible in **complete graphs**</span> such as the one used the TSP. Actually, the number of perfect matchings in the complete graphs (of course with an even number of nodes) is the double factorial of the even number of nodes: $|V|!!$.
+
+Therefore, <span style="color:#469ff8">before computing the Min-weight Perfect Matching, we remove from $G$ all the nodes wich have an  odd degree in the MST $T$</span>. Doing so, we obtain edges with the smallest weights as possible. As we show in  {numref}`TSP3`, where we add the min-weight perfect matching $M$, being 
+
+$$
+M = \{(3, 8), (4, 1), (9, 2), (0, 6)\}
+$$
+
+we get **edges incident in the MST**. 
+
+```{figure} ./images/Topic3/TSP3.png
+---
+name: TSP2
+width: 600px
+align: center
+height: 450px
+---
+TSP Phase 2: Add min-weight Perfect Matching to MST. 
+```
+
+#### Eulerian Cycles 
+Eulerian cycles (circuits or tours) are cycles where each vertex in the graph is visited once. When the graph is undirected, we consider $(u,v)\neq (v,u)$. Therefore in the above example, we can use $(3,8)$ and $(8,3)$ but not any of them twice!. 
+
+The name "Eulerian" comes from the mathematician  Leonhard Euler who motivated the problem through the famous Konigsberg-bridges problem. He derived the following *necessary condition** for the existence of Eulerian tours in a graph: 
+
+<span style="color:#469ff8">**Euler's Theorem**. A connected graph has an Euler cycle if and only if every vertex has even degree</span>. 
+
+Of course, this condition is satisfied by the TSP graph after removing the vertices with odd degree. Then, a Eulerian tour can be found with complexity $O(|E|^2)$ with the Fleury's algorithm. 
+
+In particular, the Eulerian tour found by Networkx in the above example is: 
+
+$$
+\Gamma^0 = 0\rightarrow 6\rightarrow 1\rightarrow 4\rightarrow 1\rightarrow 0\rightarrow 8\rightarrow 3\rightarrow 8\rightarrow 5\rightarrow 7\rightarrow 2\rightarrow 9\rightarrow 0\;.
+$$
+
+All the edges in $\Gamma^0$ belong to  $MST\bigcup M$. All we have to do in order to find a Hamiltonian tour is to **remove the repeated nodes** (shortcult) in $\Gamma^0$, thus resulting the solution to the MST: 
+
+$$
+\Gamma = 0\rightarrow 6\rightarrow 1\rightarrow 4\rightarrow 8\rightarrow 3\rightarrow 5\rightarrow 7\rightarrow 2\rightarrow 9\rightarrow 0\;.
+$$
+
+#### Optimality of the approximation
+The Christophides algorithm returns an approximation whose cost is upper_bounded by $3/2$ times that of the optimal solution (which requires non-polinomial  algorithm). 
