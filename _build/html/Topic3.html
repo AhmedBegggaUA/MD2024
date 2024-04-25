@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css" />
@@ -449,7 +450,50 @@ document.write(`
 <li><p>Once a node is closed, we visit its neighbors still in <span class="math notranslate nohighlight">\(L\)</span> and check whether we can reach the target from them. This consists in updating their <strong>distance</strong> wrt the source. The nodes with shortest distances wrt the source have more chance to be selected for closing and verifying if they are the target.</p></li>
 <li><p>The algorithm <strong>proceeds until</strong> there are no more candidates to visit (<span class="math notranslate nohighlight">\(L\)</span> is empty) or we have <strong>reached the target</strong> (step 3.2).</p></li>
 </ol>
-<p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Wikipedia</a></p>
+<div class="proof algorithm admonition" id="Dijkstra">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.1 </span> (Dijkstra)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a Network <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, a source node <span class="math notranslate nohighlight">\(s\)</span>, and a target node <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Output</strong> Compute a path <span class="math notranslate nohighlight">\(\Gamma\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> of minimun length</p>
+<ol class="arabic simple">
+<li><p><strong>for</strong> each node <span class="math notranslate nohighlight">\(v\in V\)</span>:</p>
+<ol class="arabic simple">
+<li><p>dist[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow \infty\)</span></p></li>
+<li><p>prev[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\( \;\leftarrow -1\)</span></p></li>
+<li><p>add <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(L\)</span></p></li>
+</ol>
+</li>
+<li><p>dist[<span class="math notranslate nohighlight">\(s\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow 0\)</span></p></li>
+<li><p><strong>while</strong> <span class="math notranslate nohighlight">\(L\neq\emptyset\;\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(u\; \leftarrow\arg\min\)</span> dist[<span class="math notranslate nohighlight">\(u\)</span>]<span class="math notranslate nohighlight">\(\;, u\in L\)</span></p></li>
+<li><p><strong>if</strong> <span class="math notranslate nohighlight">\(u = t\)</span>:</p>
+<ol class="arabic simple">
+<li><p><strong>break</strong></p></li>
+</ol>
+</li>
+<li><p>remove <span class="math notranslate nohighlight">\(u\)</span> from <span class="math notranslate nohighlight">\(L\)</span></p></li>
+<li><p><strong>for</strong> <span class="math notranslate nohighlight">\(v\in\)</span> neighbors(<span class="math notranslate nohighlight">\(u\)</span>):</p>
+<ol class="arabic simple">
+<li><p><strong>if</strong> <span class="math notranslate nohighlight">\(v\in L\)</span>:</p>
+<ol class="arabic simple">
+<li><p>new_dist<span class="math notranslate nohighlight">\(\;\leftarrow\)</span> dist[<span class="math notranslate nohighlight">\(u\)</span>] + <span class="math notranslate nohighlight">\(w(u,v)\)</span></p></li>
+<li><p><strong>if</strong> new_dist &lt; dist[<span class="math notranslate nohighlight">\(v\)</span>]:</p>
+<ol class="arabic simple">
+<li><p>dist[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow\)</span> new_dist</p></li>
+<li><p>prev[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow u\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>return</strong> dist, prev</p></li>
+</ol>
+</section>
+</div><p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Wikipedia</a></p>
 <p>Let us show how to obtain the SP in <a class="reference internal" href="#diagonal1"><span class="std std-numref">Fig. 5.1</span></a>.</p>
 <p><strong>Iteration 1</strong></p>
 <ul class="simple">
@@ -585,7 +629,22 @@ Then we expand <span class="math notranslate nohighlight">\(u_5=(0,3)\)</span> w
 <li><p>Now, we introduce <span class="math notranslate nohighlight">\(h(u)\)</span> as an estimation of <span class="math notranslate nohighlight">\(h^{\ast}(u)\)</span>, namely the optimal (shortest) path distance <strong>wrt to the target</strong> <span class="math notranslate nohighlight">\(t\)</span>. This function <span class="math notranslate nohighlight">\(h(.)\)</span> is called the <strong>heuristic</strong>.</p></li>
 </ul>
 <p>Basically, <span class="math notranslate nohighlight">\(g(u)\)</span> estimates the <strong>work yet done</strong>, whereas <span class="math notranslate nohighlight">\(h(u)\)</span> estimates how promising is <span class="math notranslate nohighlight">\(u\)</span> to reach the target <span class="math notranslate nohighlight">\(t\)</span>, i.e. the <strong>work to do</strong>. As a result, the so-called <a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm"><span class="math notranslate nohighlight">\(A^{\ast}\)</span> algorithm</a> consists of modifying the line 4.1.1 of Dijkstra (see <a href="#id3"><span class="problematic" id="id4">AStar</span></a>):</p>
-<p>where <span class="math notranslate nohighlight">\(g(u)=\text{dist}[u] + w(u,v)\)</span>.</p>
+<div class="proof algorithm admonition" id="AStar">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.2 </span> (<span class="math notranslate nohighlight">\(A^{\ast}\)</span> from Dijkstra)</p>
+<section class="algorithm-content" id="proof-content">
+<ol class="arabic simple" start="4">
+<li><p><strong>for</strong> <span class="math notranslate nohighlight">\(v\in\)</span> neighbors(<span class="math notranslate nohighlight">\(u\)</span>):</p>
+<ol class="arabic simple">
+<li><p><strong>if</strong> <span class="math notranslate nohighlight">\(v\in L\)</span>:</p>
+<ol class="arabic simple">
+<li><p>new_dist<span class="math notranslate nohighlight">\(\;\leftarrow\)</span> <span class="math notranslate nohighlight">\(g(u)+ h(u)\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+</div><p>where <span class="math notranslate nohighlight">\(g(u)=\text{dist}[u] + w(u,v)\)</span>.</p>
 <p>Therefore <span style="color:#469ff8"><span class="math notranslate nohighlight">\(A^{\ast}\)</span> can be seen as an extension of Dijkstra where the node selected for expansion minimizes</span></p>
 <div class="math notranslate nohighlight">
 \[
@@ -722,7 +781,29 @@ f(s,2)=f(2,4)=f(4,t) = f_2 = 10\;.
 <li><p>Stop if no new augmenting paths can be found. Else,increment <span class="math notranslate nohighlight">\(i = i+1\)</span>.</p></li>
 <li><p><strong>Return</strong> the total <strong>max-flow</strong>: <span class="math notranslate nohighlight">\(F=\sum_i f_i\)</span>.</p></li>
 </ol>
+<div class="proof algorithm admonition" id="Ford_Fulkerson">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.3 </span> (Ford–Fulkerson)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a Network <span class="math notranslate nohighlight">\(G=(V,E)\)</span> with flow capacity <span class="math notranslate nohighlight">\(c\)</span>, a source node <span class="math notranslate nohighlight">\(s\)</span>, and a sink node <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Output</strong> Compute a flow <span class="math notranslate nohighlight">\(f\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> of maximum value</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u, v) \leftarrow 0\)</span> for all edges <span class="math notranslate nohighlight">\((u,v)\)</span></p></li>
+<li><p><strong>while</strong> there is a path <span class="math notranslate nohighlight">\(\Gamma\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> in <span class="math notranslate nohighlight">\(G_{f}\)</span> such that <span class="math notranslate nohighlight">\(c_{f}(u,v)&gt;0\)</span>
+for all edges <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Find <span class="math notranslate nohighlight">\(c_{f}(\Gamma)= \min \{c_{f}(u,v):(u,v)\in \Gamma\}\)</span></p></li>
+<li><p><strong>for</strong> each edge <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span></p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u,v) \leftarrow f(u,v) + c_{f}(\Gamma)\)</span> <em>(Send flow along the path)</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(v,u) \leftarrow f(v,u) - c_{f}(\Gamma)\)</span> <em>(The flow might be “returned” later)</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>return</strong> <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+</ol>
 </section>
+</div></section>
 <section id="augmenting-paths-and-residual-graph">
 <h4><span class="section-number">5.2.2.2. </span>Augmenting paths and Residual graph<a class="headerlink" href="#augmenting-paths-and-residual-graph" title="Permalink to this heading">#</a></h4>
 <p>Some interesting elements in the above algorithm are as follows.</p>
@@ -990,7 +1071,29 @@ Therefore, after <span class="math notranslate nohighlight">\(2\cdot 100\)</span
 <section id="the-edmonds-karp-method">
 <h3><span class="section-number">5.2.3. </span>The Edmonds-Karp Method<a class="headerlink" href="#the-edmonds-karp-method" title="Permalink to this heading">#</a></h3>
 <p>This method basically addresses exactly the point of <strong>incorporating a systematic way of exploring the augmenting paths</strong>. Basically, it consists in incorporating a BFS (Breadth-First-Search) method, such as the Dijkstra algorithm, in the Step 2 of the Ford-Fulkerson method (see <a href="#id7"><span class="problematic" id="id8">Edmonds_Karp</span></a>).</p>
-<p>Some precisions have to be made at this point:</p>
+<div class="proof algorithm admonition" id="Edmonds_Karp">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.4 </span> (Edmonds-Karp)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a Network <span class="math notranslate nohighlight">\(G=(V,E)\)</span> with flow capacity <span class="math notranslate nohighlight">\(c\)</span>, a source node <span class="math notranslate nohighlight">\(s\)</span>, and a sink node <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Output</strong> Compute a flow <span class="math notranslate nohighlight">\(f\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> of maximum value</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u, v) \leftarrow 0\)</span> for all edges <span class="math notranslate nohighlight">\((u,v)\)</span></p></li>
+<li><p><strong>while</strong> there is a <strong>BFS shortest path</strong> <span class="math notranslate nohighlight">\(\Gamma\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> in <span class="math notranslate nohighlight">\(G_{f}\)</span> such that <span class="math notranslate nohighlight">\(c_{f}(u,v)&gt;0\)</span>
+for all edges <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Find <span class="math notranslate nohighlight">\(c_{f}(\Gamma)= \min \{c_{f}(u,v):(u,v)\in \Gamma\}\)</span></p></li>
+<li><p><strong>for</strong> each edge <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span></p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u,v) \leftarrow f(u,v) + c_{f}(\Gamma)\)</span> <em>(Send flow along the path)</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(v,u) \leftarrow f(v,u) - c_{f}(\Gamma)\)</span> <em>(The flow might be “returned” later)</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>return</strong> <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+</ol>
+</section>
+</div><p>Some precisions have to be made at this point:</p>
 <ul class="simple">
 <li><p>The BFS looks for the <strong>shortest paths</strong> (in terms of the number of edges) between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> in the residual graph.</p></li>
 <li><p>Shortest paths are more interesting than random walkers or even DFS (Depth-First Search) because the <strong>longer the path the more probable is to find a leaking edge</strong> (an edge with a very small capacity wrt to others) in it. Long paths usually result in the worst case of the algorithm.</p></li>
