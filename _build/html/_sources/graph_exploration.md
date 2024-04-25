@@ -89,3 +89,15 @@ hitting_times
 ### Exercise 3
 
 Code a program that asks you for a node and then computes the hitting time of the graph (you can use any graph you want) from that node to all the other nodes. Then, the program should return the top 3 nodes that are easier to reach from the node that you have chosen. Like a recommendation system, but for graphs.
+
+
+## Submission
+
+For the delivery of the practice 3, what you will be asked to do is to make a zip (name_name.zip) containing 2 notebooks: a first notebook containing the graph generation  section, a second notebook containing the graph representation part.
+
+At the end the zip should be like this when you unzip it:
+```bash
+name_name.zip
+├── generation.ipynb
+├── exploration.ipynb
+```

@@ -28,3 +28,6 @@ parts:
   chapters:
   - file: graph_generation
   - file: graph_exploration
+- caption: Practice 4
+  chapters:
+  - file: real_cases
