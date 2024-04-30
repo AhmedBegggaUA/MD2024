@@ -69,11 +69,19 @@ As you can see, the function `hitting_time` computes the hitting time of a graph
 ## Exercises
 
 ### Exercise 1
-
+```{note}
+USAR SOLO UNA VEZ EL TODOS CON TODOS PARA LOS 5 GRAFOS (LOS DOS RANDOM, LOS DOS SMALL WORLD Y EL DE BARABASI ALBERT). NO LO CALCULEIS OTRA VEZ PARA EL EJERCICIO 2, SOLO UNA VEZ.
+```
+```{note}
+NO LO HAGAS SOLO PARA UN GRAFO, PARA LOS 5 GRAFOS. PODEIS USAR LAS SEMILLAS QUE OS GUSTEN MÁS.
+SI HACEÍS EL HITTING TIME SOLO PARA DOS NODOS Y NO TODOS, AUTOMÁTICAMENTE SE OS PONDRÁ UN 0 EN EL EJERCICIO.
+```
 Compute the hitting time of the graph that we have generated in the previous classes using the function `hitting_time` that we have defined above. And then, analyze the results. What can you say about the time it takes to go from one node to another in the graph? In which graph is it easier to go from one node to another? Why? And if you could improve the hitting time of the graph, how would you do it? 
 
 ### Exercise 2
-
+```{note}
+REUSAR EL CALCULO ANTERIOR, NO HAGAIS EL CALCULO DE NUEVO.
+```
 Compute the hitting time of the graph that we have generated in the previous classes using the function `hitting_time` that we have defined above. Then represent in an `plt.imshow` the hitting time of the graph. Don't worry, I will give you a hint on how to do this.
 
 ```{figure} ./images/practices/hitting_times.png
@@ -87,6 +95,9 @@ hitting_times
 ```
 
 ### Exercise 3
+```{note}
+NO INCLUIR EL PROPIO NODO, POR EJEMPLO, SI PARA EL NODO 8 OS DAN QUE EL 8,2,3,9 SON LOS MÁS CERCANOS, NO ME DEVOLVAIS EL 8.
+```
 
 Code a program that asks you for a node and then computes the hitting time of the graph (you can use any graph you want) from that node to all the other nodes. Then, the program should return the top 3 nodes that are easier to reach from the node that you have chosen. Like a recommendation system, but for graphs.
 

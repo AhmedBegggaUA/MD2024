@@ -208,10 +208,15 @@ In this section, we have discussed how to generate synthetic graphs using the `n
 ##  Exercises
 
 ### Exercise 1
+```{note}
+SI EL NOTEBOOK NO SIGUE LA ESTRUCTURA, SE PONDRÁ UN 0 AUTOMÁTICAMENTE.
+```
 After reading the previous section, you should be able to create your first Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook. 
 
 ### Exercise 2
-
+```{note}
+NO PUEDE ESTAR DESCONECTADO EL GRAFO. USAR LA MISMA POS PARA EL DRAW, SI NO, SE CASTIGARÁ. JUSTIFICACIÓN EXTENSA Y CON SENTIDO. NADA DE COSAS OBVIAS.
+```
 Pay attention to  Stochastic Block Model, and try to generate two graph with 4 blocks of 10 nodes each. The first one, must have the lowest probability of connection between blocks, and the second one, the highest probability of connection between blocks. Then try to visualize the graphs and compare them. In the comparation, try to think about the differences in the structure of the graphs in terms of what would happen if the communities were real people and they try to communicate with each other. It would be easier to communicate in the first or in the second graph? Why?
 
 ```{note}
@@ -219,7 +224,10 @@ You need to use you own seed in order to not have the same graph as your classma
 ``` 
 
 ### Exercise 3
+```{note}
+SOLO LOS DOS SBMS GENERADOS EN EL EJERCICIO 2.
 
+```
 For each graph you have generated in the previous exercise, try to compute the following properties:
 
 - Number of Nodes and Edges
