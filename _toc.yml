@@ -15,6 +15,9 @@ parts:
   - file: Topic2
   - file: Topic2_3
   - file: Topic3
+- caption: Spectral Theory
+  chapters:
+  - file: Topic4  
 - caption: Practice 1
   chapters:
   - file: practice_intro
@@ -31,3 +34,4 @@ parts:
 - caption: Practice 4
   chapters:
   - file: real_cases
+  
