@@ -34,4 +34,5 @@ parts:
 - caption: Practice 4
   chapters:
   - file: real_cases
+  - file: real_cases_dataset
   
