@@ -399,6 +399,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-interpretation-pagerank">6.1.2. The Spectral Interpretation: PageRank</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laplacian-matrices">6.2. Laplacian matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-min-cut-problem">6.2.1. The Min-Cut Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fiedler-vector">6.2.2. The Fiedler vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplacian-and-courant-fischer">6.2.3. The Laplacian and Courant-Fischer</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -937,6 +943,370 @@ at iteration <span class="math notranslate nohighlight">\(10\)</span> we wil hav
 <span style="color:#347fc9">
 Now, the top ranked node is <span class="math notranslate nohighlight">\(3\)</span>, the one with the largest <strong>in-degree</strong>. Nodes <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(4\)</span> are less accessible. Interestingly the node with the smallest rank is node <span class="math notranslate nohighlight">\(2\)</span> which is only accessed randomly.
 </span></p>
+<p>Summarizing, <span style="color:#469ff8">one important property of the Pagerank algorithm is that introducing the <span class="math notranslate nohighlight">\(\alpha\frac{1}{n}\)</span> terms (known as <strong>teleporting</strong>) endowns the Google matrix with the properties of <strong>irreducibility</strong> and <strong>aperiodicity</strong></span>. The graph is <strong>irreducible</strong> since all the nodes in the graph are reachable via random walks. In addition it is and <strong>aperiodic</strong> because self-loops with weight <span class="math notranslate nohighlight">\(\alpha\frac{1}{n}\)</span> are added if they do not exist; if they do exist their weight is <span class="math notranslate nohighlight">\(\frac{(1-\alpha)}{d_i} + \alpha\frac{1}{n}\)</span>. Anyway, as all nodes have self-loops their period is <span class="math notranslate nohighlight">\(1\)</span> and the graph is aperiodic.</p>
+</section>
+</section>
+<section id="laplacian-matrices">
+<h2><span class="section-number">6.2. </span>Laplacian matrices<a class="headerlink" href="#laplacian-matrices" title="Permalink to this heading">#</a></h2>
+<p>So far, we have learnt that eigenvectors with maximal eigenvalues do explain or <span style="color:#469ff8">summarize the <strong>stationary distribution</strong> of a graph</span> via the analysis of its (transposed) transition matrix.</p>
+<p>However, some other properties of graphs can be better understood if we analyze the eigenvectors and eigenvalues of other matrices such as the <strong>Laplacian</strong> or the <strong>normalized Laplacian</strong>. In particular, these matrices are key to <span style="color:#469ff8">uncover <strong>combinatorial properties of graphs</strong></span>.</p>
+<p>But, what does <strong>combinatorial</strong> mean here? Consider for instance the same SBM studied above <span class="math notranslate nohighlight">\(G=(V,E)\)</span> and <strong>two colors</strong>, say blue and red, encoded respectively by the numbers <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(+1\)</span> (bipolar coding). Then, the following fundamental question arises:</p>
+<p><span style="color:#469ff8"><strong>How to color the nodes</strong> of <span class="math notranslate nohighlight">\(G=(V,E)\)</span> so that color differences appear only at the <strong>weakest edges</strong>?</span></p>
+<section id="the-min-cut-problem">
+<h3><span class="section-number">6.2.1. </span>The Min-Cut Problem<a class="headerlink" href="#the-min-cut-problem" title="Permalink to this heading">#</a></h3>
+<p><strong>Min-cut</strong>. Coloring means <strong>partitioning</strong>: nodes with the same color belong to the <em>same partition</em>. If we have only two colors, then the set of nodes is the union of two <em>disjoint subsets</em>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+V = A\cup B,\; \text{with}\; A\subseteq V, B\subseteq V:\; A\cap B = \emptyset\;
+\]</div>
+<p>For instance, in <a class="reference internal" href="#partition"><span class="std std-numref">Fig. 6.8</span></a>, blue nodes <span class="math notranslate nohighlight">\(A\)</span> (with label <span class="math notranslate nohighlight">\(-1\)</span>) belong to the bottom community of the SBM whereas red ones <span class="math notranslate nohighlight">\(B\)</span> (with label <span class="math notranslate nohighlight">\(+1\)</span>) belong to the top community. Subsets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> induce a <em>partition</em> since their union is the full set of nodes and they are disjoint. Actually, such a partition is <strong>optimal</strong> since color differences appear at the <strong>weakest edges</strong>, those <span style="color:#469ff8">whose removal disconects or <strong>cuts</strong> the graph by <em>maximizing</em> the coherence of the resulting communities or <strong>clusters</strong> while the number of removed edges is <em>minimized</em></span>.</p>
+<figure class="align-center" id="partition">
+<a class="reference internal image-reference" href="_images/Partition.png"><img alt="_images/Partition.png" src="_images/Partition.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">SBM graph. Min-cut optimal partition .</span><a class="headerlink" href="#partition" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A bit more formally, let us define <span style="color:#469ff8">the <span class="math notranslate nohighlight">\(\text{cut}(A,B)\)</span> between the two subsets</span>, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, of a partition as the number of edges with different colors at their nodes:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{cut}(A,B) = \sum_{u\in A,v\in B}e(u,v)\;\;\text{with}\;\; e(u,v)\in E\;.
+\]</div>
+<p>The idea of min-cut is to find the partition <span class="math notranslate nohighlight">\((A,B)\)</span> <strong>minimizing</strong> <span class="math notranslate nohighlight">\(\text{cut}(A,B)\)</span>. However, doing so is not enough because if a given node <span class="math notranslate nohighlight">\(u\)</span> has <span class="math notranslate nohighlight">\(d_u=1\)</span>, we may consider the following partition: <span class="math notranslate nohighlight">\(A =\{u\}\)</span> and <span class="math notranslate nohighlight">\(B = V - \{u\} = V - A\)</span>, leading to <span class="math notranslate nohighlight">\(\text{cut}(A,B)=1\)</span> which is minimal but non-sense.</p>
+<p>Then, it seems more reasonable to force the partition to be <strong>balanced</strong>. This can be done in a simple way by <span style="color:#469ff8">minimizing the so called <strong>average cut</strong> or <strong>ratio cut</strong> <span class="math notranslate nohighlight">\(\text{Rcut}(A,B)\)</span></span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{\text{cut}(A,B)}{|A|} + \frac{\text{cut}(A,B)}{|B|}\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(|A|\)</span> and <span class="math notranslate nohighlight">\(|B|\)</span> are the number of nodes of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> respectively, which are <strong>maximized</strong> as <span class="math notranslate nohighlight">\(\text{cut}(A,B)\)</span> is minimized.</p>
+<p>However, as there are <span class="math notranslate nohighlight">\(2^{|V|}\)</span> partitions or ways of coloring <span class="math notranslate nohighlight">\(|V|\)</span> nodes with <span class="math notranslate nohighlight">\(2\)</span> colors, <span style="color:#469ff8">the <strong>ratio cut</strong> problem is NP-Hard and we can only have <strong>approximations</strong></span>.</p>
+</section>
+<section id="the-fiedler-vector">
+<h3><span class="section-number">6.2.2. </span>The Fiedler vector<a class="headerlink" href="#the-fiedler-vector" title="Permalink to this heading">#</a></h3>
+<p><strong>Encoding partitions</strong>. Given a partition <span class="math notranslate nohighlight">\((A,B)\)</span>, since <span class="math notranslate nohighlight">\(|A| + |B| = |V|\)</span> we can encode it with a vector <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> of length <span class="math notranslate nohighlight">\(|V|\)</span> whose entries <span class="math notranslate nohighlight">\(\mathbf{f}(u)\in \{-1,1\}\)</span> for <span class="math notranslate nohighlight">\(u\in V\)</span>. For instance, consider the graph in <a class="reference internal" href="#simplerand"><span class="std std-numref">Fig. 6.9</span></a> and its partition: <span class="math notranslate nohighlight">\(A = \{2,6\}, B=\{1,3,4,5\}\)</span>.</p>
+<figure class="align-center" id="simplerand">
+<a class="reference internal image-reference" href="_images/SimpleRand.png"><img alt="_images/SimpleRand.png" src="_images/SimpleRand.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.9 </span><span class="caption-text">Small graph with non-optimal partition.</span><a class="headerlink" href="#simplerand" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The corresponding vector is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}=[+1\;-1\;+1\;+1\;+1\;-1]^T\;.
+\]</div>
+<p>Then, for computing the ratio cut of the above partition we count the number of <strong>heterophilic edges</strong> (edges connecting nodes of different colors). They are <span class="math notranslate nohighlight">\(E_{cut}=\{(1,2), (2,3), (2,4), (5,6)\}\)</span>.
+Then, <span class="math notranslate nohighlight">\(\text{cut}(A,B)=|E_{cut}|=4\)</span>. Then, since <span class="math notranslate nohighlight">\(|A|=2\)</span> and <span class="math notranslate nohighlight">\(|B|=4\)</span> the ratio cut is</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{|E_{cut}|}{|A|} + \frac{|E_{cut}|}{|B|} = \frac{4}{2} + \frac{4}{4} = 3\;.
+\]</div>
+<p>Consider now the partition shown in <a class="reference internal" href="#simpleoptimal"><span class="std std-numref">Fig. 6.10</span></a>.</p>
+<figure class="align-center" id="simpleoptimal">
+<a class="reference internal image-reference" href="_images/SimpleOptimal.png"><img alt="_images/SimpleOptimal.png" src="_images/SimpleOptimal.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.10 </span><span class="caption-text">Small graph with the optimal partition.</span><a class="headerlink" href="#simpleoptimal" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We have the vector</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}=[-1\;-1\;-1\;+1\;+1\;+1]^T\; 
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{|E_{cut}|}{|A|} + \frac{|E_{cut}|}{|B|} = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}\;, 
+\]</div>
+<p>which is clearly smaller than that of the previous partition: <span class="math notranslate nohighlight">\(\frac{2}{3}&lt;3\)</span>, showing that the ratio cut <strong>loss function</strong> measures the godness of a cut.</p>
+<p>The ratio-cut <strong>loss function</strong> is, however, prone to <strong>degenerated solutions</strong> such as <span class="math notranslate nohighlight">\(A=\{1,2,3,4,5,6\},\; B=\emptyset\)</span> or vice versa:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{0}{|A|} + \frac{0}{|B|} = 0\;.
+\]</div>
+<p>Consequently, any algorithm minimizing <span class="math notranslate nohighlight">\(\text{Rcut}(A,B)\)</span> must:</p>
+<ol class="arabic simple">
+<li><p>Find a vector <span class="math notranslate nohighlight">\(\mathbf{f}\in\{-1,1\}^{|V|}\)</span> encoding a partition <span class="math notranslate nohighlight">\((A,B)\)</span> such that <strong>minimizes</strong> <span class="math notranslate nohighlight">\(\text{Rcut}(A,B)\)</span>.</p></li>
+<li><p>The minimizing vector must be <strong>perpendicular/orthogonal</strong> to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> as well as different from <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.</p></li>
+</ol>
+<p><span style="color:#469ff8">The last condition (orthogonality) ensures that the solution is quite different from the degenerated solution</span>.</p>
+<p>For instance,</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbf{f}=[-1\;-1\;-1\;+1\;+1\;+1]^T\; 
+\]</div>
+<p>is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> since the <strong>dot product</strong> <span class="math notranslate nohighlight">\(\mathbf{f}\cdot\mathbf{1}=0\)</span>. However,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}=[+1\;-1\;+1\;+1\;+1\;-1]^T\;.
+\]</div>
+<p>is not orthogonal to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> since <span class="math notranslate nohighlight">\(\mathbf{f}\cdot\mathbf{1}=4-2=2\neq 0\)</span>.</p>
+<p><strong>Continuous relaxation</strong>. Due to the NP hardness of the ratio-cut problem, instead of looking for discrete solutions, <span class="math notranslate nohighlight">\(\mathbf{f}\in\{-1,1\}^{|V|}\)</span> we must <strong>relax the vector space to allow</strong> <span class="math notranslate nohighlight">\(\mathbf{f}\in [-1,1]^{|V|}\)</span>. <span style="color:#469ff8">This strategy is quite common in AI and it is called <strong>continuous relaxation</strong></span>. The main idea is that vectors with continuous entries are easier to be manipulated by algebraic techqiques so that they become an approximation of their discrete counterparts (relaxation really means “approximation”).</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Miroslav_Fiedler">Miroslav Fiedler</a>, while reasoning on how to use linear algebra to characterize the connectivity of graphs proposed the following loss equivalent to the ratio-cut:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = |V|\cdot \left\{\frac{\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2}{\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2}\;: \mathbf{f}\neq\mathbf{0},\mathbf{f}\neq c\cdot\mathbf{1},c\in\mathbb{R}\right\}\;,
+\]</div>
+<p>where the notation <span class="math notranslate nohighlight">\(u\sim v\)</span> means that “<span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are neighbors”. As a result, if <span class="math notranslate nohighlight">\(\mathbf{f}\in\{-1,1\}^{|V|}\)</span>, the <strong>numerator</strong> of the above loss simply counts how many heterophilic edges do we have. The <strong>denominator</strong> counts how many heterophilic edges we would have if the graph were complete.</p>
+<p>The correspondence of <span class="math notranslate nohighlight">\(\lambda\)</span> with the ratio cut loss is very interesting. Actually, all we have to do is to operate on the denominator as follows:</p>
+<ol class="arabic simple">
+<li><p>Use the <strong>Lagrange identity</strong>, which is valid for any vector <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>, to expand the denominator</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2}\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2 = 
+|V|\sum_{u}\mathbf{f}(u)^2 - \left(\sum_{u}\mathbf{f}(u)\right)^2\;.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Since the orthogonality of <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> means that <span class="math notranslate nohighlight">\(\sum_{u}\mathbf{f}(u)=0\)</span>, the Lagrange identity becomes:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2 = 
+2|V|\sum_{u}\mathbf{f}(u)^2.
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Look now at the ratio cut and group the two fractions into a single one:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{Rcut}(A,B) &amp;= \frac{|E_{cut}|}{|A|} + \frac{|E_{cut}|}{|B|}\\
+&amp;= \frac{|B|\cdot |E_{cut}| + |A|\cdot |E_{cut}|}{|A|\cdot|B|}\\
+&amp;= \frac{(|A|+|B|)\cdot |E_{cut}|}{|A|\cdot|B|}\\ 
+&amp;= \frac{|V|\cdot |E_{cut}|}{|A|\cdot|B|}\\ 
+\end{align}\;.
+\end{split}\]</div>
+<p>Now, setting <span class="math notranslate nohighlight">\(|E_{cut}|=\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2\)</span> and considering that <span class="math notranslate nohighlight">\(\sum_{u}\mathbf{f}(u)^2\le |V|\)</span> for <span class="math notranslate nohighlight">\(\mathbf{f}\in [-1,1]^{|V|}\)</span>, we have that</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda\le\text{Rcut}(A,B)
+\]</div>
+<p>that is  <span style="color:#469ff8">the loss <span class="math notranslate nohighlight">\(\lambda\)</span> is <strong>even more restrictive than the ratio cut</strong> loss!</span></p>
+</section>
+<section id="the-laplacian-and-courant-fischer">
+<h3><span class="section-number">6.2.3. </span>The Laplacian and Courant-Fischer<a class="headerlink" href="#the-laplacian-and-courant-fischer" title="Permalink to this heading">#</a></h3>
+<p>One of the most <strong>interestings discoveries</strong> of spectral theory is that <span style="color:#469ff8">for minimizing <span class="math notranslate nohighlight">\(\lambda\)</span> we only need to interpret it as the <strong>eigenvalue</strong> of <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> which is an  <strong>eigenvector</strong> of a symmetric matrix called the <strong>Laplacian</strong></span>.</p>
+<p>The Laplacian of a graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, that we denote as <span class="math notranslate nohighlight">\(\triangle\)</span>, is the matrix resulting for subtracting to the degree matrix the adjacency matrix of the graph:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \mathbf{D}-\mathbf{A}\;.
+\]</div>
+<p>That is, in the diagonal of <span class="math notranslate nohighlight">\(\triangle\)</span> we have the degrees <span class="math notranslate nohighlight">\(d_u\)</span> of all the nodes <span class="math notranslate nohighlight">\(u\in V\)</span> and in the off-diagonal we have the negative of the adjacencies <span class="math notranslate nohighlight">\(-a_{uv}\)</span>.</p>
+<p>For our example graph, in <a class="reference internal" href="#simplerand"><span class="std std-numref">Fig. 6.9</span></a> and <a class="reference internal" href="#simpleoptimal"><span class="std std-numref">Fig. 6.10</span></a>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\triangle = 
+\begin{bmatrix}
+\mathbf{d}_1 = 2 &amp; -a_{12}=-1 &amp; -a_{13}=-1 &amp; -a_{14}=0 &amp; -a_{15}=0 &amp; -a_{16}=0\\
+-a_{21}=-1 &amp; \mathbf{d}_2 = 3 &amp; -a_{23}=-1 &amp; -a_{24}=-1 &amp; -a_{25}=0 &amp; -a_{26}=0\\
+-a_{31}=-1 &amp; -a_{32}=-1 &amp; \mathbf{d}_3 = 2 &amp; -a_{34}=0 &amp; -a_{35}=0 &amp; -a_{36}=0\\
+-a_{41}=0 &amp; -a_{42}=-1 &amp; -a_{43}=0 &amp; \mathbf{d}_4 = 3 &amp; -a_{45}=-1 &amp; -a_{46}=-1\\
+-a_{51}=0 &amp; -a_{52}=0 &amp; -a_{53}=0 &amp; -a_{54}=-1 &amp; \mathbf{d}_5 = 2 &amp; -a_{56}=-1\\
+-a_{61}=0 &amp; -a_{62}=0 &amp; -a_{63}=0 &amp; -a_{64}=-1 &amp; -a_{65}=-1 &amp; \mathbf{d}_6 = 2\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>i.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\triangle = 
+\begin{bmatrix}
+\mathbf{2}  &amp; -1 &amp; -1 &amp;  0 &amp; 0  &amp;  0\\
+-1 &amp; \mathbf{3}  &amp; -1 &amp; -1 &amp; 0  &amp;  0\\
+-1 &amp; -1 &amp;  \mathbf{2} &amp; 0  &amp; 0  &amp;  0\\
+0 &amp; -1  &amp;  0 &amp; \mathbf{3}  &amp; -1 &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; \mathbf{2}  &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; -1 &amp; \mathbf{2}\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>Some properties:</p>
+<ol class="arabic simple">
+<li><p><span style="color:#469ff8">The Laplacian is usually considered the <strong>derivative operator</strong> in the graph domain (this is why we use the notation <span class="math notranslate nohighlight">\(\triangle\)</span>)</span>.
+Actually for any vector <span class="math notranslate nohighlight">\(\mathbf{f}\in\mathbb{R}^{|V|}\)</span> we have:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\triangle\mathbf{f} = \sum_{u\sim v}\mathbf{f}(u)-\mathbf{f}(v)\;.
+\]</div>
+<p>Actually, in the previous example we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\triangle\mathbf{f} = 
+\begin{bmatrix}
+\mathbf{2}  &amp; -1 &amp; -1 &amp;  0 &amp; 0  &amp;  0\\
+-1 &amp; \mathbf{3}  &amp; -1 &amp; -1 &amp; 0  &amp;  0\\
+-1 &amp; -1 &amp;  \mathbf{2} &amp; 0  &amp; 0  &amp;  0\\
+0 &amp; -1  &amp;  0 &amp; \mathbf{3}  &amp; -1 &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; \mathbf{2}  &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; -1 &amp; \mathbf{2}\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{f}(1)\\
+\mathbf{f}(2)\\
+\mathbf{f}(3)\\
+\mathbf{f}(4)\\
+\mathbf{f}(5)\\
+\mathbf{f}(6)\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\mathbf{f}(1)-\mathbf{f}(2) + \mathbf{f}(1)-\mathbf{f}(3)\\
+\mathbf{f}(2) - \mathbf{f}(1) + \mathbf{f}(2) - \mathbf{f}(3) + \mathbf{f}(2) - \mathbf{f}(4)\\
+\mathbf{f}(3) - \mathbf{f}(1) + \mathbf{f}(3) - \mathbf{f}(2) \\
+\mathbf{f}(4) - \mathbf{f}(2) + \mathbf{f}(4) - \mathbf{f}(5) + \mathbf{f}(4) - \mathbf{f}(6)\\
+\mathbf{f}(5) - \mathbf{f}(4) + \mathbf{f}(5) - \mathbf{f}(6)\\
+\mathbf{f}(6) - \mathbf{f}(4) +  \mathbf{f}(6) - \mathbf{f}(5)\\
+\end{bmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p><span style="color:#469ff8">The Laplacian is an <strong>harmonic operator</strong></span>, i.e. it satisfies that</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(u)=\frac{1}{d_u}\sum_{v\sim u}f(v)\;.
+\]</div>
+<p>and you can check this at any row of <span class="math notranslate nohighlight">\(\triangle\mathbf{f}\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p><span style="color:#469ff8">The Laplacian is <strong>linked with the <span class="math notranslate nohighlight">\(\lambda\)</span> loss</strong></span> as follows:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^T\triangle\mathbf{f} = \frac{1}{2}\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2
+\]</div>
+<p>In order to visualize this, let us consider the product of <span class="math notranslate nohighlight">\(\mathbf{f}^T\)</span> and <span class="math notranslate nohighlight">\(\triangle\mathbf{f}\)</span> in the example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\mathbf{f}(1) &amp; \mathbf{f}(2) &amp; \mathbf{f}(3) &amp; \mathbf{f}(4) &amp; \mathbf{f}(5) &amp; \mathbf{f}(6)
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{f}(1)-\mathbf{f}(2) + \mathbf{f}(1)-\mathbf{f}(3)\\
+\mathbf{f}(2) - \mathbf{f}(1) + \mathbf{f}(2) - \mathbf{f}(3) + \mathbf{f}(2) - \mathbf{f}(4)\\
+\mathbf{f}(3) - \mathbf{f}(1) + \mathbf{f}(3) - \mathbf{f}(2) \\
+\mathbf{f}(4) - \mathbf{f}(2) + \mathbf{f}(4) - \mathbf{f}(5) + \mathbf{f}(4) - \mathbf{f}(6)\\
+\mathbf{f}(5) - \mathbf{f}(4) + \mathbf{f}(5) - \mathbf{f}(6)\\
+\mathbf{f}(6) - \mathbf{f}(4) +  \mathbf{f}(6) - \mathbf{f}(5)\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>from this product of <span class="math notranslate nohighlight">\((1\times |V|)(|V|\times 1)\)</span> we get a scalar as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(1)\triangle\mathbf{f} + \mathbf{f}(2)\triangle\mathbf{f} + \ldots + \mathbf{f}(|V|)\triangle\mathbf{f}\;.
+\]</div>
+<p>and plugging in <span class="math notranslate nohighlight">\(\triangle\mathbf{f}=\sum_{u\sim v}\mathbf{f}(u)-\mathbf{f}(v)\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(1)\sum_{1\sim v}\mathbf{f}(1)-\mathbf{f}(v) + \mathbf{f}(2)\sum_{2\sim v}\mathbf{f}(2)-\mathbf{f}(v) + \ldots + \mathbf{f}(n)\sum_{n\sim v}\mathbf{f}(n)-\mathbf{f}(v)\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n=|V|\)</span>. This leads to</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(1)\sum_{1\sim v}\mathbf{f}(1)^2-\mathbf{f}(1)\mathbf{f}(v) + \sum_{2\sim v}\mathbf{f}^2(2)-\mathbf{f}(2)\mathbf{f}(v) + \ldots + \sum_{n\sim v}\mathbf{f}(n)^2-\mathbf{f}(n)\mathbf{f}(v)\;.
+\]</div>
+<p>For a any edge, say <span class="math notranslate nohighlight">\(e=(u,v)\)</span> the above sum contains <span class="math notranslate nohighlight">\(f(u)^2 + f(v)^2 - 2f(u)f(v) = (f(u)-f(v))^2\)</span>.</p>
+<p>See for instance, <span class="math notranslate nohighlight">\(e=(1,2)\)</span> which involves nodes <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>. From the above sum (see also the two first elements of <span class="math notranslate nohighlight">\(\triangle\mathbf{f}\)</span>) we have:</p>
+<div class="math notranslate nohighlight">
+\[
+f(1)^2 - f(1)f(2) + f(1)^2 - f(1)f(3)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+f(2)^2 - f(2)f(1) + f(2)^2 - f(2)f(3) + f(2)^2 - f(2)f(4)
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(e=(1,2)\)</span> we take</p>
+<div class="math notranslate nohighlight">
+\[
+f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
+\]</div>
+<p>and there are more terms for <span class="math notranslate nohighlight">\(e=(2,1)\)</span> and similarly for the remaining edges thus leading to</p>
+<div class="math notranslate nohighlight">
+\[
+2\sum_{u\sim v}(f(u)-f(v))^2\;.
+\]</div>
+<p>By the Lagrange identity we know that</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2 = 
+2|V|\sum_{u}\mathbf{f}(u)^2.
+\]</div>
+<p>As a result, we have that</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \left\{\frac{\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2}{\sum_{u}\mathbf{f}(u)^2}\;: \mathbf{f}\neq\mathbf{0},\mathbf{f}\neq c\cdot\mathbf{1},c\in\mathbb{R}\right\}\;.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\sum_{u}\mathbf{f}(u)^2=\mathbf{f}^T\mathbf{f}=||\mathbf{f}||^2\)</span> is the squared modulus of <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>, we have a more compact definition of <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \left\{\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\;: \mathbf{f}\neq\mathbf{0},\mathbf{f}\neq c\cdot\mathbf{1},c\in\mathbb{R}\right\}\;.
+\]</div>
+<p><strong>Courant-Fischer Theorem</strong>. Given an <span class="math notranslate nohighlight">\(n\times n\)</span> symmetric matrix <span class="math notranslate nohighlight">\(\triangle\)</span>, it has <span class="math notranslate nohighlight">\(n\)</span> real eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\le\lambda_2\le\ldots\le\lambda_n\)</span> with their associated real-valued eigenvectors <span class="math notranslate nohighlight">\(\phi_1,\phi_2,\ldots,\phi_n\)</span> satisfying <span class="math notranslate nohighlight">\(\triangle\phi_i = \lambda_i\phi_i\)</span> also satisfies:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\lambda_1 &amp;= \min_{\mathbf{f}\neq 0}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_1\\
+\lambda_2 &amp;= \min_{\mathbf{f}\neq 0, \mathbf{f}\perp \phi_1}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_2\\
+\lambda_3 &amp;= \min_{\mathbf{f}\neq 0, \mathbf{f}\perp \{\phi_1,\phi_2\}}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_3\\
+&amp; \ldots\\
+\lambda_n &amp;= \min_{\mathbf{f}\neq 0, \mathbf{f}\perp \{\phi_1,\phi_2,\ldots,\phi_{n-1}\}}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_n\\
+\end{align}
+\end{split}\]</div>
+<p>Looking at the eigenvectors, <span style="color:#469ff8">they are interpreted as <strong>real-valued functions</strong> <span class="math notranslate nohighlight">\(\phi:V\rightarrow\mathbb{R}\)</span> and eigenvalues are the variations of these functions over the graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span></span>.</p>
+<p><strong>Laplacian spectrum and eigenvectors</strong>. From the above theorem we have that for the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda_1=0\)</span>. Since the rows of the Laplacian add <span class="math notranslate nohighlight">\(0\)</span>, the smallest eigenvalue of the Laplacian is <span class="math notranslate nohighlight">\(\lambda_1=0\)</span> with eigenvector <span class="math notranslate nohighlight">\(\phi=\mathbf{1}\)</span>.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\triangle\phi_1 = \lambda_1\phi_1\Rightarrow \triangle\mathbf{1} = 0\cdot \mathbf{1}\;.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>If the graph is connected, <span class="math notranslate nohighlight">\(\lambda_2 = \min \lambda\)</span> (minimum of the <strong>Fiedler loss</strong>). As a result, <span class="math notranslate nohighlight">\(\lambda_2\)</span>, <span style="color:#469ff8">the <strong>Fiedler value</strong> can be interpreted as <strong>the minimal non-zero variance</strong> achievable for functions which are perpendicular to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>, and the Fiedler vector is that function.</span>.</p></li>
+</ol>
+<p>For instance, the Fiedler vector for the small example is mapped on the graph in <a class="reference internal" href="#smallfiedler"><span class="std std-numref">Fig. 6.11</span></a>.</p>
+<figure class="align-center" id="smallfiedler">
+<a class="reference internal image-reference" href="_images/SmallFiedler.png"><img alt="_images/SmallFiedler.png" src="_images/SmallFiedler.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">Small graph and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#smallfiedler" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the above graph, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_2=0.438,\;\; \phi_2^T=[-0.464\; -0.260\; -0.464\;  +0.260\; +0.464\;+0.464]\;,
+\]</div>
+<p>where we have <strong>part of the components negative</strong> (corresponding to <span class="math notranslate nohighlight">\(-1\)</span>) and part of them positive (corresponding to <span class="math notranslate nohighlight">\(+1\)</span>), thus approximating a partition in time <span class="math notranslate nohighlight">\(O(n^3)\)</span>, the one needed to solve a system.</p>
+<p>Interestingly the components <span class="math notranslate nohighlight">\(\phi_2(2)\)</span> and <span class="math notranslate nohighlight">\(\phi_2(4)\)</span> have the <strong>smaller absolute value</strong> since they are defining an heterophilic edge.</p>
+<p>The Fiedler vector for the SBM example is mapped on the graph in <a class="reference internal" href="#bigfiedler"><span class="std std-numref">Fig. 6.12</span></a>.</p>
+<figure class="align-center" id="bigfiedler">
+<a class="reference internal image-reference" href="_images/BigFiedler.png"><img alt="_images/BigFiedler.png" src="_images/BigFiedler.png" style="width: 620px; height: 270px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">SBM and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#bigfiedler" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>The Spectrum</strong>. The spectrum of <span class="math notranslate nohighlight">\(\triangle\)</span> is the collection of <span class="math notranslate nohighlight">\(n\)</span> <strong>eigenvalues</strong> <span class="math notranslate nohighlight">\(\lambda_1\le\lambda_2\le\ldots\le\lambda_n\)</span>. They are not-decreasing because they summarize the increasing variability of their respective <strong>eigenvectors</strong> mapped on the nodes of the graph.</p>
+<figure class="align-center" id="sbmspectrum">
+<a class="reference internal image-reference" href="_images/SBMSpectrum.png"><img alt="_images/SBMSpectrum.png" src="_images/SBMSpectrum.png" style="width: 620px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">SBM spectrum and its associated eigenvectors.</span><a class="headerlink" href="#sbmspectrum" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>The Spectral Theorem</strong>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvalues are necessary in AI, <strong>any simmetric and square matrix can be decomposed</strong> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \lambda_1\phi_1^T\phi_1 + \lambda_2\phi_2^T\phi_2 + \ldots + \lambda_n\phi_n^T\phi_n\;.
+\]</div>
+<p>More compactly,</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \sum_{i=1}^n\lambda_i\phi_i^T\phi_i\;.
+\]</div>
+<p>The meaning of this theorem is that the matrix (<span class="math notranslate nohighlight">\(\triangle\)</span> for instance) can be perfectly decomposed (without loss of information) as a <strong>linear combination</strong> of <span class="math notranslate nohighlight">\(n\)</span> matrices <span class="math notranslate nohighlight">\(\phi_i^T\phi_i\)</span>, each one defined by an eigenctor, and the coefficients of this linear combination are the coefficients of the eigenvalues.</p>
+<p>However, if we do not have the full set of eigenvectors but a small number <span class="math notranslate nohighlight">\(k&lt;n\)</span> of them, all we do is to <strong>approximate</strong> the matrix (the Laplacian of the graph in the case of <span class="math notranslate nohighlight">\(\triangle\)</span>). The <strong>error of the approximation</strong> is given by the sum of the absolute values of the <strong>discarded eigenvalues or modes</strong>.</p>
+<p>In graph spectral theory, it is quite common to retain (or compute) only the smalles <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \sum_{i=1}^k\lambda_i\phi_i^T\phi_i\;.
+\]</div>
 </section>
 </section>
 </section>
@@ -1008,6 +1378,12 @@ Now, the top ranked node is <span class="math notranslate nohighlight">\(3\)</sp
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-matrix">6.1. Transition matrix</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-distribution">6.1.1. Stationary Distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-interpretation-pagerank">6.1.2. The Spectral Interpretation: PageRank</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laplacian-matrices">6.2. Laplacian matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-min-cut-problem">6.2.1. The Min-Cut Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fiedler-vector">6.2.2. The Fiedler vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplacian-and-courant-fischer">6.2.3. The Laplacian and Courant-Fischer</a></li>
 </ul>
 </li>
 </ul>
