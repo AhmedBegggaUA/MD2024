@@ -82,7 +82,7 @@ The steps to perform node classification are as follows:
 
 1. Generate node embeddings using Node2Vec.
 2. Train a logistic regression classifier on the node embeddings. Note that you will need to split the dataset into training and test sets (60% training, 40% test).
-3. Evaluate the classifier on the test set. ** You will need to run the training and evaluation 10 times and calculate the average accuracy to get a more reliable estimate of the classifier's performance. If you don't do this, you will get a 0 in the exercise. **
+3. Evaluate the classifier on the test set. **You will need to run the training and evaluation 10 times and calculate the average accuracy to get a more reliable estimate of the classifier's performance. If you don't do this, you will get a 0 in the exercise.**
 4. Report the average accuracy of the classifier, and discuss the results. In the discussion, I want to see all the parameters that you modified during the process (e.g., the number of walks, the length of the walks, the embedding dimension, etc.) and how they affected the performance of the classifier. If you put a very long explanation of the parameters that you modified and how they affected the performance of the classifier, you will get a 10 in the exercise, without taking into account the accuracy of the classifier. **Important**: You need to save the accuracy of each run in a csv file called `node_classification_results_yourname.csv` and upload it to the platform.
 
 ```{note}
