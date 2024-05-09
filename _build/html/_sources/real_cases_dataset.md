@@ -56,7 +56,6 @@ pos = nx.kamada_kawai_layout(G)
 # Color is based on data.y
 colors = data.y.numpy()
 nx.draw(G, pos=pos, cmap=plt.cm.viridis, node_color=colors, node_size=50, edge_color='black', width=0.7, with_labels=False, node_shape='o', alpha=0.8)
-plt.savefig('/Users/ahmedbegga/Desktop/Docencia/MD2024/images/practices/cora_dataset.png')
 plt.show()
 ```
 
