@@ -35,4 +35,5 @@ parts:
   chapters:
   - file: real_cases
   - file: real_cases_dataset
+  - file: real_cases_part2
   
