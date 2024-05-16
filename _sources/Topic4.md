@@ -1,4 +1,4 @@
-## Ranking and Diffusion 
+## Ranking and Partitions 
 
 ### Transition matrix 
 Given a (undirected) graph $G=(V,E)$, we consider:
@@ -40,7 +40,7 @@ Let us start by understanding the meaning of $\mathbf{P}$, $\mathbf{P}^2$, $\mat
 Depending on the graph $G=(V,E)$ we may need only a small number of powers $k$. Consider for instance the **complete graph** or **clique graph** for $n$ nodes, dubbed $K_n$. The complete graph is the **denser graph than one can imagine** since it has $n$ nodes and each node has $n$ links (including self-loops). Therefore, the adjacency matrix of $K_n$ is: 
 
 $$
-\mathbf{A} = \mathbf{1}^T\mathbf{1}\;,
+\mathbf{A} = \mathbf{1}\mathbf{1}^T\;,
 $$
 
 where $\mathbf{1}$ is the $n\times 1$ vector of all ones, i.e. $\mathbf{A}$ is a matrix of ones. 
@@ -54,8 +54,8 @@ $$
 Then every node $i$ has the same probability of going to any other $j$ (including itself) in only one hop. In other words, a node $i$ does not need to visit first any other node before hitting $j$. This makes $\mathbf{P}^2$, $\mathbf{P}^3$, etc, *redundant* since
 
 $$
-\mathbf{P}^2 = \frac{1}{n}\mathbf{1}^T\mathbf{1}\cdot \frac{1}{n}\mathbf{1}^T\mathbf{1}
-= \frac{1}{n^2}n\mathbf{1}^T\mathbf{1} = \frac{1}{n}\mathbf{1}^T\mathbf{1}=\mathbf{P}\;.
+\mathbf{P}^2 = \frac{1}{n}\mathbf{1}\mathbf{1}^T\cdot \frac{1}{n}\mathbf{1}\mathbf{1}^T
+= \frac{1}{n^2}n\mathbf{1}\mathbf{1}^T = \frac{1}{n}\mathbf{1}\mathbf{1}^T=\mathbf{P}\;.
 $$
 
 This means that in $K_n$ (as well as in hyper-dense graphs), all the nodes have the same structural role. Note that in these case we have $\text{rank}(\mathbf{P})=1$. 
@@ -216,22 +216,9 @@ $$
 \mathbf{P}\psi = \lambda\psi\;\;\text{leads to}\; \mathbf{P}\psi = 1\cdot\psi\;.
 $$
 
-Looking at the above equations, it is straightforward to prove that $\psi = \mathbf{D}^{1/2}\mathbf{1}$ is the right eigenvector of the transition matrix $\mathbf{P}$: 
+Looking at the above equations, in the next topic we will prove that $\psi = \mathbf{D}^{1/2}\mathbf{1}$ is the right eigenvector of the transition matrix $\mathbf{P}$.
 
-$$
-\begin{align}
-\mathbf{P}\psi &=  \mathbf{D}^{-1}\mathbf{A}(\mathbf{D}^{1/2}\mathbf{1})\\
-               &=  \mathbf{D}^{-1/2}\mathbf{D}^{-1/2}\mathbf{A}(\mathbf{D}^{1/2}\mathbf{1})\\
-               &=  \mathbf{D}^{-1/2}\mathbf{A}\mathbf{D}^{-1/2}(\mathbf{D}^{1/2}\mathbf{1})\\
-               &=  \mathbf{D}^{-1/2}\mathbf{A}(\mathbf{D}^{-1/2}\mathbf{D}^{1/2})\mathbf{1}\\
-               &=  \mathbf{D}^{-1/2}\mathbf{A}\mathbf{1}\\
-               & = \mathbf{D}^{-1/2}\mathbf{D}\mathbf{1}\;\;\text{from}\;\;\mathbf{A}\mathbf{1}=\mathbf{D}\mathbf{1}\\
-               &= \mathbf{D}^{1/2}\mathbf{1}\\
-               &= 1\cdot \psi\;.
-\end{align}
-$$
-
-The meaning of $\psi = \mathbf{D}^{1/2}\mathbf{1}$ means that 
+The meaning of $\psi = \mathbf{D}^{1/2}\mathbf{1}$ is that 
 
 $$
 \psi_i = \sqrt{d_i}\;
@@ -981,7 +968,7 @@ $$
 
 where we have **part of the components negative** (corresponding to $-1$) and part of them positive (corresponding to $+1$), thus approximating a partition in time $O(n^3)$, the one needed to solve a system. 
 
-Interestingly the components $\phi_2(2)$ and $\phi_2(4)$ have the **smaller absolute value** since they are defining an heterophilic edge. 
+Interestingly the components $\phi_2(2)$ and $\phi_2(4)$ have the **smaller absolute value** although they are defining an heterophilic edge. This is a limitation of the continuous relaxation. 
 
 
 The Fiedler vector for the SBM example is mapped on the graph in {numref}`BigFiedler`. 
@@ -1008,16 +995,16 @@ height: 280px
 SBM spectrum and its associated eigenvectors. 
 ```
 
-**The Spectral Theorem**. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvalues are necessary in AI, **any simmetric and square matrix can be decomposed** as follows: 
+**The Spectral Theorem**. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, **any simmetric and square matrix can be decomposed** as follows: 
 
 $$
-\triangle = \lambda_1\phi_1^T\phi_1 + \lambda_2\phi_2^T\phi_2 + \ldots + \lambda_n\phi_n^T\phi_n\;.
+\triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T + \ldots + \lambda_n\phi_n\phi_n^T\;.
 $$
 
 More compactly, 
 
 $$
-\triangle = \sum_{i=1}^n\lambda_i\phi_i^T\phi_i\;.
+\triangle = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;.
 $$
 
 The meaning of this theorem is that the matrix ($\triangle$ for instance) can be perfectly decomposed (without loss of information) as a **linear combination** of $n$ matrices $\phi_i^T\phi_i$, each one defined by an eigenctor, and the coefficients of this linear combination are the coefficients of the eigenvalues. 
@@ -1027,5 +1014,5 @@ However, if we do not have the full set of eigenvectors but a small number $k<n$
 In graph spectral theory, it is quite common to retain (or compute) only the smalles $k$ eigenvectors of the Laplacian $\triangle$: 
 
 $$
-\triangle = \sum_{i=1}^k\lambda_i\phi_i^T\phi_i\;.
+\triangle = \sum_{i=1}^k\lambda_i\phi_i\phi_i^T\;.
 $$

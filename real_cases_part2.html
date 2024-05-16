@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>16. Real cases part 2: Into the Message Passing and Graph Classification &#8212; Matemáticas Discreta IA</title>
+    <title>17. Real cases part 2: Into the Message Passing and Graph Classification &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -100,7 +100,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'real_cases_part2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="15. Real cases dataset" href="real_cases_dataset.html" />
+    <link rel="prev" title="16. Real cases dataset" href="real_cases_dataset.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,29 +223,30 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">7. Introduction to the practical part of MD2024</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">8. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">9. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">10. Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networkx.html">11. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">12. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration.html">13. Graph exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration.html">14. Graph exploration</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="real_cases.html">14. Graphs on real life</a></li>
-<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">15. Real cases dataset</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Real cases part 2: Into the Message Passing and Graph Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">15. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">16. Real cases dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Real cases part 2: Into the Message Passing and Graph Classification</a></li>
 </ul>
 
     </div>
@@ -394,22 +395,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">16.1. Message Passing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing-for-node-classification">16.1.1. Message Passing for Node Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">17.1. Message Passing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing-for-node-classification">17.1.1. Message Passing for Node Classification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">16.2. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">16.2.1. Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">16.2.2. Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.2. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">17.2.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">17.2.2. Exercise 2</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-classification">16.3. Graph Classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph2vec">16.4. Graph2Vec</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-generate-graph-embeddings-using-graph2vec">16.4.1. Steps to generate graph embeddings using Graph2Vec:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-classification">17.3. Graph Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph2vec">17.4. Graph2Vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-generate-graph-embeddings-using-graph2vec">17.4.1. Steps to generate graph embeddings using Graph2Vec:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercises">16.5. Extra Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercise-1">16.5.1. Extra Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercises">17.5. Extra Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercise-1">17.5.1. Extra Exercise 1</a></li>
 </ul>
 </li>
 </ul>
@@ -424,14 +425,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="real-cases-part-2-into-the-message-passing-and-graph-classification">
-<h1><span class="section-number">16. </span>Real cases part 2: Into the Message Passing and Graph Classification<a class="headerlink" href="#real-cases-part-2-into-the-message-passing-and-graph-classification" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>Real cases part 2: Into the Message Passing and Graph Classification<a class="headerlink" href="#real-cases-part-2-into-the-message-passing-and-graph-classification" title="Permalink to this heading">#</a></h1>
 <p>In this section, we will explore the message passing and graph classification tasks. We will use the same dataset as in the previous section and we will add a new dataset to explore the graph classification task. This new dataset is MUTAG, which is a dataset of chemical compounds. The goal is to predict whether a molecule is mutagenic or not. The dataset is available in the <code class="docutils literal notranslate"><span class="pre">torch_geometric.datasets</span></code> module.</p>
 <section id="message-passing">
-<h2><span class="section-number">16.1. </span>Message Passing<a class="headerlink" href="#message-passing" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.1. </span>Message Passing<a class="headerlink" href="#message-passing" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="mp">
 <a class="reference internal image-reference" href="_images/mp.gif"><img alt="_images/mp.gif" src="_images/mp.gif" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16.1 </span><span class="caption-text">Message Passing. Source: <a class="reference external" href="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fmedium.com%2F%40ashes192000%2Fgraph-neural-networks-part-4-e54251d0256d&amp;psig=AOvVaw1Beroo1pgAz7crrm0Y--HT&amp;ust=1715926367458000&amp;source=images&amp;cd=vfe&amp;opi=89978449&amp;ved=0CBIQjhxqFwoTCLDB1v7BkYYDFQAAAAAdAAAAABAE">Medium</a></span><a class="headerlink" href="#mp" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17.1 </span><span class="caption-text">Message Passing. Source: <a class="reference external" href="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fmedium.com%2F%40ashes192000%2Fgraph-neural-networks-part-4-e54251d0256d&amp;psig=AOvVaw1Beroo1pgAz7crrm0Y--HT&amp;ust=1715926367458000&amp;source=images&amp;cd=vfe&amp;opi=89978449&amp;ved=0CBIQjhxqFwoTCLDB1v7BkYYDFQAAAAAdAAAAABAE">Medium</a></span><a class="headerlink" href="#mp" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the previous section, we have seen how to use node2vec to generate node embeddings. In this section, we will use the message passing (not neural message passing) to generate node embeddings. The message passing is a technique to propagate information between nodes in a graph. The message passing is a fundamental concept in graph neural networks.</p>
@@ -458,7 +459,7 @@ H^{(l+1)} = A H^{(l)}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(H^{(l)}\)</span> is the state matrix at layer <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is the adjacency matrix, and <span class="math notranslate nohighlight">\(H^{(l+1)}\)</span> is the state matrix at layer <span class="math notranslate nohighlight">\(l+1\)</span>. The message passing can be applied multiple times to generate node embeddings. The node embeddings can be used for node classification, link prediction, etc.</p>
 <section id="message-passing-for-node-classification">
-<h3><span class="section-number">16.1.1. </span>Message Passing for Node Classification<a class="headerlink" href="#message-passing-for-node-classification" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.1.1. </span>Message Passing for Node Classification<a class="headerlink" href="#message-passing-for-node-classification" title="Permalink to this heading">#</a></h3>
 <p>In this section, we will use the message passing for node classification. We will use the <code class="docutils literal notranslate"><span class="pre">Cora</span></code> dataset. The <code class="docutils literal notranslate"><span class="pre">Cora</span></code> dataset is a citation network. The nodes represent papers and the edges represent citations. The goal is to predict the category of each paper. The categories are <code class="docutils literal notranslate"><span class="pre">Case_Based</span></code>, <code class="docutils literal notranslate"><span class="pre">Genetic_Algorithms</span></code>, <code class="docutils literal notranslate"><span class="pre">Neural_Networks</span></code>, <code class="docutils literal notranslate"><span class="pre">Probabilistic_Methods</span></code>, <code class="docutils literal notranslate"><span class="pre">Reinforcement_Learning</span></code>, and <code class="docutils literal notranslate"><span class="pre">Theory</span></code>. The dataset is available in the <code class="docutils literal notranslate"><span class="pre">torch_geometric.datasets</span></code> module.</p>
 <p>Let’s start by loading the Cora dataset using Pytorch Geometric.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -497,16 +498,16 @@ H^{(l+1)} = A H^{(l)}
 <figure class="align-default" id="cora-dataset">
 <a class="reference internal image-reference" href="_images/cora_dataset.png"><img alt="_images/cora_dataset.png" src="_images/cora_dataset.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16.2 </span><span class="caption-text">Cora dataset visualization</span><a class="headerlink" href="#cora-dataset" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17.2 </span><span class="caption-text">Cora dataset visualization</span><a class="headerlink" href="#cora-dataset" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The graph represents the Cora dataset, where each node is colored according to its class label. The graph is a citation network, where nodes represent scientific publications and edges represent citations between publications. The colors represent the research areas of the publications.</p>
 </section>
 </section>
 <section id="exercises">
-<h2><span class="section-number">16.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="exercise-1">
-<h3><span class="section-number">16.2.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.2.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p>In the previous section, we learned how to use Node2Vec to generate node embeddings for a graph. Now, we will use the node embeddings of the message passing to perform node classification on the Cora dataset. We will train a simple logistic regression classifier on the node embeddings to predict the class labels of the nodes.</p>
 <p>The steps to perform node classification are as follows:</p>
 <ol class="arabic simple">
@@ -542,12 +543,12 @@ H^{(l+1)} = A H^{(l)}
 </div>
 </section>
 <section id="exercise-2">
-<h3><span class="section-number">16.2.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.2.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
 <p>In the previous section, we learned how to use node2vec and in this section, we learned how to use the message passing to generate node embeddings. Now, we will combine the node2vec and message passing to generate node embeddings. You just have to concatenate the node embeddings generated by node2vec and message passing. Then, you will train a logistic regression classifier on the concatenated node embeddings to predict the class labels of the nodes. <strong>You need to follow the same steps as in Exercise 1.</strong></p>
 </section>
 </section>
 <section id="graph-classification">
-<h2><span class="section-number">16.3. </span>Graph Classification<a class="headerlink" href="#graph-classification" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.3. </span>Graph Classification<a class="headerlink" href="#graph-classification" title="Permalink to this heading">#</a></h2>
 <p>In this section, we will explore the graph classification task. We will use the MUTAG dataset. The MUTAG dataset is a dataset of chemical compounds. The goal is to predict whether a molecule is mutagenic or not. The dataset is available in the <code class="docutils literal notranslate"><span class="pre">torch_geometric.datasets</span></code> module.</p>
 <p>Let’s start by loading the MUTAG dataset using Pytorch Geometric.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -574,15 +575,15 @@ H^{(l+1)} = A H^{(l)}
 <figure class="align-default" id="mutag">
 <a class="reference internal image-reference" href="_images/mutag_2.png"><img alt="_images/mutag_2.png" src="_images/mutag_2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16.3 </span><span class="caption-text">MUTAG</span><a class="headerlink" href="#mutag" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17.3 </span><span class="caption-text">MUTAG</span><a class="headerlink" href="#mutag" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="graph2vec">
-<h2><span class="section-number">16.4. </span>Graph2Vec<a class="headerlink" href="#graph2vec" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.4. </span>Graph2Vec<a class="headerlink" href="#graph2vec" title="Permalink to this heading">#</a></h2>
 <p>In previous sections, we have seen how to generate node embeddings using node2vec and message passing. In this section, we will see how to generate graph embeddings using Graph2Vec. It is similar to node2vec, but instead of generating node embeddings, it generates graph embeddings. How we can generate graph embeddings using Graph2Vec? We only need to create a new embedding containing all the node embeddings of the graph. But, it is important to note that the order of the nodes in the embedding is not important, therefore we need to use a permutation-invariant function to generate the graph embedding. A permutation-invariant function is a function that returns the same output regardless of the order of the input. One example of a permutation-invariant function is the sum function. We can use the sum function to generate the graph embedding. The sum function sums all the node embeddings of the graph to generate the graph embedding.</p>
 <section id="steps-to-generate-graph-embeddings-using-graph2vec">
-<h3><span class="section-number">16.4.1. </span>Steps to generate graph embeddings using Graph2Vec:<a class="headerlink" href="#steps-to-generate-graph-embeddings-using-graph2vec" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.4.1. </span>Steps to generate graph embeddings using Graph2Vec:<a class="headerlink" href="#steps-to-generate-graph-embeddings-using-graph2vec" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Generate node embeddings using node2vec.</p></li>
 <li><p>Sum or average the node embeddings to generate the graph embedding.</p></li>
@@ -591,9 +592,9 @@ H^{(l+1)} = A H^{(l)}
 </section>
 </section>
 <section id="extra-exercises">
-<h2><span class="section-number">16.5. </span>Extra Exercises<a class="headerlink" href="#extra-exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.5. </span>Extra Exercises<a class="headerlink" href="#extra-exercises" title="Permalink to this heading">#</a></h2>
 <section id="extra-exercise-1">
-<h3><span class="section-number">16.5.1. </span>Extra Exercise 1<a class="headerlink" href="#extra-exercise-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.5.1. </span>Extra Exercise 1<a class="headerlink" href="#extra-exercise-1" title="Permalink to this heading">#</a></h3>
 <p>In the previous section, we learned how to generate graph embeddings using Graph2Vec. Now, we will use the graph embeddings to perform graph classification on the MUTAG dataset. We will train a simple logistic regression classifier on the graph embeddings to predict whether a molecule is mutagenic or not.</p>
 <p>The steps to perform graph classification are as follows:</p>
 <ol class="arabic simple">
@@ -661,7 +662,7 @@ H^{(l+1)} = A H^{(l)}
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>Real cases dataset</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Real cases dataset</p>
       </div>
     </a>
 </div>
@@ -680,22 +681,22 @@ H^{(l+1)} = A H^{(l)}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">16.1. Message Passing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing-for-node-classification">16.1.1. Message Passing for Node Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">17.1. Message Passing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing-for-node-classification">17.1.1. Message Passing for Node Classification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">16.2. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">16.2.1. Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">16.2.2. Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.2. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">17.2.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">17.2.2. Exercise 2</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-classification">16.3. Graph Classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph2vec">16.4. Graph2Vec</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-generate-graph-embeddings-using-graph2vec">16.4.1. Steps to generate graph embeddings using Graph2Vec:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-classification">17.3. Graph Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph2vec">17.4. Graph2Vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-generate-graph-embeddings-using-graph2vec">17.4.1. Steps to generate graph embeddings using Graph2Vec:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercises">16.5. Extra Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercise-1">16.5.1. Extra Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercises">17.5. Extra Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercise-1">17.5.1. Extra Exercise 1</a></li>
 </ul>
 </li>
 </ul>

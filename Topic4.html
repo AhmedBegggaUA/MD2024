@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Ranking and Diffusion &#8212; Matemáticas Discreta IA</title>
+    <title>6. Ranking and Partitions &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -100,7 +100,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Topic4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Introduction to the practical part of MD2024" href="practice_intro.html" />
+    <link rel="next" title="7. Distances and Latent Spaces" href="Topic5.html" />
     <link rel="prev" title="5. Paths, Flows and Cycles" href="Topic3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -224,29 +224,30 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Ranking and Diffusion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">7. Introduction to the practical part of MD2024</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">8. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">9. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">10. Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networkx.html">11. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">12. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration.html">13. Graph exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration.html">14. Graph exploration</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="real_cases.html">14. Graphs on real life</a></li>
-<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">15. Real cases dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="real_cases_part2.html">16. Real cases part 2: Into the Message Passing and Graph Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">15. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">16. Real cases dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_part2.html">17. Real cases part 2: Into the Message Passing and Graph Classification</a></li>
 </ul>
 
     </div>
@@ -385,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Ranking and Diffusion</h1>
+    <h1>Ranking and Partitions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -417,8 +418,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="ranking-and-diffusion">
-<h1><span class="section-number">6. </span>Ranking and Diffusion<a class="headerlink" href="#ranking-and-diffusion" title="Permalink to this heading">#</a></h1>
+  <section id="ranking-and-partitions">
+<h1><span class="section-number">6. </span>Ranking and Partitions<a class="headerlink" href="#ranking-and-partitions" title="Permalink to this heading">#</a></h1>
 <section id="transition-matrix">
 <h2><span class="section-number">6.1. </span>Transition matrix<a class="headerlink" href="#transition-matrix" title="Permalink to this heading">#</a></h2>
 <p>Given a (undirected) graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, we consider:</p>
@@ -460,7 +461,7 @@ a_{ij}=
 <p>Depending on the graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> we may need only a small number of powers <span class="math notranslate nohighlight">\(k\)</span>. Consider for instance the <strong>complete graph</strong> or <strong>clique graph</strong> for <span class="math notranslate nohighlight">\(n\)</span> nodes, dubbed <span class="math notranslate nohighlight">\(K_n\)</span>. The complete graph is the <strong>denser graph than one can imagine</strong> since it has <span class="math notranslate nohighlight">\(n\)</span> nodes and each node has <span class="math notranslate nohighlight">\(n\)</span> links (including self-loops). Therefore, the adjacency matrix of <span class="math notranslate nohighlight">\(K_n\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{A} = \mathbf{1}^T\mathbf{1}\;,
+\mathbf{A} = \mathbf{1}\mathbf{1}^T\;,
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is the <span class="math notranslate nohighlight">\(n\times 1\)</span> vector of all ones, i.e. <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a matrix of ones.</p>
 <p>Well, the degree of each node in <span class="math notranslate nohighlight">\(K_n\)</span> is constant  for each node and equal to <span class="math notranslate nohighlight">\(n\)</span>. Therefore, the transition matrix is</p>
@@ -471,8 +472,8 @@ a_{ij}=
 <p>Then every node <span class="math notranslate nohighlight">\(i\)</span> has the same probability of going to any other <span class="math notranslate nohighlight">\(j\)</span> (including itself) in only one hop. In other words, a node <span class="math notranslate nohighlight">\(i\)</span> does not need to visit first any other node before hitting <span class="math notranslate nohighlight">\(j\)</span>. This makes <span class="math notranslate nohighlight">\(\mathbf{P}^2\)</span>, <span class="math notranslate nohighlight">\(\mathbf{P}^3\)</span>, etc, <em>redundant</em> since</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{P}^2 = \frac{1}{n}\mathbf{1}^T\mathbf{1}\cdot \frac{1}{n}\mathbf{1}^T\mathbf{1}
-= \frac{1}{n^2}n\mathbf{1}^T\mathbf{1} = \frac{1}{n}\mathbf{1}^T\mathbf{1}=\mathbf{P}\;.
+\mathbf{P}^2 = \frac{1}{n}\mathbf{1}\mathbf{1}^T\cdot \frac{1}{n}\mathbf{1}\mathbf{1}^T
+= \frac{1}{n^2}n\mathbf{1}\mathbf{1}^T = \frac{1}{n}\mathbf{1}\mathbf{1}^T=\mathbf{P}\;.
 \]</div>
 <p>This means that in <span class="math notranslate nohighlight">\(K_n\)</span> (as well as in hyper-dense graphs), all the nodes have the same structural role. Note that in these case we have <span class="math notranslate nohighlight">\(\text{rank}(\mathbf{P})=1\)</span>.</p>
 <p>However, in more general graphs <span style="color:#469ff8">we can identify or <strong>rank</strong> the structural role of each node</span> by analyzing <span class="math notranslate nohighlight">\(\mathbf{P}^k\)</span> for increasing values of <span class="math notranslate nohighlight">\(k\)</span>.</p>
@@ -592,21 +593,8 @@ d_i = \sum_{j\in {\cal N}_i}d_ip_{ij}
 \[
 \mathbf{P}\psi = \lambda\psi\;\;\text{leads to}\; \mathbf{P}\psi = 1\cdot\psi\;.
 \]</div>
-<p>Looking at the above equations, it is straightforward to prove that <span class="math notranslate nohighlight">\(\psi = \mathbf{D}^{1/2}\mathbf{1}\)</span> is the right eigenvector of the transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\mathbf{P}\psi &amp;=  \mathbf{D}^{-1}\mathbf{A}(\mathbf{D}^{1/2}\mathbf{1})\\
-               &amp;=  \mathbf{D}^{-1/2}\mathbf{D}^{-1/2}\mathbf{A}(\mathbf{D}^{1/2}\mathbf{1})\\
-               &amp;=  \mathbf{D}^{-1/2}\mathbf{A}\mathbf{D}^{-1/2}(\mathbf{D}^{1/2}\mathbf{1})\\
-               &amp;=  \mathbf{D}^{-1/2}\mathbf{A}(\mathbf{D}^{-1/2}\mathbf{D}^{1/2})\mathbf{1}\\
-               &amp;=  \mathbf{D}^{-1/2}\mathbf{A}\mathbf{1}\\
-               &amp; = \mathbf{D}^{-1/2}\mathbf{D}\mathbf{1}\;\;\text{from}\;\;\mathbf{A}\mathbf{1}=\mathbf{D}\mathbf{1}\\
-               &amp;= \mathbf{D}^{1/2}\mathbf{1}\\
-               &amp;= 1\cdot \psi\;.
-\end{align}
-\end{split}\]</div>
-<p>The meaning of <span class="math notranslate nohighlight">\(\psi = \mathbf{D}^{1/2}\mathbf{1}\)</span> means that</p>
+<p>Looking at the above equations, in the next topic we will prove that <span class="math notranslate nohighlight">\(\psi = \mathbf{D}^{1/2}\mathbf{1}\)</span> is the right eigenvector of the transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>.</p>
+<p>The meaning of <span class="math notranslate nohighlight">\(\psi = \mathbf{D}^{1/2}\mathbf{1}\)</span> is that</p>
 <div class="math notranslate nohighlight">
 \[
 \psi_i = \sqrt{d_i}\;
@@ -1276,7 +1264,7 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
 \lambda_2=0.438,\;\; \phi_2^T=[-0.464\; -0.260\; -0.464\;  +0.260\; +0.464\;+0.464]\;,
 \]</div>
 <p>where we have <strong>part of the components negative</strong> (corresponding to <span class="math notranslate nohighlight">\(-1\)</span>) and part of them positive (corresponding to <span class="math notranslate nohighlight">\(+1\)</span>), thus approximating a partition in time <span class="math notranslate nohighlight">\(O(n^3)\)</span>, the one needed to solve a system.</p>
-<p>Interestingly the components <span class="math notranslate nohighlight">\(\phi_2(2)\)</span> and <span class="math notranslate nohighlight">\(\phi_2(4)\)</span> have the <strong>smaller absolute value</strong> since they are defining an heterophilic edge.</p>
+<p>Interestingly the components <span class="math notranslate nohighlight">\(\phi_2(2)\)</span> and <span class="math notranslate nohighlight">\(\phi_2(4)\)</span> have the <strong>smaller absolute value</strong> although they are defining an heterophilic edge. This is a limitation of the continuous relaxation.</p>
 <p>The Fiedler vector for the SBM example is mapped on the graph in <a class="reference internal" href="#bigfiedler"><span class="std std-numref">Fig. 6.12</span></a>.</p>
 <figure class="align-center" id="bigfiedler">
 <a class="reference internal image-reference" href="_images/BigFiedler.png"><img alt="_images/BigFiedler.png" src="_images/BigFiedler.png" style="width: 620px; height: 270px;" /></a>
@@ -1291,22 +1279,22 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
 <p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">SBM spectrum and its associated eigenvectors.</span><a class="headerlink" href="#sbmspectrum" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>The Spectral Theorem</strong>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvalues are necessary in AI, <strong>any simmetric and square matrix can be decomposed</strong> as follows:</p>
+<p><strong>The Spectral Theorem</strong>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, <strong>any simmetric and square matrix can be decomposed</strong> as follows:</p>
 <div class="math notranslate nohighlight">
 \[
-\triangle = \lambda_1\phi_1^T\phi_1 + \lambda_2\phi_2^T\phi_2 + \ldots + \lambda_n\phi_n^T\phi_n\;.
+\triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T + \ldots + \lambda_n\phi_n\phi_n^T\;.
 \]</div>
 <p>More compactly,</p>
 <div class="math notranslate nohighlight">
 \[
-\triangle = \sum_{i=1}^n\lambda_i\phi_i^T\phi_i\;.
+\triangle = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;.
 \]</div>
 <p>The meaning of this theorem is that the matrix (<span class="math notranslate nohighlight">\(\triangle\)</span> for instance) can be perfectly decomposed (without loss of information) as a <strong>linear combination</strong> of <span class="math notranslate nohighlight">\(n\)</span> matrices <span class="math notranslate nohighlight">\(\phi_i^T\phi_i\)</span>, each one defined by an eigenctor, and the coefficients of this linear combination are the coefficients of the eigenvalues.</p>
 <p>However, if we do not have the full set of eigenvectors but a small number <span class="math notranslate nohighlight">\(k&lt;n\)</span> of them, all we do is to <strong>approximate</strong> the matrix (the Laplacian of the graph in the case of <span class="math notranslate nohighlight">\(\triangle\)</span>). The <strong>error of the approximation</strong> is given by the sum of the absolute values of the <strong>discarded eigenvalues or modes</strong>.</p>
 <p>In graph spectral theory, it is quite common to retain (or compute) only the smalles <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\triangle = \sum_{i=1}^k\lambda_i\phi_i^T\phi_i\;.
+\triangle = \sum_{i=1}^k\lambda_i\phi_i\phi_i^T\;.
 \]</div>
 </section>
 </section>
@@ -1352,11 +1340,11 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
       </div>
     </a>
     <a class="right-next"
-       href="practice_intro.html"
+       href="Topic5.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Introduction to the practical part of MD2024</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Distances and Latent Spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
