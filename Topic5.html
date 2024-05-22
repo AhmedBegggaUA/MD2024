@@ -406,8 +406,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-and-embedding">7.2. Commute Times and Embedding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-commute-times">7.2.1. Spectral Commute Times</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-embedding">7.2.2. Commute Times Embedding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-data-live">7.2.1. Where do data live?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-and-spectral-gap">7.2.2. Commute Times and Spectral Gap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-commute-times">7.2.3. Spectral Commute Times</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-embedding">7.2.4. Commute-Times Embedding</a></li>
 </ul>
 </li>
 </ul>
@@ -521,6 +523,114 @@ document.write(`
 <li><p><strong>Path graph</strong> <span class="math notranslate nohighlight">\(P_n\)</span>: is <span class="math notranslate nohighlight">\(1-\cos\frac{\pi k}{n-1}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots,n-1\)</span>.</p></li>
 <li><p><strong>Cycle graph</strong> <span class="math notranslate nohighlight">\(C_n\)</span>: is <span class="math notranslate nohighlight">\(1-\cos\frac{2\pi k}{n}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots,n-1\)</span>.</p></li>
 </ul>
+<p><span style="color:#469ff8"><strong>The Complete Graph’s Spectrum</strong></span>. <a class="reference internal" href="#complete"><span class="std std-numref">Fig. 7.1</span></a>. We have analized the optimal ratio-cut solution for this graph in the previous topic and we realized that <strong>all the cuts have the same cost</strong>. This is why the non-trivial spectrum is <span class="math notranslate nohighlight">\(\lambda_i=\frac{n}{n-1},\;i\ge 1\)</span> which for <span class="math notranslate nohighlight">\(n=5\)</span> is <span class="math notranslate nohighlight">\(\lambda_i=1.25,\;i\ge 1\)</span>. The non-trivial eigenvectors correspond to different solutions equally optimal.</p>
+<figure class="align-center" id="complete">
+<a class="reference internal image-reference" href="images/Topic4/Complete.png"><img alt="images/Topic4/Complete.png" src="images/Topic4/Complete.png" style="width: 820px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(K_5\)</span>. Normalized Laplacian’s spectrum and non-trivial eigenvectors.</span><a class="headerlink" href="#complete" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"><strong>The Star Graph’s Spectrum</strong></span>. <a class="reference internal" href="#star"><span class="std std-numref">Fig. 7.2</span></a>. For the star graph, we can analyze a bit the optimal solution in terms of the ratio cut loss. To do that, for <span class="math notranslate nohighlight">\(S_5\)</span> (which has <span class="math notranslate nohighlight">\(n=5\)</span> nodes) let us generate partitions with <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> nodes the same color as the central one.</p>
+<ul class="simple">
+<li><p>When <strong>only the central node</strong> has a different color than the remaining ones we have <span class="math notranslate nohighlight">\(A_1=\{0\}\)</span>, <span class="math notranslate nohighlight">\(B_1=\{1,2,3,4\}\)</span> and</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_1,B_1) = \frac{\text{cut}(A_1,B_1)}{|A_1|} + \frac{\text{cut}(A_1,B_1)}{|B_1|} = \frac{4}{1} + \frac{4}{4} = 4 + \frac{4}{4} = 5\;.
+\]</div>
+<ul class="simple">
+<li><p>When <strong>the central node and 1 other one</strong> have the same color than the remaining ones we have, for instance, <span class="math notranslate nohighlight">\(A_2=\{0,1\}\)</span>, <span class="math notranslate nohighlight">\(B_2=\{2,3,4\}\)</span>. Then, <span class="math notranslate nohighlight">\(\text{cut}(A_2,B_2)=|B_2|=3\)</span>. Then</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_2,B_2) = \frac{|B_2|}{|A_1|} + \frac{|B_2|}{|B_1|} = \frac{3}{2} + \frac{3}{3} = 1 + \frac{3}{2} = \frac{5}{2}=2.5\;.
+\]</div>
+<ul class="simple">
+<li><p>When <strong>the central node and 2 other nodes</strong> have the same color than the remaining ones we have, for instance, <span class="math notranslate nohighlight">\(A_3=\{0,1,2\}\)</span>, <span class="math notranslate nohighlight">\(B_3=\{3,4\}\)</span>. Then, <span class="math notranslate nohighlight">\(\text{cut}(A_3,B_3)=|B_3|=2\)</span>. Then</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_3,B_3) = \frac{|B_3|}{|A_3|} + \frac{|B_3|}{|B_3|} = \frac{2}{3} + \frac{2}{2} = 1 + \frac{2}{3} = \frac{5}{2}=2.5\;.
+\]</div>
+<ul class="simple">
+<li><p>When <strong>the central node and 3 other nodes</strong> have the same color than the remaining ones we have, for instance, <span class="math notranslate nohighlight">\(A_4=\{0,1,2,3\}\)</span>, <span class="math notranslate nohighlight">\(B_4=\{4\}\)</span>. Then, <span class="math notranslate nohighlight">\(\text{cut}(A_4,B_4)=|B_4|=1\)</span>. Then</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_4,B_4) = \frac{|B_4|}{|A_4|} + \frac{|B_4|}{|B_4|} = \frac{1}{4} + \frac{1}{1} = 1 + \frac{1}{4} = \frac{5}{4}=1.25\;.
+\]</div>
+<p>Therefore, the best ratio-cut partition is <span class="math notranslate nohighlight">\((A_4,B_4)\)</span> (4 nodes with the same color and <span class="math notranslate nohighlight">\(1\)</span> different). Herein it is critical than one of the nodes with the same color is the central one. Otherwise we have the worse partition <span class="math notranslate nohighlight">\((A_1,B_1)\)</span>. The other two partitions have the same cost and are intermediate solutions between the best and the worse partitions.</p>
+<figure class="align-center" id="star">
+<a class="reference internal image-reference" href="images/Topic4/Star.png"><img alt="images/Topic4/Star.png" src="images/Topic4/Star.png" style="width: 820px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text"><span class="math notranslate nohighlight">\(S_5\)</span>. Normalized Laplacian’s spectrum and non-trivial eigenvectors.</span><a class="headerlink" href="#star" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, <strong>the spectral approach misses the optimal solution</strong> <span class="math notranslate nohighlight">\((A_4,B_4)\)</span>. The Fiedler vector (left-first in <a class="reference internal" href="#star"><span class="std std-numref">Fig. 7.2</span></a>) is basically a permutation of the second and the third eigenvectors. All these eigenvectors have the same eigenvalue: <span class="math notranslate nohighlight">\(1\)</span>; they encode the same solution: the one equalent to <span class="math notranslate nohighlight">\((A_2,B_2)\)</span> which is <strong>sub-optimal</strong> since its cost is <span class="math notranslate nohighlight">\(2.5\)</span>.</p>
+<p>Finally, the last eigenvector, which eigenvalue <span class="math notranslate nohighlight">\(2\)</span> encodes the worst solution <span class="math notranslate nohighlight">\((A_1,B_1)\)</span></p>
+<p>Despite not finding the optimal solution, given that spectral theory provides <strong>approximations</strong>, <span style="color:#469ff8">this is a good example of how spectral theory (which is a continuous maths tool) captures the combitorial nature of graph coloring (which is a discrete problem)</span>.</p>
+<p><span style="color:#469ff8"><strong>The Path Graph’s Spectrum</strong></span>. This graph also illustrated the combinatorial nature of spectral theory. In <a class="reference internal" href="#path"><span class="std std-numref">Fig. 7.3</span></a>, we show the spectrum and non-trivial eigenvectors of <span class="math notranslate nohighlight">\(P_5\)</span>.</p>
+<p>In combinatorial terms, see that in a Path graph of <span class="math notranslate nohighlight">\(n\)</span> nodes we have <span class="math notranslate nohighlight">\(n-1\)</span> edges. As usual, we have <span class="math notranslate nohighlight">\(2^n-2\)</span> ways (removing <span class="math notranslate nohighlight">\(\emptyset\)</span> and <span class="math notranslate nohighlight">\(V\)</span>) of bi-partitioning this graph.</p>
+<p>Since the ratio-cut prefers balanced cuts, the optimal solutions (there may be more than one due to the symmetry of the graphs) correspond to having <span class="math notranslate nohighlight">\(\text{cut}(A_i,B_i)=1\)</span> and <span class="math notranslate nohighlight">\(|A_i|=\lceil n/2\rceil\)</span> (ceil of the integer division). As a result</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_i,B_i) = \frac{1}{\lceil n/2\rceil} + \frac{1}{n - \lceil n/2\rceil}\;. 
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(P_5\)</span>, since <span class="math notranslate nohighlight">\(n=5\)</span> is odd then <span class="math notranslate nohighlight">\(\lceil n/2\rceil=\lceil 5/2\rceil=3\)</span> and the optimal ratio-cut loss is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_1,B_1) = \frac{1}{3} + \frac{1}{5 - 3} = \frac{1}{3} + \frac{1}{2} = \frac{5}{6}=0.83\;. 
+\]</div>
+<figure class="align-center" id="path">
+<a class="reference internal image-reference" href="images/Topic4/Path.png"><img alt="images/Topic4/Path.png" src="images/Topic4/Path.png" style="width: 820px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text"><span class="math notranslate nohighlight">\(P_5\)</span>. Normalized Laplacian’s spectrum and non-trivial eigenvectors.</span><a class="headerlink" href="#path" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In this case, the spectral approximation return the optimal solution <span class="math notranslate nohighlight">\((A_1,B_1)\)</span> (see the Fiedler vector in the figure, with eigenvalue <span class="math notranslate nohighlight">\(0.29\)</span>). The remaning eigenvalues are greater or equal than <span class="math notranslate nohighlight">\(1\)</span> and encode increasingly non-optimal solutions.</p>
+<p>For instance, the solution encodes by the third smallest eigenvector of the normalized Laplacian is <span class="math notranslate nohighlight">\(A_2=\{0,1,3\}\)</span> and <span class="math notranslate nohighlight">\(B_2=\{2,4\}\)</span> and it has <span class="math notranslate nohighlight">\(\text{cut}(A_2,B_2)=3\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_2,B_2) = \frac{3}{3} + \frac{3}{2} = 1 + \frac{3}{2} = \frac{5}{2}=2.5\;. 
+\]</div>
+<p>The one corresponding to the fourth smalles eigenvector is <span class="math notranslate nohighlight">\(A_3=\{0,3\}\)</span>, <span class="math notranslate nohighlight">\(B_3=\{1,2,4\}\)</span> with <span class="math notranslate nohighlight">\(\text{cut}(A_3,B_3)=3\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_3,B_3) = \frac{3}{2} + \frac{3}{3} = 1 + \frac{3}{2} = \frac{5}{2}=2.5\;. 
+\]</div>
+<p>Finally, the eigenector with the largest eigenvalue corresponds to <span class="math notranslate nohighlight">\(A_4=\{0,2,4\}\)</span> and <span class="math notranslate nohighlight">\(B_4=\{1,3\}\)</span> with the largest cut: <span class="math notranslate nohighlight">\(\text{cut}(A_3,B_3)=4\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_4,B_4) = \frac{4}{3} + \frac{4}{2} = \frac{4}{3} + \frac{4}{2} = \frac{8+12}{6}=\frac{20}{6}=3.3\;. 
+\]</div>
+<p>Therefore, in this case spectral theory grades the discrete solutions exactly!</p>
+<p><span style="color:#469ff8"><strong>The Cycle Graph’s Spectrum</strong></span>. Finally, the Cycle graph is a variant of the Path graph where the end node and the start one are linked. This simplifies the analysis a lot. As we can see in <a class="reference internal" href="#cycle"><span class="std std-numref">Fig. 7.4</span></a> the Fiedler vector encodes the optimal solution <span class="math notranslate nohighlight">\(A_1=\{0,1,4\}\)</span>, <span class="math notranslate nohighlight">\(B_1=\{2,3\}\)</span>, with <span class="math notranslate nohighlight">\(\text{cut}(A_1,B_1)=2\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_1,B_1) = \frac{2}{3} + \frac{2}{2} = 1 + \frac{2}{3} = \frac{5}{3}=1.67\;. 
+\]</div>
+<p>Actually, since the second and third eigenvalues are equal, their eigenvectors approximate the same solution. The solution given by the third eigenvector is <span class="math notranslate nohighlight">\(A_2=\{0,3,4\}\)</span> and <span class="math notranslate nohighlight">\(B_2=\{1,2\}\)</span> with <span class="math notranslate nohighlight">\(\text{cut}(A_2,B_2)=2\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_2,B_2) = \frac{2}{3} + \frac{2}{2} = 1 + \frac{2}{3} = \frac{5}{3}=1.67\;. 
+\]</div>
+<p>The following eigenvector encodes <span class="math notranslate nohighlight">\(A_3=\{0,2,3\}\)</span>, <span class="math notranslate nohighlight">\(B_3=\{1,4\}\)</span> with <span class="math notranslate nohighlight">\(\text{cut}(A_3,B_3)=4\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_3,B_3) = \frac{4}{3} + \frac{4}{2} = \frac{8+12}{6} = \frac{20}{6}=3.3\;. 
+\]</div>
+<p>Finally, the last smallest eigenvector encodes the solution <span class="math notranslate nohighlight">\(A_4=\{0,2,4\}\)</span> and <span class="math notranslate nohighlight">\(B_4=\{1,3\}\)</span> with <span class="math notranslate nohighlight">\(\text{cut}(A_4,B_4)=4\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A_4,B_4) = \frac{4}{3} + \frac{4}{2} = \frac{8+12}{6} = \frac{20}{6}=3.3\;. 
+\]</div>
+<p>Actually, the two last eigenvectors have the same eigenvalues and thus approximate the same solution!</p>
+<figure class="align-center" id="cycle">
+<a class="reference internal image-reference" href="images/Topic4/Cycle.png"><img alt="images/Topic4/Cycle.png" src="images/Topic4/Cycle.png" style="width: 820px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text"><span class="math notranslate nohighlight">\(C_5\)</span>. Normalized Laplacian’s spectrum and non-trivial eigenvectors.</span><a class="headerlink" href="#cycle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="the-cheeger-constant">
 <h4><span class="section-number">7.1.2.1. </span>The Cheeger constant<a class="headerlink" href="#the-cheeger-constant" title="Permalink to this heading">#</a></h4>
 <p>The Fiedler value <span class="math notranslate nohighlight">\(\lambda_2\)</span> is frequently used to <span style="color:#469ff8"><strong>quantify how weak is the graph</strong></span> (the smaller <span class="math notranslate nohighlight">\(\lambda_2\)</span> the weaker <span class="math notranslate nohighlight">\(G\)</span>). This is particularly interesting when bounding the so called <strong>Cheeger constant</strong>. We define it as follows:</p>
@@ -682,10 +792,62 @@ p^t(v) - \pi(v) &amp;\approx \sum_{i=2}^n\lambda_i\tilde{\phi}_i(u)\tilde{\phi}_
 </section>
 <section id="commute-times-and-embedding">
 <h2><span class="section-number">7.2. </span>Commute Times and Embedding<a class="headerlink" href="#commute-times-and-embedding" title="Permalink to this heading">#</a></h2>
-<section id="spectral-commute-times">
-<h3><span class="section-number">7.2.1. </span>Spectral Commute Times<a class="headerlink" href="#spectral-commute-times" title="Permalink to this heading">#</a></h3>
+<section id="where-do-data-live">
+<h3><span class="section-number">7.2.1. </span>Where do data live?<a class="headerlink" href="#where-do-data-live" title="Permalink to this heading">#</a></h3>
+<p>Consider a set of <span class="math notranslate nohighlight">\(n\)</span> points <span class="math notranslate nohighlight">\(X=\{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_n\}\)</span>, with <span class="math notranslate nohighlight">\(x_i\in 3D\)</span>. The natural metric in <span class="math notranslate nohighlight">\(3D\)</span> is the Euclidean distance <span class="math notranslate nohighlight">\(\|\mathbf{x}_i - \mathbf{x}_j\|=\sqrt{\sum_{k=1}^3(\mathbf{x}_i(k)-\mathbf{x}_j(k))^2}\)</span>. See for instance the point cloud in <a class="reference internal" href="#clustering"><span class="std std-numref">Fig. 7.5</span></a>.</p>
+<p>Such a point cloud (called <strong>Swiss roll</strong>) is the typical representation of data such as images in low-dimensional spaces (one point per image) called <strong>manifolds</strong>. <span style="color:#469ff8">It is well known that these spaces <strong>have a curved geometry</strong></span>. Similar images, for instance are pretty close in a low-dimensional space but <strong>the semantic of such a similarity is barely consistent</strong> with the near-spherical clusters of Euclidean spaces.</p>
+<p>As a result, when we try to cluster these data, which live in a curved-space, using Euclidean distances (see <a class="reference internal" href="#clustering"><span class="std std-numref">Fig. 7.5</span></a>-left where we set <span class="math notranslate nohighlight">\(C=3\)</span> clusters), points far away in the curved manifold are clustered together.</p>
+<p>Alternatively, we follow the approach proposed in the seminal paper of <a class="reference external" href="https://www.science.org/doi/10.1126/science.290.5500.2319">Tenenbaum et al.</a>:</p>
+<ol class="arabic simple">
+<li><p>We create a graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> with <span class="math notranslate nohighlight">\(|V|=n\)</span>, where there is an edge <span class="math notranslate nohighlight">\(e=(i,j)\)</span> if <span class="math notranslate nohighlight">\(j\)</span> is one of the <span class="math notranslate nohighlight">\(K=10\)</span> closest neighbors of <span class="math notranslate nohighlight">\(i\)</span>. This is called a <span style="color:#469ff8">KNN graph or <strong>Nearest Neighbors graph</strong></span>. Well, the Euclidean distances <span class="math notranslate nohighlight">\(\|\mathbf{x}_i - \mathbf{x}_j\|\)</span> are only used to build the KNN graph.</p></li>
+<li><p>After creating the KNN graph, we <span style="color:#469ff8">compute the three eigenvectors</span> <span class="math notranslate nohighlight">\(\phi_2\)</span>,<span class="math notranslate nohighlight">\(\phi_3\)</span> and <span class="math notranslate nohighlight">\(\phi_4\)</span> corresonding with the three non-trivial smallest eigenvalues <span class="math notranslate nohighlight">\(\lambda_2\)</span>, <span class="math notranslate nohighlight">\(\lambda_3\)</span> and <span class="math notranslate nohighlight">\(\lambda_4\)</span> of the Laplacian.</p></li>
+<li><p>It is well known that the <span style="color:#469ff8"><strong>encoding</strong> (also called <strong>embedding</strong>)</span> of each <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> as</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{z}_i = [\phi_2(i)\;\phi_3(i)\; \phi_4(i)]^T
+\]</div>
+<p>minimizes the ratio-cut loss of the KNN graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>. As a result, when using Euclidean distance <span class="math notranslate nohighlight">\(\|\mathbf{z}_i-\mathbf{z}_j\|\)</span> in the <span style="color:#469ff8"><strong>transformed or latent space</strong></span>, we achieve a clustering consistent with the curved space (see <a class="reference internal" href="#clustering"><span class="std std-numref">Fig. 7.5</span></a>-right).</p>
+<p>In other words, as we have explained in the previous topic spectral partition leads to cluster the data in a way that <span style="color:#469ff8">is consistent with the <strong>curved geometry of the graph</strong></span>.</p>
+<p>But, how do we know this? Because Tenembaum et al. found that the <span style="color:#469ff8">distances <span class="math notranslate nohighlight">\(\|\mathbf{z}_i-\mathbf{z}_j\|\)</span> are <strong>statistically correlated</strong> with the shortest path distances SP between the nodes, found by the Dijkstra or <span class="math notranslate nohighlight">\(A^{\ast}\)</span> algorithms</span>!</p>
+<figure class="align-center" id="clustering">
+<a class="reference internal image-reference" href="images/Topic5/Clustering.png"><img alt="images/Topic5/Clustering.png" src="images/Topic5/Clustering.png" style="width: 820px; height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Swiss-roll point cloud clustered using Euclidean distances (left) vs clustered using Spectral theory (right).</span><a class="headerlink" href="#clustering" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, we know that <span style="color:#469ff8"><strong>shortest path SP distance are not strictly respectful</strong> with the structure of the graph</span>. For instance, in an SBM with an important bottleneck, we may have two nodes pretty close either when they are in the same community or in different communities, but this fact is not reflected by SP distance.</p>
+<p>As a result, we have used hitting and commute times in the practical lessons of this subject. These “times” are really distances which <span style="color:#469ff8">are compliant with the curved geometry of graphs and they can be <strong>efficiently approximated</strong> via spectral theory</span>.</p>
+</section>
+<section id="commute-times-and-spectral-gap">
+<h3><span class="section-number">7.2.2. </span>Commute Times and Spectral Gap<a class="headerlink" href="#commute-times-and-spectral-gap" title="Permalink to this heading">#</a></h3>
 <p>The commute time <span class="math notranslate nohighlight">\(CT(u,v)=H(u,v)+H(v,u)\)</span> between two nodes <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> is the expected time needed by a random walk departing from <span class="math notranslate nohighlight">\(u\)</span> to reach <span class="math notranslate nohighlight">\(v\)</span> (hitting time <span class="math notranslate nohighlight">\(H(u,v)\)</span>) and come back (hit <span class="math notranslate nohighlight">\(u\)</span> from <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(H(v,u)\)</span>).</p>
-<p><span style="color:#469ff8"><strong>Green’s function</strong></span>. A key matrix to compute both the hitting and commute times is the so called <strong>Green’s function</strong> <span class="math notranslate nohighlight">\(G\)</span> or pseudoinverse <span class="math notranslate nohighlight">\(\triangle^{+}\)</span> of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>. For a connected graph, we have the following component-wise equation (see the yet classic paper of my mentor <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4302755">Edwin Hancock</a>):</p>
+<p>As we know from the practical lessons, commute times are related with the <strong>relative size of the bottleneck</strong> (or Cheeger constant) which is estimated by the <strong>spectral gap</strong>. If the bottleneck/spectral gap is small, random walk take a lot of time to travel from one community to another (see <a class="reference internal" href="#ctgap"><span class="std std-numref">Fig. 7.6</span></a>).</p>
+<figure class="align-center" id="ctgap">
+<a class="reference internal image-reference" href="images/Topic5/CTgap.png"><img alt="images/Topic5/CTgap.png" src="images/Topic5/CTgap.png" style="width: 620px; height: 480px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Commute Times (CT) and spectral gap. Top: small spectral gap gives large CTs. Bottom: larger spectral gap gives smaller CTs. Source: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0031320319300767?via%3Dihub">Francisco Escolano in the Pattern Recognition Journal</a></span><a class="headerlink" href="#ctgap" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>The Lovasz Bound</strong>. As we will see below, a small spectral gap is essential to obtain informative CTs. In other words, if the spectral gap is not small, the commute time can be approximated as follows</p>
+<div class="math notranslate nohighlight">
+\[
+CT(u,v)\approx \frac{1}{d_u} + \frac{1}{d_v}\;.
+\]</div>
+<p>This was a key observation by <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2010/file/0d0871f0806eae32d30983b62252da50-Paper.pdf">von Luxburg et al.</a> based in a bound proposed by Lovasz. This bound, illustrated in <a class="reference internal" href="#lovasz"><span class="std std-numref">Fig. 7.7</span></a> simply says that: <span style="color:#469ff8">the smaller the spectral gap the more different are the CT from <span class="math notranslate nohighlight">\(\frac{1}{d_u} + \frac{1}{d_v}\)</span></span>.</p>
+<figure class="align-center" id="lovasz">
+<a class="reference internal image-reference" href="images/Topic5/Lovasz.png"><img alt="images/Topic5/Lovasz.png" src="images/Topic5/Lovasz.png" style="width: 820px; height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.7 </span><span class="caption-text">Illustration of the Lovasz bound. Source: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0031320319300767?via%3Dihub">Francisco Escolano in the Pattern Recognition Journal</a></span><a class="headerlink" href="#lovasz" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A priori, this is a very simple conclusion but it has deep implications. <span style="color:#469ff8">Commute Times <strong>are not informative</strong> in large KNN graphs, large Erdos-Renyi graphs among other graphs with large spectral gap (close to <span class="math notranslate nohighlight">\(1\)</span>) studied in the previous section</span>.</p>
+<p>One way of <span style="color:#469ff8">making the CTs informative is to <strong>rewire</strong> the graph</span> while keeping the spectral gap as smallest as possible. For instance, in <a class="reference internal" href="#lovasz"><span class="std std-numref">Fig. 7.7</span></a> we can see than the right community is <span style="color:#469ff8"><strong>denser</strong></span> than the left one and this reduces the spectral gap!</p>
+</section>
+<section id="spectral-commute-times">
+<h3><span class="section-number">7.2.3. </span>Spectral Commute Times<a class="headerlink" href="#spectral-commute-times" title="Permalink to this heading">#</a></h3>
+<p>For the spectral version of commute times, we rely on the Green’s function as it is done in the yet classic paper of my mentor <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4302755">Edwin Hancock</a>:</p>
+<p><span style="color:#469ff8"><strong>Green’s function</strong></span>. A key matrix to compute both the hitting and commute times is the so called <strong>Green’s function</strong> <span class="math notranslate nohighlight">\(G\)</span> or pseudoinverse <span class="math notranslate nohighlight">\(\triangle^{+}\)</span> of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>. For a connected graph, we have the following component-wise equation</p>
 <div class="math notranslate nohighlight">
 \[
 G(u,v) = \sum_{i=2}^{|V|}\frac{1}{\lambda_i}\phi_i(u)\phi_i(v)\; 
@@ -719,37 +881,233 @@ H(u,v)\approx \text{vol}(G)\left[\phi_2(v)^2-\phi_2(u)\phi_2(v)\right]\;.
 <p>Then, the spectral computation of the commute time can be derived easily and results in</p>
 <div class="math notranslate nohighlight">
 \[
-CT(u,v) = \text{vol}(G)\sum_{i=2}^{|V|}\frac{1}{\lambda_i}\left[\phi_i(u)^2-\phi_i(v)^2\right]\;.
+CT(u,v) = \text{vol}(G)\sum_{i=2}^{|V|}\frac{1}{\lambda_i}\left[\phi_i(u)-\phi_i(v)\right]^2\;.
 \]</div>
 <p>Again, if <span class="math notranslate nohighlight">\(\lambda_2\rightarrow 0\)</span>, we have:</p>
 <div class="math notranslate nohighlight">
 \[
-CT(u,v) = \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)^2-\phi_2^2(v)\right]\;.
+CT(u,v) = \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)-\phi_2(v)\right]^2\;.
 \]</div>
-<p>Consider, for instance the SBM example with <span class="math notranslate nohighlight">\(n=20\)</span> nodes of the last topic. The Fiedler vector is mapped in <a class="reference internal" href="#fiedler"><span class="std std-numref">Fig. 7.1</span></a>.</p>
-<figure class="align-center" id="fiedler">
-<a class="reference internal image-reference" href="_images/Fiedler.png"><img alt="_images/Fiedler.png" src="_images/Fiedler.png" style="width: 500px; height: 480px;" /></a>
+<p>It is not surpising to see that the commute time between nodes in a graph changes according to the structure of the graph. See the exercise below.</p>
+<figure class="align-center" id="un">
+<a class="reference internal image-reference" href="images/Topic5/Un.png"><img alt="images/Topic5/Un.png" src="images/Topic5/Un.png" style="width: 820px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">SBM graph. Fiedler vector and Fiedler value.</span><a class="headerlink" href="#fiedler" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.8 </span><span class="caption-text">Spectra and eigenvalues of the unnormalized Laplacian of several basic graphs.</span><a class="headerlink" href="#un" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>It is not surpising to see that the commute time between nodes in the same community is quite similar. Let us check the pairwise matrix of the <span class="math notranslate nohighlight">\(CT\)</span>s between every pair of nodes <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> in <a class="reference internal" href="#pairwise"><span class="std std-numref">Fig. 7.2</span></a>.</p>
-<figure class="align-center" id="pairwise">
-<a class="reference internal image-reference" href="_images/Pairwise.png"><img alt="_images/Pairwise.png" src="_images/Pairwise.png" style="width: 800px; height: 480px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">SBM graph. CT matrix and CT embedding.</span><a class="headerlink" href="#pairwise" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Consider graphs <a class="reference internal" href="#un"><span class="std std-numref">Fig. 7.8</span></a>. Suppose that we only have the spectral gap and the Fiedler vector of the Laplacian specified in the figure.
+<br></br>
+Then, approximate the commute times between nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span> in the four graphs: <span class="math notranslate nohighlight">\(K_5\)</span>, <span class="math notranslate nohighlight">\(S_5\)</span>, <span class="math notranslate nohighlight">\(P_5\)</span> and <span class="math notranslate nohighlight">\(C_5\)</span> in the figure. Note that <strong>instead of using the spectra and eigenvalues of the normalized Laplacian</strong>, herein we use those of the unnormalized one!
+Use only <span class="math notranslate nohighlight">\(\lambda_2\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> and comment the meaning of the result: is it <strong>consistent</strong> with theory? How it is related with the approximate value <span class="math notranslate nohighlight">\(CT(u,v)=\frac{1}{d_u} + \frac{1}{d_v}\)</span>. Take two decimals.
+</span>
+<br><br>
+<span style="color:#347fc9">
+<strong>Complete graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=5\cdot 4 = 20\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=5\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+CT(0,4) &amp;= \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)-\phi_2(v)\right]^2\\ 
+&amp;= 20\cdot\frac{1}{5}\left[\phi_2(0)-\phi_2(4)\right]^2 = 20\cdot\frac{1}{5}\left[0-(-0.47)\right]^2\\
+&amp;= 20\cdot\frac{1}{5}\cdot 0.22 = 0.88\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+<strong>Star graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=4 + 4 = 8\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=1\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+CT(0,4) &amp;= \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)-\phi_2(v)\right]^2\\ 
+&amp;= 8\cdot\frac{1}{1}\left[\phi_2(0)-\phi_2(4)\right]^2 = 8\cdot\frac{1}{1}\left[0-(-0.16)\right]^2\\
+&amp;= 8\cdot\frac{1}{1}\cdot 0.02 = 0.16\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+<strong>Path graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=1 + 2 + 2 + 2 + 1 = 8\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=0.38\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+CT(0,4) &amp;= \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)-\phi_2(v)\right]^2\\ 
+&amp;= 8\cdot\frac{1}{0.38}\left[\phi_2(0)-\phi_2(4)\right]^2 = 8\cdot\frac{1}{0.38}\left[0-0.6)\right]^2\\
+&amp;= 8\cdot\frac{1}{0.38}\cdot 0.36 = 7.57\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Cycle graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=5\cdot 2 = 10\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=0.13\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+CT(0,4) &amp;= \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)-\phi_2(v)\right]^2\\ 
+&amp;= 10\cdot\frac{1}{0.13}\left[\phi_2(0)-\phi_2(4)\right]^2 = 10\cdot\frac{1}{0.13}\left[0.63-0.19)\right]^2\\
+&amp;= 10\cdot\frac{1}{0.13}\cdot 0.19 = 14.6\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Comments</strong>. We have the following CTs between nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span> in the different graphs:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+  &amp; K_5:\;\; CT(0,4)=0.88\\
+  &amp; S_5:\;\; CT(0,4)=0.16\\
+  &amp; P_5:\;\; CT(0,4)=7.57\\  
+  &amp; C_5:\;\; CT(0,4)=14.6\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Complete graphs</strong> are characterized by having the same CT between any pair of nodes. This value is small <span class="math notranslate nohighlight">\(CT(0,4)=0.88\)</span> because random walks have a uniform probability <span class="math notranslate nohighlight">\(\frac{1}{n-1}\)</span> of reaching each of the nodes in a single step. The approximate CT is
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,4)\approx\frac{1}{d_0} + \frac{1}{d_4}=\frac{1}{n-1} + \frac{1}{n-1} = 2\frac{1}{n-1} = 2\frac{1}{4} = 0.5\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Star graphs</strong> are characterized by having the same CT between the center node <span class="math notranslate nohighlight">\(0\)</span> and the remaining one (for instance <span class="math notranslate nohighlight">\(4\)</span>). This value is smaller than that of the complete graph <span class="math notranslate nohighlight">\(CT(0,4)=0.16\)</span> because random walks have a uniform probability <span class="math notranslate nohighlight">\(\frac{1}{n-1}\)</span> of reaching each of the non central nodes in a single step (as in the complete graph). However, non-central nodes have a unit probability of reaching the center node (remember than hitting times are assymetric in general). The approximate CT is
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,4)\approx\frac{1}{d_0} + \frac{1}{d_4}=\frac{1}{n-1} + 1 = \frac{n-1+1}{n-1} = \frac{n}{n-1}=\frac{5}{4} = 1.25\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This is clearly an over-estimation because the Fiedler value for this graph is smaller to that of the complete graph.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Path graphs</strong> are characterized by having large CT for distant nodes. This is due to the fact that the path graph is formally a tree, i.e. it does not have loops. As a result, the CT between a pair of nodes in this graph is <strong>proportional to the shortest path (SP) distance</strong> between the nodes. In this case, we have <span class="math notranslate nohighlight">\(CT(0,4)=7.57\approx 2\cdot 3=6\)</span>. The approximate CT is
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,4)\approx\frac{1}{d_0} + \frac{1}{d_4}= 1 + 1 = 2\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This is clearly an under-estimation because the Fiedler value for this graph is smaller those of the complete graph and the star graph.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Cycle graphs</strong> are characterized by having large CT for distant nodes. Observe that the probability of leaving a node is always <span class="math notranslate nohighlight">\(1/2\)</span>, but we may return back with the same probability. Therefore, for reaching node <span class="math notranslate nohighlight">\(4\)</span> from <span class="math notranslate nohighlight">\(0\)</span>, we may either go through the nodes <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(3\)</span> or to go directly to <span class="math notranslate nohighlight">\(4\)</span>. This leads to the largest CT in these analyzed graphs: <span class="math notranslate nohighlight">\(CT(0,4)=14.6\)</span>. The approximate CT is
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,4)\approx\frac{1}{d_0} + \frac{1}{d_4}= \frac{1}{2} + \frac{1}{2} = 1\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This is clearly an under-estimation because the Fiedler value for this graph is between that of the star graph and that of the complete graph.
+</span></p>
 </section>
 <section id="commute-times-embedding">
-<h3><span class="section-number">7.2.2. </span>Commute Times Embedding<a class="headerlink" href="#commute-times-embedding" title="Permalink to this heading">#</a></h3>
-<p><span style="color:#469ff8"><strong>Embedding</strong></span> the nodes of a graph consists of finding a vector representation of each node <span class="math notranslate nohighlight">\(\Theta_u,\;u\in V\)</span> where the Euclidean distance <span class="math notranslate nohighlight">\(\|\Theta_u-\Theta_v\|\)</span> is consistent with the <span style="color:#469ff8"><strong>structural distance</strong> between the nodes in the graph</span>.</p>
+<h3><span class="section-number">7.2.4. </span>Commute-Times Embedding<a class="headerlink" href="#commute-times-embedding" title="Permalink to this heading">#</a></h3>
+<p>As we have seen before, when studying where do data live, <span style="color:#469ff8"><strong>embedding</strong></span> the nodes of a graph consists of finding a vector representation of each node <span class="math notranslate nohighlight">\(\mathbf{z}_u,\;u\in V\)</span> where the Euclidean distance <span class="math notranslate nohighlight">\(\|\mathbf{z}_u-\mathbf{z}_v\|\)</span> is consistent with the <span style="color:#469ff8"><strong>structural distance</strong> between the nodes <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> in the graph</span>.</p>
+<p>In the original paper of <a class="reference external" href="https://www.science.org/doi/10.1126/science.290.5500.2319">Tenenbaum et al.</a>, we have that making</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{z}_u = [\phi_2(u)\;\phi_3(u)\; \phi_4(u)\;\ldots\; \phi_n(u)]^T
+\]</div>
+<p>implies that <span class="math notranslate nohighlight">\(\|\mathbf{z}_u-\mathbf{z}_v\|\)</span> is  <strong>statistically correlated</strong> with the shortest path distances SP between the nodes. This fact was key to found correlations between the info in the eigenvectors and more interesting structural distances such as the commute times.</p>
 <p>Since the commute times is by definition a distance, it is trivial to check that the columns of this matrix</p>
 <div class="math notranslate nohighlight">
 \[
-\Theta = \sqrt{\text{vol}(G)}\mathbf{D}^{-1/2}\Phi^T\;\Rightarrow CT(u,v) = \|\Theta_u - \Theta_v\|^2
+\mathbf{Z} = \sqrt{\text{vol}(G)}\mathbf{\Lambda}^{-1/2}\Phi^T\;\Rightarrow CT(u,v) = \|\mathbf{z}_u-\mathbf{z}_v\|^2\;.
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the matrix of eigenvectors (columns from the smallest to the largest eigenvectors). Again, depending on the value of <span class="math notranslate nohighlight">\(\lambda_2\)</span> not all eigenvectors are needed. See for instance in <a class="reference internal" href="#pairwise"><span class="std std-numref">Fig. 7.2</span></a> the results of the embedding for <span class="math notranslate nohighlight">\(3D\)</span> (eigenvalues/eigenvectors <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(4\)</span>).</p>
+<p>The proof is as follows:</p>
+<ul class="simple">
+<li><p>Matrix <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> has originally dimension <span class="math notranslate nohighlight">\(n\times n\)</span> and the embedding <span class="math notranslate nohighlight">\(\mathbf{z}_u\)</span> of node <span class="math notranslate nohighlight">\(u\)</span> is in the column <span class="math notranslate nohighlight">\(u\)</span>.</p></li>
+<li><p>Let us see the structure of a row <span class="math notranslate nohighlight">\(k\)</span>, which encodes the <span class="math notranslate nohighlight">\(k-\)</span>th dimension of the embedding <span class="math notranslate nohighlight">\(\mathbf{z}_u\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{Z}_{k:} = \mathbf{\Lambda}^{-1/2}\left[\phi_1(u)\;\phi_2(u)\; \phi_3(u)\;\ldots\; \phi_n(u)\right]\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the matrix of eigenvectors (columns from the smallest to the largest eigenvectors) and <span class="math notranslate nohighlight">\(\Lambda=\text{diag}(\lambda_1\;\lambda_2\;\ldots\;\lambda_n)\)</span> is the diagonal matrix with the spectrum of the Laplacian in the diagonal.</p>
+<p>Then, discarding the <span class="math notranslate nohighlight">\(\sqrt{\text{vol}(G)}\)</span> for a while we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{Z}_{k:} = \left[\frac{\phi_k(1)}{\sqrt{\lambda_k}}\;\frac{\phi_k(2)}{\sqrt{\lambda_k}}\; \frac{\phi_k(3)}{\sqrt{\lambda_k}}\;\ldots\; \frac{\phi_k(n)}{\sqrt{\lambda_k}}\right]\;.
+\]</div>
+<ul class="simple">
+<li><p>Actually the first row is normalized by <span class="math notranslate nohighlight">\(\lambda_1=0\)</span> and we assume that this row is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{Z}_{1:} = \left[\frac{\phi_1(1)}{\sqrt{\lambda_1}}\;\frac{\phi_1(2)}{\sqrt{\lambda_1}}\; \frac{\phi_1(3)}{\sqrt{\lambda_1}}\;\ldots\; \frac{\phi_1(n)}{\sqrt{\lambda_1}}\right] = \left[0\; 0\; 0\;\ldots\; 0\right]\;.
+\]</div>
+<ul class="simple">
+<li><p>There are <span style="color:#469ff8">as many rows as <strong>dimensions of the embedding</strong> </span> and the first dimension is always zero valued. This means that all the embeddings are centered.</p></li>
+<li><p>Consider for instance that we have only the information of the Fiedler vector. Then, we have only two rows (the first one which all zeros and the second one). If we discard the first dimension we have (after incorporating the term <span class="math notranslate nohighlight">\(\sqrt{\text{vol}(G)}\)</span>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{Z}_{2:} = \sqrt{\text{vol}(G)}\left[\frac{\phi_2(1)}{\sqrt{\lambda_2}}\;\frac{\phi_2(2)}{\sqrt{\lambda_2}}\; \frac{\phi_2(3)}{\sqrt{\lambda_2}}\;\ldots\; \frac{\phi_2(n)}{\sqrt{\lambda_2}}\right] = \left[\mathbf{z}_1\; \mathbf{z}_2\; \mathbf{z}_3\;\ldots\; \mathbf{z}_n\right]\;.\;.
+\]</div>
+<p>and obviously incorporating</p>
+<div class="math notranslate nohighlight">
+\[
+\|\mathbf{z}_u-\mathbf{z}_v\| = \text{vol}(G)\left[\frac{\phi_2(u)}{\sqrt{\lambda_2}} - \frac{\phi_2(v)}{\sqrt{\lambda_2}}\right]^2 = \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u) - \phi_2(v)\right]^2\approx CT(u,v)\;.
+\]</div>
+<p>and similarly for <span class="math notranslate nohighlight">\(d\)</span> dimensions, where the commute time is exact if <span class="math notranslate nohighlight">\(d\rightarrow n\)</span>. More generally</p>
+<div class="math notranslate nohighlight">
+\[
+\|\mathbf{z}_u-\mathbf{z}_v\| = \text{vol}(G)\sum_{k=2}^d\left[\frac{\phi_k(u)}{\sqrt{\lambda_k}} - \frac{\phi_k(v)}{\sqrt{\lambda_k}}\right]^2 = \text{vol}(G)\sum_{k=2}^d\frac{1}{\lambda_k}\left[\phi_k(u) - \phi_k(v)\right]^2\approx CT(u,v)\;.
+\]</div>
+<p><span style="color:#469ff8">The convergence to the optimal number of dimensions is faster <strong>when the spectral gap is very small</strong>!</span></p>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Back to the graphs in <a class="reference internal" href="#un"><span class="std std-numref">Fig. 7.8</span></a>. Compute the CT embeddings of nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span> in each graph. Consider two dimensions (in addition to the zero) and take two decimals. Compare their distances with the CT computed in the above exercises.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Complete graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=5\cdot 4 = 20\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=5\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{Z}_{2:} &amp;= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(n)}{\sqrt{5}}\right]
+= \frac{20}{\sqrt{5}}\cdot\left[0.00\; 0.70\; -0.47\; 0.23\; -0.47\right]\\
+\mathbf{Z}_{3:} &amp;= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(n)}{\sqrt{5}}\right]
+= \frac{20}{\sqrt{5}}\cdot\left[0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
+\end{align}
+\)</span>
+</span>
+<br><br></p>
+<p>Again, depending on the value of <span class="math notranslate nohighlight">\(\lambda_2\)</span> not all eigenvectors are needed. See for instance in <a class="reference internal" href="#optim"><span class="std std-numref">Fig. 7.9</span></a> the results of the embedding for <span class="math notranslate nohighlight">\(3D\)</span> (eigenvalues/eigenvectors <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(4\)</span>).</p>
+<figure class="align-center" id="optim">
+<a class="reference internal image-reference" href="images/Topic5/Optim.png"><img alt="images/Topic5/Optim.png" src="images/Topic5/Optim.png" style="width: 820px; height: 320px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Commute times embedding as an optimization problem.</span><a class="headerlink" href="#optim" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>
@@ -828,8 +1186,10 @@ CT(u,v) = \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)^2-\phi_2^2(v)\right]\;
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-and-embedding">7.2. Commute Times and Embedding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-commute-times">7.2.1. Spectral Commute Times</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-embedding">7.2.2. Commute Times Embedding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-data-live">7.2.1. Where do data live?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-and-spectral-gap">7.2.2. Commute Times and Spectral Gap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-commute-times">7.2.3. Spectral Commute Times</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commute-times-embedding">7.2.4. Commute-Times Embedding</a></li>
 </ul>
 </li>
 </ul>
