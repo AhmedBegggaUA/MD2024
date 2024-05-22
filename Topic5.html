@@ -811,7 +811,7 @@ p^t(v) - \pi(v) &amp;\approx \sum_{i=2}^n\lambda_i\tilde{\phi}_i(u)\tilde{\phi}_
 <p>In other words, as we have explained in the previous topic spectral partition leads to cluster the data in a way that <span style="color:#469ff8">is consistent with the <strong>curved geometry of the graph</strong></span>.</p>
 <p>But, how do we know this? Because Tenembaum et al. found that the <span style="color:#469ff8">distances <span class="math notranslate nohighlight">\(\|\mathbf{z}_i-\mathbf{z}_j\|\)</span> are <strong>statistically correlated</strong> with the shortest path distances SP between the nodes, found by the Dijkstra or <span class="math notranslate nohighlight">\(A^{\ast}\)</span> algorithms</span>!</p>
 <figure class="align-center" id="clustering">
-<a class="reference internal image-reference" href="images/Topic5/Clustering.png"><img alt="images/Topic5/Clustering.png" src="images/Topic5/Clustering.png" style="width: 820px; height: 380px;" /></a>
+<a class="reference internal image-reference" href="_images/Clustering.png"><img alt="_images/Clustering.png" src="_images/Clustering.png" style="width: 820px; height: 380px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Swiss-roll point cloud clustered using Euclidean distances (left) vs clustered using Spectral theory (right).</span><a class="headerlink" href="#clustering" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -824,7 +824,7 @@ p^t(v) - \pi(v) &amp;\approx \sum_{i=2}^n\lambda_i\tilde{\phi}_i(u)\tilde{\phi}_
 <p>The commute time <span class="math notranslate nohighlight">\(CT(u,v)=H(u,v)+H(v,u)\)</span> between two nodes <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> is the expected time needed by a random walk departing from <span class="math notranslate nohighlight">\(u\)</span> to reach <span class="math notranslate nohighlight">\(v\)</span> (hitting time <span class="math notranslate nohighlight">\(H(u,v)\)</span>) and come back (hit <span class="math notranslate nohighlight">\(u\)</span> from <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(H(v,u)\)</span>).</p>
 <p>As we know from the practical lessons, commute times are related with the <strong>relative size of the bottleneck</strong> (or Cheeger constant) which is estimated by the <strong>spectral gap</strong>. If the bottleneck/spectral gap is small, random walk take a lot of time to travel from one community to another (see <a class="reference internal" href="#ctgap"><span class="std std-numref">Fig. 7.6</span></a>).</p>
 <figure class="align-center" id="ctgap">
-<a class="reference internal image-reference" href="images/Topic5/CTgap.png"><img alt="images/Topic5/CTgap.png" src="images/Topic5/CTgap.png" style="width: 620px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="_images/CTgap.png"><img alt="_images/CTgap.png" src="_images/CTgap.png" style="width: 620px; height: 480px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Commute Times (CT) and spectral gap. Top: small spectral gap gives large CTs. Bottom: larger spectral gap gives smaller CTs. Source: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0031320319300767?via%3Dihub">Francisco Escolano in the Pattern Recognition Journal</a></span><a class="headerlink" href="#ctgap" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -836,7 +836,7 @@ CT(u,v)\approx \frac{1}{d_u} + \frac{1}{d_v}\;.
 \]</div>
 <p>This was a key observation by <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2010/file/0d0871f0806eae32d30983b62252da50-Paper.pdf">von Luxburg et al.</a> based in a bound proposed by Lovasz. This bound, illustrated in <a class="reference internal" href="#lovasz"><span class="std std-numref">Fig. 7.7</span></a> simply says that: <span style="color:#469ff8">the smaller the spectral gap the more different are the CT from <span class="math notranslate nohighlight">\(\frac{1}{d_u} + \frac{1}{d_v}\)</span></span>.</p>
 <figure class="align-center" id="lovasz">
-<a class="reference internal image-reference" href="images/Topic5/Lovasz.png"><img alt="images/Topic5/Lovasz.png" src="images/Topic5/Lovasz.png" style="width: 820px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="_images/Lovasz.png"><img alt="_images/Lovasz.png" src="_images/Lovasz.png" style="width: 820px; height: 420px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7.7 </span><span class="caption-text">Illustration of the Lovasz bound. Source: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0031320319300767?via%3Dihub">Francisco Escolano in the Pattern Recognition Journal</a></span><a class="headerlink" href="#lovasz" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -890,7 +890,7 @@ CT(u,v) = \text{vol}(G)\frac{1}{\lambda_2}\left[\phi_2(u)-\phi_2(v)\right]^2\;.
 \]</div>
 <p>It is not surpising to see that the commute time between nodes in a graph changes according to the structure of the graph. See the exercise below.</p>
 <figure class="align-center" id="un">
-<a class="reference internal image-reference" href="images/Topic5/Un.png"><img alt="images/Topic5/Un.png" src="images/Topic5/Un.png" style="width: 820px; height: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/Un.png"><img alt="_images/Un.png" src="_images/Un.png" style="width: 820px; height: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7.8 </span><span class="caption-text">Spectra and eigenvalues of the unnormalized Laplacian of several basic graphs.</span><a class="headerlink" href="#un" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1103,7 +1103,7 @@ This is clearly an under-estimation because the Fiedler value for this graph is 
 <br><br></p>
 <p>Again, depending on the value of <span class="math notranslate nohighlight">\(\lambda_2\)</span> not all eigenvectors are needed. See for instance in <a class="reference internal" href="#optim"><span class="std std-numref">Fig. 7.9</span></a> the results of the embedding for <span class="math notranslate nohighlight">\(3D\)</span> (eigenvalues/eigenvectors <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(4\)</span>).</p>
 <figure class="align-center" id="optim">
-<a class="reference internal image-reference" href="images/Topic5/Optim.png"><img alt="images/Topic5/Optim.png" src="images/Topic5/Optim.png" style="width: 820px; height: 320px;" /></a>
+<a class="reference internal image-reference" href="_images/Optim.png"><img alt="_images/Optim.png" src="_images/Optim.png" style="width: 820px; height: 320px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Commute times embedding as an optimization problem.</span><a class="headerlink" href="#optim" title="Permalink to this image">#</a></p>
 </figcaption>
