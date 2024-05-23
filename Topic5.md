@@ -779,26 +779,29 @@ $$
 <span style="color:#347fc9">
 $
 \begin{align}
-\mathbf{Z}_{2:} &= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(n)}{\sqrt{5}}\right]
-= \frac{20}{\sqrt{5}}\cdot\left[0.00\; 0.70\; -0.47\; 0.23\; -0.47\right]\\
-\mathbf{Z}_{3:} &= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(n)}{\sqrt{5}}\right]
-= \frac{20}{\sqrt{5}}\cdot\left[0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
+\mathbf{Z}_{2:} &= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{5}}\right]
+= \frac{20}{\sqrt{5}}\cdot\left[+0.00\; +0.70\; -0.47\; +0.23\; -0.47\right]\\
+\mathbf{Z}_{3:} &= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{5}}\right]
+= \frac{20}{\sqrt{5}}\cdot\left[+0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
 \end{align}
 $
 </span>
 <br><br>
+<span style="color:#347fc9">
+**Solutions**. The resulting Commute-Times embeddings are plotted in {numref}`CTE` where we also plot the graphs taken from the second and third dimensions of each node. Note that for the **complete graph**, some nodes collide. For the **star graph** node $4$ is misplaced. However for the **path graph** and the **cycle graph** the reconstructed graph fits perfectly the "spring layout" of Networkx.  
+</span>
 
-
-
-
-Again, depending on the value of $\lambda_2$ not all eigenvectors are needed. See for instance in {numref}`Optim` the results of the embedding for $3D$ (eigenvalues/eigenvectors $2$, $3$ and $4$). 
-
-```{figure} ./images/Topic5/Optim.png
+```{figure} ./images/Topic5/CTE.png
 ---
-name: Optim
+name: CTE
 width: 820px
 align: center
-height: 320px
+height: 600px
 ---
-Commute times embedding as an optimization problem. 
+Plot of basic graphs from their Commute-Times Embeddings. 
 ```
+
+
+
+ 
+

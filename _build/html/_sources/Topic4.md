@@ -752,6 +752,70 @@ $$
 
 that is  <span style="color:#469ff8">the loss $\lambda$ is **even more restrictive than the ratio cut** loss!</span> 
 
+<br></br>
+<span style="color:#347fc9">
+**Exercise**. In order to **better understand the ratio-cut function**, let us illustrate how it applies to partition a **complete graph** $K_n$, with $n=5$ (without self-loops). 
+<br><br>
+See {numref}`K5` where the red curves defines in each case, what nodes are included in the subset $A$ and what belong to its complementary $B=\bar{A}$. Although theoretically we have $2^{5}-2$ partitions (discounting $\emptyset$ and $V$) for this graph, we really have $4$ different partitions: respectively with one, two, three and four elements. From left to rigth we have four partitions $A_i$: $A_1=\{3\}$, $A_2=\{3,1\}$, $A_3=\{3,1,0\}$, and $A_4=\{3,1,0,2\}$.
+</span>
+<br><br>
+
+```{figure} ./images/Topic4/K5.png
+---
+name: K5
+width: 850px
+align: center
+height: 180px
+---
+From left to right: $(A_1,B_1)$, $(A_2,B_2)$, $(A_3,B_3)$ and $(A_4,B_4)$. All the cuts in $K_n$ result from partitions which are equally optimal! 
+```
+<br><br>
+<span style="color:#347fc9">
+Let us **compute the ratio-cut** loss for each partition:
+</span>
+<br><br>
+<span style="color:#347fc9">
+$
+\begin{align}
+\text{cut}(A_1,B_1)=1\cdot 4\;\Rightarrow \text{Rcut}(A_1,B_1) = \frac{4}{|A_1|} + \frac{4}{|B_1|} = \frac{4}{1} + \frac{4}{4} = 5\\ 
+\text{cut}(A_2,B_2)=2\cdot 3\;\Rightarrow \text{Rcut}(A_2,B_2) = \frac{6}{|A_2|} + \frac{6}{|B_2|} = \frac{6}{2} + \frac{6}{3} = 5\\
+\text{cut}(A_3,B_3)=3\cdot 2\;\Rightarrow \text{Rcut}(A_3,B_3) = \frac{6}{|A_3|} + \frac{6}{|B_3|} = \frac{6}{3} + \frac{6}{2} = 5\\
+\text{cut}(A_4,B_4)=4\cdot 1\;\Rightarrow \text{Rcut}(A_4,B_4) = \frac{4}{|A_4|} + \frac{4}{|B_4|} = \frac{4}{1} + \frac{4}{4} = 5\\
+\end{align}
+$
+</span>
+<br><br>
+<span style="color:#347fc9">
+As a result, all the ratio cuts are equal! Why?
+<br></br>
+Consider the general case $K_n=(V,E)$ with $n$ nodes. Each node in $K_n$ is connected to $n-1$ nodes (remember that we have excluded self-loops). 
+<br></br>
+Then if a subset $A_k\subset V$ has $k$ nodes, we have that $B_k=V - A_k$ has $n-k$ nodes. Since every node in $A_k$ is linked (in this graph) with any node in $B_k$ we have that 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\text{cut}(A_k,B_k)=k\cdot(n-k)\;.
+$ 
+</span>
+<br><br>
+<span style="color:#347fc9">
+which results in 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\text{Rcut}(A_k,B_k)=\frac{k\cdot(n-k)}{|A_k|} + \frac{k\cdot(n-k)}{|B_k|} = 
+\frac{k\cdot(n-k)}{k} + \frac{k\cdot(n-k)}{(n-k)} = n - k + k = n\;.
+$ 
+</span>
+<br><br>
+<span style="color:#347fc9">
+Then, the ratio cut for all the cuts in $K_n$ is always $n$. 
+</span>
+<br></br>
+
+
 #### The Laplacian and Courant-Fischer 
 One of the most **interestings discoveries** of spectral theory is that <span style="color:#469ff8">for minimizing $\lambda$ we only need to interpret it as the **eigenvalue** of $\mathbf{f}$ which is an  **eigenvector** of a symmetric matrix called the **Laplacian**</span>.
 
@@ -983,7 +1047,7 @@ height: 270px
 SBM and its Fiedler vector mapped on the nodes. 
 ```
 
-**The Spectrum**. The spectrum of $\triangle$ is the collection of $n$ **eigenvalues** $\lambda_1\le\lambda_2\le\ldots\le\lambda_n$. They are not-decreasing because they summarize the increasing variability of their respective **eigenvectors** mapped on the nodes of the graph. 
+**The Spectrum**. The spectrum of $\triangle$ is the collection of $n$ **eigenvalues** $\lambda_1\le\lambda_2\le\ldots\le\lambda_n$. They are not-decreasing because they summarize the increasing variability of their respective **eigenvectors** mapped on the nodes of the graph (see {numref}`SBMSpectrum`). 
 
 ```{figure} ./images/Topic4/SBMSpectrum.png
 ---
@@ -995,7 +1059,9 @@ height: 280px
 SBM spectrum and its associated eigenvectors. 
 ```
 
-**The Spectral Theorem**. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, **any simmetric and square matrix can be decomposed** as follows: 
+
+#### The Spectral Theorem 
+<span style="color:#469ff8">**The Spectral Theorem**</span>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, **any symmetric and square matrix can be decomposed** as follows: 
 
 $$
 \triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T + \ldots + \lambda_n\phi_n\phi_n^T\;.
@@ -1004,15 +1070,141 @@ $$
 More compactly, 
 
 $$
-\triangle = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;.
+\triangle = \Phi\Phi^T = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;,
 $$
+
+where the columns of $\Phi$ are $\phi_1,\phi_2,\ldots,\phi_n$.
 
 The meaning of this theorem is that the matrix ($\triangle$ for instance) can be perfectly decomposed (without loss of information) as a **linear combination** of $n$ matrices $\phi_i^T\phi_i$, each one defined by an eigenctor, and the coefficients of this linear combination are the coefficients of the eigenvalues. 
 
 However, if we do not have the full set of eigenvectors but a small number $k<n$ of them, all we do is to **approximate** the matrix (the Laplacian of the graph in the case of $\triangle$). The **error of the approximation** is given by the sum of the absolute values of the **discarded eigenvalues or modes**. 
 
-In graph spectral theory, it is quite common to retain (or compute) only the smalles $k$ eigenvectors of the Laplacian $\triangle$: 
+In graph spectral theory, it is quite common to retain (or compute) only the smallest $k$ eigenvectors of the Laplacian $\triangle$: 
 
 $$
 \triangle = \sum_{i=1}^k\lambda_i\phi_i\phi_i^T\;.
 $$
+
+Consider, for instance the SBM example developed in this topic. In {numref}`SpectralThm` we show the Lapacian matrix $\triangle$ (top-left) and its eigenvectors $\phi_1,\phi_2,\ldots,\phi_n$ (columns from left to right). The mapping of each eigenvector on the graph and the Laplacian spectrum are shown in {numref}`SBMSpectrum`.
+
+```{figure} ./images/Topic5/SpectralThm.png
+---
+name: SpectralThm
+width: 820px
+align: center
+height: 380px
+---
+SBM eigenvectors and reconstruction.  
+```
+
+Then, looking at the matrix of eigenvectors $\Phi$ (bottom-left), the first one $\phi_1$ is constant $\mathbf{1}$. 
+
+<span style="color:#469ff8">**First-order approximation**</span>. For $k=1$ we have the appoximation: 
+
+$$
+\triangle = \lambda_1\phi_1\phi_1^T = 0\cdot \mathbf{1}\mathbf{1}^T = \mathbf{0}\;,
+$$
+
+i.e. the **first-order approximation** of the Laplacian is a matrix of ones (all the elements in the matrix are equally important) weighted by zero. We know that this is highly incorrect since the diagonal must allocate the node degrees. This is exactly what the product by $\lambda_1=0$ means!
+
+<span style="color:#469ff8">**Second-order approximation**</span>. The second eigenvector, the approximation of the Fiedler vector, partitions the graph into two communities and this is why the second-order approximation $k=2$: 
+
+$$
+\triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T
+$$ 
+ captures <span style="color:#469ff8">**the dominant information** in the graph: the two communities in the SBM</span>. Remember that red means high positive value and blue high negative. Then for $k=2$ we only know that there is a high probability that half of the nodes belong to a community and the other half to another one.  
+
+<span style="color:#469ff8">**Mid-order approximation**</span>. For $k>2$ we observe that few elements in the diagonal are captured. See for instance the red corners in $k=4$ and $k=6$. These two nodes belong to inter-class edges. They are also linked with nodes of same community: remember that adjacency in the Laplacian is $-1$ (encoded by dark blue). 
+
+<span style="color:#469ff8">**High-order approximation**</span>. See that for $k\ge 11$ degree information is recovered before the full (negative) adjacency emerges!
+
+Therefore, the logical order of emerging info during the approximation is: 
+1) Cluster structure of the graph.
+2) Important nodes (intrer-class).
+3) Degree info.
+4) Negative adjacency. 
+
+For a better understanding of these steps we propose a small exercise. 
+
+<br></br>
+<span style="color:#347fc9">
+**Exercise**. Let us consider the small SBM whose Fiedler vector is shown in {numref}`SmallFiedler`. We only have $\lambda_1,\phi_1$ and $\lambda_2,\phi_2$. Then, from: 
+</span>
+<br><br>
+<span style="color:#347fc9">
+$
+\begin{align}
+&\lambda_1 = 0.0\;\;\phi_1 = [+1.0\; +1.0\; +1.0\; +1.0\; +1.0\; +1.0]^T\\
+&\lambda_2=0.4\;\;\phi_2 =[-0.4\; -0.3\; -0.4\;  +0.3\; +0.4\;+0.4]\;
+\end{align}
+$
+</span>
+<br><br>
+<span style="color:#347fc9">
+apply the spectral theorem to **approximate the Laplacian matrix** using the information given. We have: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\triangle \approx \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Since $\lambda_1=0$, we have: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\triangle \approx \lambda_2\phi_2\phi_2^T\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\phi_2\phi_2^T = 
+\begin{bmatrix}
+-0.4\\ 
+-0.3\\ 
+-0.4\\  
++0.3\\ 
++0.4\\
++0.4
+\end{bmatrix}
+\begin{bmatrix}
+-0.4 & -0.3 & -0.4 & +0.3 & +0.4 & +0.4
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\phi_2\phi_2^T = 
+\begin{bmatrix}
+0.16  & 0.12  & 0.16  & -0.12 & -0.16 & -0.16\\
+0.12  & 0.09  & 0.12  & -0.09 & -0.12 & -0.12\\
+0.16  & 0.12  & 0.16  & -0.12 & -0.16 & -0.16\\
+-0.12 & -0.09 & -0.12 & 0.09  & 0.12  & 0.12\\
+-0.16 & -0.12 & -0.16 & 0.12  & 0.16  & 0.16\\
+-0.16 & -0.12 & -0.16 & 0.12  & 0.16  & 0.16\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\lambda_2\phi_2\phi_2^T = 
+\begin{bmatrix}
+0.064 & 0.048 & 0.064 & -0.048 & -0.064 & -0.064\\
+0.048 & 0.036 & 0.048 & -0.036 & -0.048 & -0.048\\
+0.064 & 0.048 & 0.064 & -0.048 & -0.064 & -0.064\\
+-0.048 & -0.036 & -0.048 & 0.036 & 0.048 & 0.048\\
+-0.064 & -0.048 & -0.064 & 0.048 & 0.064 & 0.064\\
+-0.064 & -0.048 & -0.064 & 0.048 & 0.064 & 0.064\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, with the first two eigenvalues and eigevectors all we can do is to capture the block structure (communities) in the SBM, as shown in {numref}`SpectralThm`. Look that the positive blocks (red in {numref}`SpectralThm`) correspond to the intra-class links inside the two communities, where the negative blocks correspond to inter-class edges!
+</span>

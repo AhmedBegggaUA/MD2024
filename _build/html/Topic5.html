@@ -1093,19 +1093,21 @@ This is clearly an under-estimation because the Fiedler value for this graph is 
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
 \begin{align}
-\mathbf{Z}_{2:} &amp;= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(n)}{\sqrt{5}}\right]
-= \frac{20}{\sqrt{5}}\cdot\left[0.00\; 0.70\; -0.47\; 0.23\; -0.47\right]\\
-\mathbf{Z}_{3:} &amp;= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(n)}{\sqrt{5}}\right]
-= \frac{20}{\sqrt{5}}\cdot\left[0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
+\mathbf{Z}_{2:} &amp;= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{5}}\right]
+= \frac{20}{\sqrt{5}}\cdot\left[+0.00\; +0.70\; -0.47\; +0.23\; -0.47\right]\\
+\mathbf{Z}_{3:} &amp;= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{5}}\right]
+= \frac{20}{\sqrt{5}}\cdot\left[+0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
 \end{align}
 \)</span>
 </span>
-<br><br></p>
-<p>Again, depending on the value of <span class="math notranslate nohighlight">\(\lambda_2\)</span> not all eigenvectors are needed. See for instance in <a class="reference internal" href="#optim"><span class="std std-numref">Fig. 7.9</span></a> the results of the embedding for <span class="math notranslate nohighlight">\(3D\)</span> (eigenvalues/eigenvectors <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(4\)</span>).</p>
-<figure class="align-center" id="optim">
-<a class="reference internal image-reference" href="_images/Optim.png"><img alt="_images/Optim.png" src="_images/Optim.png" style="width: 820px; height: 320px;" /></a>
+<br><br>
+<span style="color:#347fc9">
+<strong>Solutions</strong>. The resulting Commute-Times embeddings are plotted in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a> where we also plot the graphs taken from the second and third dimensions of each node. Note that for the <strong>complete graph</strong>, some nodes collide. For the <strong>star graph</strong> node <span class="math notranslate nohighlight">\(4\)</span> is misplaced. However for the <strong>path graph</strong> and the <strong>cycle graph</strong> the reconstructed graph fits perfectly the “spring layout” of Networkx.<br />
+</span></p>
+<figure class="align-center" id="cte">
+<a class="reference internal image-reference" href="_images/CTE.png"><img alt="_images/CTE.png" src="_images/CTE.png" style="width: 820px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Commute times embedding as an optimization problem.</span><a class="headerlink" href="#optim" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Plot of basic graphs from their Commute-Times Embeddings.</span><a class="headerlink" href="#cte" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
