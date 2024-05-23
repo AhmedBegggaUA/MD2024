@@ -769,27 +769,86 @@ $$
 
 <br></br>
 <span style="color:#347fc9">
-**Exercise**. Back to the graphs in {numref}`Un`. Compute the CT embeddings of nodes $0$ and $4$ in each graph. Consider two dimensions (in addition to the zero) and take two decimals. Compare their distances with the CT computed in the above exercises. 
+**Exercise**. Back to the graphs in {numref}`Un`. Compute the CT embeddings of nodes $0$ and $4$ in each graph. Consider two dimensions (in addition to the zero) and take two decimals. Plot the $2D$ of all the nodes in the plane and comment on the results. 
 </span>
 <br></br>
 <span style="color:#347fc9">
-**Complete graph**. We have that the volume of this graph is $\text{vol}(G)=5\cdot 4 = 20$ and $\lambda_2=5$. Then 
+**Complete graph**. We have that the volume of this graph is $\text{vol}(G)=5\cdot 4 = 20$ and $\lambda_2=\lambda_3=5$. Then 
 </span>
 <br></br>
 <span style="color:#347fc9">
 $
 \begin{align}
-\mathbf{Z}_{2:} &= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{5}}\right]
+\mathbf{Z}_{2:} &= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{5}}\right]
 = \frac{20}{\sqrt{5}}\cdot\left[+0.00\; +0.70\; -0.47\; +0.23\; -0.47\right]\\
-\mathbf{Z}_{3:} &= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{5}}\right]
+\mathbf{Z}_{3:} &= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{5}}\right]
 = \frac{20}{\sqrt{5}}\cdot\left[+0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
 \end{align}
 $
 </span>
 <br><br>
 <span style="color:#347fc9">
-**Solutions**. The resulting Commute-Times embeddings are plotted in {numref}`CTE` where we also plot the graphs taken from the second and third dimensions of each node. Note that for the **complete graph**, some nodes collide. For the **star graph** node $4$ is misplaced. However for the **path graph** and the **cycle graph** the reconstructed graph fits perfectly the "spring layout" of Networkx.  
+See that the $2D$ embedding of nodes $3$ and $5$ ($2$ and $4$ in {numref}`CTE`) have the same embedding, i.e. they collide. 
 </span>
+<br></br>
+<span style="color:#347fc9">
+**Star graph**. We have that the volume of this graph is $\text{vol}(G)=4 + 4 = 8$ and $\lambda_2=\lambda_3=1$. Then 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+\mathbf{Z}_{2:} &= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{1}}\;\frac{\phi_2(2)}{\sqrt{1}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{1}}\right]
+= \frac{8}{\sqrt{1}}\cdot\left[+0.00\; -0.50\; +0.83\; -0.16\; -0.16\right]\\
+\mathbf{Z}_{3:} &= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{1}}\;\frac{\phi_3(2)}{\sqrt{1}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{1}}\right]
+= \frac{8}{\sqrt{5}}\cdot\left[+0.00\; -0.50\; -0.16\; +0.83\; -0.16\right]\\
+\end{align}
+$
+</span>
+<br><br>
+<span style="color:#347fc9">
+See that in the $2D$ embedding, node $5$ ($4$ in {numref}`CTE`) is closer to node $1$ ($0$ in the figure) than others. 
+ </span>
+<br></br>
+<span style="color:#347fc9">
+**Path graph**. We have that the volume of this graph is $\text{vol}(G)=1 + 2 + 2 + 2 + 1 = 8$ and $\lambda_2=0.38$, $\lambda_3=1.38$. Then 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+\mathbf{Z}_{2:} &= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{0.38}}\;\frac{\phi_2(2)}{\sqrt{0.38}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{0.38}}\right]
+= \frac{8}{\sqrt{0.38}}\cdot\left[-0.60\; -0.37\; -0.27\; +0.37\; +0.60\right]\\
+\mathbf{Z}_{3:} &= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{1.38}}\;\frac{\phi_3(2)}{\sqrt{1.38}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{1.38}}\right]
+= \frac{8}{\sqrt{1.38}}\cdot\left[+0.51\; -0.19\; -0.63\; -0.19\; +0.51\right]\\
+\end{align}
+$
+</span>
+<br><br>
+<span style="color:#347fc9">
+See that the $2D$ embedding in {numref}`CTE` is even more symmetric than the provided by Networkx's "spring layout". This is because the eigenvalues are different and add more flexibility to the drawing. However, what is essential here is that the eigenvectors capture well the symmetries of the graph.   
+</span>
+<br></br>
+<span style="color:#347fc9">
+**Cycle graph**. We have that the volume of this graph is $\text{vol}(G)=5\cdot 2 = 10$ and $\lambda_2=\lambda_3=1.38$. Then 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+\mathbf{Z}_{2:} &= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{1.38}}\;\frac{\phi_2(2)}{\sqrt{1.38}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{1.38}}\right]
+= \frac{10}{\sqrt{1.38}}\cdot\left[+0.63\; +0.19\; -0.51\; -0.51\; -0.19\right]\\
+\mathbf{Z}_{3:} &= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{1.38}}\;\frac{\phi_3(2)}{\sqrt{1.38}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{1.38}}\right]
+= \frac{10}{\sqrt{1.38}}\cdot\left[+0.09\; -0.56\; -0.44\; +0.28\; +0.62\right]\\
+\end{align}
+$
+</span>
+<br><br>
+<span style="color:#347fc9">
+See that the $2D$ embedding in {numref}`CTE` is quite similar to the provided by Networkx's "spring layout", even when the second and third eigenvalues are similar. This is because the eigenvectors capture well the symmetries in the graph.  
+</span>
+<br></br>
+
 
 ```{figure} ./images/Topic5/CTE.png
 ---
@@ -798,9 +857,12 @@ width: 820px
 align: center
 height: 600px
 ---
-Plot of basic graphs from their Commute-Times Embeddings. 
+Reconstruction of the basic graphs from their Commute-Times Embeddings. 
 ```
-
+<br></br>
+<span style="color:#347fc9">
+**Solutions**. The resulting Commute-Times embeddings are plotted in {numref}`CTE` where we also plot the graphs taken from the second and third dimensions of each node. Note that for the **complete graph**, nodes $2$ and $4$ collide. For the **star graph** node $4$ is misplaced. However for the **path graph** and the **cycle graph** the reconstructed graph fits perfectly the "spring layout" of Networkx. This good results for the path and cycle graphs **do not have notable nodes** with higher degrees than others. Nodes with large degree tend to distort the embedding even when the graph has structural symmetries. 
+</span>
 
 
  

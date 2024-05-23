@@ -1083,33 +1083,95 @@ This is clearly an under-estimation because the Fiedler value for this graph is 
 <p><span style="color:#469ff8">The convergence to the optimal number of dimensions is faster <strong>when the spectral gap is very small</strong>!</span></p>
 <p><br></br>
 <span style="color:#347fc9">
-<strong>Exercise</strong>. Back to the graphs in <a class="reference internal" href="#un"><span class="std std-numref">Fig. 7.8</span></a>. Compute the CT embeddings of nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span> in each graph. Consider two dimensions (in addition to the zero) and take two decimals. Compare their distances with the CT computed in the above exercises.
+<strong>Exercise</strong>. Back to the graphs in <a class="reference internal" href="#un"><span class="std std-numref">Fig. 7.8</span></a>. Compute the CT embeddings of nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span> in each graph. Consider two dimensions (in addition to the zero) and take two decimals. Plot the <span class="math notranslate nohighlight">\(2D\)</span> of all the nodes in the plane and comment on the results.
 </span>
 <br></br>
 <span style="color:#347fc9">
-<strong>Complete graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=5\cdot 4 = 20\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=5\)</span>. Then
+<strong>Complete graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=5\cdot 4 = 20\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=\lambda_3=5\)</span>. Then
 </span>
 <br></br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
 \begin{align}
-\mathbf{Z}_{2:} &amp;= \left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\; \frac{\phi_2(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{5}}\right]
+\mathbf{Z}_{2:} &amp;= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{5}}\;\frac{\phi_2(2)}{\sqrt{5}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{5}}\right]
 = \frac{20}{\sqrt{5}}\cdot\left[+0.00\; +0.70\; -0.47\; +0.23\; -0.47\right]\\
-\mathbf{Z}_{3:} &amp;= \left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\; \frac{\phi_3(3)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{5}}\right]
+\mathbf{Z}_{3:} &amp;= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{5}}\;\frac{\phi_3(2)}{\sqrt{5}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{5}}\right]
 = \frac{20}{\sqrt{5}}\cdot\left[+0.89\; -0.22\; -0.22\; -0.22\; -0.22\right]\\
 \end{align}
 \)</span>
 </span>
 <br><br>
 <span style="color:#347fc9">
-<strong>Solutions</strong>. The resulting Commute-Times embeddings are plotted in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a> where we also plot the graphs taken from the second and third dimensions of each node. Note that for the <strong>complete graph</strong>, some nodes collide. For the <strong>star graph</strong> node <span class="math notranslate nohighlight">\(4\)</span> is misplaced. However for the <strong>path graph</strong> and the <strong>cycle graph</strong> the reconstructed graph fits perfectly the “spring layout” of Networkx.<br />
-</span></p>
+See that the <span class="math notranslate nohighlight">\(2D\)</span> embedding of nodes <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(5\)</span> (<span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(4\)</span> in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a>) have the same embedding, i.e. they collide.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Star graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=4 + 4 = 8\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=\lambda_3=1\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{Z}_{2:} &amp;= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{1}}\;\frac{\phi_2(2)}{\sqrt{1}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{1}}\right]
+= \frac{8}{\sqrt{1}}\cdot\left[+0.00\; -0.50\; +0.83\; -0.16\; -0.16\right]\\
+\mathbf{Z}_{3:} &amp;= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{1}}\;\frac{\phi_3(2)}{\sqrt{1}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{1}}\right]
+= \frac{8}{\sqrt{5}}\cdot\left[+0.00\; -0.50\; -0.16\; +0.83\; -0.16\right]\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+See that in the <span class="math notranslate nohighlight">\(2D\)</span> embedding, node <span class="math notranslate nohighlight">\(5\)</span> (<span class="math notranslate nohighlight">\(4\)</span> in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a>) is closer to node <span class="math notranslate nohighlight">\(1\)</span> (<span class="math notranslate nohighlight">\(0\)</span> in the figure) than others.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Path graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=1 + 2 + 2 + 2 + 1 = 8\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=0.38\)</span>, <span class="math notranslate nohighlight">\(\lambda_3=1.38\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{Z}_{2:} &amp;= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{0.38}}\;\frac{\phi_2(2)}{\sqrt{0.38}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{0.38}}\right]
+= \frac{8}{\sqrt{0.38}}\cdot\left[-0.60\; -0.37\; -0.27\; +0.37\; +0.60\right]\\
+\mathbf{Z}_{3:} &amp;= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{1.38}}\;\frac{\phi_3(2)}{\sqrt{1.38}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{1.38}}\right]
+= \frac{8}{\sqrt{1.38}}\cdot\left[+0.51\; -0.19\; -0.63\; -0.19\; +0.51\right]\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+See that the <span class="math notranslate nohighlight">\(2D\)</span> embedding in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a> is even more symmetric than the provided by Networkx’s “spring layout”. This is because the eigenvalues are different and add more flexibility to the drawing. However, what is essential here is that the eigenvectors capture well the symmetries of the graph.<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Cycle graph</strong>. We have that the volume of this graph is <span class="math notranslate nohighlight">\(\text{vol}(G)=5\cdot 2 = 10\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=\lambda_3=1.38\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{Z}_{2:} &amp;= \text{vol}(G)\left[\frac{\phi_2(1)}{\sqrt{1.38}}\;\frac{\phi_2(2)}{\sqrt{1.38}}\;\ldots\; \frac{\phi_2(5)}{\sqrt{1.38}}\right]
+= \frac{10}{\sqrt{1.38}}\cdot\left[+0.63\; +0.19\; -0.51\; -0.51\; -0.19\right]\\
+\mathbf{Z}_{3:} &amp;= \text{vol}(G)\left[\frac{\phi_3(1)}{\sqrt{1.38}}\;\frac{\phi_3(2)}{\sqrt{1.38}}\;\ldots\; \frac{\phi_3(5)}{\sqrt{1.38}}\right]
+= \frac{10}{\sqrt{1.38}}\cdot\left[+0.09\; -0.56\; -0.44\; +0.28\; +0.62\right]\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+See that the <span class="math notranslate nohighlight">\(2D\)</span> embedding in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a> is quite similar to the provided by Networkx’s “spring layout”, even when the second and third eigenvalues are similar. This is because the eigenvectors capture well the symmetries in the graph.<br />
+</span>
+<br></br></p>
 <figure class="align-center" id="cte">
 <a class="reference internal image-reference" href="_images/CTE.png"><img alt="_images/CTE.png" src="_images/CTE.png" style="width: 820px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Plot of basic graphs from their Commute-Times Embeddings.</span><a class="headerlink" href="#cte" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Reconstruction of the basic graphs from their Commute-Times Embeddings.</span><a class="headerlink" href="#cte" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Solutions</strong>. The resulting Commute-Times embeddings are plotted in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a> where we also plot the graphs taken from the second and third dimensions of each node. Note that for the <strong>complete graph</strong>, nodes <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(4\)</span> collide. For the <strong>star graph</strong> node <span class="math notranslate nohighlight">\(4\)</span> is misplaced. However for the <strong>path graph</strong> and the <strong>cycle graph</strong> the reconstructed graph fits perfectly the “spring layout” of Networkx. This good results for the path and cycle graphs <strong>do not have notable nodes</strong> with higher degrees than others. Nodes with large degree tend to distort the embedding even when the graph has structural symmetries.
+</span></p>
 </section>
 </section>
 </section>
