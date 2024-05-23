@@ -864,6 +864,17 @@ Reconstruction of the basic graphs from their Commute-Times Embeddings.
 **Solutions**. The resulting Commute-Times embeddings are plotted in {numref}`CTE` where we also plot the graphs taken from the second and third dimensions of each node. Note that for the **complete graph**, nodes $2$ and $4$ collide. For the **star graph** node $4$ is misplaced. However for the **path graph** and the **cycle graph** the reconstructed graph fits perfectly the "spring layout" of Networkx. This good results for the path and cycle graphs **do not have notable nodes** with higher degrees than others. Nodes with large degree tend to distort the embedding even when the graph has structural symmetries. 
 </span>
 
+Just to finish this topic with a link with real data and the practices, we plot the commute-times embeddings of the well-known **Cora dataset** in {numref}`Cora`. The top-right is the embedding of the second and third eigenvectors and it is barely informative. The bottom-right however includes the fourth eigenvector and a more advanced (TSNE) projection. 
+
+```{figure} ./images/Topic5/Cora.png
+---
+name: Cora
+width: 820px
+align: center
+height: 600px
+---
+Cora dataset: Commute-Times Embeddings. 
+```
 
  
 
