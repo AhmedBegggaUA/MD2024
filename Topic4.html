@@ -405,6 +405,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-min-cut-problem">6.2.1. The Min-Cut Problem</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fiedler-vector">6.2.2. The Fiedler vector</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplacian-and-courant-fischer">6.2.3. The Laplacian and Courant-Fischer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-theorem">6.2.4. The Spectral Theorem</a></li>
 </ul>
 </li>
 </ul>
@@ -1071,6 +1072,64 @@ Then, <span class="math notranslate nohighlight">\(\text{cut}(A,B)=|E_{cut}|=4\)
 \lambda\le\text{Rcut}(A,B)
 \]</div>
 <p>that is  <span style="color:#469ff8">the loss <span class="math notranslate nohighlight">\(\lambda\)</span> is <strong>even more restrictive than the ratio cut</strong> loss!</span></p>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. In order to <strong>better understand the ratio-cut function</strong>, let us illustrate how it applies to partition a <strong>complete graph</strong> <span class="math notranslate nohighlight">\(K_n\)</span>, with <span class="math notranslate nohighlight">\(n=5\)</span> (without self-loops).
+<br><br>
+See <a class="reference internal" href="#k5"><span class="std std-numref">Fig. 6.11</span></a> where the red curves defines in each case, what nodes are included in the subset <span class="math notranslate nohighlight">\(A\)</span> and what belong to its complementary <span class="math notranslate nohighlight">\(B=\bar{A}\)</span>. Although theoretically we have <span class="math notranslate nohighlight">\(2^{5}-2\)</span> partitions (discounting <span class="math notranslate nohighlight">\(\emptyset\)</span> and <span class="math notranslate nohighlight">\(V\)</span>) for this graph, we really have <span class="math notranslate nohighlight">\(4\)</span> different partitions: respectively with one, two, three and four elements. From left to rigth we have four partitions <span class="math notranslate nohighlight">\(A_i\)</span>: <span class="math notranslate nohighlight">\(A_1=\{3\}\)</span>, <span class="math notranslate nohighlight">\(A_2=\{3,1\}\)</span>, <span class="math notranslate nohighlight">\(A_3=\{3,1,0\}\)</span>, and <span class="math notranslate nohighlight">\(A_4=\{3,1,0,2\}\)</span>.
+</span>
+<br><br></p>
+<figure class="align-center" id="k5">
+<a class="reference internal image-reference" href="images/Topic4/K5.png"><img alt="images/Topic4/K5.png" src="images/Topic4/K5.png" style="width: 850px; height: 180px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">From left to right: <span class="math notranslate nohighlight">\((A_1,B_1)\)</span>, <span class="math notranslate nohighlight">\((A_2,B_2)\)</span>, <span class="math notranslate nohighlight">\((A_3,B_3)\)</span> and <span class="math notranslate nohighlight">\((A_4,B_4)\)</span>. All the cuts in <span class="math notranslate nohighlight">\(K_n\)</span> result from partitions which are equally optimal!</span><a class="headerlink" href="#k5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br><br>
+<span style="color:#347fc9">
+Let us <strong>compute the ratio-cut</strong> loss for each partition:
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\text{cut}(A_1,B_1)=1\cdot 4\;\Rightarrow \text{Rcut}(A_1,B_1) = \frac{4}{|A_1|} + \frac{4}{|B_1|} = \frac{4}{1} + \frac{4}{4} = 5\\ 
+\text{cut}(A_2,B_2)=2\cdot 3\;\Rightarrow \text{Rcut}(A_2,B_2) = \frac{6}{|A_2|} + \frac{6}{|B_2|} = \frac{6}{2} + \frac{6}{3} = 5\\
+\text{cut}(A_3,B_3)=3\cdot 2\;\Rightarrow \text{Rcut}(A_3,B_3) = \frac{6}{|A_3|} + \frac{6}{|B_3|} = \frac{6}{3} + \frac{6}{2} = 5\\
+\text{cut}(A_4,B_4)=4\cdot 1\;\Rightarrow \text{Rcut}(A_4,B_4) = \frac{4}{|A_4|} + \frac{4}{|B_4|} = \frac{4}{1} + \frac{4}{4} = 5\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+As a result, all the ratio cuts are equal! Why?
+<br></br>
+Consider the general case <span class="math notranslate nohighlight">\(K_n=(V,E)\)</span> with <span class="math notranslate nohighlight">\(n\)</span> nodes. Each node in <span class="math notranslate nohighlight">\(K_n\)</span> is connected to <span class="math notranslate nohighlight">\(n-1\)</span> nodes (remember that we have excluded self-loops).
+<br></br>
+Then if a subset <span class="math notranslate nohighlight">\(A_k\subset V\)</span> has <span class="math notranslate nohighlight">\(k\)</span> nodes, we have that <span class="math notranslate nohighlight">\(B_k=V - A_k\)</span> has <span class="math notranslate nohighlight">\(n-k\)</span> nodes. Since every node in <span class="math notranslate nohighlight">\(A_k\)</span> is linked (in this graph) with any node in <span class="math notranslate nohighlight">\(B_k\)</span> we have that
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{cut}(A_k,B_k)=k\cdot(n-k)\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+which results in
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_k,B_k)=\frac{k\cdot(n-k)}{|A_k|} + \frac{k\cdot(n-k)}{|B_k|} = 
+\frac{k\cdot(n-k)}{k} + \frac{k\cdot(n-k)}{(n-k)} = n - k + k = n\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+Then, the ratio cut for all the cuts in <span class="math notranslate nohighlight">\(K_n\)</span> is always <span class="math notranslate nohighlight">\(n\)</span>.
+</span>
+<br></br></p>
 </section>
 <section id="the-laplacian-and-courant-fischer">
 <h3><span class="section-number">6.2.3. </span>The Laplacian and Courant-Fischer<a class="headerlink" href="#the-laplacian-and-courant-fischer" title="Permalink to this heading">#</a></h3>
@@ -1251,11 +1310,11 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
 <ol class="arabic simple" start="2">
 <li><p>If the graph is connected, <span class="math notranslate nohighlight">\(\lambda_2 = \min \lambda\)</span> (minimum of the <strong>Fiedler loss</strong>). As a result, <span class="math notranslate nohighlight">\(\lambda_2\)</span>, <span style="color:#469ff8">the <strong>Fiedler value</strong> can be interpreted as <strong>the minimal non-zero variance</strong> achievable for functions which are perpendicular to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>, and the Fiedler vector is that function.</span>.</p></li>
 </ol>
-<p>For instance, the Fiedler vector for the small example is mapped on the graph in <a class="reference internal" href="#smallfiedler"><span class="std std-numref">Fig. 6.11</span></a>.</p>
+<p>For instance, the Fiedler vector for the small example is mapped on the graph in <a class="reference internal" href="#smallfiedler"><span class="std std-numref">Fig. 6.12</span></a>.</p>
 <figure class="align-center" id="smallfiedler">
 <a class="reference internal image-reference" href="_images/SmallFiedler.png"><img alt="_images/SmallFiedler.png" src="_images/SmallFiedler.png" style="width: 550px; height: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">Small graph and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#smallfiedler" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">Small graph and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#smallfiedler" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the above graph, we have:</p>
@@ -1265,21 +1324,24 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
 \]</div>
 <p>where we have <strong>part of the components negative</strong> (corresponding to <span class="math notranslate nohighlight">\(-1\)</span>) and part of them positive (corresponding to <span class="math notranslate nohighlight">\(+1\)</span>), thus approximating a partition in time <span class="math notranslate nohighlight">\(O(n^3)\)</span>, the one needed to solve a system.</p>
 <p>Interestingly the components <span class="math notranslate nohighlight">\(\phi_2(2)\)</span> and <span class="math notranslate nohighlight">\(\phi_2(4)\)</span> have the <strong>smaller absolute value</strong> although they are defining an heterophilic edge. This is a limitation of the continuous relaxation.</p>
-<p>The Fiedler vector for the SBM example is mapped on the graph in <a class="reference internal" href="#bigfiedler"><span class="std std-numref">Fig. 6.12</span></a>.</p>
+<p>The Fiedler vector for the SBM example is mapped on the graph in <a class="reference internal" href="#bigfiedler"><span class="std std-numref">Fig. 6.13</span></a>.</p>
 <figure class="align-center" id="bigfiedler">
 <a class="reference internal image-reference" href="_images/BigFiedler.png"><img alt="_images/BigFiedler.png" src="_images/BigFiedler.png" style="width: 620px; height: 270px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">SBM and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#bigfiedler" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">SBM and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#bigfiedler" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>The Spectrum</strong>. The spectrum of <span class="math notranslate nohighlight">\(\triangle\)</span> is the collection of <span class="math notranslate nohighlight">\(n\)</span> <strong>eigenvalues</strong> <span class="math notranslate nohighlight">\(\lambda_1\le\lambda_2\le\ldots\le\lambda_n\)</span>. They are not-decreasing because they summarize the increasing variability of their respective <strong>eigenvectors</strong> mapped on the nodes of the graph.</p>
+<p><strong>The Spectrum</strong>. The spectrum of <span class="math notranslate nohighlight">\(\triangle\)</span> is the collection of <span class="math notranslate nohighlight">\(n\)</span> <strong>eigenvalues</strong> <span class="math notranslate nohighlight">\(\lambda_1\le\lambda_2\le\ldots\le\lambda_n\)</span>. They are not-decreasing because they summarize the increasing variability of their respective <strong>eigenvectors</strong> mapped on the nodes of the graph (see <a class="reference internal" href="#sbmspectrum"><span class="std std-numref">Fig. 6.14</span></a>).</p>
 <figure class="align-center" id="sbmspectrum">
 <a class="reference internal image-reference" href="_images/SBMSpectrum.png"><img alt="_images/SBMSpectrum.png" src="_images/SBMSpectrum.png" style="width: 620px; height: 280px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">SBM spectrum and its associated eigenvectors.</span><a class="headerlink" href="#sbmspectrum" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.14 </span><span class="caption-text">SBM spectrum and its associated eigenvectors.</span><a class="headerlink" href="#sbmspectrum" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>The Spectral Theorem</strong>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, <strong>any simmetric and square matrix can be decomposed</strong> as follows:</p>
+</section>
+<section id="the-spectral-theorem">
+<h3><span class="section-number">6.2.4. </span>The Spectral Theorem<a class="headerlink" href="#the-spectral-theorem" title="Permalink to this heading">#</a></h3>
+<p><span style="color:#469ff8"><strong>The Spectral Theorem</strong></span>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, <strong>any symmetric and square matrix can be decomposed</strong> as follows:</p>
 <div class="math notranslate nohighlight">
 \[
 \triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T + \ldots + \lambda_n\phi_n\phi_n^T\;.
@@ -1287,15 +1349,128 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
 <p>More compactly,</p>
 <div class="math notranslate nohighlight">
 \[
-\triangle = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;.
+\triangle = \Phi\Phi^T = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;,
 \]</div>
+<p>where the columns of <span class="math notranslate nohighlight">\(\Phi\)</span> are <span class="math notranslate nohighlight">\(\phi_1,\phi_2,\ldots,\phi_n\)</span>.</p>
 <p>The meaning of this theorem is that the matrix (<span class="math notranslate nohighlight">\(\triangle\)</span> for instance) can be perfectly decomposed (without loss of information) as a <strong>linear combination</strong> of <span class="math notranslate nohighlight">\(n\)</span> matrices <span class="math notranslate nohighlight">\(\phi_i^T\phi_i\)</span>, each one defined by an eigenctor, and the coefficients of this linear combination are the coefficients of the eigenvalues.</p>
 <p>However, if we do not have the full set of eigenvectors but a small number <span class="math notranslate nohighlight">\(k&lt;n\)</span> of them, all we do is to <strong>approximate</strong> the matrix (the Laplacian of the graph in the case of <span class="math notranslate nohighlight">\(\triangle\)</span>). The <strong>error of the approximation</strong> is given by the sum of the absolute values of the <strong>discarded eigenvalues or modes</strong>.</p>
-<p>In graph spectral theory, it is quite common to retain (or compute) only the smalles <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
+<p>In graph spectral theory, it is quite common to retain (or compute) only the smallest <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \triangle = \sum_{i=1}^k\lambda_i\phi_i\phi_i^T\;.
 \]</div>
+<p>Consider, for instance the SBM example developed in this topic. In <a class="reference internal" href="#spectralthm"><span class="std std-numref">Fig. 6.15</span></a> we show the Lapacian matrix <span class="math notranslate nohighlight">\(\triangle\)</span> (top-left) and its eigenvectors <span class="math notranslate nohighlight">\(\phi_1,\phi_2,\ldots,\phi_n\)</span> (columns from left to right). The mapping of each eigenvector on the graph and the Laplacian spectrum are shown in <a class="reference internal" href="#sbmspectrum"><span class="std std-numref">Fig. 6.14</span></a>.</p>
+<figure class="align-center" id="spectralthm">
+<a class="reference internal image-reference" href="_images/SpectralThm.png"><img alt="_images/SpectralThm.png" src="_images/SpectralThm.png" style="width: 820px; height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.15 </span><span class="caption-text">SBM eigenvectors and reconstruction.</span><a class="headerlink" href="#spectralthm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then, looking at the matrix of eigenvectors <span class="math notranslate nohighlight">\(\Phi\)</span> (bottom-left), the first one <span class="math notranslate nohighlight">\(\phi_1\)</span> is constant <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>.</p>
+<p><span style="color:#469ff8"><strong>First-order approximation</strong></span>. For <span class="math notranslate nohighlight">\(k=1\)</span> we have the appoximation:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \lambda_1\phi_1\phi_1^T = 0\cdot \mathbf{1}\mathbf{1}^T = \mathbf{0}\;,
+\]</div>
+<p>i.e. the <strong>first-order approximation</strong> of the Laplacian is a matrix of ones (all the elements in the matrix are equally important) weighted by zero. We know that this is highly incorrect since the diagonal must allocate the node degrees. This is exactly what the product by <span class="math notranslate nohighlight">\(\lambda_1=0\)</span> means!</p>
+<p><span style="color:#469ff8"><strong>Second-order approximation</strong></span>. The second eigenvector, the approximation of the Fiedler vector, partitions the graph into two communities and this is why the second-order approximation <span class="math notranslate nohighlight">\(k=2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T
+\]</div>
+<p>captures <span style="color:#469ff8"><strong>the dominant information</strong> in the graph: the two communities in the SBM</span>. Remember that red means high positive value and blue high negative. Then for <span class="math notranslate nohighlight">\(k=2\)</span> we only know that there is a high probability that half of the nodes belong to a community and the other half to another one.</p>
+<p><span style="color:#469ff8"><strong>Mid-order approximation</strong></span>. For <span class="math notranslate nohighlight">\(k&gt;2\)</span> we observe that few elements in the diagonal are captured. See for instance the red corners in <span class="math notranslate nohighlight">\(k=4\)</span> and <span class="math notranslate nohighlight">\(k=6\)</span>. These two nodes belong to inter-class edges. They are also linked with nodes of same community: remember that adjacency in the Laplacian is <span class="math notranslate nohighlight">\(-1\)</span> (encoded by dark blue).</p>
+<p><span style="color:#469ff8"><strong>High-order approximation</strong></span>. See that for <span class="math notranslate nohighlight">\(k\ge 11\)</span> degree information is recovered before the full (negative) adjacency emerges!</p>
+<p>Therefore, the logical order of emerging info during the approximation is:</p>
+<ol class="arabic simple">
+<li><p>Cluster structure of the graph.</p></li>
+<li><p>Important nodes (intrer-class).</p></li>
+<li><p>Degree info.</p></li>
+<li><p>Negative adjacency.</p></li>
+</ol>
+<p>For a better understanding of these steps we propose a small exercise.</p>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Let us consider the small SBM whose Fiedler vector is shown in <a class="reference internal" href="#smallfiedler"><span class="std std-numref">Fig. 6.12</span></a>. We only have <span class="math notranslate nohighlight">\(\lambda_1,\phi_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2,\phi_2\)</span>. Then, from:
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;\lambda_1 = 0.0\;\;\phi_1 = [+1.0\; +1.0\; +1.0\; +1.0\; +1.0\; +1.0]^T\\
+&amp;\lambda_2=0.4\;\;\phi_2 =[-0.4\; -0.3\; -0.4\;  +0.3\; +0.4\;+0.4]\;
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+apply the spectral theorem to <strong>approximate the Laplacian matrix</strong> using the information given. We have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\triangle \approx \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Since <span class="math notranslate nohighlight">\(\lambda_1=0\)</span>, we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\triangle \approx \lambda_2\phi_2\phi_2^T\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\phi_2\phi_2^T = 
+\begin{bmatrix}
+-0.4\\ 
+-0.3\\ 
+-0.4\\  
++0.3\\ 
++0.4\\
++0.4
+\end{bmatrix}
+\begin{bmatrix}
+-0.4 &amp; -0.3 &amp; -0.4 &amp; +0.3 &amp; +0.4 &amp; +0.4
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\phi_2\phi_2^T = 
+\begin{bmatrix}
+0.16  &amp; 0.12  &amp; 0.16  &amp; -0.12 &amp; -0.16 &amp; -0.16\\
+0.12  &amp; 0.09  &amp; 0.12  &amp; -0.09 &amp; -0.12 &amp; -0.12\\
+0.16  &amp; 0.12  &amp; 0.16  &amp; -0.12 &amp; -0.16 &amp; -0.16\\
+-0.12 &amp; -0.09 &amp; -0.12 &amp; 0.09  &amp; 0.12  &amp; 0.12\\
+-0.16 &amp; -0.12 &amp; -0.16 &amp; 0.12  &amp; 0.16  &amp; 0.16\\
+-0.16 &amp; -0.12 &amp; -0.16 &amp; 0.12  &amp; 0.16  &amp; 0.16\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\lambda_2\phi_2\phi_2^T = 
+\begin{bmatrix}
+0.064 &amp; 0.048 &amp; 0.064 &amp; -0.048 &amp; -0.064 &amp; -0.064\\
+0.048 &amp; 0.036 &amp; 0.048 &amp; -0.036 &amp; -0.048 &amp; -0.048\\
+0.064 &amp; 0.048 &amp; 0.064 &amp; -0.048 &amp; -0.064 &amp; -0.064\\
+-0.048 &amp; -0.036 &amp; -0.048 &amp; 0.036 &amp; 0.048 &amp; 0.048\\
+-0.064 &amp; -0.048 &amp; -0.064 &amp; 0.048 &amp; 0.064 &amp; 0.064\\
+-0.064 &amp; -0.048 &amp; -0.064 &amp; 0.048 &amp; 0.064 &amp; 0.064\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, with the first two eigenvalues and eigevectors all we can do is to capture the block structure (communities) in the SBM, as shown in <a class="reference internal" href="#spectralthm"><span class="std std-numref">Fig. 6.15</span></a>. Look that the positive blocks (red in <a class="reference internal" href="#spectralthm"><span class="std std-numref">Fig. 6.15</span></a>) correspond to the intra-class links inside the two communities, where the negative blocks correspond to inter-class edges!
+</span></p>
 </section>
 </section>
 </section>
@@ -1373,6 +1548,7 @@ f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-min-cut-problem">6.2.1. The Min-Cut Problem</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fiedler-vector">6.2.2. The Fiedler vector</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplacian-and-courant-fischer">6.2.3. The Laplacian and Courant-Fischer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-theorem">6.2.4. The Spectral Theorem</a></li>
 </ul>
 </li>
 </ul>
