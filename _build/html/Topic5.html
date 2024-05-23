@@ -1172,6 +1172,13 @@ See that the <span class="math notranslate nohighlight">\(2D\)</span> embedding 
 <span style="color:#347fc9">
 <strong>Solutions</strong>. The resulting Commute-Times embeddings are plotted in <a class="reference internal" href="#cte"><span class="std std-numref">Fig. 7.9</span></a> where we also plot the graphs taken from the second and third dimensions of each node. Note that for the <strong>complete graph</strong>, nodes <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(4\)</span> collide. For the <strong>star graph</strong> node <span class="math notranslate nohighlight">\(4\)</span> is misplaced. However for the <strong>path graph</strong> and the <strong>cycle graph</strong> the reconstructed graph fits perfectly the “spring layout” of Networkx. This good results for the path and cycle graphs <strong>do not have notable nodes</strong> with higher degrees than others. Nodes with large degree tend to distort the embedding even when the graph has structural symmetries.
 </span></p>
+<p>Just to finish this topic with a link with real data and the practices, we plot the commute-times embeddings of the well-known <strong>Cora dataset</strong> in <a class="reference internal" href="#cora"><span class="std std-numref">Fig. 7.10</span></a>. The top-right is the embedding of the second and third eigenvectors and it is barely informative. The bottom-right however includes the fourth eigenvector and a more advanced (TSNE) projection.</p>
+<figure class="align-center" id="cora">
+<a class="reference internal image-reference" href="_images/Cora.png"><img alt="_images/Cora.png" src="_images/Cora.png" style="width: 820px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.10 </span><span class="caption-text">Cora dataset: Commute-Times Embeddings.</span><a class="headerlink" href="#cora" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>
