@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>19. Recuperación Prácticas MD - 2023/24 &#8212; Matemáticas Discreta IA</title>
+    <title>19. Practices Recovery MD - 2023/24 &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -254,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recuperación</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Recuperación Prácticas MD - 2023/24</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Practices Recovery MD - 2023/24</a></li>
 </ul>
 
     </div>
@@ -393,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Recuperación Prácticas MD - 2023/24</h1>
+    <h1>Practices Recovery MD - 2023/24</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,6 +409,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippet">19.2.1.1. Code snippet</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-0">19.2.2. Exercise 0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">19.2.3. Exercise 1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">19.3. Message Passing</a><ul class="nav section-nav flex-column">
@@ -427,8 +429,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="recuperacion-practicas-md-2023-24">
-<h1><span class="section-number">19. </span>Recuperación Prácticas MD - 2023/24<a class="headerlink" href="#recuperacion-practicas-md-2023-24" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="practices-recovery-md-2023-24">
+<h1><span class="section-number">19. </span>Practices Recovery MD - 2023/24<a class="headerlink" href="#practices-recovery-md-2023-24" title="Permalink to this heading">#</a></h1>
 <section id="ejercicio-1">
 <h2><span class="section-number">19.1. </span>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permalink to this heading">#</a></h2>
 </section>
@@ -525,15 +527,27 @@ document.write(`
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="exercise-0">
+<h3><span class="section-number">19.2.2. </span>Exercise 0<a class="headerlink" href="#exercise-0" title="Permalink to this heading">#</a></h3>
+<p>In the following two exercises, it is compulsory to add a discussion of the results. And very extensive explanations of the parameters that you modified and how they affected the performance of the classifier. If you don’t do this, you will get a 0 in the exercise.</p>
+</section>
+<section id="exercise-1">
+<h3><span class="section-number">19.2.3. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p>In the previous section, we learned how to use Node2Vec to generate node embeddings for a graph. Now, we will use the node embeddings to perform node classification on the Cora dataset. We will train a simple logistic regression classifier on the node embeddings to predict the class labels of the nodes.</p>
 <p>The steps to perform node classification are as follows:</p>
 <ol class="arabic simple">
 <li><p>Generate node embeddings using Node2Vec.</p></li>
 <li><p>Train a logistic regression classifier on the node embeddings. Note that you will need to split the dataset into training and test sets (60% training, 40% test).</p></li>
 <li><p>Evaluate the classifier on the test set. <strong>You will need to run the training and evaluation 10 times and calculate the average accuracy to get a more reliable estimate of the classifier’s performance. If you don’t do this, you will get a 0 in the exercise.</strong></p></li>
-<li><p>Report the average accuracy of the classifier, and <em>discuss</em> the results. In the discussion, I want to see all the parameters that you modified during the process (e.g., the number of walks, the length of the walks, the embedding dimension, etc.) and how they affected the performance of the classifier. If you put a very long explanation of the parameters that you modified and how they affected the performance of the classifier, you will get a 10 in the exercise, without taking into account the accuracy of the classifier. <strong>Important</strong>: You need to save the accuracy of each run in a csv file called <code class="docutils literal notranslate"><span class="pre">node_classification_results_yourname.csv</span></code> and upload it to the platform.
-<strong>Important: In the csv file at least should contain 6 configurations of the Node2Vec algorithm and the accuracy of the classifier for each configuration(with a pandas shape of 24 rows representing each configuration and 5 colummns representing the configuration, accuracy and std). If you don’t do this, you will get a 0 in the exercise.</strong></p></li>
+<li><p>Report the average accuracy of the classifier, and <em>discuss</em> the results. In the discussion, I want to see all the parameters that you modified during the process (e.g., the number of walks, the length of the walks, the embedding dimension, etc.) and how they affected the performance of the classifier. If you put a very long explanation of the parameters that you modified and how they affected the performance of the classifier, you will get a 10 in the exercise, without taking into account the accuracy of the classifier.</p></li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Important</strong>: You need to save the accuracy of each run in a csv file called <code class="docutils literal notranslate"><span class="pre">node_classification_results_yourname.csv</span></code> and upload it to the platform.
+<strong>Important: In the csv file at least should contain 6 configurations of the Node2Vec algorithm and the accuracy of the classifier for each configuration(with a pandas shape of 6 rows representing each configuration and 5 colummns representing the configuration, accuracy and std). If you don’t do this, you will get a 0 in the exercise.</strong></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Important</strong>: It is forbidden to change the classifier model. Also it is important to initialize the classifier with different random states each time you run the training and evaluation to ensure that the classifier is trained on different data each time. If you don’t do this, you will get a 0 in the exercise.</p>
@@ -625,7 +639,6 @@ document.write(`
 </table>
 </section>
 </section>
-</section>
 <section id="message-passing">
 <h2><span class="section-number">19.3. </span>Message Passing<a class="headerlink" href="#message-passing" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="mp">
@@ -660,7 +673,10 @@ H^{(l+1)} = A H^{(l)}
 <section id="exercise-2">
 <h3><span class="section-number">19.3.1. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
 <p>In the previous section, we learned how to use node2vec and in this section, we learned how to use the message passing to generate node embeddings. Now, we will combine the node2vec and message passing to generate node embeddings. You just have to concatenate the node embeddings generated by node2vec and message passing. Then, you will train a logistic regression classifier on the concatenated node embeddings to predict the class labels of the nodes. <strong>You need to follow the same steps as in Exercise 1.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p><strong>Important: What I want to see in the discussion is how the combination of node2vec and message passing affected the performance of the classifier. It is also important to mention that you can perform the message passing multiple times, for instance 3 times. Therefore, you will have to concatenate the node embeddings generated by node2vec and message passing 3 times and generate a report with the average accuracy of the classifier, the std, node2vec parameters, and message passing parameters.</strong></p>
+</div>
 <p>#### The resulting report should be saved in a csv file called <code class="docutils literal notranslate"><span class="pre">node_classification_results_yourname_ex2.csv</span></code> and with this format:</p>
 <table class="table">
 <thead>
@@ -765,6 +781,8 @@ H^{(l+1)} = A H^{(l)}
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippet">19.2.1.1. Code snippet</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-0">19.2.2. Exercise 0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">19.2.3. Exercise 1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">19.3. Message Passing</a><ul class="nav section-nav flex-column">
