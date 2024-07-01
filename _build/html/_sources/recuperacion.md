@@ -224,5 +224,6 @@ In the previous section, we learned how to use node2vec and in this section, we 
 
 For the delivery of the practices, you must submit the following files:
 
+- `notebook_practices_yourname.ipynb`: Jupyter notebook with the development of the exercises.
 - `node_classification_results_yourname_ex1.csv`: CSV file with the results of Exercise 1.
 - `node_classification_results_yourname_ex2.csv`: CSV file with the results of Exercise 2.
