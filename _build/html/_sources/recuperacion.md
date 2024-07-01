@@ -1,8 +1,5 @@
 #  Practices Recovery MD - 2023/24
 
-
-## Ejercicio 1
-
 ## Citeseer dataset
 The citeseer dataset is a citation network dataset that contains scientific publications and their citations. The dataset consists of 3327 nodes and 4732 edges. Each node in the graph represents a scientific publication, and each edge represents a citation between two publications. The nodes are labeled with one of six classes, which correspond to the research areas of the publications.
 

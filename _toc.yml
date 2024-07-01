@@ -13,6 +13,8 @@ parts:
   chapters:
   - file: Topic1 
   - file: Topic2
+- caption: Graphs
+  chapters:
   - file: Topic2_3
   - file: Topic3
 - caption: Spectral Theory
@@ -40,7 +42,7 @@ parts:
   - file: real_cases
   - file: real_cases_dataset
   - file: real_cases_part2
-- caption: Recuperación
+- caption: Recovery
   chapters:
   - file: recuperacion
   
