@@ -1,4 +1,4 @@
-#  Recuperación Prácticas MD - 2023/24
+#  Practices Recovery MD - 2023/24
 
 
 ## Ejercicio 1
