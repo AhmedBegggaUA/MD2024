@@ -24,6 +24,7 @@ parts:
 - caption: Exam Solutions 
   chapters:
   - file: ExamJune24
+  - file: ExamJuly24
 - caption: Practice 1
   chapters:
   - file: practice_intro
